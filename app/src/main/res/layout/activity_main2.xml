@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.chris.strokere.LoginScreen">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <EditText
+            android:id="@+id/emailLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView2"
+            android:layout_marginTop="77dp"
+            android:backgroundTint="@android:color/white"
+            android:ems="10"
+            android:hint="EMAIL ADDRESS"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/greenAccent"
+            android:textColorHint="@color/greenAccent"
+            android:textSize="30dp" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/emailLogIn"
+            android:layout_marginTop="109dp"
+            android:backgroundTint="@android:color/white"
+            android:ems="10"
+            android:hint="PASSWORD"
+            android:inputType="textPassword"
+            android:textColor="@color/greenAccent"
+            android:textColorHint="@color/greenAccent"
+            android:textSize="30dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/loginPassword"
+            android:layout_marginTop="26dp"
+            android:background="@color/colorAccent"
+            android:text="LOG IN"
+            android:textSize="45sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="19dp"
+            app:srcCompat="@drawable/logo" />
+
+        <Button
+            android:id="@+id/notRegistered"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/button"
+            android:layout_marginTop="13dp"
+            android:background="@color/greenAccent"
+            android:text="Not registered?"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
