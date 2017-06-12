@@ -1,6 +1,8 @@
 package com.example.chris.strokere;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        Typeface latoRegular = Typeface.createFromAsset(getAssets(), "Lato-Regular.ttf");
+        logInBtn.setTypeface(latoRegular);
+
         //Listner for Log in button to go to Register screen
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -28,5 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Register.class));
             }
         });
+
+        registerBtn.setTypeface(latoRegular);
     }
+
 }
