@@ -21,5 +21,14 @@ public class LoginScreen extends AppCompatActivity {
             }
         });
 
+
+        //Listner for not login button TEST for exercise
+        Button logIn = (Button) findViewById(R.id.logInButton);
+        logIn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(LoginScreen.this, exerciseView.class));
+            }
+        });
+
     }
 }
