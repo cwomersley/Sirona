@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import static com.example.chris.strokere.R.id.textView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Import typeface
+
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         //Listner for Log in button to go to log inscreen
         Button logInBtn = (Button) findViewById(R.id.logInBtn);
@@ -23,9 +30,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Set typeface for button
-        Typeface latoRegular = Typeface.createFromAsset(getAssets(), "Lato-Regular.ttf");
-        logInBtn.setTypeface(latoRegular);
+
+        logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         //Listner for Log in button to go to Register screen
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
@@ -34,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Register.class));
             }
         });
-        //Set typeface for button
-        registerBtn.setTypeface(latoRegular);
+
+        registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
     }
 
 }
