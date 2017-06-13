@@ -1,9 +1,11 @@
 package com.example.chris.strokere;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.VideoView;
 
 public class exerciseView extends AppCompatActivity {
 
@@ -16,11 +18,27 @@ public class exerciseView extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Sets the Toolbar to act as the ActionBar for this Activity window.
-        // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
+
+        VideoView videoView = (VideoView) findViewById(R.id.videoView);
+        //asign video to video view and start video
+        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.exercisetest);
+        videoView.start();
+
+        //loops video plating in video view
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+
+
+
+
     }
 
-    // Menu icons are inflated just as they were with actionbar
+    // Menu icons are inflated as they were with actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

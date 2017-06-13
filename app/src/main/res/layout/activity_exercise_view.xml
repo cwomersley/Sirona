@@ -39,12 +39,29 @@
             android:background="@color/bg">
 
             <VideoView
-                android:id="@+id/videoView2"
+                android:id="@+id/videoView"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/videoView"
+                android:layout_alignTop="@+id/button3"
+                android:text="Like" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/videoView"
+                android:layout_below="@+id/videoView"
+                android:layout_marginTop="26dp"
+                android:text="Dislike" />
         </RelativeLayout>
 
 
