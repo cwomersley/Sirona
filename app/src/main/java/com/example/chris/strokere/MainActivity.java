@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //Set typeface for button
         Typeface latoRegular = Typeface.createFromAsset(getAssets(), "Lato-Regular.ttf");
         logInBtn.setTypeface(latoRegular);
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, Register.class));
             }
         });
-
+        //Set typeface for button
         registerBtn.setTypeface(latoRegular);
     }
 
