@@ -36,7 +36,7 @@
             tools:layout_editor_absoluteY="511dp" />
 
         <Button
-            android:id="@+id/registerBtn"
+            android:id="@+id/registerBtnR"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_marginBottom="34dp"
@@ -51,7 +51,7 @@
             android:id="@+id/logInBtn"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_above="@+id/registerBtn"
+            android:layout_above="@+id/registerBtnR"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="10dp"
             android:background="@color/colorAccent"

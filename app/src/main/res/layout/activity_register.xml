@@ -24,10 +24,10 @@
         tools:layout_constraintTop_creator="1">
 
         <Button
-            android:id="@+id/logInButton"
+            android:id="@+id/registerBtnR"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:background="@color/colorAccent"
+            android:background="@color/greenAccent"
             android:text="REGISTER"
             android:textSize="45sp"
             android:layout_marginBottom="10dp"
@@ -35,10 +35,10 @@
             android:layout_alignParentStart="true" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/firstNameR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText4"
+            android:layout_above="@+id/surnameR"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="13dp"
@@ -48,10 +48,10 @@
             android:textColorHint="@color/greenAccent" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/passR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText2"
+            android:layout_above="@+id/passConfirmR"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="12dp"
@@ -61,36 +61,35 @@
             android:textColorHint="@color/greenAccent" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/passConfirmR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/logInButton"
+            android:layout_above="@+id/registerBtnR"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="15dp"
             android:ems="10"
-            android:hint="CONFIRM PASSWROD"
+            android:hint="CONFIRM PASSWORD"
             android:inputType="textPassword"
             android:textColorHint="@color/greenAccent" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/emailR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
             android:layout_marginBottom="12dp"
             android:ems="10"
             android:hint="EMAIL ADDRESS"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/greenAccent" />
+            android:textColorHint="@color/greenAccent"
+            android:layout_above="@+id/passR"
+            android:layout_alignParentStart="true" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/surnameR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText3"
+            android:layout_above="@+id/emailR"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="17dp"

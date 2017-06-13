@@ -56,14 +56,14 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/logInButton"
+            android:id="@+id/registerBtnR"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/loginPassword"
             android:layout_marginTop="26dp"
             android:background="@color/colorAccent"
-            android:text="LOG IN"
+            android:text="LOGIN"
             android:textSize="45sp" />
 
         <ImageView
@@ -81,7 +81,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/logInButton"
+            android:layout_below="@+id/registerBtnR"
             android:layout_marginTop="13dp"
             android:background="@color/greenAccent"
             android:text="Not registered?"
