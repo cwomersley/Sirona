@@ -38,7 +38,7 @@
             android:inputType="textEmailAddress"
             android:textColor="@color/greenAccent"
             android:textColorHint="@color/greenAccent"
-            android:textSize="30dp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/loginPassword"
@@ -53,7 +53,7 @@
             android:inputType="textPassword"
             android:textColor="@color/greenAccent"
             android:textColorHint="@color/greenAccent"
-            android:textSize="30dp" />
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/logInButton"
