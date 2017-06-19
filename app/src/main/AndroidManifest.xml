@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".LoginScreen" />
         <activity android:name=".Register" />
-        <activity android:name=".exerciseView"></activity>
+        <activity android:name=".exerciseView" />
+        <activity android:name=".ExerciseList"></activity>
     </application>
 
 </manifest>
