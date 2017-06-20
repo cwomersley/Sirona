@@ -1,22 +1,32 @@
 package com.example.chris.strokere;
 
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 import android.widget.VideoView;
+
+import java.io.File;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class exerciseView extends AppCompatActivity {
 
+    ArrayList<String> nameList;
 
-    VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_view);
+
+        addFiles();
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,8 +78,29 @@ public class exerciseView extends AppCompatActivity {
 
     public String setStringPath(){
 
+
         String stringPath = "android.resource://" + getPackageName() + "/" + R.raw.exercisetest;
+        
+
         return stringPath;
+
+    }
+
+
+
+
+    public void  addFiles(){
+
+        Field[] fields = R.raw.class.getFields();
+        nameList = new ArrayList<>();
+
+        for (int i = 0; i < fields.length - 1; i++) {
+            String name = fields[i].getName();
+            nameList.add(name);
+
+
+        }
+
 
     }
 
