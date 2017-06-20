@@ -27,12 +27,12 @@
             android:id="@+id/registerBtnR"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="10dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/greenAccent"
             android:text="REGISTER"
-            android:textSize="45sp" />
+            android:textSize="45sp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:id="@+id/firstNameR"
