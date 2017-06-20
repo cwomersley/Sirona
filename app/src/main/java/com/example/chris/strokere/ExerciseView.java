@@ -78,8 +78,10 @@ public class ExerciseView extends AppCompatActivity {
 
     public String setStringPath(){
 
+        String path = nameList.get(1);
 
-        String stringPath = "android.resource://" + getPackageName() + "/" + R.raw.exercisetest;
+
+        String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
 
 
         return stringPath;
@@ -91,15 +93,15 @@ public class ExerciseView extends AppCompatActivity {
 
     public void  addFiles(){
 
-        //Field[] fields = R.raw.class.getFields();
-        //nameList = new ArrayList<>();
+        Field[] fields = R.raw.class.getFields();
+        nameList = new ArrayList<>();
 
-        //for (int i = 0; i < fields.length - 1; i++) {
-        //    String name = fields[i].getName();
-        //    nameList.add(name);
+        for (int i = 0; i < fields.length - 1; i++) {
+            String name = fields[i].getName();
+           nameList.add(name);
 
 
-        //}
+    }
 
 
     }
