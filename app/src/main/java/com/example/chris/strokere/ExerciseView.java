@@ -2,6 +2,7 @@ package com.example.chris.strokere;
 
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -34,13 +35,14 @@ public class ExerciseView extends AppCompatActivity {
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
 
+        setAndPlayVideo(setStringPath());
+        timer();
 
         //asign video to video view and start video
 
-       // vidPath = "android.resource://" + getPackageName() + "/" + R.raw.exercisetest;
 
         //handler for switching to a different video view (Currently set at 3000, change to variable)
-        final Handler handler = new Handler();
+        /*final Handler handler = new Handler();
         Runnable run = new Runnable() {
             @Override
             public void run() {
@@ -48,13 +50,12 @@ public class ExerciseView extends AppCompatActivity {
 
                 setAndPlayVideo(setStringPath());
                 //removes video path from array so next cna be played
-                nameList.remove(0);
 
                 handler.postDelayed(this, 30000);
             }
         };
         //initilize run
-        handler.post(run);
+        handler.post(run); */
 
 
 
@@ -91,7 +92,7 @@ public class ExerciseView extends AppCompatActivity {
 
 
 
-
+    //adds all files in raw to an array and adds file names to an array
     public void  addFiles(){
 
         Field[] fields = R.raw.class.getFields();
@@ -100,11 +101,7 @@ public class ExerciseView extends AppCompatActivity {
         for (int i = 0; i < fields.length - 1; i++) {
             String name = fields[i].getName();
            nameList.add(name);
-
-
-    }
-
-
+      }
     }
 
 
@@ -119,5 +116,22 @@ public class ExerciseView extends AppCompatActivity {
         return true;
     }
 
+
+    //timer use to change length an exercise is run for and when the next one should play
+    public void timer() {
+        new CountDownTimer(30000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                //insert code to update progess bar ?
+            }
+
+            public void onFinish() {
+
+                //load the next video and set the time for it ?
+
+                nameList.remove(1);
+                setAndPlayVideo(setStringPath());
+            }
+        }.start();
+    }
 }
 
