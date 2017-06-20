@@ -80,7 +80,7 @@ public class exerciseView extends AppCompatActivity {
 
 
         String stringPath = "android.resource://" + getPackageName() + "/" + R.raw.exercisetest;
-        
+
 
         return stringPath;
 
