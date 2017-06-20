@@ -38,25 +38,6 @@ public class ExerciseView extends AppCompatActivity {
         setAndPlayVideo(setStringPath());
         timer();
 
-        //asign video to video view and start video
-
-
-        //handler for switching to a different video view (Currently set at 3000, change to variable)
-        /*final Handler handler = new Handler();
-        Runnable run = new Runnable() {
-            @Override
-            public void run() {
-                // code to be run every 30 seconds
-
-                setAndPlayVideo(setStringPath());
-                //removes video path from array so next cna be played
-
-                handler.postDelayed(this, 30000);
-            }
-        };
-        //initilize run
-        handler.post(run); */
-
 
 
 
