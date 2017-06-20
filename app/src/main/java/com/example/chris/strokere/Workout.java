@@ -12,7 +12,7 @@ import java.util.Objects;
  * Created by Chris on 13/06/2017.
  */
 
-public class workout {
+public class Workout {
 
 
 }

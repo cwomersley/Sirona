@@ -29,7 +29,7 @@ public class Register extends AppCompatActivity {
 
 
         //Listener for register button (needs implementing)
-        Button registerBtn = (Button) findViewById(R.id.registerBtnR);
+        Button registerBtn = (Button) findViewById(R.id.loginBtnL);
         registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
     }
 }

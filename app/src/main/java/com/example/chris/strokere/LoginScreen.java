@@ -15,11 +15,11 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activty_login);
 
 
-        EditText emailLogIn = (EditText) findViewById(R.id.emailLogIn);
-        emailLogIn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        EditText emailLogin = (EditText) findViewById(R.id.emailLogin);
+        emailLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        EditText loginPassword = (EditText) findViewById(R.id.loginPassword);
-        loginPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        EditText passwordLogin = (EditText) findViewById(R.id.passwordLogin);
+        passwordLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
         //Listner for not registered button to go to register screen
@@ -33,14 +33,44 @@ public class LoginScreen extends AppCompatActivity {
         });
 
 
-        //Listner for not activty_login button TEST for exercise
-        Button logIn = (Button) findViewById(R.id.registerBtnR);
-        logIn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        logIn.setOnClickListener(new View.OnClickListener() {
+        //Lisetner for not activty_login button TEST for exercise
+        Button loginBtnL = (Button) findViewById(R.id.loginBtnL);
+        loginBtnL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        loginBtnL.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(LoginScreen.this, exerciseView.class));
+                startActivity(new Intent(LoginScreen.this, ExerciseView.class));
             }
         });
 
     }
+
+    public void onLogin (View view) {
+
+        //EditText emailLogin = (EditText) findViewById(R.id.emailLogin);
+        //EditText passwordLogin = (EditText) findViewById(R.id.passwordLogin);
+
+        //String username = emailLogin.getText().toString();
+        //String password = passwordLogin.getText().toString();
+        //String type = "login";
+
+        //BackgroundWorker backgroundWorker= new BackgroundWorker(this);
+        //backgroundWorker.execute(type, username, password);
+
+        //Intent I=new Intent(LoginScreen.this,ExerciseView.class);
+        //startActivity(I);
+
+        //Button loginBtnL = (Button) findViewById(R.id.loginBtnL);
+        //loginBtnL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //loginBtnL.setOnClickListener(new View.OnClickListener() {
+         //   public void onClick(View v) {
+         //       startActivity(new Intent(LoginScreen.this, ExerciseView.class));
+         //   }
+        //});
+
+
+    }
+
+
+
+
 }

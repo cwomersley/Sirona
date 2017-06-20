@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         //Listner for Log in button to go to Register screen
-        Button registerBtn = (Button) findViewById(R.id.registerBtnR);
+        Button registerBtn = (Button) findViewById(R.id.loginBtnL);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Register.class));

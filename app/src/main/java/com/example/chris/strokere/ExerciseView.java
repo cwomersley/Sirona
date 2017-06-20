@@ -16,7 +16,7 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class exerciseView extends AppCompatActivity {
+public class ExerciseView extends AppCompatActivity {
 
     ArrayList<String> nameList;
 
@@ -91,15 +91,15 @@ public class exerciseView extends AppCompatActivity {
 
     public void  addFiles(){
 
-        Field[] fields = R.raw.class.getFields();
-        nameList = new ArrayList<>();
+        //Field[] fields = R.raw.class.getFields();
+        //nameList = new ArrayList<>();
 
-        for (int i = 0; i < fields.length - 1; i++) {
-            String name = fields[i].getName();
-            nameList.add(name);
+        //for (int i = 0; i < fields.length - 1; i++) {
+        //    String name = fields[i].getName();
+        //    nameList.add(name);
 
 
-        }
+        //}
 
 
     }
