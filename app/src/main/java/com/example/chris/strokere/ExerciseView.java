@@ -47,7 +47,8 @@ public class ExerciseView extends AppCompatActivity {
                 // code to be run every 30 seconds
 
                 setAndPlayVideo(setStringPath());
-
+                //removes video path from array so next cna be played
+                nameList.remove(0);
 
                 handler.postDelayed(this, 30000);
             }
