@@ -12,7 +12,7 @@ public class LoginScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_login);
+        setContentView(R.layout.activity_login);
 
 
         EditText emailLogin = (EditText) findViewById(R.id.emailLogin);
@@ -33,7 +33,7 @@ public class LoginScreen extends AppCompatActivity {
         });
 
 
-        //Lisetner for not activty_login button TEST for exercise
+        //Lisetner for not activity_login button TEST for exercise
         Button loginBtnL = (Button) findViewById(R.id.loginBtnL);
         loginBtnL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         loginBtnL.setOnClickListener(new View.OnClickListener() {
