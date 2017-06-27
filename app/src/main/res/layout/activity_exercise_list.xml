@@ -28,7 +28,6 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/easyExercise2"
             android:layout_marginTop="64dp"
-            android:background="@color/greenDarker"
             android:text="Intermediate exercises"
             android:textColor="@android:color/white"
             android:textSize="30sp" />
@@ -100,7 +99,6 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="47dp"
-            android:background="@color/greenLightest"
             android:text="Easiest exercises"
             android:textColor="@android:color/white"
             android:textSize="30sp" />

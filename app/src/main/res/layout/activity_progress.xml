@@ -13,7 +13,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:background="@color/bg"
+        android:background="@color/greenAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,8 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@color/bg"
-            android:backgroundTint="@android:color/background_light" />
+            android:background="@color/greenAccent"
+            />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
