@@ -45,7 +45,7 @@ public class ExerciseView extends AppCompatActivity {
    //method for playing video depening on path
     public void setAndPlayVideo(String vidPath) {
 
-        VideoView videoView = (VideoView) findViewById(R.id.videoView);
+        VideoView videoView = (VideoView) findViewById(R.id.videoViewE);
         videoView.setVideoPath(vidPath);
         videoView.start();
 
