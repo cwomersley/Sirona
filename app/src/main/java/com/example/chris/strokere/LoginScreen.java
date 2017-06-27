@@ -38,7 +38,7 @@ public class LoginScreen extends AppCompatActivity {
         loginBtnL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         loginBtnL.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(LoginScreen.this, ExerciseView.class));
+                startActivity(new Intent(LoginScreen.this, Home.class));
             }
         });
 

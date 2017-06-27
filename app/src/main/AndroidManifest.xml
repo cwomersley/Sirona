@@ -19,7 +19,8 @@
         <activity android:name=".LoginScreen" />
         <activity android:name=".Register" />
         <activity android:name=".ExerciseView" />
-        <activity android:name=".ExerciseList"></activity>
+        <activity android:name=".ExerciseList" />
+        <activity android:name=".Home"></activity>
     </application>
 
 </manifest>
