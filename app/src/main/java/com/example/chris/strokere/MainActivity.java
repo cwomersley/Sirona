@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -13,16 +14,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Import typeface
 
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        EditText emailLogin = (EditText) findViewById(R.id.emailLoginM);
+        emailLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        EditText passwordLogin = (EditText) findViewById(R.id.passwordLoginM);
+        passwordLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
 
         //Listner for Log in button to go to log inscreen
         Button logInBtn = (Button) findViewById(R.id.logInBtn);
         logInBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-               startActivity(new Intent(MainActivity.this, LoginScreen.class));
+               startActivity(new Intent(MainActivity.this, Home.class));
             }
         });
 
