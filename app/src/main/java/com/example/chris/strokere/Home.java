@@ -23,7 +23,7 @@ public class Home extends AppCompatActivity {
 
         Button btnExercise = (Button) findViewById(R.id.btnExerciseH);
         btnExercise.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        btnWorkout.setOnClickListener(new View.OnClickListener() {
+        btnExercise.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(Home.this, ExerciseList.class));
             }
@@ -31,6 +31,11 @@ public class Home extends AppCompatActivity {
 
         Button btnProgress = (Button) findViewById(R.id.btnProgressH);
         btnProgress.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        btnProgress.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, Progress.class));
+            }
+        });
 
         Button btnPreferences = (Button) findViewById(R.id.btnPreferencesH);
         btnPreferences.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));

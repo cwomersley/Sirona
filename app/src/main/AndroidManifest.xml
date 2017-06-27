@@ -20,7 +20,8 @@
         <activity android:name=".Register" />
         <activity android:name=".ExerciseView" />
         <activity android:name=".ExerciseList" />
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Home" />
+        <activity android:name=".Progress"></activity>
     </application>
 
 </manifest>
