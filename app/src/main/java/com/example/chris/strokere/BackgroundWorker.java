@@ -2,6 +2,7 @@ package com.example.chris.strokere;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -75,6 +76,10 @@ import java.net.URLEncoder;
         protected void onPostExecute(String result) {
             alertDialog.setMessage(result);
             alertDialog.show();
+
+            Intent i1 = new Intent (context, Home.class);
+            context.startActivity(i1);
+
         }
 
         @Override
