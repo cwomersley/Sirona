@@ -15,10 +15,10 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        EditText emailLogin = (EditText) findViewById(R.id.emailLoginM);
+        EditText emailLogin = (EditText) findViewById(R.id.emailLoginL);
         emailLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        EditText passwordLogin = (EditText) findViewById(R.id.passwordLoginM);
+        EditText passwordLogin = (EditText) findViewById(R.id.passwordLoginL);
         passwordLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
@@ -34,7 +34,7 @@ public class LoginScreen extends AppCompatActivity {
 
 
         //Lisetner for not activity_login button TEST for exercise
-        Button loginBtnL = (Button) findViewById(R.id.loginBtnL);
+        Button loginBtnL = (Button) findViewById(R.id.registerBtnM);
         loginBtnL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         loginBtnL.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

@@ -26,11 +26,11 @@
         tools:layout_constraintTop_creator="1">
 
         <EditText
-            android:id="@+id/emailLoginM"
+            android:id="@+id/emailLoginL"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageView2"
+            android:layout_below="@+id/logoL"
             android:layout_marginTop="77dp"
             android:backgroundTint="@android:color/white"
             android:ems="10"
@@ -41,11 +41,11 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/passwordLoginM"
+            android:id="@+id/passwordLoginL"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/emailLoginM"
+            android:layout_alignTop="@+id/emailLoginL"
             android:layout_marginTop="109dp"
             android:backgroundTint="@android:color/white"
             android:ems="10"
@@ -56,11 +56,11 @@
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/loginBtnL"
+            android:id="@+id/registerBtnM"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/passwordLoginM"
+            android:layout_below="@+id/passwordLoginL"
             android:layout_marginTop="26dp"
             android:background="@color/colorAccent"
             android:onClick="onLogin"
@@ -68,7 +68,7 @@
             android:textSize="45sp" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/logoL"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
@@ -82,7 +82,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/loginBtnL"
+            android:layout_below="@+id/registerBtnM"
             android:layout_marginTop="13dp"
             android:background="@color/greenAccent"
             android:text="Not registered?"
