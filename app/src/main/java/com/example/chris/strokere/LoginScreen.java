@@ -15,10 +15,10 @@ public class LoginScreen extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        EditText emailLogin = (EditText) findViewById(R.id.emailLoginL);
+        EditText emailLogin = (EditText) findViewById(R.id.emailLoginM);
         emailLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        EditText passwordLogin = (EditText) findViewById(R.id.passwordLoginL);
+        EditText passwordLogin = (EditText) findViewById(R.id.passwordLoginM);
         passwordLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 

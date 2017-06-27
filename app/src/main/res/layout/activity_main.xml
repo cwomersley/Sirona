@@ -30,41 +30,43 @@
             android:id="@+id/imageView"
             android:layout_width="110dp"
             android:layout_height="110dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             app:srcCompat="@drawable/logo"
             tools:layout_editor_absoluteX="-108dp"
-            tools:layout_editor_absoluteY="511dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            tools:layout_editor_absoluteY="511dp" />
 
         <EditText
-            android:id="@+id/emailLoginL"
+            android:id="@+id/emailLoginM"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_above="@+id/passwordLoginL"
-            android:layout_alignParentStart="true"
-            android:background="@color/greenAccent"
-            android:backgroundTint="@color/greenAccent"
-            android:elevation="9dp"
+            android:layout_above="@+id/passwordLoginM"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimaryDark"
             android:ems="10"
             android:hint="EMAIL ADDRESS"
             android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
             android:textColor="@color/greenAccent"
-            android:textColorHint="@color/greenAccent"
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/passwordLoginL"
+            android:id="@+id/passwordLoginM"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_above="@+id/loginBtnM"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="23dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:background="@color/colorPrimaryDark"
-            android:backgroundTint="@android:color/white"
             android:ems="10"
             android:hint="PASSWORD"
             android:inputType="textPassword"
+            android:paddingLeft="20dp"
             android:textColor="@color/greenAccent"
             android:textColorHint="@color/greenAccent"
             android:textSize="18sp" />
@@ -80,6 +82,7 @@
             android:background="@color/greenAccent"
             android:text="Register"
             android:textColor="@android:color/white"
+            android:textColorHint="@color/greenAccent"
             android:textSize="45sp" />
 
         <Button
@@ -92,6 +95,7 @@
             android:background="@color/colorAccent"
             android:text="Log in"
             android:textColor="@android:color/white"
+            android:textColorHint="@color/greenAccent"
             android:textSize="45sp" />
 
     </RelativeLayout>
