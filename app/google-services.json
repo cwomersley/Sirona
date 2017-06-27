@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "900063170507",
+    "firebase_url": "https://strokere-c60f6.firebaseio.com",
+    "project_id": "strokere-c60f6",
+    "storage_bucket": "strokere-c60f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900063170507:android:4be99f7942cad90f",
+        "android_client_info": {
+          "package_name": "com.example.chris.strokere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900063170507-9diolku5qfsaav6k1b2aj50nr8glb5f3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdx2vE_vdhqv3F1NTxGdu1P0GHJwTVJDg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
