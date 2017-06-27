@@ -30,14 +30,14 @@
             android:background="@color/greenAccent"
             android:text="REGISTER"
             android:textSize="45sp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="34dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true" />
 
         <EditText
             android:id="@+id/firstNameR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_above="@+id/surnameR"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
@@ -45,12 +45,16 @@
             android:ems="10"
             android:hint="FIRST NAME"
             android:inputType="textPersonName"
-            android:textColorHint="@color/greenAccent" />
+            android:textColorHint="@color/greenAccent"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimaryDark" />
 
         <EditText
             android:id="@+id/passR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_above="@+id/passConfirmR"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
@@ -58,12 +62,16 @@
             android:ems="10"
             android:hint="PASSWORD"
             android:inputType="textPassword"
-            android:textColorHint="@color/greenAccent" />
+            android:textColorHint="@color/greenAccent"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimaryDark"/>
 
         <EditText
             android:id="@+id/passConfirmR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_above="@+id/registerBtnM"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
@@ -71,24 +79,32 @@
             android:ems="10"
             android:hint="CONFIRM PASSWORD"
             android:inputType="textPassword"
-            android:textColorHint="@color/greenAccent" />
+            android:textColorHint="@color/greenAccent"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimaryDark"/>
 
         <EditText
             android:id="@+id/emailR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginBottom="12dp"
             android:ems="10"
             android:hint="EMAIL ADDRESS"
             android:inputType="textEmailAddress"
             android:textColorHint="@color/greenAccent"
             android:layout_above="@+id/passR"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimaryDark"/>
 
         <EditText
             android:id="@+id/surnameR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_above="@+id/emailR"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
@@ -96,15 +112,19 @@
             android:ems="10"
             android:hint="SURNAME"
             android:inputType="textPersonName"
-            android:textColorHint="@color/greenAccent" />
+            android:textColorHint="@color/greenAccent"
+            android:paddingLeft="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/colorPrimaryDark"/>
 
         <ImageView
             android:id="@+id/logoR"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             app:srcCompat="@drawable/logo" />
 
     </RelativeLayout>
