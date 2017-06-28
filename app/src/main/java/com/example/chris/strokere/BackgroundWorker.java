@@ -74,9 +74,10 @@ import java.net.URLEncoder;
 
         @Override
         protected void onPostExecute(String result) {
+
+
             alertDialog.setMessage(result);
             alertDialog.show();
-
             Intent i1 = new Intent (context, Home.class);
             context.startActivity(i1);
 

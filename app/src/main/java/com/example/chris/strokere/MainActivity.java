@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Listner for Log in button to go to log inscreen
-       // Button logInBtn = (Button) findViewById(R.id.loginBtnM);
+        Button logInBtn = (Button) findViewById(R.id.loginBtnM);
         //logInBtn.setOnClickListener(new View.OnClickListener() {
        //     public void onClick(View v) {
        //        startActivity(new Intent(MainActivity.this, Home.class));
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
        // });
 
 
-        //logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         //Listner for Log in button to go to Register screen
         Button registerBtn = (Button) findViewById(R.id.registerBtnM);
