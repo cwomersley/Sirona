@@ -77,6 +77,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             // stop the function
             return;
         }
+
         //if valid
         //show progress dialog
 
