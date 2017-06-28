@@ -44,31 +44,7 @@ public class LoginScreen extends AppCompatActivity {
 
     }
 
-    public void onLogin (View view) {
 
-        //EditText emailLogin = (EditText) findViewById(R.id.emailLogin);
-        //EditText passwordLogin = (EditText) findViewById(R.id.passwordLogin);
-
-        //String username = emailLogin.getText().toString();
-        //String password = passwordLogin.getText().toString();
-        //String type = "login";
-
-        //BackgroundWorker backgroundWorker= new BackgroundWorker(this);
-        //backgroundWorker.execute(type, username, password);
-
-        //Intent I=new Intent(LoginScreen.this,ExerciseView.class);
-        //startActivity(I);
-
-        //Button loginBtnL = (Button) findViewById(R.id.loginBtnL);
-        //loginBtnL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //loginBtnL.setOnClickListener(new View.OnClickListener() {
-         //   public void onClick(View v) {
-         //       startActivity(new Intent(LoginScreen.this, ExerciseView.class));
-         //   }
-        //});
-
-
-    }
 
 
 

@@ -24,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Listner for Log in button to go to log inscreen
         Button logInBtn = (Button) findViewById(R.id.loginBtnM);
-        logInBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-               startActivity(new Intent(MainActivity.this, Home.class));
-            }
-        });
+        //logInBtn.setOnClickListener(new View.OnClickListener() {
+       //     public void onClick(View v) {
+       //        startActivity(new Intent(MainActivity.this, Home.class));
+       //     }
+       // });
 
 
         logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -44,4 +44,16 @@ public class MainActivity extends AppCompatActivity {
         registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
     }
 
+    public void onLogin (View view) {
+        EditText emailLoginM = (EditText) findViewById(R.id.emailLoginM);
+        EditText passwordLoginM = (EditText) findViewById(R.id.passwordLoginM);
+        String username = emailLoginM.getText().toString();
+        String password = passwordLoginM.getText().toString();
+        String type = "login";
+
+        BackgroundWorker backgroundWorker= new BackgroundWorker(this);
+        backgroundWorker.execute(type, username, password);
+    }
 }
+
+
