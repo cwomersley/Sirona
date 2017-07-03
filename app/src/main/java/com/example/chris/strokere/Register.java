@@ -67,7 +67,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         if(TextUtils.isEmpty(email)){
             //email is empty
             Toast.makeText(this, "Please enter an email", Toast.LENGTH_SHORT).show();
-          // stop the function
+          // stop the functioon
             return;
         }
 
