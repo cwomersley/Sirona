@@ -61,7 +61,7 @@ public class ExerciseView extends AppCompatActivity {
         });
 
     }
-
+    //set the path of the video from the arrayList
     public String setStringPath(){
 
         String path = nameList.get(1);
@@ -84,6 +84,7 @@ public class ExerciseView extends AppCompatActivity {
 
         for (int i = 0; i < fields.length - 1; i++) {
             String name = fields[i].getName();
+            //add if statment if they match the name of a requested file from server ????
            nameList.add(name);
       }
     }
