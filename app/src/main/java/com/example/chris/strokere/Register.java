@@ -60,7 +60,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             public static final String TAG = "Register";
 
 
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -83,31 +82,31 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String passwordConfirm = passConfirmR.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
-            //email is empty
+            //email address has not been entered
             Toast.makeText(this, "Please enter an email", Toast.LENGTH_SHORT).show();
-          // stop the functioon
             return;
         }
 
         if(TextUtils.isEmpty(password)){
-           //password is empty
+           //password has not been emptied
             Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
             // stop the function
             return;
         }
 
-        if(!password.equals(passwordConfirm)){
-            //password is empty
-            Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_SHORT).show();
-            // stop the function
+        if(TextUtils.getTrimmedLength(password)<6) {
+            //password is smaller than the size that Firebase allows
+            Toast.makeText(this, "Your password must be 6 characters or longer", Toast.LENGTH_LONG).show();
             return;
         }
 
-
+        if(!password.equals(passwordConfirm)){
+            //password and confirmation password do not match
+            Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         //if valid
-        //show progress dialog
-
         progressDialog.setMessage("Registering user..");
         progressDialog.show();
 
