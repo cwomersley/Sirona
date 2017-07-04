@@ -20,9 +20,12 @@ import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
+
 public class ExerciseView extends AppCompatActivity {
 
     ArrayList<String> nameList;
+    private DatabaseReference mDatabase;
+    ArrayList<String> exercisesList;
 
 
     @Override
@@ -30,7 +33,11 @@ public class ExerciseView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_view);
 
+        //
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         addFiles();
+        populateDB();
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -87,6 +94,32 @@ public class ExerciseView extends AppCompatActivity {
             //add if statment if they match the name of a requested file from server ????
            nameList.add(name);
       }
+    }
+
+    //populate the database from the list of files
+    public void populateDB(){
+
+        Field[] fields = R.raw.class.getFields();
+        exercisesList = new ArrayList<>();
+
+
+        for (int i = 0; i < fields.length - 1; i++) {
+            String name = fields[i].getName();
+            exercisesList.add(name);
+
+        }
+
+        //removes the first $change value from the array
+        exercisesList.remove(0);
+
+        for (int i = 0; i < exercisesList.size(); i++) {
+            String name = exercisesList.get(i);
+            mDatabase.child("exercises").push().setValue(name);
+
+        }
+
+
+
     }
 
 
