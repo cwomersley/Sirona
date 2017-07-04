@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static com.example.chris.strokere.R.id.passConfirmR;
 
@@ -26,9 +28,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private FirebaseAuth.AuthStateListener mAuthListener;
     private EditText passR;
     private EditText emailR;
+    private EditText firstNameR;
     private EditText passConfirmR;
     private Button registerBtn;
     private ProgressDialog progressDialog;
+    private DatabaseReference mDatabase;
 
 
     @Override
@@ -40,13 +44,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         passR = (EditText) findViewById(R.id.passR);
         passConfirmR = (EditText) findViewById(R.id.passConfirmR);
         emailR = (EditText) findViewById(R.id.emailR);
+        firstNameR = (EditText) findViewById(R.id.firstNameR);
         registerBtn = (Button) findViewById(R.id.registerBtnM);
         registerBtn.setOnClickListener(this);
 
         //initiliase Firebase
         mAuth = FirebaseAuth.getInstance();
 
-        //EditText firstNameR = (EditText) findViewById(R.id.firstNameR);
+
         //firstNameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         //passR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         //passConfirmR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -77,6 +82,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void registerUser(){
+        String firstName = firstNameR.getText().toString().trim();
         String email = emailR.getText().toString().trim();
         String password = passR.getText().toString().trim();
         String passwordConfirm = passConfirmR.getText().toString().trim();
@@ -106,7 +112,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        //if valid
+        //if valid write data to database and display registering message to user
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        writeNewUser("125656","Edward","edward_boyles@hotmail.com");
+
+
         progressDialog.setMessage("Registering user..");
         progressDialog.show();
 
@@ -125,6 +135,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     }
                 });
 
+    }
+
+    private void writeNewUser(String userId, String name, String email) {
+        User user = new User(name, email);
+        mDatabase.child("users").child(userId).setValue(user);
     }
 
     @Override
