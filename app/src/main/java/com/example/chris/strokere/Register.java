@@ -18,12 +18,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.chris.strokere.R.id.passConfirmR;
+
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private EditText passR;
     private EditText emailR;
+    private EditText passConfirmR;
     private Button registerBtn;
     private ProgressDialog progressDialog;
 
@@ -34,34 +37,23 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_register);
 
         progressDialog = new ProgressDialog(this);
-
-        EditText firstNameR = (EditText) findViewById(R.id.firstNameR);
-        firstNameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
         passR = (EditText) findViewById(R.id.passR);
-        passR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        EditText passConfirmR = (EditText) findViewById(R.id.passConfirmR);
-        passConfirmR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
+        passConfirmR = (EditText) findViewById(R.id.passConfirmR);
         emailR = (EditText) findViewById(R.id.emailR);
-        emailR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        EditText surnameR = (EditText) findViewById(R.id.surnameR);
-        surnameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-
         registerBtn = (Button) findViewById(R.id.registerBtnM);
-        registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-
         registerBtn.setOnClickListener(this);
 
-        //initilize fire
+        //initiliase Firebase
         mAuth = FirebaseAuth.getInstance();
 
-
-
+        //EditText firstNameR = (EditText) findViewById(R.id.firstNameR);
+        //firstNameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //passR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //passConfirmR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //emailR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //EditText surnameR = (EditText) findViewById(R.id.surnameR);
+        //surnameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -83,13 +75,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             }
         };
 
-
-
     }
 
     private void registerUser(){
         String email = emailR.getText().toString().trim();
         String password = passR.getText().toString().trim();
+        String passwordConfirm = passConfirmR.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
             //email is empty
@@ -104,6 +95,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             // stop the function
             return;
         }
+
+        if(!password.equals(passwordConfirm)){
+            //password is empty
+            Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_SHORT).show();
+            // stop the function
+            return;
+        }
+
+
 
         //if valid
         //show progress dialog
