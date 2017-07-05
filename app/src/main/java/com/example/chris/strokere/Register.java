@@ -146,13 +146,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         //ref.child(user.getUid()).setValue("test");
         //if valid write data to database and display registering message to user
 
-        writeNewUser(user.getUid(),firstName,email);
+        writeNewUser(user.getUid(),surname,firstName,email);
 
     }
 
 
-    private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
+    private void writeNewUser(String userId, String surname, String name, String email) {
+        User user = new User(surname, name, email);
         mDatabase.child("Patients").child(userId).setValue(user);
     }
 
