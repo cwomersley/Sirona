@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="StatWheel">
+        <attr name="swText" format="string" />
+        <attr name="swTextColor" format="color" />
+        <attr name="swTextSize" format="dimension" />
+        <attr name="swBarColor" format="color" />
+        <attr name="swRimColor" format="color" />
+        <attr name="swRimWidth" format="dimension" />
+        <attr name="swSpinSpeed" format="integer" />
+        <attr name="swCircleColor" format="color" />
+        <attr name="swRadius" format="dimension" />
+        <attr name="swBarWidth" format="dimension" />
+        <attr name="swBarLength" format="dimension" />
+        <attr name="swDelayMillis" format="dimension"/>
+        <attr name="swContourColor" format="color"/>
+        <attr name="swContourSize" format="float"/>
+    </declare-styleable>
+
+</resources>

@@ -25,14 +25,98 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <CalendarView
-            android:id="@+id/calendarView"
+        <TextView
+            android:id="@+id/monP"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Mon"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tueP"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Tue"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/wedP"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Wed"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/thuP"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="250dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Thu"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/friP"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Fri"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/satP"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="350dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Sat"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/sunP"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="400dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="Sun"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/shuffle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="@color/greenAccent"
-            />
+            android:layout_marginBottom="40dp"
+            android:text="Shuffle" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
