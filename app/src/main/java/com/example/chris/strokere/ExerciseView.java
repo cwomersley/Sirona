@@ -36,6 +36,8 @@ public class ExerciseView extends AppCompatActivity {
         //
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+
+
         addFiles();
         populateDB();
 
@@ -109,12 +111,15 @@ public class ExerciseView extends AppCompatActivity {
 
         }
 
-        //removes the first $change value from the array
+        //removes the first $change(remove) value from the array
         exercisesList.remove(0);
 
         for (int i = 0; i < exercisesList.size(); i++) {
             String name = exercisesList.get(i);
+
+
             mDatabase.child("exercises").push().setValue(name);
+
 
         }
 
