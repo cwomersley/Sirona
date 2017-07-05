@@ -28,6 +28,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private FirebaseAuth.AuthStateListener mAuthListener;
     private EditText passR;
     private EditText emailR;
+    private EditText surnameR;
     private EditText firstNameR;
     private EditText passConfirmR;
     private Button registerBtn;
@@ -40,11 +41,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         progressDialog = new ProgressDialog(this);
         passR = (EditText) findViewById(R.id.passR);
         passConfirmR = (EditText) findViewById(R.id.passConfirmR);
         emailR = (EditText) findViewById(R.id.emailR);
         firstNameR = (EditText) findViewById(R.id.firstNameR);
+        surnameR = (EditText) findViewById(R.id.surnameR);
         registerBtn = (Button) findViewById(R.id.registerBtnM);
         registerBtn.setOnClickListener(this);
 
@@ -82,10 +85,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void registerUser(){
-        String firstName = firstNameR.getText().toString().trim();
-        String email = emailR.getText().toString().trim();
-        String password = passR.getText().toString().trim();
-        String passwordConfirm = passConfirmR.getText().toString().trim();
+        String firstName = firstNameR.getText().toString();
+        String email = emailR.getText().toString();
+        String surname = surnameR.getText().toString();
+        String password = passR.getText().toString();
+        String passwordConfirm = passConfirmR.getText().toString();
 
         if(TextUtils.isEmpty(email)){
             //email address has not been entered
@@ -112,10 +116,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        //if valid write data to database and display registering message to user
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        writeNewUser("125656","Edward","edward_boyles@hotmail.com");
-
 
         progressDialog.setMessage("Registering user..");
         progressDialog.show();
@@ -135,12 +135,27 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     }
                 });
 
+
+        //get firebase user
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //get reference
+        //DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+
+        //build child
+        //ref.child(user.getUid()).setValue("test");
+        //if valid write data to database and display registering message to user
+
+        writeNewUser(user.getUid(),firstName,email);
+
     }
+
 
     private void writeNewUser(String userId, String name, String email) {
         User user = new User(name, email);
-        mDatabase.child("users").child(userId).setValue(user);
+        mDatabase.child("Patients").child(userId).setValue(user);
     }
+
 
     @Override
     public void onClick(View v) {
