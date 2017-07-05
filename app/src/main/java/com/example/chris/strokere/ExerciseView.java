@@ -119,7 +119,7 @@ public class ExerciseView extends AppCompatActivity {
 
 
             mDatabase.child("exercises").push().setValue(name);
-            finish();
+
 
         }
 
