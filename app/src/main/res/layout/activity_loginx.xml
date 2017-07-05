@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chris.strokere.LoginScreen">
+    tools:context="com.example.chris.strokere.LoginScreenx">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -26,7 +26,7 @@
         tools:layout_constraintTop_creator="1">
 
         <EditText
-            android:id="@+id/emailLoginM"
+            android:id="@+id/emailL"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
@@ -41,11 +41,11 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/passwordLoginM"
+            android:id="@+id/passwordL"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/emailLoginM"
+            android:layout_alignTop="@+id/emailL"
             android:layout_marginTop="109dp"
             android:backgroundTint="@android:color/white"
             android:ems="10"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/passwordLoginM"
+            android:layout_below="@+id/passwordL"
             android:layout_marginTop="26dp"
             android:background="@color/colorAccent"
             android:onClick="onLogin"

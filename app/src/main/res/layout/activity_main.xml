@@ -37,10 +37,10 @@
             android:layout_centerHorizontal="true" />
 
         <EditText
-            android:id="@+id/emailLoginM"
+            android:id="@+id/emailL"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_above="@+id/passwordLoginM"
+            android:layout_above="@+id/passwordL"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -55,7 +55,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/passwordLoginM"
+            android:id="@+id/passwordL"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_above="@+id/loginBtnM"

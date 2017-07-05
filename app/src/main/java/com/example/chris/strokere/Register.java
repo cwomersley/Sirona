@@ -51,9 +51,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         registerBtn = (Button) findViewById(R.id.registerBtnM);
         registerBtn.setOnClickListener(this);
 
-        //initiliase Firebase
+        //initialise Firebase
         mAuth = FirebaseAuth.getInstance();
-
 
         //firstNameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         //passR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -91,6 +90,19 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String password = passR.getText().toString();
         String passwordConfirm = passConfirmR.getText().toString();
 
+
+        if(TextUtils.isEmpty(firstName)){
+            //email address has not been entered
+            Toast.makeText(this, "Please enter your first name", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(surname)){
+            //email address has not been entered
+            Toast.makeText(this, "Please enter your surname", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if(TextUtils.isEmpty(email)){
             //email address has not been entered
             Toast.makeText(this, "Please enter an email", Toast.LENGTH_SHORT).show();
@@ -116,7 +128,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-
         progressDialog.setMessage("Registering user..");
         progressDialog.show();
 
@@ -136,20 +147,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 });
 
 
-        //get firebase user
+        //get the Firebase user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        //get reference
-        //DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-
-        //build child
-        //ref.child(user.getUid()).setValue("test");
-        //if valid write data to database and display registering message to user
-
-        writeNewUser(user.getUid(),surname,firstName,email);
+        //add this user's details to the database
+        if (user.getUid()!=null) {
+            writeNewUser(user.getUid(), surname, firstName, email);
+        }
 
     }
-
 
     private void writeNewUser(String userId, String surname, String name, String email) {
         User user = new User(surname, name, email);
