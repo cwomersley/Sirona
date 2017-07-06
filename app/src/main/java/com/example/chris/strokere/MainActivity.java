@@ -39,6 +39,15 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Button for development purposes that skips the login page
+        Button bypassBtn = (Button) findViewById(R.id.bypassBtn);
+        bypassBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        bypassBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Home.class));
+            }
+        });
 
         emailL = (EditText) findViewById(R.id.emailL);
         passwordL = (EditText) findViewById(R.id.passwordL);
