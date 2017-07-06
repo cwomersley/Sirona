@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -72,8 +73,6 @@ public class MainActivity extends AppCompatActivity  {
         //registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
     }
 
-
-
     private void loginUser()
     {
 
@@ -106,9 +105,17 @@ public class MainActivity extends AppCompatActivity  {
 
 
     public void onLogin(View v) {
-        loginUser();
-        if (loggedIn) {
-            startActivity(new Intent(MainActivity.this, Home.class));
+        String email = emailL.getText().toString();
+        String password = passwordL.getText().toString();
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            Toast.makeText(MainActivity.this, "Please enter an email address and password",
+                    Toast.LENGTH_SHORT).show();
+        }
+        else {
+            loginUser();
+            if (loggedIn) {
+                startActivity(new Intent(MainActivity.this, Home.class));
+            }
         }
     }
 
