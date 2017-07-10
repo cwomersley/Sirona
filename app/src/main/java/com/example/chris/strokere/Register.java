@@ -20,6 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static com.example.chris.strokere.R.id.passConfirmR;
 
 public class Register extends AppCompatActivity implements View.OnClickListener {
@@ -82,6 +85,23 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     }
 
+    /**
+     * validate your email address format. Ex-akhi@mani.com
+     * from stackoverflow
+     * https://stackoverflow.com/questions/12947620/email-address-validation-in-android-on-edittext
+     */
+
+    public boolean emailValidator(String email)
+
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
     private void registerUser(){
         String firstName = firstNameR.getText().toString();
         String email = emailR.getText().toString();
@@ -108,6 +128,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
+        else if (emailValidator(email) == false) {
+            Toast.makeText(this, "Please enter in a valid email address", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         if(TextUtils.isEmpty(password)){
            //password has not been emptied
             Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
@@ -126,6 +151,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_LONG).show();
             return;
         }
+
+
 
         progressDialog.setMessage("Registering user..");
         progressDialog.show();
@@ -149,9 +176,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         //get the Firebase user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //add this user's details to the database
-        if (user.getUid()!=null) {
-            writeNewUser(user.getUid(), surname, firstName, email);
-        }
+        writeNewUser(user.getUid(), surname, firstName, email);
 
     }
 
