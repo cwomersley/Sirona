@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity  {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private EditText emailL;
-    private EditText passwordL;
+    private EditText emailL, passwordL;
     private ProgressDialog progressDialog;
+    private Button logInBtn,registerBtn;
     public static final String TAG = "Login";
     boolean loggedIn;
 
@@ -53,11 +53,13 @@ public class MainActivity extends AppCompatActivity  {
         passwordL = (EditText) findViewById(R.id.passwordL);
 
 
-        //passwordLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //emailLogin.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        emailL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        passwordL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         //Listner for Log in button
-       // Button logInBtn = (Button) findViewById(R.id.loginBtnM);
+        logInBtn = (Button) findViewById(R.id.loginBtnM);
+        logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
         //logInBtn.setOnClickListener(new View.OnClickListener() {
          //   public void onClick(View v) {
          //       if (loggedIn) {
@@ -68,10 +70,10 @@ public class MainActivity extends AppCompatActivity  {
         //});
 
 
-        //logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         //Listener for register button to go to Register screen
-        Button registerBtn = (Button) findViewById(R.id.registerBtnM);
+        registerBtn = (Button) findViewById(R.id.registerBtnM);
+        registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         registerBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-        //registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
     }
 
     private void loginUser()

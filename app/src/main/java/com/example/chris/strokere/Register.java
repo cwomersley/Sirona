@@ -54,13 +54,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         //initialise Firebase
         mAuth = FirebaseAuth.getInstance();
 
-        //firstNameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //passR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //passConfirmR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //emailR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //EditText surnameR = (EditText) findViewById(R.id.surnameR);
-        //surnameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        firstNameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        passR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        passConfirmR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        emailR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        surnameR.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
