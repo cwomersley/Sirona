@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.VideoView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -26,12 +28,16 @@ public class ExerciseView extends AppCompatActivity {
     ArrayList<String> nameList;
     private DatabaseReference mDatabase;
     ArrayList<String> exercisesList;
-
+    ImageButton likeBtn;
+    ImageButton dissLikeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_view);
+
+        likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
+        dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
 
         //
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -85,7 +91,8 @@ public class ExerciseView extends AppCompatActivity {
 
 
 
-    //adds all files in raw to an array and adds file names to an array
+    //adds all files in raw to an array and adds file names to an array(currently using to populate database automaticcaly
+    // relating to to file names)
     public void  addFiles(){
 
         Field[] fields = R.raw.class.getFields();
@@ -93,7 +100,7 @@ public class ExerciseView extends AppCompatActivity {
 
         for (int i = 0; i < fields.length - 1; i++) {
             String name = fields[i].getName();
-            //add if statment if they match the name of a requested file from server ????
+            //add if statement if they match the name of a requested file from server ????
            nameList.add(name);
       }
     }
@@ -111,7 +118,7 @@ public class ExerciseView extends AppCompatActivity {
 
         }
 
-        //removes the first $change(remove) value from the array
+        //removes the first $change value from the array
         exercisesList.remove(0);
 
         for (int i = 0; i < exercisesList.size(); i++) {
@@ -130,7 +137,6 @@ public class ExerciseView extends AppCompatActivity {
 
 
 
-
     // Menu icons are inflated as they were with actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -140,7 +146,11 @@ public class ExerciseView extends AppCompatActivity {
     }
 
 
+    // use an outer loop to enable the videos to have their own times?
+
+
     //timer use to change length an exercise is run for and when the next one should play
+    //use new timer for each video ? ? to be able to set the time
     public void timer() {
         new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -156,10 +166,6 @@ public class ExerciseView extends AppCompatActivity {
             }
         }.start();
     }
-
-
-
-
 
 
 }

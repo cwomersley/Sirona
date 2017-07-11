@@ -7,30 +7,31 @@
     tools:context="com.example.chris.strokere.ExerciseView">
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="0dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="0dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="0dp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1"
+        android:weightSum="1">
 
         <include
-        layout="@layout/toolbar_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            layout="@layout/toolbar_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
 
         <RelativeLayout
@@ -39,11 +40,12 @@
             android:background="@color/bg">
 
             <RelativeLayout
+                android:id="@+id/relativeLayout"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="48dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true">
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="48dp">
 
                 <VideoView
                     android:id="@+id/videoViewE"
@@ -56,6 +58,29 @@
                     android:keepScreenOn="true" />
 
             </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/thumbsDownbtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignEnd="@+id/relativeLayout"
+                android:layout_alignTop="@+id/thumbsUpBtn"
+                android:adjustViewBounds="false"
+                android:background="@android:color/transparent"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/thumbsdown" />
+
+            <ImageButton
+                android:id="@+id/thumbsUpBtn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/relativeLayout"
+                android:layout_marginBottom="50dp"
+                android:adjustViewBounds="false"
+                android:background="@android:color/transparent"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/thumbsup" />
 
         </RelativeLayout>
 
