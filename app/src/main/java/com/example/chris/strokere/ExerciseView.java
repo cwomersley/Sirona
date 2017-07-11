@@ -167,6 +167,14 @@ public class ExerciseView extends AppCompatActivity {
         }.start();
     }
 
+    public void likeExercise(){
+
+    }
+
+    public void dissLikeExercise(){
+
+    }
+
 
 }
 
