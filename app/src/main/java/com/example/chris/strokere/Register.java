@@ -1,6 +1,7 @@
 package com.example.chris.strokere;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -103,6 +104,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void registerUser(){
+        int passwordLength=6;
         String firstName = firstNameR.getText().toString();
         String email = emailR.getText().toString();
         String surname = surnameR.getText().toString();
@@ -140,7 +142,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if(TextUtils.getTrimmedLength(password)<6) {
+        if(TextUtils.getTrimmedLength(password)<passwordLength) {
             //password is smaller than the size that Firebase allows
             Toast.makeText(this, "Your password must be 6 characters or longer", Toast.LENGTH_LONG).show();
             return;
@@ -177,6 +179,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //add this user's details to the database
         writeNewUser(user.getUid(), surname, firstName, email);
+        //open the home screen upon registering user
+        startActivity(new Intent(Register.this, Home.class));
+
 
     }
 
