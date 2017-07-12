@@ -181,6 +181,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         writeNewUser(user.getUid(), surname, firstName, email);
         //open the home screen upon registering user
         startActivity(new Intent(Register.this, Home.class));
+        finish();
 
 
     }
