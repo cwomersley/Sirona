@@ -20,7 +20,12 @@ public class VideoStats {
         return likeOrDislike;
     }
 
+    public void setLikes(int value, String exerciseName){
 
+        if(likeOrDislike.containsKey(exerciseName)){
+            likeOrDislike.put(exerciseName, value);
+        }
+    }
 
 
 }
