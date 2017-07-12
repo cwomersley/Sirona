@@ -15,5 +15,12 @@ public class VideoStats {
 
 
 
+    public HashMap getLikeMap(){
+
+        return likeOrDislike;
+    }
+
+
+
 
 }
