@@ -29,9 +29,9 @@ public class VideoStats {
     }
 
 
-    public void addVideos(){
-        String exerciseName;
-        //foreachloop
+    public void addVideos(String exerciseName){
+
+
         if (!likeOrDislike.containsKey(exerciseName)){
 
         }else{
