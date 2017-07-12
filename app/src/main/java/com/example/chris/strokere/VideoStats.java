@@ -15,6 +15,7 @@ public class VideoStats {
 
 
 
+
     public HashMap getLikeMap(){
 
         return likeOrDislike;
@@ -25,6 +26,18 @@ public class VideoStats {
         if(likeOrDislike.containsKey(exerciseName)){
             likeOrDislike.put(exerciseName, value);
         }
+    }
+
+
+    public void addVideos(){
+        String exerciseName;
+        //foreachloop
+        if (!likeOrDislike.containsKey(exerciseName)){
+
+        }else{
+            likeOrDislike.put(exerciseName,0);
+        }
+
     }
 
 
