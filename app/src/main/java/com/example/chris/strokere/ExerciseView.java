@@ -21,15 +21,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ExerciseView extends AppCompatActivity {
 
-    ArrayList<String> nameList;
+    private ArrayList<String> nameList;
     private DatabaseReference mDatabase;
-    ArrayList<String> exercisesList;
-    ImageButton likeBtn;
-    ImageButton dissLikeBtn;
+    private ArrayList<String> exercisesList;
+    private ImageButton likeBtn;
+    private ImageButton dissLikeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,9 +170,11 @@ public class ExerciseView extends AppCompatActivity {
 
     public void likeExercise(){
 
+
     }
 
-    public void dissLikeExercise(){
+    public void disslikeExercise(){
+
 
     }
 
