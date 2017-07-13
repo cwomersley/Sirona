@@ -180,8 +180,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         //add this user's details to the database
         writeNewUser(user.getUid(), surname, firstName, email);
         //open the home screen upon registering user
-        startActivity(new Intent(Register.this, Home.class));
-        finish();
+
 
 
     }
@@ -189,6 +188,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private void writeNewUser(String userId, String surname, String name, String email) {
         User user = new User(surname, name, email);
         mDatabase.child("Patients").child(userId).setValue(user);
+        startActivity(new Intent(Register.this, Home.class));
+        finish();
     }
 
 
