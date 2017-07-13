@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity  {
             loginUser();
             if (loggedIn) {
                 startActivity(new Intent(MainActivity.this, Home.class));
+                //close the MainActivity
+                finish();
             }
         }
     }
