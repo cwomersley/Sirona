@@ -27,13 +27,11 @@ public class MainActivity extends AppCompatActivity  {
     private ProgressDialog progressDialog;
     private Button logInBtn,registerBtn;
     public static final String TAG = "Login";
-    boolean loggedIn;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        loggedIn=false;
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
@@ -61,14 +59,17 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    //method to open register screen
+    //method to open Register activity
     public void onRegister(View v) {
 
         startActivity(new Intent(MainActivity.this, Register.class));
     }
 
-    //method to open login screen
+    //method to login and advance to Home activity
     public void onLogin(View v) {
+        if (!validateForm()) {
+            return;
+        }
         Toast.makeText(MainActivity.this, "Signing in",Toast.LENGTH_SHORT).show();
         String email = emailL.getText().toString();
         String password = passwordL.getText().toString();
@@ -89,6 +90,32 @@ public class MainActivity extends AppCompatActivity  {
                         }
                     }
                 });
+    }
+
+
+    //https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/EmailPasswordActivity.java
+    //method to validate login credentials
+
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String email = emailL.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            emailL.setError("Required.");
+            valid = false;
+        } else {
+            emailL.setError(null);
+        }
+
+        String password = passwordL.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            passwordL.setError("Required.");
+            valid = false;
+        } else {
+            passwordL.setError(null);
+        }
+
+        return valid;
     }
 
 }
