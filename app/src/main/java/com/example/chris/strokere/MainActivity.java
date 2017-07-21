@@ -51,42 +51,24 @@ public class MainActivity extends AppCompatActivity  {
 
         emailL = (EditText) findViewById(R.id.emailL);
         passwordL = (EditText) findViewById(R.id.passwordL);
-
+        logInBtn = (Button) findViewById(R.id.loginBtnM);
+        registerBtn = (Button) findViewById(R.id.registerBtnM);
 
         emailL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         passwordL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        //Listner for Log in button
-        logInBtn = (Button) findViewById(R.id.loginBtnM);
         logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        //logInBtn.setOnClickListener(new View.OnClickListener() {
-         //   public void onClick(View v) {
-         //       if (loggedIn) {
-         //      startActivity(new Intent(MainActivity.this, Home.class));
-         //       }
-
-         //   }
-        //});
-
-
-
-        //Listener for register button to go to Register screen
-        registerBtn = (Button) findViewById(R.id.registerBtnM);
         registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        registerBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                    startActivity(new Intent(MainActivity.this, Register.class));
-            }
-        });
-
 
     }
 
-    private void loginUser()
-    {
+    //method to open register screen
+    public void onRegister(View v) {
 
+        startActivity(new Intent(MainActivity.this, Register.class));
+    }
+
+    //method to open login screen
+    public void onLogin(View v) {
         Toast.makeText(MainActivity.this, "Signing in",Toast.LENGTH_SHORT).show();
         String email = emailL.getText().toString();
         String password = passwordL.getText().toString();
@@ -94,60 +76,25 @@ public class MainActivity extends AppCompatActivity  {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-                        loggedIn=true;
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                            startActivity(new Intent(MainActivity.this, Home.class));
+                            finish();
+                        }
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
+                        else {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(MainActivity.this, "Sign in failed",
                                     Toast.LENGTH_SHORT).show();
-                            loggedIn=false;
                         }
-
-
                     }
                 });
-        //Intent intent = new Intent(MainActivity.this, Home.class);
-        //startActivity(intent);
     }
-
-
-    public void onLogin(View v) {
-        String email = emailL.getText().toString();
-        String password = passwordL.getText().toString();
-        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-            Toast.makeText(MainActivity.this, "Please enter an email address and password",
-                    Toast.LENGTH_SHORT).show();
-        }
-        else {
-            loginUser();
-            if (loggedIn) {
-                startActivity(new Intent(MainActivity.this, Home.class));
-                //close the MainActivity
-                finish();
-            }
-        }
-    }
-
-
-
-    /**
-    public void onLogin (View view) {
-        EditText emailLoginM = (EditText) findViewById(R.id.emailL);
-        EditText passwordLoginM = (EditText) findViewById(R.id.passwordL);
-        String username = emailLoginM.getText().toString();
-        String password = passwordLoginM.getText().toString();
-        String type = "login";
-
-        BackgroundWorker backgroundWorker= new BackgroundWorker(this);
-        backgroundWorker.execute(type, username, password);
-    }
-
-     **/
 
 }
+
+
+
+
 
 
