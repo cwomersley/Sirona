@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Stroke.re</string>
+    <string name="allExercises">All Exercises</string>
+    <string name="easiestExercises">Easiest Exercises</string>
+    <string name="moderateExercises">Moderate exercises</string>
+    <string name="hardestExercises">Hardest Exercises</string>
+    <string name="searchExercises">Search exercise here</string>
+
 </resources>

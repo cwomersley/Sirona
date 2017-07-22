@@ -15,71 +15,60 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
         <Button
+            android:id="@+id/allExercises"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="28dp"
+            android:backgroundTint="@color/greenAccent"
+            android:text="@string/allExercises"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/intExercises"
-            android:layout_marginTop="57dp"
-            android:text="Hardest exercises"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/greenAccent"
+            android:text="@string/hardestExercises"
             android:textColor="@android:color/white"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:id="@+id/intExercises"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/easyExercises"
-            android:layout_marginTop="43dp"
-            android:text="Intermediate exercises"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/greenAccent"
+            android:text="@string/moderateExercises"
             android:textColor="@android:color/white"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:layout_marginBottom="48dp"
+            android:layout_above="@+id/button7"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:id="@+id/easyExercises"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="47dp"
-            android:text="Easiest exercises"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/greenAccent"
+            android:text="@string/easiestExercises"
             android:textColor="@android:color/white"
-            android:textSize="30sp" />
-
-        <EditText
-            android:id="@+id/exerciseSearchBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="41dp"
-            android:ems="10"
-            android:hint="Or search for an exercise"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            android:textColor="@color/greenAccent"
-            android:textColorHint="@color/greenAccent"
-            android:textSize="32sp"
-            android:layout_above="@+id/searchExerciseBtn"
+            android:textSize="30sp"
+            android:layout_marginTop="34dp"
+            android:layout_below="@+id/allExercises"
             android:layout_alignParentStart="true" />
 
-        <Button
-            android:id="@+id/searchExerciseBtn"
-            android:layout_width="125dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
-            android:background="@color/greenAccent"
-            android:text="Search"
-            android:textSize="18sp"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="0dp" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

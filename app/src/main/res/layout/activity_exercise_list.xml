@@ -21,87 +21,25 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <Button
-            android:id="@+id/intExercises2"
+        <ListView
+            android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/easyExercise2"
-            android:layout_marginTop="64dp"
-            android:text="Intermediate exercises"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
+            android:layout_marginTop="114dp"
+            android:background="@color/bg"
+            android:textSize="100sp" />
 
-        <Button
-            android:id="@+id/exampleExercise4"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/exampleExercise4"
-            android:layout_marginTop="47dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Example Exercise 4"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
+        <EditText
+            android:id="@+id/exerciseSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="9dp"
+            android:ems="10"
+            android:hint="@string/searchExercises"
+            android:inputType="textPersonName" />
 
-        <Button
-            android:id="@+id/easyExercise2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/easyExercise1"
-            android:layout_marginTop="32dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Example Exercise 2"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/intExercise2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/intExercise1"
-            android:layout_marginTop="46dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Example Exercise 2"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/easyExercise1"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/easyExercises2"
-            android:layout_marginTop="36dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Example Exercise 1"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/intExercise1"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/intExercises2"
-            android:layout_marginTop="37dp"
-            android:background="@color/colorPrimaryDark"
-            android:text="Example Exercise 1"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/easyExercises2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="47dp"
-            android:text="Easiest exercises"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
