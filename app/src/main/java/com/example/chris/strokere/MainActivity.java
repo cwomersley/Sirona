@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity  {
 
     //https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/EmailPasswordActivity.java
     //method to validate login credentials
-
     private boolean validateForm() {
         boolean valid = true;
 
