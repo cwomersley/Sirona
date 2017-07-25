@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Home extends AppCompatActivity {
 
     @Override
@@ -40,13 +42,15 @@ public class Home extends AppCompatActivity {
         Button btnPreferences = (Button) findViewById(R.id.btnPreferencesH);
         btnPreferences.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-
-
-
+        Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
     }
 
-
+    //method to log user out
+    private void logout(View v) {
+        FirebaseAuth.getInstance().signOut();
+    }
 
 
 
