@@ -54,6 +54,11 @@ public class Home extends AppCompatActivity {
         startActivity(new Intent(Home.this, MainActivity.class));
     }
 
+    //method to open preferneces activity
+    public void oPreferences(View view) {
+        startActivity(new Intent(Home.this, Preferences.class));
+    }
+
 
 
 }
