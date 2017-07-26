@@ -47,11 +47,12 @@ public class Home extends AppCompatActivity {
 
     }
 
-    //method to log user out
-    private void logout(View v) {
-        FirebaseAuth.getInstance().signOut();
-    }
 
+    //method to log user out
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(Home.this, MainActivity.class));
+    }
 
 
 
