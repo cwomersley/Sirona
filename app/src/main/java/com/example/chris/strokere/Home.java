@@ -35,7 +35,7 @@ public class Home extends AppCompatActivity {
         btnProgress.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnProgress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, Progress.class));
+                startActivity(new Intent(Home.this, Navigator.class));
             }
         });
 
