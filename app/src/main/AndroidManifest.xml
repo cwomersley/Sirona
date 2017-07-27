@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.chris.strokere">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -23,8 +23,8 @@
         <activity android:name=".ExerciseView" />
         <activity android:name=".ExerciseList" />
         <activity android:name=".Home" />
-        <activity android:name=".Progress" />
-        <activity android:name=".Preferences"></activity>
+        <activity android:name=".Navigator" />
+        <activity android:name=".Progress"></activity>
     </application>
 
 </manifest>
