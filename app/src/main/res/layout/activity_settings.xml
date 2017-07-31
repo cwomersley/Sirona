@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    tools:context="com.example.chris.strokere.Preferences">
+    tools:context="com.example.chris.strokere.Settings">
 
     <Button
         android:id="@+id/button2"

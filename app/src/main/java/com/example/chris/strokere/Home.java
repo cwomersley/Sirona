@@ -1,7 +1,6 @@
 package com.example.chris.strokere;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,9 +59,9 @@ public class Home extends BaseActivity {
         startActivity(new Intent(Home.this, MainActivity.class));
     }
 
-    //method to open preferneces activity
+    //method to open settings activity
     public void oPreferences(View view) {
-        startActivity(new Intent(Home.this, Preferences.class));
+        startActivity(new Intent(Home.this, Settings.class));
     }
 
 

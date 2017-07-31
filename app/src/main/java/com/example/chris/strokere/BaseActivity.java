@@ -50,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageButton preferencesNavBtn = (ImageButton) findViewById(R.id.preferencesNavBtn);
         preferencesNavBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(BaseActivity.this, Preferences.class));
+                startActivity(new Intent(BaseActivity.this, Settings.class));
             }
         });
     }

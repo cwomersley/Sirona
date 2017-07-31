@@ -13,7 +13,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Preferences extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     public static final String TAG = "Password";
@@ -25,7 +25,7 @@ public class Preferences extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preferences);
+        setContentView(R.layout.activity_settings);
 
         password = (EditText) findViewById(R.id.pPassword);
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
@@ -43,7 +43,7 @@ public class Preferences extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "User password updated.");
-                            Toast.makeText(Preferences.this, "Password changed",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Settings.this, "Password changed",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
