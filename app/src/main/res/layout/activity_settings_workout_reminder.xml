@@ -25,24 +25,105 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <include layout="@layout/toolbar_main"/>
+        <include layout="@layout/toolbar_main"
+            android:id="@+id/include" />
 
         <ToggleButton
             android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="27dp"
-            android:layout_marginTop="64dp"
-            android:text="ToggleButton" />
+            android:layout_marginTop="18dp"
+            android:text="ToggleButton"
+            android:layout_below="@+id/include"
+            android:layout_centerHorizontal="true" />
 
         <TimePicker
             android:id="@+id/timePicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/toggleButton"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="47dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="47dp"
+            android:amPmBackgroundColor="@color/colorAccent"
+            android:amPmTextColor="@color/colorAccent"
+            android:background="@color/colorPrimary"
+            android:timePickerMode="spinner" />
+
+
+        <TextView
+            android:id="@+id/whichDaysTextWR"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/timePicker"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:text="Which days would you like to be reminded on?"
+            android:textColor="#666" />
+
+        <TableRow
+            android:layout_alignTop="@+id/timePicker"
+            android:layout_marginTop="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/monWR"
+                style="@style/calendar_day"
+                android:background="@drawable/toggle_button"
+                android:textOff="Mon"
+                android:textOn="Mon"/>
+
+            <ToggleButton
+                android:id="@+id/tueWR"
+                style="@style/calendar_day"
+                android:background="@drawable/toggle_button"
+                android:textOff="Tue"
+                android:textOn="Tue" />
+
+            <ToggleButton
+                android:id="@+id/wedWR"
+                style="@style/calendar_day"
+                android:background="@drawable/toggle_button"
+                android:textOff="Wed"
+                android:textOn="Wed" />
+
+            <ToggleButton
+                android:id="@+id/thuWR"
+                style="@style/calendar_day"
+                android:background="@drawable/toggle_button"
+                android:textOff="Thu"
+                android:textOn="Thu" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/timePicker"
+            android:layout_marginTop="250dp"
+            android:gravity="center">
+
+            <ToggleButton
+                android:id="@+id/friWR"
+                style="@style/calendar_day"
+                android:background="@drawable/toggle_button"
+                android:textOff="Fri"
+                android:textOn="Fri" />
+
+            <ToggleButton
+                android:id="@+id/satWR"
+                style="@style/calendar_day"
+                android:background="@drawable/toggle_button"
+                android:textOff="Sat"
+                android:textOn="Sat" />
+
+            <ToggleButton
+                android:id="@+id/sunWR"
+                style="@style/calendar_day"
+                android:background="@drawable/toggle_button"
+                android:textOff="Sun"
+                android:textOn="Sun" />
+        </TableRow>
 
 
     </RelativeLayout>
