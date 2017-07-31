@@ -24,7 +24,7 @@ public class Progress extends AppCompatActivity {
         setContentView(R.layout.activity_progress);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarP);
-        TextView toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbarTitleP);
+        TextView  toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbarTitleP);
         toolbarTitle.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         TextView titleP = (TextView) findViewById(R.id.titleP);
