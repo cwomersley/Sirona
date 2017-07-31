@@ -26,6 +26,13 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void setupToolbar() {
 
+        ImageButton homeNavBtn = (ImageButton) findViewById(R.id.homeNavBtn);
+        homeNavBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(BaseActivity.this, Home.class));
+            }
+        });
+
         ImageButton myExerciseNavBtn = (ImageButton) findViewById(R.id.myExerciseNavBtn);
         myExerciseNavBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

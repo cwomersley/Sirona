@@ -1,51 +1,58 @@
 package com.example.chris.strokere;
 
-import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.Button;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-public class Settings extends AppCompatActivity {
-
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    public static final String TAG = "Password";
-    private EditText password;
-    private EditText confirmPassword;
-    private String newPassword;
-
+public class Settings extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        setupToolbar();
 
-        password = (EditText) findViewById(R.id.pPassword);
-        confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
+
+        Button btnThisApp = (Button) findViewById(R.id.btnThisAppS);
+        btnThisApp.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        Button btnWorkPref = (Button) findViewById(R.id.btnWorkPrefS);
+        btnWorkPref.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        Button btnWorkRem = (Button) findViewById(R.id.btnWorkRemS);
+        btnWorkRem.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        Button btnAccount = (Button) findViewById(R.id.btnAccountS);
+        btnAccount.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
     }
 
-    public void pConfirm(View view) {
-
-        if (password.getText().toString().equals(confirmPassword.getText().toString())) {
-            newPassword= confirmPassword.getText().toString();
-        }
-        user.updatePassword(newPassword)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "User password updated.");
-                            Toast.makeText(Settings.this, "Password changed",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+    //Tells the toolbar which acitvity it is being used in
+    @Override
+    public int getLayout() {
+        return R.layout.activity_settings;
     }
+
+
+    //Methods to open the activities each button leads to
+    public void openThisApp(View view) {
+        startActivity(new Intent(Settings.this, Account.class));
+    }
+
+    public void openWorkPref(View view) {
+        startActivity(new Intent(Settings.this, Account.class));
+    }
+
+    public void openWorkRem(View view) {
+        startActivity(new Intent(Settings.this, SettingsWorkoutReminder.class));
+    }
+
+    public void openAccount(View view) {
+        startActivity(new Intent(Settings.this, Account.class));
+    }
+
+
 }
+

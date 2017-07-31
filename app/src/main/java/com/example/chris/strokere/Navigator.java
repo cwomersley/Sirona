@@ -51,7 +51,7 @@ public class Navigator extends AppCompatActivity {
         navArray[0] = "Main Menu";
         navArray[1] = "Exercise List";
         navArray[2] = "Progress";
-        navArray[3] = "Settings";
+        navArray[3] = "Account";
 
 
     }
