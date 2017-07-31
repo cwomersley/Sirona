@@ -8,12 +8,13 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Home extends AppCompatActivity {
+public class Home extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        setupToolbar();
 
         Button btnWorkout = (Button) findViewById(R.id.btnWorkoutH);
         btnWorkout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -35,7 +36,7 @@ public class Home extends AppCompatActivity {
         btnProgress.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnProgress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, Navigator.class));
+                startActivity(new Intent(Home.this, Progress.class));
             }
         });
 
@@ -45,6 +46,11 @@ public class Home extends AppCompatActivity {
         Button btnLogout = (Button) findViewById(R.id.btnLogout);
         btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_home;
     }
 
 

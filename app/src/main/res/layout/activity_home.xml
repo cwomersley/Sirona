@@ -25,17 +25,7 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-
-        <TextView
-            android:id="@+id/titleH"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
-            android:text="Home"
-            android:textColor="@color/greenAccent"
-            android:textSize="26sp" />
+        <include layout="@layout/toolbar_main"/>
 
         <Button
             android:id="@+id/btnProgressH"
@@ -102,7 +92,6 @@
             android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/titleH"
             android:layout_alignParentEnd="true"
             android:background="@color/greenAccent"
             android:onClick="logout"

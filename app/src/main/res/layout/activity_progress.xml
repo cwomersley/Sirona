@@ -275,43 +275,7 @@
 
         </TableLayout>
 
-        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/toolbarP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/greenAccent"
-            android:minHeight="?attr/actionBarSize">
-
-            <TextView
-                android:id="@+id/toolbarTitleP"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:gravity="left"
-                android:text="Progress"
-                android:textColor="@color/colorPrimaryWhite"
-                android:textSize="20sp" />
-
-            <Spinner
-                android:id="@+id/toolbarMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right" />
-        </android.support.v7.widget.Toolbar>
-
-        <TextView
-            android:id="@+id/titleP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="34dp"
-            android:text="Progress"
-            android:textColor="@color/greenAccent"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="162dp"
-            tools:layout_editor_absoluteY="-69dp" />
+        <include layout="@layout/toolbar_main"/>
 
         <Button
             android:id="@+id/shuffle"

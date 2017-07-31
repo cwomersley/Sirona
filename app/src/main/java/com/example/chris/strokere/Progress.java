@@ -1,20 +1,16 @@
 package com.example.chris.strokere;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.Map;
 import java.util.HashMap;
 
 
-public class Progress extends AppCompatActivity {
+public class Progress extends BaseActivity {
 
     public HashMap<String,Integer> days = new HashMap<String,Integer>();
 
@@ -22,13 +18,7 @@ public class Progress extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarP);
-        TextView  toolbarTitle = (TextView) toolbar.findViewById(R.id.toolbarTitleP);
-        toolbarTitle.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        TextView titleP = (TextView) findViewById(R.id.titleP);
-        titleP.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        setupToolbar();
 
         TextView mon = (TextView) findViewById(R.id.mon1P);
         mon.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -48,6 +38,11 @@ public class Progress extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_progress;
     }
 
     public int randomNum(){
