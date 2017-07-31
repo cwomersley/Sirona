@@ -174,14 +174,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     }
                 });
 
-
         //get the Firebase user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         //add this user's details to the database
-        writeNewUser(user.getUid(), surname, firstName, email);
+        if (user.getUid()!=null) {
+            writeNewUser(user.getUid(), surname, firstName, email);
+        }
         //open the home screen upon registering user
-
-
 
     }
 
