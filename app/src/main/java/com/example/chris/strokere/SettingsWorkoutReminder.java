@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class SettingsWorkoutReminder extends AppCompatActivity {
 
@@ -26,6 +28,21 @@ public class SettingsWorkoutReminder extends AppCompatActivity {
             }
         });
 
+        ToggleButton monWR = (ToggleButton) findViewById(R.id.monWR);
+
+
+
+
+
+
+
+
+           /* public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                } else {
+
+                } */
 
 
     }
