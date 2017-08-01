@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class VideoStats {
 
     private HashMap likeOrDislike = new HashMap();
-
+    ExerciseView exerciseView = new ExerciseView();
 
 
 
@@ -30,6 +30,7 @@ public class VideoStats {
 
 
     public void addVideos(String exerciseName){
+
 
 
         if (!likeOrDislike.containsKey(exerciseName)){

@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class ExerciseView extends AppCompatActivity {
 
-    private ArrayList<String> nameList;
+    private ArrayList<String> nameList = new ArrayList<>();
     private DatabaseReference mDatabase;
     private ArrayList<String> exercisesList;
     private ImageButton likeBtn;
@@ -97,7 +97,6 @@ public class ExerciseView extends AppCompatActivity {
     public void  addFiles(){
 
         Field[] fields = R.raw.class.getFields();
-        nameList = new ArrayList<>();
 
         for (int i = 0; i < fields.length - 1; i++) {
             String name = fields[i].getName();

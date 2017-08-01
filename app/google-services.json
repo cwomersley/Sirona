@@ -15,6 +15,38 @@
       },
       "oauth_client": [
         {
+          "client_id": "900063170507-hca47dmfsbardm94mti3opbp5d3qim4c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chris.strokere",
+            "certificate_hash": "cc01291cbc2bb7ae144e3bdeaef0b716feb3dd5d"
+          }
+        },
+        {
+          "client_id": "900063170507-2t06m4p6u4jrfda8ohnfk2dbsk1ska9i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chris.strokere",
+            "certificate_hash": "b6f79df542ac4e0f8d01b462f9090dfc318aa581"
+          }
+        },
+        {
+          "client_id": "900063170507-9o61403k1slerf0pcr1c01ipcermku1n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chris.strokere",
+            "certificate_hash": "37d8fab56b1621d5c05180e2dc36164a88f589dc"
+          }
+        },
+        {
+          "client_id": "900063170507-feuav2l4f3oar0a5cflfi54ra5fgq59i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chris.strokere",
+            "certificate_hash": "75e9702865b83f031e5cdd1220f13e447b3bf9c3"
+          }
+        },
+        {
           "client_id": "900063170507-el7cqrc8bkdiuh33g1orbkfluqt79bed.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
