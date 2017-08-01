@@ -24,11 +24,12 @@
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="114dp"
-            android:background="@color/bg"
-            android:textSize="100sp" />
+            android:layout_height="200dp"
+            android:splitMotionEvents="true"
+            android:textDirection="anyRtl"
+            android:layout_marginTop="39dp"
+            android:layout_below="@+id/exerciseSearch"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:id="@+id/exerciseSearch"
@@ -40,6 +41,14 @@
             android:hint="@string/searchExercises"
             android:inputType="textPersonName" />
 
+        <VideoView
+            android:id="@+id/videoView2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignEnd="@+id/exerciseSearch"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="29dp" />
 
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
