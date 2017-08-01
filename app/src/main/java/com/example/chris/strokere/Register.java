@@ -105,9 +105,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     private void registerUser(){
         int passwordLength=6;
-        String firstName = firstNameR.getText().toString();
-        String email = emailR.getText().toString();
-        String surname = surnameR.getText().toString();
+        final String firstName = firstNameR.getText().toString();
+        final String email = emailR.getText().toString();
+        final String surname = surnameR.getText().toString();
         String password = passR.getText().toString();
         String passwordConfirm = passConfirmR.getText().toString();
 
@@ -175,12 +175,18 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 });
 
         //get the Firebase user
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //add this user's details to the database
-        if (user.getUid()!=null) {
-            writeNewUser(user.getUid(), surname, firstName, email);
-        }
-        //open the home screen upon registering user
+
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    writeNewUser(user.getUid(), surname, firstName, email);
+                }
+            }
+        });
+
 
     }
 
