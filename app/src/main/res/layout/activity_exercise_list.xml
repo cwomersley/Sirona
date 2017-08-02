@@ -25,11 +25,13 @@
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:splitMotionEvents="true"
-            android:textDirection="anyRtl"
-            android:layout_marginTop="39dp"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/exerciseSearch"
-            android:layout_alignParentStart="true" />
+            android:layout_marginTop="39dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:splitMotionEvents="true"
+            android:textDirection="anyRtl" />
 
         <EditText
             android:id="@+id/exerciseSearch"

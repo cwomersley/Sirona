@@ -13,37 +13,36 @@ import java.util.List;
 import android.widget.EditText;
 import android.text.Editable;
 import android.widget.VideoView;
-import java.util.HashMap;
-public class ExerciseList extends AppCompatActivity {
 
+public class ExerciseList extends AppCompatActivity {
 
     ListView listView;
     ArrayAdapter adapter;
     EditText inputSearch;
     List<String> list;
-    HashMap<String, Field> map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
 
-
+//below is populating an arraylist with the video names from raw
         Field[] f = R.raw.class.getFields();
         list = new ArrayList<>();
         for(Field fields : f)
-        try{
-            String name = fields.getName();
-            list.add(name);
-        }
-        catch (IllegalArgumentException e) {
-    }
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+            try{
+                String name = fields.getName();
+                list.add(name);
+            }
+            catch (IllegalArgumentException e) {
+            }
+//below is making the listview
+        adapter = new ArrayAdapter<>(this, R.layout.list_items, R.id.textView, list);
         listView = (ListView) findViewById(R.id.list);
         listView.setClickable(true);
         listView.setAdapter(adapter);
 
+// below is making the items clickable so they play the video when clicked
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
@@ -54,7 +53,8 @@ public class ExerciseList extends AppCompatActivity {
                 v.start();
             }
         } );
-        //search bar code below
+
+        //below makes the search functionality
         inputSearch = (EditText) findViewById(R.id.exerciseSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
 
