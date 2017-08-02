@@ -40,7 +40,6 @@ public class RegisterTest {
             sb1.append(c1);
         }
         String random_string = sb1.toString();
-
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -58,34 +57,60 @@ public class RegisterTest {
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
         try {
-            Thread.sleep(6000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.firstNameR), isDisplayed()));
-        appCompatEditText.perform(replaceText("Edward"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText("Re"), closeSoftKeyboard());
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.surnameR), isDisplayed()));
-        appCompatEditText2.perform(replaceText("Boyles"), closeSoftKeyboard());
+                allOf(withId(R.id.firstNameR), isDisplayed()));
+        appCompatEditText2.perform(replaceText("Register"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.emailR), isDisplayed()));
-        appCompatEditText3.perform(replaceText(random_string+"@"+random_string+".com"), closeSoftKeyboard());
+                allOf(withId(R.id.surnameR), isDisplayed()));
+        appCompatEditText3.perform(replaceText("Test"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.passR), isDisplayed()));
-        appCompatEditText4.perform(replaceText("aaaaaa"), closeSoftKeyboard());
+                allOf(withId(R.id.emailR), isDisplayed()));
+        appCompatEditText4.perform(replaceText(random_string+"@"+random_string+".com"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText5 = onView(
+                allOf(withId(R.id.passR), isDisplayed()));
+        appCompatEditText5.perform(replaceText("testing"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.passConfirmR), isDisplayed()));
-        appCompatEditText5.perform(replaceText("aaaaaa"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText("testing"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton2 = onView(
                 allOf(withId(R.id.registerBtnM), withText("REGISTER"), isDisplayed()));
         appCompatButton2.perform(click());
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction appCompatButton3 = onView(
+                allOf(withId(R.id.btnLogout), withText("Logout"), isDisplayed()));
+        appCompatButton3.perform(click());
 
     }
 
