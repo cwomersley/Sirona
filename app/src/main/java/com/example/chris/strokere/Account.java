@@ -21,7 +21,7 @@ public class Account extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
     private String newPassword;
-    private boolean signedIn;
+    private boolean signed;
 
 
     @Override
@@ -33,19 +33,21 @@ public class Account extends AppCompatActivity {
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        //checks is a user is signed in
-        if (user != null) {
-            signedIn=true;
-            Log.d(TAG, "user is signed in.");
-        } else {
-            signedIn = false;
-            Log.d(TAG, "user isn't signed in.");
-        }
+
 
     }
+    //returns true/false depending on whether a user is signed in
+    public boolean signedIn() {
+        if (user != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    //method for a user to change their password
     public void pConfirm(View view) {
-        if (signedIn) {
+        if (signedIn()) {
             if (password.getText().toString().equals(confirmPassword.getText().toString())) {
                 newPassword = confirmPassword.getText().toString();
                 user.updatePassword(newPassword)
@@ -53,16 +55,18 @@ public class Account extends AppCompatActivity {
                             @Override
                             public void onComplete(Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Log.d(TAG, "User password updated.");                                }
+                                    Toast.makeText(Account.this, "Your password has been changed", Toast.LENGTH_SHORT).show();                               }
                             }
                         });
             } else {
-                Toast.makeText(this, "Your passswords do not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Account.this, "Your passswords do not match", Toast.LENGTH_SHORT).show();
             }
+        }
+        else {
+            Toast.makeText(Account.this, "You are not signed in", Toast.LENGTH_SHORT).show();
         }
 
     }
-
 
 
 }
