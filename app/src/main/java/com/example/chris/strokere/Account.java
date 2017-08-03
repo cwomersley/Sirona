@@ -15,8 +15,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.example.chris.strokere.R.id.hiddenPassword;
-
 public class Account extends AppCompatActivity {
 
     private FirebaseUser user;
@@ -25,6 +23,8 @@ public class Account extends AppCompatActivity {
     private EditText confirmPassword;
     private EditText email;
     private EditText hiddenPassword;
+    private EditText hiddenEmail;
+
 
 
     @Override
@@ -35,7 +35,8 @@ public class Account extends AppCompatActivity {
         email = (EditText) findViewById(R.id.pEmail);
         password = (EditText) findViewById(R.id.pPassword);
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
-        hiddenPassword = (EditText) findViewById(R.id.hiddenPassword);
+        hiddenPassword = (EditText) findViewById(R.id.pHiddenPassword);
+        hiddenEmail = (EditText) findViewById(R.id.pHiddenEmail);
         user = FirebaseAuth.getInstance().getCurrentUser();
 
     }
@@ -47,6 +48,25 @@ public class Account extends AppCompatActivity {
             return false;
         }
     }
+
+    //reauthorise a user's credentials
+    /**
+    public void reAuth() {
+        String reauthPassword= hiddenPassword.getText().toString();
+        String reauthEmail= hiddenEmail.getText().toString();
+        AuthCredential credential = EmailAuthProvider.getCredential(reauthPassword, reauthEmail);
+
+        // Prompt the user to re-provide their sign-in credentials
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        Log.d(TAG, "User re-authenticated.");
+                    }
+                });
+    }
+    **/
+
 
     //method for a user to change their email
     public void changeEmail(View view) {
@@ -90,17 +110,11 @@ public class Account extends AppCompatActivity {
                 catch (Exception e) {
                     // Get auth credentials from the user for re-authentication.
                     Log.d(TAG, "Exception thrown");
+                    //makeVisible();
                     hiddenPassword.setVisibility(View.VISIBLE);
-                    AuthCredential credential = EmailAuthProvider.getCredential("user@example.com", "password1234");
+                    hiddenEmail.setVisibility(View.VISIBLE);
+                    //reAuth();
 
-                    // Prompt the user to re-provide their sign-in credentials
-                    user.reauthenticate(credential)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(Task<Void> task) {
-                                    Log.d(TAG, "User re-authenticated.");
-                                }
-                            });
                 }
             } else {
                 Toast.makeText(Account.this, "Your passswords do not match", Toast.LENGTH_SHORT).show();
