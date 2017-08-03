@@ -22,6 +22,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         setupToolbar();
     }
 
+    /**
+     * Gets which activity is currently active
+     */
     protected abstract int getLayout();
 
     public void setupToolbar() {
