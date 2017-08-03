@@ -22,8 +22,6 @@ public class Account extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
     private EditText email;
-    private String newPassword;
-    private boolean signed;
 
 
     @Override
@@ -49,8 +47,8 @@ public class Account extends AppCompatActivity {
     //method for a user to change their email
     public void changeEmail(View view) {
         if (signedIn()) {
-            String changeEmail = email.getText().toString();
-            user.updateEmail(changeEmail)
+            String newEmail = email.getText().toString();
+            user.updateEmail(newEmail)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(Task<Void> task) {
@@ -70,7 +68,7 @@ public class Account extends AppCompatActivity {
     public void changePassword(View view) throws FirebaseAuthRecentLoginRequiredException {
         if (signedIn()) {
             if (password.getText().toString().equals(confirmPassword.getText().toString())) {
-                newPassword = confirmPassword.getText().toString();
+                String newPassword = confirmPassword.getText().toString();
                 try {
                     user.updatePassword(newPassword)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
