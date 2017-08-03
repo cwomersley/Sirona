@@ -19,7 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        setupToolbar();
+        setupNavbar();
     }
 
     /**
@@ -27,7 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected abstract int getLayout();
 
-    public void setupToolbar() {
+    public void setupNavbar() {
 
         ImageButton homeNavBtn = (ImageButton) findViewById(R.id.homeNavBtn);
         homeNavBtn.setOnClickListener(new View.OnClickListener() {

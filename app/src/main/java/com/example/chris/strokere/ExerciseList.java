@@ -1,6 +1,5 @@
 package com.example.chris.strokere;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.EditText;
 import android.text.Editable;
 import android.widget.VideoView;
 
-public class ExerciseList extends AppCompatActivity {
+public class ExerciseList extends BaseActivity {
 
     ListView listView;
     ArrayAdapter adapter;
@@ -25,6 +24,7 @@ public class ExerciseList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
+        setupNavbar();
 
 //below is populating an arraylist with the video names from raw
         Field[] f = R.raw.class.getFields();
@@ -77,4 +77,10 @@ public class ExerciseList extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_exercise_list;
+    }
+
 }

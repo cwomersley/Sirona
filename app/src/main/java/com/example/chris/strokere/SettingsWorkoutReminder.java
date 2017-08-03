@@ -1,13 +1,9 @@
 package com.example.chris.strokere;
 
-import android.app.NotificationManager;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -17,7 +13,7 @@ public class SettingsWorkoutReminder extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_workout_reminder);
-        setupToolbar();
+        setupNavbar();
 
         TextView whichDays = (TextView) findViewById(R.id.whichDaysTextWR);
         whichDays.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
