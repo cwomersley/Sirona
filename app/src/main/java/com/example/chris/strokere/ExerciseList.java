@@ -46,14 +46,15 @@ public class ExerciseList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
+
                 String name = adapter.getItemAtPosition(p).toString();
                 String path = "android.resource://" + getPackageName() + "//raw/"  + name;
                 VideoView v = (VideoView) findViewById(R.id.videoView2);
                 v.setVideoPath(path);
                 v.start();
+
             }
         } );
-
         //below makes the search functionality
         inputSearch = (EditText) findViewById(R.id.exerciseSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {

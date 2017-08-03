@@ -7,14 +7,18 @@
 
     <TextView
         android:id="@+id/textView"
+        style="@style/exerciseList_button"
+        android:background="@drawable/button_background"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:textColor="@color/greenAccent"
-        android:textSize="30sp" />
+        android:textColor="@color/colorPrimaryWhite"
+        android:textAlignment="center">
+
+    </TextView>
 
 </LinearLayout>
