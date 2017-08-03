@@ -22,17 +22,17 @@
         android:id="@+id/pEmail"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="57dp"
         android:background="@color/colorPrimaryDark"
         android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="Enter Email"
-        android:inputType="textPassword"
+        android:inputType="textWebEmailAddress"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
-        android:textSize="24sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="57dp" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/pPasswordBtn"
@@ -95,5 +95,32 @@
         android:layout_marginBottom="71dp"
         android:text="Change Email"
         android:textColor="@color/colorAccent" />
+
+    <EditText
+        android:id="@+id/hiddenPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pEmail"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="22dp"
+        android:layout_toEndOf="@+id/pPasswordBtn"
+        android:ems="10"
+        android:hint="Enter old password"
+        android:inputType="textPassword"
+        android:textColor="@color/greenAccent"
+        android:textColorHint="@color/greenAccent"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/hiddenPassword"
+        android:layout_below="@+id/pEmailBtn"
+        android:ems="10"
+        android:hint="enter old email"
+        android:inputType="textWebEmailAddress"
+        android:textColor="@color/greenAccent"
+        android:textColorHint="@color/greenAccent" />
 
 </android.widget.RelativeLayout>

@@ -15,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.chris.strokere.R.id.hiddenPassword;
+
 public class Account extends AppCompatActivity {
 
     private FirebaseUser user;
@@ -22,6 +24,7 @@ public class Account extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
     private EditText email;
+    private EditText hiddenPassword;
 
 
     @Override
@@ -32,6 +35,7 @@ public class Account extends AppCompatActivity {
         email = (EditText) findViewById(R.id.pEmail);
         password = (EditText) findViewById(R.id.pPassword);
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
+        hiddenPassword = (EditText) findViewById(R.id.hiddenPassword);
         user = FirebaseAuth.getInstance().getCurrentUser();
 
     }
@@ -77,13 +81,16 @@ public class Account extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(Account.this, "Your password has been updated", Toast.LENGTH_SHORT).show();
                                     }
+                                    else {
+                                        Log.d(TAG, "task not successful");
+                                    }
                                 }
                             });
                 }
                 catch (Exception e) {
-                    // Get auth credentials from the user for re-authentication. The example below shows
-                    // email and password credentials but there are multiple possible providers,
-                    // such as GoogleAuthProvider or FacebookAuthProvider.
+                    // Get auth credentials from the user for re-authentication.
+                    Log.d(TAG, "Exception thrown");
+                    hiddenPassword.setVisibility(View.VISIBLE);
                     AuthCredential credential = EmailAuthProvider.getCredential("user@example.com", "password1234");
 
                     // Prompt the user to re-provide their sign-in credentials
@@ -95,7 +102,6 @@ public class Account extends AppCompatActivity {
                                 }
                             });
                 }
-
             } else {
                 Toast.makeText(Account.this, "Your passswords do not match", Toast.LENGTH_SHORT).show();
             }
