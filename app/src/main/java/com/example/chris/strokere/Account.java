@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -19,6 +21,7 @@ public class Account extends AppCompatActivity {
     private EditText password;
     private EditText confirmPassword;
     private String newPassword;
+    private boolean signedIn;
 
 
     @Override
@@ -28,23 +31,40 @@ public class Account extends AppCompatActivity {
 
         password = (EditText) findViewById(R.id.pPassword);
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //checks is a user is signed in
+        if (user != null) {
+            signedIn=true;
+            Log.d(TAG, "user is signed in.");
+        } else {
+            signedIn = false;
+            Log.d(TAG, "user isn't signed in.");
+        }
 
     }
 
     public void pConfirm(View view) {
-
-        if (password.getText().toString().equals(confirmPassword.getText().toString())) {
-            newPassword= confirmPassword.getText().toString();
+        if (signedIn) {
+            if (password.getText().toString().equals(confirmPassword.getText().toString())) {
+                newPassword = confirmPassword.getText().toString();
+                user.updatePassword(newPassword)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "User password updated.");                                }
+                            }
+                        });
+            } else {
+                Toast.makeText(this, "Your passswords do not match", Toast.LENGTH_SHORT).show();
+            }
         }
-        user.updatePassword(newPassword)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete( Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "User password updated.");
-                            Toast.makeText(Account.this, "Password changed",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+
     }
+
+
+
 }
+
+
