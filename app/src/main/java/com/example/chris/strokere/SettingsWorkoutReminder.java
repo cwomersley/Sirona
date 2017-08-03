@@ -11,12 +11,13 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class SettingsWorkoutReminder extends AppCompatActivity {
+public class SettingsWorkoutReminder extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_workout_reminder);
+        setupToolbar();
 
         TextView whichDays = (TextView) findViewById(R.id.whichDaysTextWR);
         whichDays.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -31,12 +32,6 @@ public class SettingsWorkoutReminder extends AppCompatActivity {
         ToggleButton monWR = (ToggleButton) findViewById(R.id.monWR);
 
 
-
-
-
-
-
-
            /* public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
 
@@ -44,11 +39,20 @@ public class SettingsWorkoutReminder extends AppCompatActivity {
 
                 } */
 
+    }
 
+    @Override
+    public int getLayout() {
+        return R.layout.activity_settings_workout_reminder;
     }
 
     public void notifier() {
-        NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+
+        NotificationReceiver notificationReceiver = new NotificationReceiver();
+        Intent intent = new Intent(this, NotificationReceiver.class);
+        notificationReceiver.onReceive(this, intent);
+
+      /*  NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.logo)
                 .setContentTitle("Workout Reminder")
                 .setContentText("Time to workout...");
@@ -56,10 +60,10 @@ public class SettingsWorkoutReminder extends AppCompatActivity {
 // Sets an ID for the notification
         int mNotificationId = 001;
 // Gets an instance of the NotificationManager service
-        NotificationManager mNotifyMgr =
-                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 // Builds the notification and issues it.
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
-    }
+    } */
 
+    }
 }
