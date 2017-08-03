@@ -6,6 +6,8 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +21,7 @@ import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.google.firebase.auth.FirebaseAuth.getInstance;
 import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
@@ -31,6 +34,9 @@ public class RegisterTest {
     @Test
     public void registerTest() {
 
+        //if (FirebaseAuth.getInstance() !=null) {
+        //    FirebaseAuth.getInstance().signOut();
+        //}
         char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
         StringBuilder sb1 = new StringBuilder();
         Random random1 = new Random();

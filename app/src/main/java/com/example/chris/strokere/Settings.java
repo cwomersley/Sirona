@@ -50,6 +50,7 @@ public class Settings extends BaseActivity {
     }
 
     public void openAccount(View view) {
+
         startActivity(new Intent(Settings.this, Account.class));
     }
 

@@ -60,7 +60,7 @@ public class Home extends BaseActivity {
     }
 
     //method to open settings activity
-    public void oPreferences(View view) {
+    public void oSettings(View view) {
         startActivity(new Intent(Home.this, Settings.class));
     }
 
