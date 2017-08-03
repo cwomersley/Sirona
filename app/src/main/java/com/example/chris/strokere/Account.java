@@ -1,6 +1,5 @@
 package com.example.chris.strokere;
 
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,7 +39,7 @@ public class Account extends AppCompatActivity {
         user.updatePassword(newPassword)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+                    public void onComplete( Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "User password updated.");
                             Toast.makeText(Account.this, "Password changed",Toast.LENGTH_SHORT).show();
