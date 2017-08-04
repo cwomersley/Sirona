@@ -174,7 +174,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     }
                 });
 
-        //get the Firebase user
+        //get the Firebase usery
 
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
