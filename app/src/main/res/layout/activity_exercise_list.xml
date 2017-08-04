@@ -15,19 +15,24 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
+        <include
+            android:id="@+id/include2"
+            layout="@layout/toolbar_main" />
+
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="400dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
             android:splitMotionEvents="true"
             android:textDirection="anyRtl"
-            android:layout_marginTop="39dp"
             android:layout_below="@+id/exerciseSearch"
             android:layout_alignParentStart="true" />
 
@@ -35,16 +40,17 @@
             android:id="@+id/exerciseSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="9dp"
             android:ems="10"
             android:hint="@string/searchExercises"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:layout_below="@+id/include2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp" />
 
         <VideoView
             android:id="@+id/videoView2"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignEnd="@+id/exerciseSearch"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="29dp" />

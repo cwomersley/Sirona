@@ -2,29 +2,57 @@
 <android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hiddenEmail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
     tools:context="com.example.chris.strokere.Account">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/pEmailBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/pConfirmPassword"
-        android:layout_marginTop="32dp"
+        android:layout_below="@+id/pEmail"
+        android:layout_marginTop="48dp"
         android:background="@color/colorAccent"
-        android:onClick="pConfirm"
-        android:text="Confirm" />
+        android:onClick="changeEmail"
+        android:text="Change Email" />
+
+    <EditText
+        android:id="@+id/pEmail"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="57dp"
+        android:background="@color/colorPrimaryDark"
+        android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textWebEmailAddress"
+        android:textColor="@color/greenAccent"
+        android:textColorHint="@color/greenAccent"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/pPasswordBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="54dp"
+        android:background="@color/colorAccent"
+        android:onClick="changePassword"
+        android:text="Change Password" />
 
     <EditText
         android:id="@+id/pPassword"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_above="@+id/pConfirmPassword"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="205dp"
+        android:layout_marginBottom="15dp"
         android:background="@color/colorPrimaryDark"
         android:backgroundTint="@android:color/white"
         android:ems="10"
@@ -38,9 +66,9 @@
         android:id="@+id/pConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_alignBottom="@+id/pPasswordBtn"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/pPassword"
-        android:layout_marginTop="23dp"
+        android:layout_marginBottom="62dp"
         android:background="@color/colorPrimaryDark"
         android:backgroundTint="@android:color/white"
         android:ems="10"
@@ -58,5 +86,44 @@
         android:layout_alignTop="@+id/pPassword"
         android:text="Change Password"
         android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="71dp"
+        android:text="Change Email"
+        android:textColor="@color/colorAccent" />
+
+    <EditText
+        android:id="@+id/pHiddenPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pEmail"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="22dp"
+        android:layout_toEndOf="@+id/pPasswordBtn"
+        android:ems="10"
+        android:hint="Enter old password"
+        android:inputType="textPassword"
+        android:textColor="@color/greenAccent"
+        android:textColorHint="@color/greenAccent"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/pHiddenEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/pHiddenPassword"
+        android:layout_below="@+id/pEmailBtn"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="enter old email"
+        android:inputType="textWebEmailAddress"
+        android:textColor="@color/greenAccent"
+        android:textColorHint="@color/greenAccent"
+        android:visibility="invisible" />
 
 </android.widget.RelativeLayout>

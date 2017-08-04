@@ -18,7 +18,7 @@ public class Progress extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
-        setupToolbar();
+        setupNavbar();
 
         TextView mon = (TextView) findViewById(R.id.mon1P);
         mon.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));

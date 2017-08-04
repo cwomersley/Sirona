@@ -13,7 +13,7 @@ public class Home extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        setupToolbar();
+        setupNavbar();
 
         Button btnWorkout = (Button) findViewById(R.id.btnWorkoutH);
         btnWorkout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -60,7 +60,7 @@ public class Home extends BaseActivity {
     }
 
     //method to open settings activity
-    public void oPreferences(View view) {
+    public void oSettings(View view) {
         startActivity(new Intent(Home.this, Settings.class));
     }
 

@@ -1,7 +1,6 @@
 package com.example.chris.strokere;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +11,7 @@ public class Settings extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        setupToolbar();
+        setupNavbar();
 
 
         Button btnThisApp = (Button) findViewById(R.id.btnThisAppS);
@@ -50,6 +49,7 @@ public class Settings extends BaseActivity {
     }
 
     public void openAccount(View view) {
+
         startActivity(new Intent(Settings.this, Account.class));
     }
 

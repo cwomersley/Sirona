@@ -3,7 +3,7 @@ package com.example.chris.strokere;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class exerciseOptions extends AppCompatActivity {
+public class ExerciseOptions extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -26,6 +26,7 @@
         <activity android:name=".Navigator" />
         <activity android:name=".Progress" />
         <activity android:name=".Settings" />
+        <activity android:name=".Account" />
         <activity android:name=".SettingsWorkoutReminder"></activity>
     </application>
 
