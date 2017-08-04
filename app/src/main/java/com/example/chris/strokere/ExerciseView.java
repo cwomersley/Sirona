@@ -46,7 +46,9 @@ public class ExerciseView extends AppCompatActivity {
 
 
         addFiles();
-        populateDB();
+
+        //remove later - used to add to db
+        //populateDB();
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
