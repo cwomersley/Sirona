@@ -1,5 +1,6 @@
 package com.example.chris.strokere;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,13 @@ public class Progress extends BaseActivity {
         wed.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         Button shuffle = (Button) findViewById(R.id.shuffle);
+
+        Button goGraph = (Button) findViewById(R.id.goGraph);
+        goGraph.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Progress.this, Graph.class));
+            }
+        });
 
         shuffle.setOnClickListener(new View.OnClickListener() {
             @Override

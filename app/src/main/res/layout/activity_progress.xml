@@ -275,7 +275,7 @@
 
         </TableLayout>
 
-        <include layout="@layout/toolbar_main"/>
+        <include layout="@layout/toolbar_main" />
 
         <Button
             android:id="@+id/shuffle"
@@ -283,8 +283,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="19dp"
             android:text="Shuffle" />
+
+        <Button
+            android:id="@+id/goGraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/shuffle"
+            android:layout_alignBottom="@+id/shuffle"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="14dp"
+            android:text="graph" />
 
     </RelativeLayout>
 
