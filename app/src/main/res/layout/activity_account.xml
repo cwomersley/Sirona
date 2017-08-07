@@ -127,13 +127,14 @@
         android:visibility="invisible" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/aConfirmBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/pHiddenEmail"
         android:layout_marginEnd="12dp"
         android:layout_toStartOf="@+id/pHiddenPassword"
         android:onClick="aReauth"
-        android:text="Button" />
+        android:text="Confirm"
+        android:visibility="invisible" />
 
 </android.widget.RelativeLayout>

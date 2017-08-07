@@ -21,12 +21,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class AccountActivityTest {
+public class LoginTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
+    //test loggin into app with admin username:test@test.com and password: password
     public void accountActivityTest() {
 
 
@@ -42,7 +43,7 @@ public class AccountActivityTest {
 
         ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.passwordL), isDisplayed()));
-        appCompatEditText4.perform(replaceText("Password"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText("password"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.loginBtnM), withText("Log in"), isDisplayed()));

@@ -29,6 +29,7 @@ public class Account extends AppCompatActivity {
     private EditText hiddenPassword;
     private EditText hiddenEmail;
     private Button pPasswordBtn;
+    private Button pConfirmBtn;
 
 
 
@@ -44,6 +45,7 @@ public class Account extends AppCompatActivity {
         hiddenEmail = (EditText) findViewById(R.id.pHiddenEmail);
         user = FirebaseAuth.getInstance().getCurrentUser();
         pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
+        pConfirmBtn = (Button) findViewById(R.id.pPasswordBtn);
         //pPasswordBtn.setOnClickListener(this);
 
     }
@@ -146,8 +148,8 @@ public class Account extends AppCompatActivity {
                 // Get auth credentials from the user for re-authentication.
                 Log.d(TAG, "Exception thrown");
                 //makeVisible();
+                pConfirmBtn.setVisibility(View.VISIBLE);
                 hiddenPassword.setVisibility(View.VISIBLE);
-                //hiddenEmail.setVisibility(View.VISIBLE);
                 Toast.makeText(Account.this, "Please enter your original password and username", Toast.LENGTH_SHORT).show();
             }
         }
