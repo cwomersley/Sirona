@@ -141,6 +141,10 @@ public class MainActivity extends AppCompatActivity  {
     //sends a password reset email to user
     public void forgotPassword(View view){
         String email = emailL.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            emailL.setError("Required.");
+            return;
+        }
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String emailAddress = email;
 
@@ -150,6 +154,8 @@ public class MainActivity extends AppCompatActivity  {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "Email sent.");
+                            Toast.makeText(MainActivity.this, "Reset password email sent",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
