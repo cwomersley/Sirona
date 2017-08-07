@@ -2,8 +2,10 @@ package com.example.chris.strokere;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException;
 import com.google.firebase.auth.FirebaseUser;
 
+import static com.example.chris.strokere.R.id.pPasswordBtn;
+
 public class Account extends AppCompatActivity {
 
     private FirebaseUser user;
@@ -24,10 +28,11 @@ public class Account extends AppCompatActivity {
     private EditText email;
     private EditText hiddenPassword;
     private EditText hiddenEmail;
+    private Button pPasswordBtn;
 
 
 
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
@@ -38,6 +43,8 @@ public class Account extends AppCompatActivity {
         hiddenPassword = (EditText) findViewById(R.id.pHiddenPassword);
         hiddenEmail = (EditText) findViewById(R.id.pHiddenEmail);
         user = FirebaseAuth.getInstance().getCurrentUser();
+        pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
+        //pPasswordBtn.setOnClickListener(this);
 
     }
     //returns true/false depending on whether a user is signed in
@@ -50,12 +57,12 @@ public class Account extends AppCompatActivity {
     }
 
     //reauthorise a user's credentials
-    /**
-    public void reAuth() {
-        String reauthPassword= hiddenPassword.getText().toString();
-        String reauthEmail= hiddenEmail.getText().toString();
-        AuthCredential credential = EmailAuthProvider.getCredential(reauthPassword, reauthEmail);
+    public void aReauth() {
 
+        String reauthPassword= hiddenPassword.getText().toString();
+        String reauthEmail=user.getEmail();
+        //String reauthEmail= hiddenEmail.getText().toString();
+        AuthCredential credential = EmailAuthProvider.getCredential(reauthPassword, reauthEmail);
         // Prompt the user to re-provide their sign-in credentials
         user.reauthenticate(credential)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -64,8 +71,8 @@ public class Account extends AppCompatActivity {
                         Log.d(TAG, "User re-authenticated.");
                     }
                 });
+        pPasswordBtn.performClick();
     }
-    **/
 
 
     //method for a user to change their email
@@ -88,36 +95,60 @@ public class Account extends AppCompatActivity {
 
     }
 
+    //validates fields on activity
+    public boolean validate() {
+        boolean valid = true;
+        int passwordLength=6;
+        String changePass=password.getText().toString();
+        String conPass=confirmPassword.getText().toString();
+
+        if(TextUtils.isEmpty(changePass)) {
+            Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if(TextUtils.getTrimmedLength(changePass)<passwordLength) {
+            //password is smaller than the size that Firebase allows
+            Toast.makeText(this, "Your password must be 6 characters or longer", Toast.LENGTH_LONG).show();
+            valid=false;
+        }
+        if(!changePass.equals(conPass)){
+            //password and confirmation password do not match
+            Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_LONG).show();
+            valid=false;
+        }
+        return valid;
+    }
+
     //method for a user to change their password
     public void changePassword(View view) throws FirebaseAuthRecentLoginRequiredException {
         if (signedIn()) {
-            if (password.getText().toString().equals(confirmPassword.getText().toString())) {
-                String newPassword = confirmPassword.getText().toString();
-                try {
-                    user.updatePassword(newPassword)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(Account.this, "Your password has been updated", Toast.LENGTH_SHORT).show();
-                                    }
-                                    else {
-                                        Log.d(TAG, "task not successful");
-                                    }
+            String changePass=password.getText().toString();
+            Log.d(TAG, changePass);
+            if (!validate()) {
+                return;
+            }
+            try {
+                user.updatePassword(changePass)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Account.this, "Your password has been updated", Toast.LENGTH_SHORT).show();
                                 }
-                            });
-                }
-                catch (Exception e) {
-                    // Get auth credentials from the user for re-authentication.
-                    Log.d(TAG, "Exception thrown");
-                    //makeVisible();
-                    hiddenPassword.setVisibility(View.VISIBLE);
-                    hiddenEmail.setVisibility(View.VISIBLE);
-                    //reAuth();
-
-                }
-            } else {
-                Toast.makeText(Account.this, "Your passswords do not match", Toast.LENGTH_SHORT).show();
+                                else {
+                                    Toast.makeText(Account.this, "Please try again later", Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "task not successful");
+                                }
+                            }
+                        });
+            }
+            catch (Exception e) {
+                // Get auth credentials from the user for re-authentication.
+                Log.d(TAG, "Exception thrown");
+                //makeVisible();
+                hiddenPassword.setVisibility(View.VISIBLE);
+                //hiddenEmail.setVisibility(View.VISIBLE);
+                Toast.makeText(Account.this, "Please enter your original password and username", Toast.LENGTH_SHORT).show();
             }
         }
         else {
@@ -125,7 +156,6 @@ public class Account extends AppCompatActivity {
         }
 
     }
-
 
 }
 
