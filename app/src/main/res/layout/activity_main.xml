@@ -112,6 +112,15 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/emailL" />
 
+        <Button
+            android:id="@+id/forgotPassworbBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_alignEnd="@+id/emailL"
+            android:onClick="forgotPassword"
+            android:text="Forgot" />
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

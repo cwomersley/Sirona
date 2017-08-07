@@ -138,6 +138,23 @@ public class MainActivity extends AppCompatActivity  {
         return valid;
     }
 
+    //sends a password reset email to user
+    public void forgotPassword(View view){
+        String email = emailL.getText().toString();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String emailAddress = email;
+
+        auth.sendPasswordResetEmail(emailAddress)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "Email sent.");
+                        }
+                    }
+                });
+    }
+
 }
 
 
