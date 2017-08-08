@@ -1,5 +1,7 @@
 package com.example.chris.strokere;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -159,6 +161,7 @@ public class Account extends AppCompatActivity {
 
     }
 
+    //method to delete a user account
     public void delAccount(View view) {
         if (signedIn()) {
             try {
@@ -181,7 +184,6 @@ public class Account extends AppCompatActivity {
         else {
             Toast.makeText(Account.this, "You are not signed in", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 }

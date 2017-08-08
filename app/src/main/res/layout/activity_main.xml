@@ -16,11 +16,11 @@
         android:layout_marginTop="0dp"
         android:background="@color/bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -30,11 +30,11 @@
             android:id="@+id/imageView"
             android:layout_width="110dp"
             android:layout_height="110dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             app:srcCompat="@drawable/logo"
             tools:layout_editor_absoluteX="-108dp"
-            tools:layout_editor_absoluteY="511dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            tools:layout_editor_absoluteY="511dp" />
 
         <EditText
             android:id="@+id/emailL"
@@ -78,50 +78,49 @@
             android:id="@+id/loginBtnM"
             android:layout_width="match_parent"
             android:layout_height="90dp"
+            android:layout_above="@+id/forgotText"
+            android:layout_alignParentStart="true"
             android:layout_marginBottom="10dp"
             android:background="@color/colorAccent"
             android:onClick="onLogin"
             android:text="Log in"
             android:textColor="@android:color/white"
             android:textColorHint="@color/greenAccent"
-            android:textSize="45sp"
-            android:layout_above="@+id/forgotText"
-            android:layout_alignParentStart="true" />
+            android:textSize="45sp" />
 
         <TextView
             android:id="@+id/forgotText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/registerBtnM"
+            android:layout_alignParentStart="true"
             android:layout_marginBottom="39dp"
             android:clickable="true"
             android:gravity="center"
             android:onClick="forgotText"
             android:text="FORGOTTEN PASSWORD?"
             android:textColor="@color/colorAccent"
-            android:textStyle="bold"
-            android:layout_above="@+id/registerBtnM"
-            android:layout_alignParentStart="true" />
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/bypassBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/emailL"
             android:layout_marginTop="30dp"
             android:background="@color/colorAccent"
-            android:text="Bypass login"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/emailL" />
+            android:text="Bypass login" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/orText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/registerBtnM"
             android:layout_centerHorizontal="true"
-            android:text="OR"
-            android:textColor="@android:color/black"
             android:layout_marginBottom="10dp"
-            />
+            android:text="OR"
+            android:textColor="@android:color/black" />
 
 
         <Button
@@ -137,6 +136,24 @@
             android:textColor="@android:color/white"
             android:textColorHint="@color/greenAccent"
             android:textSize="45sp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/tableRow"
+            android:layout_toStartOf="@+id/orText"
+            android:background="#444"
+            android:elevation="1dp" />
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="175dp"
+            android:layout_height="1dp"
+            android:layout_alignBottom="@+id/orText"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/orText"
+            android:background="#444" />
 
     </RelativeLayout>
 
