@@ -2,6 +2,7 @@ package com.example.chris.strokere;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -191,6 +192,8 @@ public class Account extends AppCompatActivity {
                 confirmDelete();
                 dialog.dismiss();
                 Toast.makeText(Account.this, "Account deleted", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(Account.this, MainActivity.class));
             }
         });
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
