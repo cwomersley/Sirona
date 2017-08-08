@@ -137,4 +137,14 @@
         android:text="Confirm"
         android:visibility="invisible" />
 
+    <Button
+        android:id="@+id/delAccBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pHiddenEmail"
+        android:layout_alignEnd="@+id/pHiddenEmail"
+        android:layout_marginEnd="34dp"
+        android:onClick="delAccount"
+        android:text="Delete Account" />
+
 </android.widget.RelativeLayout>

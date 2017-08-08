@@ -159,6 +159,31 @@ public class Account extends AppCompatActivity {
 
     }
 
+    public void delAccount(View view) {
+        if (signedIn()) {
+            try {
+                user.delete()
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "User account deleted.");
+                                }
+                            }
+                        });
+            }
+            catch (Exception e) {
+                // Get auth credentials from the user for re-authentication.
+                Log.d(TAG, "Exception thrown");
+                //makeVisible()
+            }
+        }
+        else {
+            Toast.makeText(Account.this, "You are not signed in", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
 }
 
 
