@@ -61,18 +61,6 @@ public class RegisterTest {
                     allOf(withId(R.id.registerBtnM), withText("Register"), isDisplayed()));
             appCompatButton.perform(click());
 
-            // Added a sleep statement to match the app's execution delay.
-            // The recommended way to handle such scenarios is to use Espresso idling resources:
-            // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            ViewInteraction appCompatEditText = onView(
-                    allOf(withId(R.id.firstNameR), isDisplayed()));
-            appCompatEditText.perform(replaceText("Re"), closeSoftKeyboard());
 
             // Added a sleep statement to match the app's execution delay.
             // The recommended way to handle such scenarios is to use Espresso idling resources:
