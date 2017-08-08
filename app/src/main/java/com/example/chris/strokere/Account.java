@@ -48,6 +48,7 @@ public class Account extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
         pConfirmBtn = (Button) findViewById(R.id.pPasswordBtn);
+
         //pPasswordBtn.setOnClickListener(this);
 
     }
@@ -162,30 +163,44 @@ public class Account extends AppCompatActivity {
     }
 
     //method to delete a user account
-    public void delAccount(View view) {
-        if (signedIn()) {
+    public void confirmDelete() {
             try {
-                user.delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Log.d(TAG, "User account deleted.");
-                                }
-                            }
-                        });
+                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                    public void onComplete(Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User account deleted.");
+                        }
+                    }
+                });
             }
             catch (Exception e) {
-                // Get auth credentials from the user for re-authentication.
-                Log.d(TAG, "Exception thrown");
-                //makeVisible()
-            }
-        }
-        else {
-            Toast.makeText(Account.this, "You are not signed in", Toast.LENGTH_SHORT).show();
-        }
-    }
+            // Get auth credentials from the user for re-authentication.
+            Log.d(TAG, "Exception thrown");
+         }
+     }
 
+
+    //https://stackoverflow.com/questions/25670051/how-to-create-yes-no-alert-dialog-in-fragment-in-android
+    //show dialog box assking if user wants to delete account
+    public void delAccount(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Are you sure you want to delete your account?");
+        builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                confirmDelete();
+                dialog.dismiss();
+                Toast.makeText(Account.this, "Account deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 }
 
 
