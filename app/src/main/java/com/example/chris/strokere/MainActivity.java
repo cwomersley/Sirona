@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     //sends a password reset email to user
-    public void forgotPassword(View view){
+    public void forgotText(View view){
         String email = emailL.getText().toString();
         if (TextUtils.isEmpty(email)) {
             emailL.setError("Required.");

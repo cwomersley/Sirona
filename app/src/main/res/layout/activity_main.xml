@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_above="@+id/passwordL"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@color/colorPrimaryDark"
@@ -60,47 +60,47 @@
             android:layout_height="70dp"
             android:layout_above="@+id/loginBtnM"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="23dp"
+            android:layout_marginBottom="25dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:background="@color/colorPrimaryDark"
-            android:textColorHint="@color/greenAccent"
             android:ems="10"
             android:hint="PASSWORD"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
             android:textColor="@color/greenAccent"
+            android:textColorHint="@color/greenAccent"
             android:textSize="20sp"
             android:textStyle="bold" />
 
 
         <Button
-            android:id="@+id/registerBtnM"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="34dp"
-            android:background="@color/greenAccent"
-            android:onClick="onRegister"
-            android:text="Register"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/greenAccent"
-            android:textSize="45sp" />
-
-        <Button
             android:id="@+id/loginBtnM"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_above="@+id/registerBtnM"
-            android:layout_alignParentStart="true"
+            android:layout_height="90dp"
             android:layout_marginBottom="10dp"
             android:background="@color/colorAccent"
             android:onClick="onLogin"
             android:text="Log in"
             android:textColor="@android:color/white"
             android:textColorHint="@color/greenAccent"
-            android:textSize="45sp" />
+            android:textSize="45sp"
+            android:layout_above="@+id/forgotText"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/forgotText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="39dp"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="forgotText"
+            android:text="FORGOTTEN PASSWORD?"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:layout_above="@+id/registerBtnM"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:id="@+id/bypassBtn"
@@ -112,14 +112,31 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/emailL" />
 
-        <Button
-            android:id="@+id/forgotPassworbBtn"
+        <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_alignEnd="@+id/emailL"
-            android:onClick="forgotPassword"
-            android:text="Forgot" />
+            android:layout_above="@+id/registerBtnM"
+            android:layout_centerHorizontal="true"
+            android:text="OR"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="10dp"
+            />
+
+
+        <Button
+            android:id="@+id/registerBtnM"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp"
+            android:background="@color/greenAccent"
+            android:onClick="onRegister"
+            android:text="Register"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/greenAccent"
+            android:textSize="45sp" />
 
     </RelativeLayout>
 
