@@ -2,6 +2,7 @@ package com.example.chris.strokere;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -47,6 +48,13 @@ public class Home extends BaseActivity {
         //btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         TextView tipsText = (TextView) findViewById(R.id.tipsText);
+        TipsHelper tipsHelper = new TipsHelper();
+
+        String tip = tipsHelper.getATip();
+
+        tipsText.setText(tip);
+        //Log.d("Logthis   ",tip);
+
         tipsText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
