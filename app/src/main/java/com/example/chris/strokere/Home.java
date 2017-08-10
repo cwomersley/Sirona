@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -42,8 +43,12 @@ public class Home extends BaseActivity {
         Button btnPreferences = (Button) findViewById(R.id.btnPreferencesH);
         btnPreferences.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        Button btnLogout = (Button) findViewById(R.id.btnLogout);
-        btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        //btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        TextView tipsText = (TextView) findViewById(R.id.tipsText);
+        tipsText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
 
     }
 

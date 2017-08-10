@@ -29,6 +29,10 @@
             android:id="@+id/include2"
             layout="@layout/toolbar_main" />
 
+        <include
+            android:id="@+id/include3"
+            layout="@layout/tips" />
+
         <Button
             android:id="@+id/btnProgressH"
             android:layout_width="368dp"
@@ -87,17 +91,6 @@
             app:layout_constraintTop_toBottomOf="@+id/btnProgressH"
             tools:layout_editor_absoluteX="8dp" />
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/greenAccent"
-            android:onClick="logout"
-            android:text="Logout"
-            android:textColor="@android:color/white"
-            android:layout_below="@+id/include2"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
