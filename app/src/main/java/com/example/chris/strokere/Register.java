@@ -80,7 +80,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
 
@@ -103,58 +102,75 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         return matcher.matches();
     }
 
-    private void registerUser(){
+    public boolean validate() {
+        boolean valid = true;
         int passwordLength=6;
-        final String firstName = firstNameR.getText().toString();
-        final String email = emailR.getText().toString();
-        final String surname = surnameR.getText().toString();
+        String firstName = firstNameR.getText().toString();
+        String email = emailR.getText().toString();
+        String surname = surnameR.getText().toString();
         String password = passR.getText().toString();
         String passwordConfirm = passConfirmR.getText().toString();
 
-
-        if(TextUtils.isEmpty(firstName)){
-            //email address has not been entered
-            Toast.makeText(this, "Please enter your first name", Toast.LENGTH_SHORT).show();
-            return;
+        if (TextUtils.isEmpty(firstName)) {
+            firstNameR.setError("Required.");
+            valid = false;
+        } else {
+            firstNameR.setError(null);
         }
 
-        if(TextUtils.isEmpty(surname)){
-            //email address has not been entered
-            Toast.makeText(this, "Please enter your surname", Toast.LENGTH_SHORT).show();
-            return;
+
+        if (TextUtils.isEmpty(surname)) {
+            surnameR.setError("Required.");
+            valid = false;
+        } else {
+            surnameR.setError(null);
         }
 
-        if(TextUtils.isEmpty(email)){
-            //email address has not been entered
-            Toast.makeText(this, "Please enter an email", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
+        if (TextUtils.isEmpty(email)) {
+            emailR.setError("Required.");
+            valid = false;
+        }
         else if (emailValidator(email) == false) {
             Toast.makeText(this, "Please enter in a valid email address", Toast.LENGTH_LONG).show();
-            return;
+            emailR.setError(null);
+            valid=false;
+        } else {
+            emailR.setError(null);
         }
 
-        if(TextUtils.isEmpty(password)){
-           //password has not been emptied
-            Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
-            // stop the function
-            return;
-        }
 
-        if(TextUtils.getTrimmedLength(password)<passwordLength) {
+        if (TextUtils.isEmpty(password)) {
+            passR.setError("Required.");
+            valid = false;
+        }
+        else if(TextUtils.getTrimmedLength(password)<passwordLength) {
             //password is smaller than the size that Firebase allows
             Toast.makeText(this, "Your password must be 6 characters or longer", Toast.LENGTH_LONG).show();
-            return;
+            passR.setError(null);
+            valid=false;
         }
-
-        if(!password.equals(passwordConfirm)){
+        else if(!password.equals(passwordConfirm)){
             //password and confirmation password do not match
             Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_LONG).show();
+            passR.setError(null);
+            valid=false;
+        }
+        else {
+            passR.setError(null);
+        }
+        return valid;
+    }
+
+
+    private void registerUser(){
+        if (!validate()) {
             return;
         }
-
-
+        final String firstName = firstNameR.getText().toString();
+        final String email = emailR.getText().toString();
+        final String surname = surnameR.getText().toString();
+        final String password = passR.getText().toString();
 
         progressDialog.setMessage("Registering user..");
         progressDialog.show();
@@ -175,7 +191,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 });
 
         //get the Firebase usery
-
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -186,8 +201,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 }
             }
         });
-
-
     }
 
     private void writeNewUser(String userId, String surname, String name, String email) {
@@ -196,7 +209,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         startActivity(new Intent(Register.this, Home.class));
         finish();
     }
-
 
     @Override
     public void onClick(View v) {
