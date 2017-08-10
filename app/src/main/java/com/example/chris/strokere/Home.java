@@ -66,11 +66,7 @@ public class Home extends BaseActivity {
     }
 
 
-    //method to log user out
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(Home.this, MainActivity.class));
-    }
+
 
     //method to open settings activity
     public void oSettings(View view) {
