@@ -24,4 +24,10 @@ public class Tip {
 
         }
 
+        public String getTipIntent(){
+
+            return this.intent;
+
+        }
+
     }

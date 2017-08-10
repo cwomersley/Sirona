@@ -13,14 +13,14 @@ import java.util.Random;
 
 
 
-public class TipsHelper {
+public class TipManager {
 
     HashMap<String,String> tipsMap = new HashMap<>();
 
     ArrayList<Tip> tipsList;
     Random randomNumber;
 
-    public TipsHelper () {
+    public TipManager() {
 
         randomNumber = new Random();
 
@@ -30,8 +30,8 @@ public class TipsHelper {
 
     private void setupTips() {
 
-        Tip tip1 = new Tip("You can set notifications to remind you when to workout", "Yes", "No");
-        Tip tip2 = new Tip("You can enable and disable voice prompts in Settings", "Yes", "No");
+        Tip tip1 = new Tip("You can set notifications to remind you when to workout", "Yes", "com.example.chris.strokere.SettingsWorkoutReminder");
+        Tip tip2 = new Tip("You can enable and disable voice prompts in Settings", "Yes", "com.example.chris.strokere.Settings");
 
         tipsList.add(tip1);
         tipsList.add(tip2);
