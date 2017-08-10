@@ -3,26 +3,19 @@ package com.example.chris.strokere;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.Filterable;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import android.widget.EditText;
 import android.text.Editable;
-import android.widget.TextView;
 import android.widget.VideoView;
-import android.view.ViewGroup;
 import android.widget.ExpandableListView.OnChildClickListener;
 
 public class ExerciseList extends AppCompatActivity {
@@ -34,7 +27,6 @@ public class ExerciseList extends AppCompatActivity {
     List<String> list;
     List<String> allExercises;
     HashMap<String, List<String>> map;
-    int i = 0;
     ExpandableListView expListView;
 
     @Override
@@ -155,7 +147,7 @@ public class ExerciseList extends AppCompatActivity {
                 d[0] = Character.toUpperCase(d[0]);
                 name = new String(c);
                 name = name.replace("_", " ");
-                if (!name.equals("$change") && !name.equals("SerialVersionUID")) {
+                if (!name.toLowerCase().equals("$change") && !name.toLowerCase().equals("serialVersionuid")) {
                     map.get("All Exercises").add(name);
                     allExercises.add(name);
 
