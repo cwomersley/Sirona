@@ -131,7 +131,8 @@ public class Account extends AppCompatActivity {
                 array.add(uInfo.getName());
                 array.add(uInfo.getSurname());
                 array.add(uInfo.getEmail());
-                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
+                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.list_black_text, R.id.list_content, array);
+                ;
                 mListView.setAdapter(adapter);
             }
 
