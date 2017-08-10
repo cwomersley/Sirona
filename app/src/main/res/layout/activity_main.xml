@@ -16,11 +16,11 @@
         android:layout_marginTop="0dp"
         android:background="@color/bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -80,7 +80,7 @@
             android:layout_height="90dp"
             android:layout_above="@+id/forgotText"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="0dp"
             android:background="@color/colorAccent"
             android:onClick="onLogin"
             android:text="Log in"
@@ -91,17 +91,18 @@
         <TextView
             android:id="@+id/forgotText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_above="@+id/registerBtnM"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="39dp"
+            android:layout_marginBottom="12dp"
             android:background="@color/bg"
             android:clickable="true"
             android:gravity="center"
             android:onClick="forgotText"
             android:text="FORGOTTEN PASSWORD?"
             android:textColor="@color/colorAccent"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="18sp"/>
 
         <Button
             android:id="@+id/bypassBtn"
@@ -121,7 +122,8 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:text="OR"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:visibility="gone" />
 
 
         <Button
@@ -145,7 +147,8 @@
             android:layout_alignTop="@+id/tableRow"
             android:layout_toStartOf="@+id/orText"
             android:background="#444"
-            android:elevation="1dp" />
+            android:elevation="1dp"
+            android:visibility="gone" />
 
         <TableRow
             android:id="@+id/tableRow"
@@ -154,7 +157,8 @@
             android:layout_alignBottom="@+id/orText"
             android:layout_marginBottom="10dp"
             android:layout_toEndOf="@+id/orText"
-            android:background="#444" />
+            android:background="#444"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

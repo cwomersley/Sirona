@@ -5,14 +5,17 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +34,15 @@ public class ExerciseView extends AppCompatActivity {
     private ArrayList<String> exercisesList;
     private ImageButton likeBtn;
     private ImageButton dissLikeBtn;
+    private ProgressBar progressBar;
+    private int progressStatus = 0;
+    private Handler handler = new Handler();
+    private MediaPlayer mp;
+    private ImageButton pause;
+    private  VideoView videoView;
+    private CountDownTimer cdt;
+    private int i = 0;
+    private long timeLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +51,8 @@ public class ExerciseView extends AppCompatActivity {
 
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar3);
+        pause = (ImageButton) findViewById(R.id.pauseResume);
 
         //
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -57,7 +71,10 @@ public class ExerciseView extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         setAndPlayVideo(setStringPath());
-        timer();
+        timer(10000);
+        progressBar.setProgress(i);
+
+
 
 
 
@@ -66,15 +83,30 @@ public class ExerciseView extends AppCompatActivity {
    //method for playing video depening on path
     public void setAndPlayVideo(String vidPath) {
 
-        VideoView videoView = (VideoView) findViewById(R.id.videoViewE);
+        videoView = (VideoView) findViewById(R.id.videoViewE);
         videoView.setVideoPath(vidPath);
         videoView.start();
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(videoView.isPlaying()){
+                    videoView.pause();
+                    pauseTimer();
+
+                }else {
+                    videoView.start();
+                    resumeTimer();
+                }
+
+            }
+        });
 
         //loops video playing in video view
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.setLooping(true);
+
             }
         });
 
@@ -82,13 +114,16 @@ public class ExerciseView extends AppCompatActivity {
     //set the path of the video from the arrayList
     public String setStringPath(){
 
-        String path = nameList.get(1);
+        if(nameList.size() > 0) {
+            String path = nameList.get(1);
+            String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
+            return stringPath;
+        }else{
 
 
-        String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
+            return null;
+        }
 
-
-        return stringPath;
 
     }
 
@@ -107,7 +142,7 @@ public class ExerciseView extends AppCompatActivity {
       }
     }
 
-    //populate the database from the list of files
+    //populate the database from the list of files (to be used to auto populate db )
     public void populateDB(){
 
         Field[] fields = R.raw.class.getFields();
@@ -153,10 +188,15 @@ public class ExerciseView extends AppCompatActivity {
 
     //timer use to change length an exercise is run for and when the next one should play
     //use new timer for each video ? ? to be able to set the time
-    public void timer() {
-        new CountDownTimer(30000, 1000) {
+
+
+
+    public void timer(long timeLeftMilli) {
+        cdt = new CountDownTimer(timeLeftMilli, 100) {
             public void onTick(long millisUntilFinished) {
-                //insert code to update progess bar ?
+                timeLeft = millisUntilFinished;
+                i++;
+                progressBar.setProgress(i*100/(10000/100));
             }
 
             public void onFinish() {
@@ -165,9 +205,25 @@ public class ExerciseView extends AppCompatActivity {
 
                 nameList.remove(1);
                 setAndPlayVideo(setStringPath());
+                timer(10000);
+                i = 0;
+
+
             }
-        }.start();
+        };
+        cdt.start();
     }
+
+  public void pauseTimer(){
+      cdt.cancel();
+      pause.setImageAlpha(1);
+  }
+
+  public void resumeTimer(){
+      timer(timeLeft);
+      pause.setImageAlpha(0);
+  }
+
 
     public void likeExercise(){
 
@@ -178,6 +234,8 @@ public class ExerciseView extends AppCompatActivity {
 
 
     }
+
+
 
 
 }

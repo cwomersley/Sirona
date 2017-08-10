@@ -6,63 +6,72 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import android.widget.EditText;
 import android.text.Editable;
 import android.widget.VideoView;
+import android.widget.ExpandableListView.OnChildClickListener;
 
 public class ExerciseList extends AppCompatActivity {
 
     ListView listView;
-    ArrayAdapter adapter;
+    ArrayAdapter listViewAdapter;
+    ExpandableListAdapter expListAdapter;
     EditText inputSearch;
     List<String> list;
-    List<String> Headings;
-    int i = 0;
+    List<String> allExercises;
+    HashMap<String, List<String>> map;
+    ExpandableListView expListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+/*
+    THINGS TO DO
+    4. make the file names start with the right letter, then add underscore (so change char to remove first 2)
+    5. Refactor
+    6. possibly initdata() its own class, possibly make a video class
+     */
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
 
-//below is populating an arraylist with the video names from raw
-        Field[] f = R.raw.class.getFields();
-        list = new ArrayList<>();
-        for(Field fields : f)
-            try{
-                //below attempts to format the text so _ are spaces (which works now) and to capitalise the first letter after
-                //the space (which does not work right now).
-                String name = fields.getName();
-                char[] c = name.toCharArray();
-                if(name.contains("_")){
-                    while(i<name.length()) {
-                        if(c[i] == ' ') {
-                            c[i+1] = Character.toUpperCase(c[i+1]);
-                        }
-                       i++;
-                    }
-                }
-                //below if gets rid of the two unwanted field names that get added automatically
-                if(!name.equals("$change") && !name.equals("serialVersionUID")) {
-                    c[0] = Character.toUpperCase(c[0]); //make first letter always uppercase
-                    name = String.valueOf(c);
-                    name = name.replace("_", " ");
-                    list.add(name);
-                }
-            }
-            catch (IllegalArgumentException e) {
-            }
 //below is making the listview
-        adapter = new ArrayAdapter<>(this, R.layout.list_items, R.id.textView, list);
-        listView = (ListView) findViewById(R.id.list);
-        listView.setClickable(true);
-        listView.setAdapter(adapter);
+        expListView = (ExpandableListView) findViewById(R.id.list);
+        initData();
+        expListAdapter = new ExpandableListAdapter(this, list, map);
+        expListView.setClickable(true);
+        expListView.setAdapter(expListAdapter);
 
-// below is making the items clickable so they play the video when clicked
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewAdapter = new ArrayAdapter<>(this, R.layout.list_items, R.id.textView, allExercises);
+        listView = (ListView) findViewById(R.id.listview);
+        listView.setClickable(true);
+        listView.setAdapter(listViewAdapter);
+
+        expListView.setOnChildClickListener(new OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                getApplicationContext();
+                String name = map.get(list.get(groupPosition)).get(childPosition);
+                //cant use contain gonna have to use.equals(), change this at end
+                name = name.replace(" ", "_");
+                name = name.toLowerCase();
+                String path = "android.resource://" + getPackageName() + "//raw/" + name;
+                VideoView video = (VideoView) findViewById(R.id.videoView2);
+                video.setVideoPath(path);
+                video.start();
+                return false;
+            }
+        });
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
                 String name = adapter.getItemAtPosition(p).toString();
@@ -81,7 +90,18 @@ public class ExerciseList extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSeq, int a, int b, int c) {
-                ExerciseList.this.adapter.getFilter().filter(charSeq);
+                if(inputSearch.getText().toString().trim().length() > 0){
+                    expListView.setVisibility(View.INVISIBLE);
+                    listView.setVisibility(View.VISIBLE);
+
+                }
+                else{
+                    expListView.setVisibility(View.VISIBLE);
+                    listView.setVisibility(View.INVISIBLE);
+
+                }
+               listViewAdapter.getFilter().filter(charSeq);
+
             }
 
             @Override
@@ -95,6 +115,67 @@ public class ExerciseList extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initData() {
+        //below instantiates the headers, and then makes a map of headers to arraylists
+        list = new ArrayList<>();
+        allExercises = new ArrayList<>();
+        map = new HashMap<>();
+        list.add("All Exercises");
+        list.add("Arms");
+        list.add("Back");
+        list.add("Chest");
+        list.add("Core");
+        list.add("Legs");
+        list.add("Shoulders");
+        map.put("All Exercises", new ArrayList<String>());
+        map.put("Arms", new ArrayList<String>());
+        map.put("Back", new ArrayList<String>());
+        map.put("Chest", new ArrayList<String>());
+        map.put("Core", new ArrayList<String>());
+        map.put("Legs", new ArrayList<String>());
+        map.put("Shoulders", new ArrayList<String>());
+
+        //below then uses a for loop to go through each exercise video and maps them accordingly.
+        Field[] f = R.raw.class.getFields();
+        for (Field fields : f)
+            try {
+                String name = fields.getName();
+                char[] c = name.toCharArray();
+                char[] d = Arrays.copyOfRange(c, 1, name.length());
+                d[0] = Character.toUpperCase(d[0]);
+                name = new String(c);
+                name = name.replace("_", " ");
+                if (!name.toLowerCase().equals("$change") && !name.toLowerCase().equals("serialVersionuid")) {
+                    map.get("All Exercises").add(name);
+                    allExercises.add(name);
+
+                    switch (c[0]) {
+                        case 'a':
+                            map.get("Arms").add(name);
+                            break;
+                        case 'b':
+                            map.get("Back").add(name);
+                            break;
+                        case 'c':
+                            map.get("Chest").add(name);
+                            break;
+                        case 'd':
+                            map.get("Core").add(name);
+                            break;
+                        case 'e':
+                            map.get("Legs").add(name);
+                            break;
+                        case 'f':
+                            map.get("Shoulders").add(name);
+                            break;
+                    }
+                }
+
+            }
+            catch (IllegalArgumentException e) {
+            }
 
     }
 }
