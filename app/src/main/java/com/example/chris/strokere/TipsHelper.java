@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -14,7 +15,9 @@ import java.util.Random;
 
 public class TipsHelper {
 
-    ArrayList<String> tipsList;
+    HashMap<String,String> tipsMap = new HashMap<>();
+
+    ArrayList<Tip> tipsList;
     Random randomNumber;
 
     public TipsHelper () {
@@ -27,20 +30,22 @@ public class TipsHelper {
 
     private void setupTips() {
 
-        tipsList.add("You can do this and this and this");
-        tipsList.add("Also you can do this");
-        tipsList.add("To do this you can do this or that");
-        tipsList.add("Click on this to do that and this");
+        Tip tip1 = new Tip("You can set notifications to remind you when to workout", "Yes", "No");
+        Tip tip2 = new Tip("You can enable and disable voice prompts in Settings", "Yes", "No");
+
+        tipsList.add(tip1);
+        tipsList.add(tip2);
+
 
     }
 
-    public String getATip()   {
+    public Tip getATip()   {
 
         setupTips();
 
         try {
             int id = randomNumber.nextInt(tipsList.size());
-            String tip = (String) tipsList.get(id);
+            Tip tip = tipsList.get(id);
             return tip;
         }
         catch (Throwable e){
@@ -49,6 +54,7 @@ public class TipsHelper {
 
     }
 
-
-
 }
+
+
+

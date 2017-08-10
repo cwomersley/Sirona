@@ -50,9 +50,10 @@ public class Home extends BaseActivity {
         TextView tipsText = (TextView) findViewById(R.id.tipsText);
         TipsHelper tipsHelper = new TipsHelper();
 
-        String tip = tipsHelper.getATip();
+        Tip tip = tipsHelper.getATip();
+        String tipText = tip.getTipText();
 
-        tipsText.setText(tip);
+        tipsText.setText(tipText);
         //Log.d("Logthis   ",tip);
 
         tipsText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
