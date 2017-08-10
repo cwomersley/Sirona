@@ -39,6 +39,16 @@
             android:layout_height="match_parent"
             android:background="@color/bg">
 
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/relativeLayout"
+                android:layout_alignEnd="@+id/relativeLayout" />
+
             <RelativeLayout
                 android:id="@+id/relativeLayout"
                 android:layout_width="300dp"
@@ -50,12 +60,21 @@
                 <VideoView
                     android:id="@+id/videoViewE"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:keepScreenOn="true" />
+
+                <ImageButton
+                    android:id="@+id/pauseResume"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:alpha="0"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/pause" />
 
             </RelativeLayout>
 
