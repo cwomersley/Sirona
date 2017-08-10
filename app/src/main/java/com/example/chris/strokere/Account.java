@@ -295,6 +295,12 @@ public class Account extends AppCompatActivity {
         dialog.show();
     }
 
+    //method to log user out
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(Account.this, MainActivity.class));
+    }
+
 }
 
 
