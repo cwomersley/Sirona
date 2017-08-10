@@ -117,6 +117,7 @@ public class Account extends AppCompatActivity {
 
     private void showData(DataSnapshot dataSnapshot) {
 
+        //method to pull account details of patient from firebase database
         for(DataSnapshot ds: dataSnapshot.getChildren()) {
             if(ds.getKey().equals("Patients")) {
                 User uInfo = new User();
@@ -128,9 +129,9 @@ public class Account extends AppCompatActivity {
                 Log.d(dTAG, "showData: phone_num: " + uInfo.getEmail());
 
                 ArrayList<String> array = new ArrayList<>();
-                array.add(uInfo.getName());
-                array.add(uInfo.getSurname());
-                array.add(uInfo.getEmail());
+                array.add("Name: " + uInfo.getName() +" " + uInfo.getSurname());
+                //array.add("Surname: " + uInfo.getSurname());
+                array.add("Email: " + uInfo.getEmail());
                 ArrayAdapter adapter = new ArrayAdapter(this, R.layout.list_black_text, R.id.list_content, array);
                 ;
                 mListView.setAdapter(adapter);

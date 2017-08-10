@@ -8,6 +8,22 @@
     android:background="@color/bg"
     tools:context="com.example.chris.strokere.Account">
 
+    <EditText
+        android:id="@+id/pEmail"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_above="@+id/pHiddenEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="70dp"
+        android:background="@color/colorPrimaryDark"
+        android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textWebEmailAddress"
+        android:textColor="@color/greenAccent"
+        android:textColorHint="@color/greenAccent"
+        android:textSize="24sp" />
+
     <Button
         android:id="@+id/pEmailBtn"
         android:layout_width="wrap_content"
@@ -16,22 +32,6 @@
         android:onClick="changeEmail"
         android:text="Change Email"
         android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:id="@+id/pEmail"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/colorPrimaryDark"
-        android:backgroundTint="@android:color/white"
-        android:ems="10"
-        android:hint="Enter Email"
-        android:inputType="textWebEmailAddress"
-        android:textColor="@color/greenAccent"
-        android:textColorHint="@color/greenAccent"
-        android:textSize="24sp"
-        android:layout_marginBottom="81dp"
-        android:layout_above="@+id/pPassword"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -90,11 +90,10 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/pEmail"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="71dp"
         android:text="Change Email"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_alignTop="@+id/pEmail"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/pHiddenPassword"
@@ -149,8 +148,8 @@
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
+        android:layout_height="100dp"
+        android:layout_marginBottom="41dp"
         android:layout_above="@+id/textView"
         android:layout_alignParentStart="true" />
 
