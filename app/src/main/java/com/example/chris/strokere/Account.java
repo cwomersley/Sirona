@@ -3,13 +3,16 @@ package com.example.chris.strokere;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +22,13 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import static com.example.chris.strokere.R.id.pPasswordBtn;
 
@@ -26,6 +36,7 @@ public class Account extends AppCompatActivity {
 
     private FirebaseUser user;
     public static final String TAG = "Password";
+    public static final String dTAG = "Database";
     private EditText password;
     private EditText confirmPassword;
     private EditText email;
@@ -33,6 +44,16 @@ public class Account extends AppCompatActivity {
     private EditText hiddenEmail;
     private Button pPasswordBtn;
     private Button pConfirmBtn;
+    private DatabaseReference mDatabase;
+
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference myRef;
+    private String userID;
+    private ListView mListView;
+
 
 
 
@@ -48,11 +69,80 @@ public class Account extends AppCompatActivity {
         hiddenEmail = (EditText) findViewById(R.id.pHiddenEmail);
         user = FirebaseAuth.getInstance().getCurrentUser();
         pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
-        pConfirmBtn = (Button) findViewById(R.id.pPasswordBtn);
+        //pConfirmBtn = (Button) findViewById(R.id.pPasswordBtn);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
+
+        mAuth=FirebaseAuth.getInstance();
+        mFirebaseDatabase=FirebaseDatabase.getInstance();
+        myRef=mFirebaseDatabase.getReference();
+        FirebaseUser dUser = mAuth.getCurrentUser();
+        userID=dUser.getUid();
+
+        mListView= (ListView) findViewById(R.id.listview);
+
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // ...
+            }
+        };
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                showData(dataSnapshot);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         //pPasswordBtn.setOnClickListener(this);
 
+
     }
+
+    private void showData(DataSnapshot dataSnapshot) {
+
+        //method to pull account details of patient from firebase database
+        for(DataSnapshot ds: dataSnapshot.getChildren()) {
+            if(ds.getKey().equals("Patients")) {
+                User uInfo = new User();
+                uInfo.setName(ds.child(userID).getValue(User.class).getName());
+                uInfo.setSurname(ds.child(userID).getValue(User.class).getSurname());
+                uInfo.setEmail(ds.child(userID).getValue(User.class).getEmail());
+                Log.d(dTAG, "showData: name: " + uInfo.getName());
+                Log.d(dTAG, "showData: surname: " + uInfo.getSurname());
+                Log.d(dTAG, "showData: phone_num: " + uInfo.getEmail());
+
+                ArrayList<String> array = new ArrayList<>();
+                array.add("Name: " + uInfo.getName() +" " + uInfo.getSurname());
+                //array.add("Surname: " + uInfo.getSurname());
+                array.add("Email: " + uInfo.getEmail());
+                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.list_black_text, R.id.list_content, array);
+                ;
+                mListView.setAdapter(adapter);
+            }
+
+        }
+
+
+
+    }
+
     //returns true/false depending on whether a user is signed in
     public boolean signedIn() {
         if (user != null) {
@@ -204,6 +294,13 @@ public class Account extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
+    //method to log user out
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(Account.this, MainActivity.class));
+    }
+
 }
 
 

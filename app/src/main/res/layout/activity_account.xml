@@ -8,24 +8,13 @@
     android:background="@color/bg"
     tools:context="com.example.chris.strokere.Account">
 
-    <Button
-        android:id="@+id/pEmailBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/pEmail"
-        android:layout_marginTop="48dp"
-        android:background="@color/colorAccent"
-        android:onClick="changeEmail"
-        android:text="Change Email" />
-
     <EditText
         android:id="@+id/pEmail"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_above="@+id/pHiddenEmail"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="57dp"
+        android:layout_marginBottom="70dp"
         android:background="@color/colorPrimaryDark"
         android:backgroundTint="@android:color/white"
         android:ems="10"
@@ -36,15 +25,25 @@
         android:textSize="24sp" />
 
     <Button
+        android:id="@+id/pEmailBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@color/colorAccent"
+        android:onClick="changeEmail"
+        android:text="Change Email" />
+
+    <Button
         android:id="@+id/pPasswordBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="54dp"
         android:background="@color/colorAccent"
         android:onClick="changePassword"
-        android:text="Change Password" />
+        android:text="Change Password"
+        android:layout_alignBaseline="@+id/delAccBtn"
+        android:layout_alignBottom="@+id/delAccBtn"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/pPassword"
@@ -91,11 +90,10 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/pEmail"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="71dp"
         android:text="Change Email"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:layout_alignTop="@+id/pEmail"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/pHiddenPassword"
@@ -141,10 +139,27 @@
         android:id="@+id/delAccBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/pHiddenEmail"
-        android:layout_alignEnd="@+id/pHiddenEmail"
-        android:layout_marginEnd="34dp"
         android:onClick="delAccount"
-        android:text="Delete Account" />
+        android:text="Delete Account"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/pHiddenEmail"
+        android:layout_marginBottom="19dp" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorAccent"
+        android:onClick="logout"
+        android:text="Logout" />
 
 </android.widget.RelativeLayout>

@@ -2,8 +2,10 @@ package com.example.chris.strokere;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -42,8 +44,20 @@ public class Home extends BaseActivity {
         Button btnPreferences = (Button) findViewById(R.id.btnPreferencesH);
         btnPreferences.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        Button btnLogout = (Button) findViewById(R.id.btnLogout);
-        btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        //Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        //btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        TextView tipsText = (TextView) findViewById(R.id.tipsText);
+        TipsHelper tipsHelper = new TipsHelper();
+
+        Tip tip = tipsHelper.getATip();
+        String tipText = tip.getTipText();
+
+        tipsText.setText(tipText);
+        //Log.d("Logthis   ",tip);
+
+        tipsText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
 
     }
 
@@ -53,11 +67,7 @@ public class Home extends BaseActivity {
     }
 
 
-    //method to log user out
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(Home.this, MainActivity.class));
-    }
+
 
     //method to open settings activity
     public void oSettings(View view) {

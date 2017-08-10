@@ -29,7 +29,7 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class RegisterTest {
 
-    private FirebaseUser user;
+    private FirebaseAuth user;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -40,7 +40,7 @@ public class RegisterTest {
     //user must be logged out to run this test
     public void registerTest() {
 
-            char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
+        char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
             StringBuilder sb1 = new StringBuilder();
             Random random1 = new Random();
             for (int i = 0; i < 6; i++) {
