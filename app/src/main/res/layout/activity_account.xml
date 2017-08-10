@@ -147,4 +147,11 @@
         android:onClick="delAccount"
         android:text="Delete Account" />
 
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/pEmail"
+        android:layout_toEndOf="@+id/aConfirmBtn" />
+
 </android.widget.RelativeLayout>
