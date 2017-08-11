@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,6 +44,8 @@ public class ExerciseView extends AppCompatActivity {
     private CountDownTimer cdt;
     private int i = 0;
     private long timeLeft;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +109,9 @@ public class ExerciseView extends AppCompatActivity {
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
+
+                    mp.setLooping(true);
+
 
             }
         });
@@ -115,12 +120,11 @@ public class ExerciseView extends AppCompatActivity {
     //set the path of the video from the arrayList
     public String setStringPath(){
 
-        if(nameList.size() > 0) {
-            String path = nameList.get(1);
+        if(nameList.size()>0) {
+            String path = nameList.get(0);
             String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
             return stringPath;
-        }else{
-            //CHANGE
+        }else {
             return null;
         }
 
@@ -136,9 +140,12 @@ public class ExerciseView extends AppCompatActivity {
         Field[] fields = R.raw.class.getFields();
 
         for (int i = 0; i < fields.length - 1; i++) {
-            String name = fields[i].getName();
-            //add if statement if they match the name of a requested file from server ????
-           nameList.add(name);
+
+                String name = fields[i].getName();
+            if(name != "$change"  && name != "serialVersionUID") {
+                nameList.add(name);
+            }
+
       }
     }
 
@@ -157,6 +164,7 @@ public class ExerciseView extends AppCompatActivity {
 
         //removes the first $change value from the array
         exercisesList.remove(0);
+
 
         for (int i = 0; i < exercisesList.size(); i++) {
             String name = exercisesList.get(i);
@@ -196,7 +204,7 @@ public class ExerciseView extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 i++;
-                //10000/100 use first numberr as variable?
+                Log.d("fubar", Integer.toString(i));
                 progressBar.setProgress(i);
 
             }
@@ -204,11 +212,20 @@ public class ExerciseView extends AppCompatActivity {
             public void onFinish() {
 
                 //load the next video and set the time for it ?
+                if (nameList.size()> 1) {
 
-                nameList.remove(1);
-                setAndPlayVideo(setStringPath());
-                timer(10000);
-                i = 0;
+                    nameList.remove(0);
+
+                    setAndPlayVideo(setStringPath());
+                    i = 0;
+                    timer(10000);
+
+                }else if (nameList.size() == 1) {
+
+                    videoView.stopPlayback();
+
+
+                }
 
 
             }
