@@ -62,11 +62,17 @@ public class MainActivity extends AppCompatActivity  {
             logInBtn = (Button) findViewById(R.id.loginBtnM);
             registerBtn = (Button) findViewById(R.id.registerBtnM);
 
+            //generic login for testing purposes
+
+
+
             emailL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
             passwordL.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
             logInBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
             registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
+            emailL.setText("test@test.com");
+            passwordL.setText("password");
 
     }
 
