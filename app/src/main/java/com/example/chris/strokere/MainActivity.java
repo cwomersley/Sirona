@@ -20,6 +20,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MainActivity extends AppCompatActivity  {
 
     private FirebaseAuth mAuth;
@@ -120,29 +123,50 @@ public class MainActivity extends AppCompatActivity  {
         boolean valid = true;
 
         String email = emailL.getText().toString();
+        String password = passwordL.getText().toString();
+
         if (TextUtils.isEmpty(email)) {
             emailL.setError("Required.");
             valid = false;
-        } else {
+        }
+        else if (!emailValidator(email)) {
+            emailL.setError("Please enter a valid email address");
+            valid =false;
+        }
+        else {
             emailL.setError(null);
         }
-
-        String password = passwordL.getText().toString();
         if (TextUtils.isEmpty(password)) {
             passwordL.setError("Required.");
             valid = false;
         } else {
             passwordL.setError(null);
         }
-
         return valid;
     }
 
+    public boolean emailValidator(String email)
+
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
     //sends a password reset email to user
-    public void forgotText(View view){
+    public void forgotPassword(View view){
+        startActivity(new Intent(MainActivity.this, ForgottenPassword.class));
+        /**
         String email = emailL.getText().toString();
         if (TextUtils.isEmpty(email)) {
-            emailL.setError("Required.");
+            Toast.makeText(this, "Please enter your email address to proceed", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if (!emailValidator(email)) {
+            emailL.setError("Please enter a valid email address");
             return;
         }
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -159,6 +183,8 @@ public class MainActivity extends AppCompatActivity  {
                         }
                     }
                 });
+         **/
+
     }
 
 }

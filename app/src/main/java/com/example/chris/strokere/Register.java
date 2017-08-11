@@ -131,7 +131,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             emailR.setError("Required.");
             valid = false;
         }
-        else if (emailValidator(email) == false) {
+        else if (!emailValidator(email)) {
             Toast.makeText(this, "Please enter in a valid email address", Toast.LENGTH_LONG).show();
             emailR.setError(null);
             valid=false;
