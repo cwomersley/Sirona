@@ -173,22 +173,24 @@ public class Account extends AppCompatActivity {
 
     //method for a user to change their email
     public void changeEmail(View view) {
-        if (signedIn()) {
-            String newEmail = email.getText().toString();
-            user.updateEmail(newEmail)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(Account.this, "Your email address has been updated", Toast.LENGTH_SHORT).show();
-                            }
+        if (!signedIn()) {
+            return;
+        }
+        String newEmail = email.getText().toString();
+        if (TextUtils.isEmpty(newEmail)) {
+            email.setError("required");
+            return;
+        }
+        email.setError(null);
+        user.updateEmail(newEmail)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Account.this, "Your email address has been updated", Toast.LENGTH_SHORT).show();
                         }
-                    });
-        }
-        else {
-            Toast.makeText(Account.this, "You are not signed in", Toast.LENGTH_SHORT).show();
-        }
-
+                    }
+                });
     }
 
     //validates fields on activity
