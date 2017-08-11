@@ -39,12 +39,13 @@
 
         <EditText
             android:id="@+id/exerciseSearch"
+            android:background="@drawable/exercise_search"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_below="@+id/include2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="13dp"
-            android:ems="10"
+            android:ems="15"
             android:hint="@string/searchExercises"
             android:textColorHint="@color/greenAccent"
             android:inputType="textPersonName"

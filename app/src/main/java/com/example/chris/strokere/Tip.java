@@ -30,4 +30,10 @@ public class Tip {
 
         }
 
+        public String getTipIcon(){
+
+            return this.icon;
+
+        }
+
     }
