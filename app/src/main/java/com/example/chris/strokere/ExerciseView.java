@@ -54,6 +54,8 @@ public class ExerciseView extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
 
+
+
         //
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -73,7 +75,6 @@ public class ExerciseView extends AppCompatActivity {
         setAndPlayVideo(setStringPath());
         timer(10000);
         progressBar.setProgress(i);
-
 
 
 
@@ -119,8 +120,7 @@ public class ExerciseView extends AppCompatActivity {
             String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
             return stringPath;
         }else{
-
-
+            //CHANGE
             return null;
         }
 
@@ -196,7 +196,9 @@ public class ExerciseView extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 i++;
-                progressBar.setProgress(i*100/(10000/100));
+                //10000/100 use first numberr as variable?
+                progressBar.setProgress(i);
+
             }
 
             public void onFinish() {
@@ -216,12 +218,12 @@ public class ExerciseView extends AppCompatActivity {
 
   public void pauseTimer(){
       cdt.cancel();
-      pause.setImageAlpha(1);
+      pause.setAlpha(1.0f);
   }
 
   public void resumeTimer(){
       timer(timeLeft);
-      pause.setImageAlpha(0);
+      pause.setAlpha(0.0f);
   }
 
 
