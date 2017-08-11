@@ -13,10 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_above="@+id/pHiddenEmail"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="70dp"
         android:background="@color/colorPrimaryDark"
-        android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="Enter Email"
         android:inputType="textWebEmailAddress"
@@ -24,10 +25,14 @@
         android:textColorHint="@color/greenAccent"
         android:textSize="24sp" />
 
+
+
     <Button
         android:id="@+id/pEmailBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:background="@color/colorAccent"
@@ -38,6 +43,8 @@
         android:id="@+id/pPasswordBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@color/colorAccent"
         android:onClick="changePassword"
         android:text="Change Password"
@@ -52,8 +59,9 @@
         android:layout_above="@+id/pConfirmPassword"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@color/colorPrimaryDark"
-        android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPassword"
@@ -65,35 +73,18 @@
         android:id="@+id/pConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_alignBottom="@+id/pPasswordBtn"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="62dp"
         android:background="@color/colorPrimaryDark"
-        android:backgroundTint="@android:color/white"
         android:ems="10"
         android:hint="Re-enter Password"
         android:inputType="textPassword"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
         android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/pPassword"
-        android:text="Change Password"
-        android:textColor="@color/colorAccent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Change Email"
-        android:textColor="@color/colorAccent"
-        android:layout_alignTop="@+id/pEmail"
-        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/pHiddenPassword"
@@ -139,6 +130,8 @@
         android:id="@+id/delAccBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:onClick="delAccount"
         android:text="Delete Account"
         android:layout_alignParentBottom="true"
@@ -149,13 +142,17 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_above="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/logoutBtn"
+        android:layout_alignEnd="@+id/logoutBtn" />
 
     <Button
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:background="@color/colorAccent"
