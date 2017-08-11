@@ -99,7 +99,7 @@
             android:clickable="true"
             android:gravity="center"
             android:onClick="forgotText"
-            android:text="FORGOTTEN PASSWORD?"
+            android:text="Forgotten Password?"
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:textSize="18sp"/>

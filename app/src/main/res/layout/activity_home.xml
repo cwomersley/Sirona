@@ -62,7 +62,7 @@
         <Button
             android:id="@+id/btnWorkoutH"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
+            android:background="@drawable/standard_button_pink"
             android:layout_above="@+id/btnExerciseH"
             android:layout_alignParentEnd="true"
             android:layout_alignStart="@+id/btnExerciseH"
@@ -81,15 +81,25 @@
             android:text="Settings"
             app:layout_constraintTop_toBottomOf="@+id/btnProgressH" />
 
+        <TextView
+            android:id="@+id/tipIconBackground"
+            android:background="@drawable/tip_background"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/include2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp" />
+
         <ImageView
             android:id="@+id/tipIcon"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            app:srcCompat="@drawable/ic_lightbulb_outline_black_24dp"
-            android:layout_marginStart="10dp"
-            android:layout_below="@+id/include2"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="30dp" />
+            android:layout_below="@+id/include2"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            app:srcCompat="@drawable/ic_add_alert_white_24dp" />
 
     </RelativeLayout>
 

@@ -32,7 +32,7 @@ public class TipManager {
 
         Tip tip1 = new Tip("You can set notifications to remind you when to workout", "Yes", "com.example.chris.strokere.SettingsWorkoutReminder");
         Tip tip2 = new Tip("You can enable and disable voice prompts in Settings", "Yes", "com.example.chris.strokere.Settings");
-        Tip tip3 = new Tip("You can enable and disable voice prompts in Settings", "Yes", "com.example.chris.strokere.Settings");
+        Tip tip3 = new Tip("You can see your  or tap the lightbulb", "Yes", "com.example.chris.strokere.Settings");
 
         tipsList.add(tip1);
         tipsList.add(tip2);

@@ -17,7 +17,7 @@
     </style>
 
     <style name="standard_button">
-        <item name="android:layout_width">368dp</item>
+        <item name="android:layout_width">480dp</item>
         <item name="android:layout_height">90dp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:gravity">center</item>
