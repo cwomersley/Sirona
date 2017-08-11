@@ -73,8 +73,10 @@
                     android:layout_height="match_parent"
                     android:layout_centerVertical="true"
                     android:alpha="0"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/pause" />
+                    android:backgroundTint="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/ic_pause_circle_outline_black_24dp"
+                    tools:background="@android:color/transparent" />
 
             </RelativeLayout>
 
