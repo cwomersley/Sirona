@@ -47,7 +47,9 @@ public class Account extends AppCompatActivity {
     private Button pPasswordBtn;
     private Button pConfirmBtn;
     private DatabaseReference mDatabase;
-
+    private Button pEmailBtn;
+    private Button logoutBtn;
+    private Button delAccBtn;
 
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
@@ -64,13 +66,31 @@ public class Account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
+        pEmailBtn = (Button) findViewById(R.id.pEmailBtn);
+        pEmailBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        delAccBtn = (Button) findViewById(R.id.delAccBtn);
+        delAccBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        logoutBtn = (Button) findViewById(R.id.logoutBtn);
+        logoutBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
         email = (EditText) findViewById(R.id.pEmail);
+        email.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
         password = (EditText) findViewById(R.id.pPassword);
+        password.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
+        confirmPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
         hiddenPassword = (EditText) findViewById(R.id.pHiddenPassword);
         hiddenEmail = (EditText) findViewById(R.id.pHiddenEmail);
+
         user = FirebaseAuth.getInstance().getCurrentUser();
+
         pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
+        pPasswordBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         //pConfirmBtn = (Button) findViewById(R.id.pPasswordBtn);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
