@@ -14,6 +14,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:background="@color/bg"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,64 +32,9 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="120dp"
                 android:layout_height="match_parent"
-                android:gravity="center">
-
-            <TextView
-                android:id="@+id/week1P"
-                style="@style/calendar_day"
-                android:textColor="@color/greenAccent"
-                android:text="W1" />
-
-            <TextView
-                android:id="@+id/week2P"
-                style="@style/calendar_day"
-                android:textColor="@color/greenAccent"
-                android:text="W2" />
-
-            <TextView
-                android:id="@+id/week3P"
-                style="@style/calendar_day"
-                android:textColor="@color/greenAccent"
-                android:text="W3" />
-
-            <TextView
-                android:id="@+id/week4P"
-                style="@style/calendar_day"
-                android:textColor="@color/greenAccent"
-                android:text="W4" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/mon1P"
-                    style="@style/calendar_day"
-                    android:background="@drawable/calendar_day"
-                    android:text="Mon" />
-
-                <TextView
-                    android:id="@+id/mon2P"
-                    style="@style/calendar_day"
-                    android:background="@drawable/calendar_day"
-                    android:text="Mon" />
-
-                <TextView
-                    android:id="@+id/mon3P"
-                    style="@style/calendar_day"
-                    android:background="@drawable/calendar_day"
-                    android:text="Mon" />
-
-                <TextView
-                    android:id="@+id/mon4P"
-                    style="@style/calendar_day"
-                    android:background="@drawable/calendar_day"
-                    android:text="Mon" />
-
+                android:gravity="left">
 
             </TableRow>
 
@@ -98,28 +44,97 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/tue1P"
+                    android:id="@+id/d1P"
                     style="@style/calendar_day"
                     android:background="@drawable/calendar_day"
-                    android:text="Tue" />
+                    android:text="1" />
 
                 <TextView
-                    android:id="@+id/tue2P"
+                    android:id="@+id/d2P"
                     style="@style/calendar_day"
                     android:background="@drawable/calendar_day"
-                    android:text="Tue" />
+                    android:text="2" />
 
                 <TextView
-                    android:id="@+id/tue3P"
+                    android:id="@+id/d3P"
                     style="@style/calendar_day"
                     android:background="@drawable/calendar_day"
-                    android:text="Tue" />
+                    android:text="3" />
 
                 <TextView
-                    android:id="@+id/tue4P"
+                    android:id="@+id/d4P"
                     style="@style/calendar_day"
                     android:background="@drawable/calendar_day"
-                    android:text="Tue" />
+                    android:text="4" />
+
+                <TextView
+                    android:id="@+id/d5P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="5" />
+
+                <TextView
+                    android:id="@+id/d6P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="6" />
+
+                <TextView
+                    android:id="@+id/d7P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="7" />
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/d8P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="8" />
+
+                <TextView
+                    android:id="@+id/d9P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="9" />
+
+                <TextView
+                    android:id="@+id/d10P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="10" />
+
+                <TextView
+                    android:id="@+id/d11P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="11" />
+
+                <TextView
+                    android:id="@+id/d12P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="12" />
+
+                <TextView
+                    android:id="@+id/d13P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="13" />
+
+                <TextView
+                    android:id="@+id/d14P"
+                    style="@style/calendar_day"
+                    android:background="@drawable/calendar_day"
+                    android:text="14" />
+
             </TableRow>
 
             <TableRow
@@ -128,28 +143,47 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/wed1P"
+                android:id="@+id/d15P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Wed" />
+                android:text="15" />
 
             <TextView
-                android:id="@+id/wed2P"
+                android:id="@+id/d16P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Wed" />
+                android:text="16" />
 
             <TextView
-                android:id="@+id/wed3P"
+                android:id="@+id/d17P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Wed" />
+                android:text="17" />
 
             <TextView
-                android:id="@+id/wed4P"
+                android:id="@+id/d18P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Wed" />
+                android:text="18" />
+
+            <TextView
+                android:id="@+id/d19P"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day"
+                android:text="19" />
+
+            <TextView
+                android:id="@+id/d20P"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day"
+                android:text="20" />
+
+            <TextView
+                android:id="@+id/d21P"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day"
+                android:text="21" />
+
         </TableRow>
 
         <TableRow
@@ -158,28 +192,47 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/thu1P"
+                android:id="@+id/d22P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Thu" />
+                android:text="22" />
 
             <TextView
-                android:id="@+id/thu2P"
+                android:id="@+id/d23P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Thu" />
+                android:text="23" />
 
             <TextView
-                android:id="@+id/thu3P"
+                android:id="@+id/d24P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Thu" />
+                android:text="24" />
 
             <TextView
-                android:id="@+id/thu4P"
+                android:id="@+id/d25P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Thu" />
+                android:text="25" />
+
+            <TextView
+                android:id="@+id/d26P"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day"
+                android:text="26" />
+
+            <TextView
+                android:id="@+id/d27P"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day"
+                android:text="27" />
+
+            <TextView
+                android:id="@+id/d28P"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day"
+                android:text="28" />
+
         </TableRow>
 
         <TableRow
@@ -188,94 +241,58 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/fri1P"
+                android:id="@+id/d29P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Fri" />
+                android:text="29" />
 
             <TextView
-                android:id="@+id/fri2P"
+                android:id="@+id/d30P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Fri" />
+                android:text="30" />
 
             <TextView
-                android:id="@+id/fri3P"
+                android:id="@+id/d31P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Fri" />
+                android:text="31" />
 
             <TextView
-                android:id="@+id/fri4P"
+                android:id="@+id/dEmpty4P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Fri" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+                android:text=""
+                android:visibility="invisible"/>
 
             <TextView
-                android:id="@+id/sat1P"
+                android:id="@+id/dEmpty5P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Sat" />
+                android:text=""
+                android:visibility="invisible"/>
 
             <TextView
-                android:id="@+id/sat2P"
+                android:id="@+id/dEmpty6"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Sat" />
+                android:text=""
+                android:visibility="invisible"/>
 
             <TextView
-                android:id="@+id/sat3P"
+                android:id="@+id/dEmpty7P"
                 style="@style/calendar_day"
                 android:background="@drawable/calendar_day"
-                android:text="Sat" />
+                android:text=""
+                android:visibility="invisible"/>
 
-            <TextView
-                android:id="@+id/sat4P"
-                style="@style/calendar_day"
-                android:background="@drawable/calendar_day"
-                android:text="Sat" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/sun1P"
-                style="@style/calendar_day"
-                android:background="@drawable/calendar_day"
-                android:text="Sun" />
-
-            <TextView
-                android:id="@+id/sun2P"
-                style="@style/calendar_day"
-                android:background="@drawable/calendar_day"
-                android:text="Sun" />
-
-            <TextView
-                android:id="@+id/sun3P"
-                style="@style/calendar_day"
-                android:background="@drawable/calendar_day"
-                android:text="Sun" />
-
-            <TextView
-                android:id="@+id/sun4P"
-                style="@style/calendar_day"
-                android:background="@drawable/calendar_day"
-                android:text="Sun" />
         </TableRow>
 
 
         </TableLayout>
 
-        <include layout="@layout/toolbar_main" />
+        <include layout="@layout/toolbar_main"
+            android:id="@+id/include4" />
 
         <Button
             android:id="@+id/shuffle"
@@ -295,6 +312,18 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="14dp"
             android:text="graph" />
+
+        <TextView
+            android:id="@+id/currentMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/include4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textColor="@color/colorPrimary"
+            android:textColorLink="@color/colorPrimary"
+            android:textSize="24dp" />
 
     </RelativeLayout>
 
