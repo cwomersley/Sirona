@@ -44,30 +44,23 @@ public class WorkoutTest extends AppCompatActivity {
     private CountDownTimer cdt;
     private int i = 0;
     private long timeLeft;
+    private String stringPath;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test);
-
-        likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
-        dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
+        stringPath= "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
 
         //
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        // Find the toolbar view inside the activity layout
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        setSupportActionBar(toolbar);
-
-        setAndPlayVideo(setStringPath());
-        timer(10000);
-        progressBar.setProgress(i);
+        setAndPlayVideo(stringPath);
+        //timer(10000);
+        //progressBar.setProgress(i);
 
     }
     //method for playing video depening on path
@@ -76,16 +69,16 @@ public class WorkoutTest extends AppCompatActivity {
         videoView = (VideoView) findViewById(R.id.videoViewE);
         videoView.setVideoPath(vidPath);
         videoView.start();
-        pause.setOnClickListener(new View.OnClickListener() {
+       /** pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(videoView.isPlaying()){
                     videoView.pause();
-                    pauseTimer();
+                    //pauseTimer();
 
                 }else {
                     videoView.start();
-                    resumeTimer();
+                    //resumeTimer();
                 }
 
             }
@@ -101,80 +94,26 @@ public class WorkoutTest extends AppCompatActivity {
 
             }
         });
+        **/
 
     }
     //set the path of the video from the arrayList
-    public String setStringPath(){
-
-        if(nameList.size()>0) {
-            String path = nameList.get(0);
-            String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
-            return stringPath;
-        }else {
-            return null;
-        }
+    //public String setStringPath(){
 
 
-    }
+    //    return stringPath;
+    //}
 
-
-
-    //adds all files in raw to an array and adds file names to an array(currently using to populate database automaticcaly
-    // relating to to file names)
-    public void  addFiles(){
-
-        Field[] fields = R.raw.class.getFields();
-
-        for (int i = 0; i < fields.length - 1; i++) {
-
-            String name = fields[i].getName();
-            if(name != "$change"  && name != "serialVersionUID") {
-                nameList.add(name);
-            }
-
-        }
-    }
-
-    //populate the database from the list of files (to be used to auto populate db )
-    public void populateDB(){
-
-        Field[] fields = R.raw.class.getFields();
-        exercisesList = new ArrayList<>();
-
-
-        for (int i = 0; i < fields.length - 1; i++) {
-            String name = fields[i].getName();
-            exercisesList.add(name);
-
-        }
-
-        //removes the first $change value from the array
-        exercisesList.remove(0);
-
-
-        for (int i = 0; i < exercisesList.size(); i++) {
-            String name = exercisesList.get(i);
-
-
-            mDatabase.child("exercises").push().setValue(name);
-
-
-        }
-
-
-
-    }
-
-
+    /**
 
 
     // Menu icons are inflated as they were with actionbar
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+
+    //public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+      //  getMenuInflater().inflate(R.menu.menu_main, menu);
+        //return true;
+    //}
 
 
     // use an outer loop to enable the videos to have their own times?
@@ -198,26 +137,27 @@ public class WorkoutTest extends AppCompatActivity {
             public void onFinish() {
 
                 //load the next video and set the time for it ?
-                if (nameList.size()> 1) {
+                //if (nameList.size()> 1) {
 
-                    nameList.remove(0);
+                  //  nameList.remove(0);
 
-                    setAndPlayVideo(setStringPath());
-                    i = 0;
-                    timer(10000);
+                    //setAndPlayVideo(setStringPath());
+                    //i = 0;
+                    //timer(10000);
 
-                }else if (nameList.size() == 1) {
+                //}else if (nameList.size() == 1) {
 
-                    videoView.stopPlayback();
-
-
-                }
+                  //  videoView.stopPlayback();
 
 
-            }
+                //}
+
+
+            //}
         };
         cdt.start();
     }
+
 
     public void pauseTimer(){
         cdt.cancel();
@@ -229,16 +169,10 @@ public class WorkoutTest extends AppCompatActivity {
         pause.setAlpha(0.0f);
     }
 
-
-    public void likeExercise(){
-
-
-    }
-
-    public void disslikeExercise(){
+     **/
 
 
-    }
+
 
 
 
