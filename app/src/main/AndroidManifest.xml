@@ -35,6 +35,7 @@
         <activity android:name=".WorkoutMenu" />
         <activity android:name=".WorkoutTest" />
         <activity android:name=".WorkoutTestMenu"></activity>
+        <activity android:name=".exerciseListVplayer"></activity>
     </application>
 
 </manifest>
