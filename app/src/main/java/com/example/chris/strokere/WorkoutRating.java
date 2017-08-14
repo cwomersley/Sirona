@@ -10,7 +10,7 @@ public class WorkoutRating extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_rating);
 
-        //
+        //for nav bar
         setupNavbar();
 
 
