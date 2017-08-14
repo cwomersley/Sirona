@@ -29,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.example.chris.strokere.R.id.pPasswordBtn;
 
@@ -181,6 +183,10 @@ public class Account extends AppCompatActivity {
             email.setError("required");
             return;
         }
+        if (!emailValidator(newEmail)) {
+            email.setError("Please enter a valid email address");
+            return;
+        }
         email.setError(null);
         user.updateEmail(newEmail)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -191,6 +197,17 @@ public class Account extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public boolean emailValidator(String email)
+
+    {
+        Pattern pattern;
+        Matcher matcher;
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 
     //validates fields on activity
