@@ -31,7 +31,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SettingsWorkoutReminder" />
         <activity android:name=".Graph" />
-        <activity android:name=".ForgottenPassword"></activity>
+        <activity android:name=".ForgottenPassword" />
+        <activity android:name=".WorkoutMenu"></activity>
     </application>
 
 </manifest>

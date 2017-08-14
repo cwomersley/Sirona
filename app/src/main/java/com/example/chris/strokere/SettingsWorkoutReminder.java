@@ -50,7 +50,7 @@ public class SettingsWorkoutReminder extends BaseActivity {
 
       /*  NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.logo)
-                .setContentTitle("Workout Reminder")
+                .setContentTitle("WorkoutMenu Reminder")
                 .setContentText("Time to workout...");
 
 // Sets an ID for the notification

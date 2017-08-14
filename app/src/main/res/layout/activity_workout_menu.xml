@@ -41,44 +41,44 @@
         <Button
             android:id="@+id/TestBtn"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
             android:layout_above="@+id/btnProgressH"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
-            android:text="Exercise list" />
+            android:background="@drawable/standard_button_green"
+            android:onClick="testWorkout"
+            android:text="Test" />
 
         <Button
             android:id="@+id/btnProgressH"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
             android:layout_above="@+id/btnPreferencesH"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
-            android:text="Progress"
+            android:background="@drawable/standard_button_green"
             app:layout_constraintTop_toBottomOf="@+id/TestBtn" />
 
         <Button
-            android:id="@+id/btnWorkoutH"
+            android:id="@+id/StandardBtn"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_pink"
             android:layout_above="@+id/TestBtn"
             android:layout_alignParentEnd="true"
             android:layout_alignStart="@+id/TestBtn"
             android:layout_marginBottom="5dp"
-            android:text="My workout" />
+            android:background="@drawable/standard_button_pink"
+            android:onClick="standardWorkout"
+            android:text="Standard" />
 
         <Button
             android:id="@+id/btnPreferencesH"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/standard_button_green"
             android:onClick="oSettings"
-            android:text="Settings"
             app:layout_constraintTop_toBottomOf="@+id/btnProgressH" />
 
         <TextView

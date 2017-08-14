@@ -20,11 +20,11 @@ public class Home extends BaseActivity {
         btnWorkout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnWorkout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, ExerciseView.class));
+                startActivity(new Intent(Home.this, WorkoutMenu.class));
             }
         });
 
-        Button btnExercise = (Button) findViewById(R.id.btnExerciseH);
+        Button btnExercise = (Button) findViewById(R.id.TestBtn);
         btnExercise.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnExercise.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
