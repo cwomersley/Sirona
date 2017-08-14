@@ -1,5 +1,6 @@
 package com.example.chris.strokere;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextWatcher;
@@ -28,6 +29,8 @@ public class ExerciseList extends AppCompatActivity {
     List<String> allExercises;
     HashMap<String, List<String>> map;
     ExpandableListView expListView;
+    public static String path;
+    public static String niceName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,48 +62,48 @@ public class ExerciseList extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
                 getApplicationContext();
-                String name = map.get(list.get(groupPosition)).get(childPosition);
+                niceName = map.get(list.get(groupPosition)).get(childPosition);
                 //cant use contain gonna have to use.equals(), change this at end
-                name = name.replace(" ", "_");
+                String name = niceName.replace(" ", "_");
                 name = name.toLowerCase();
-                String path = "android.resource://" + getPackageName() + "//raw/" + name;
-                VideoView video = (VideoView) findViewById(R.id.videoView2);
-                video.setVideoPath(path);
-                video.start();
+                path = "android.resource://" + getPackageName() + "//raw/" + name;
+                startActivity(new Intent(ExerciseList.this, exerciseListVplayer.class));
                 return false;
             }
         });
-
+/*
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
                 String name = adapter.getItemAtPosition(p).toString();
                 name = name.replace(" ", "_");
                 name = name.toLowerCase();
-                String path = "android.resource://" + getPackageName() + "//raw/"  + name;
+                String path = "android.resource://" + getPackageName() + "//raw/" + name;
                 VideoView v = (VideoView) findViewById(R.id.videoView2);
                 v.setVideoPath(path);
                 v.start();
+                //onCompletion(v);
             }
+
         } );
 
+*/
         //below makes the search functionality
         inputSearch = (EditText) findViewById(R.id.exerciseSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence charSeq, int a, int b, int c) {
-                if(inputSearch.getText().toString().trim().length() > 0){
+                if (inputSearch.getText().toString().trim().length() > 0) {
                     expListView.setVisibility(View.INVISIBLE);
                     listView.setVisibility(View.VISIBLE);
 
-                }
-                else{
+                } else {
                     expListView.setVisibility(View.VISIBLE);
                     listView.setVisibility(View.INVISIBLE);
 
                 }
-               listViewAdapter.getFilter().filter(charSeq);
+                listViewAdapter.getFilter().filter(charSeq);
 
             }
 
@@ -173,9 +176,13 @@ public class ExerciseList extends AppCompatActivity {
                     }
                 }
 
-            }
-            catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
             }
 
+    }
+
+    public String getPath() {
+
+        return path;
     }
 }
