@@ -44,6 +44,10 @@ public class ExerciseView extends AppCompatActivity {
     private CountDownTimer cdt;
     private int i = 0;
     private long timeLeft;
+    private Integer likeVideo;
+    private HashMap<String, Integer> likeHash = new HashMap<>();
+
+
 
 
 
@@ -56,7 +60,31 @@ public class ExerciseView extends AppCompatActivity {
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
+        likeBtn.setAlpha(0.5f);
+        dissLikeBtn.setAlpha(0.5f);
 
+
+        likeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                likeVideo = 1;
+                likeBtn.setAlpha(1f);
+                dissLikeBtn.setAlpha(0.5f);
+                likeHash.put(nameList.get(0), likeVideo);
+
+            }
+        });
+
+        dissLikeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                likeVideo = -1;
+                dissLikeBtn.setAlpha(1f);
+                likeBtn.setAlpha(0.5f);
+                likeHash.put(nameList.get(0), likeVideo);
+
+            }
+        });
 
 
         //
@@ -243,16 +271,9 @@ public class ExerciseView extends AppCompatActivity {
       pause.setAlpha(0.0f);
   }
 
-
-    public void likeExercise(){
-
-
-    }
-
-    public void disslikeExercise(){
-
-
-    }
+  public String getcurrentExervise(){
+      return nameList.get(0);
+  }
 
 
 

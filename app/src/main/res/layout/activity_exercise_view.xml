@@ -87,7 +87,11 @@
                 android:layout_alignEnd="@+id/relativeLayout"
                 android:layout_alignTop="@+id/thumbsUpBtn"
                 android:adjustViewBounds="false"
+                android:alpha="0.5"
                 android:background="@android:color/transparent"
+                android:elevation="0dp"
+                android:hapticFeedbackEnabled="false"
+                android:longClickable="false"
                 android:onClick="disslikeExercise"
                 android:scaleType="fitStart"
                 app:srcCompat="@drawable/thumbsdown" />
@@ -100,7 +104,9 @@
                 android:layout_alignStart="@+id/relativeLayout"
                 android:layout_marginBottom="50dp"
                 android:adjustViewBounds="false"
+                android:alpha="0.5"
                 android:background="@android:color/transparent"
+                android:longClickable="false"
                 android:onClick="likeExercise"
                 android:scaleType="fitStart"
                 app:srcCompat="@drawable/thumbsup" />
