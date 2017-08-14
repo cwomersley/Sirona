@@ -62,11 +62,15 @@ public class Progress extends BaseActivity {
         TextView d30P = (TextView) findViewById(R.id.d30P);
         TextView d31P = (TextView) findViewById(R.id.d31P);
 
-       /* if(nameOfMonth.equals("August")) {
+        if(nameOfMonth.matches("September|April|June|November")) {
+            d31P.setVisibility(View.INVISIBLE);
+        }
+
+        if(nameOfMonth.matches("Februrary")) {
             d29P.setVisibility(View.INVISIBLE);
             d30P.setVisibility(View.INVISIBLE);
             d31P.setVisibility(View.INVISIBLE);
-        } */
+        }
 
     }
 
