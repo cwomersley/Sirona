@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -21,13 +23,13 @@ public class Progress extends BaseActivity {
         setContentView(R.layout.activity_progress);
         setupNavbar();
 
-        TextView mon = (TextView) findViewById(R.id.mon1P);
+        TextView mon = (TextView) findViewById(R.id.d1P);
         mon.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        TextView tue = (TextView) findViewById(R.id.tue1P);
+        TextView tue = (TextView) findViewById(R.id.d2P);
         tue.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        TextView wed = (TextView) findViewById(R.id.wed1P);
+        TextView wed = (TextView) findViewById(R.id.d3P);
         wed.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         Button shuffle = (Button) findViewById(R.id.shuffle);
@@ -46,6 +48,26 @@ public class Progress extends BaseActivity {
             }
         });
 
+        //Gets the current month
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
+        String nameOfMonth = dateOfMonth.format(calendar.getTime());
+
+
+        TextView currentMonth = (TextView) findViewById(R.id.currentMonth);
+        currentMonth.setText(nameOfMonth);
+        currentMonth.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        TextView d29P = (TextView) findViewById(R.id.d29P);
+        TextView d30P = (TextView) findViewById(R.id.d30P);
+        TextView d31P = (TextView) findViewById(R.id.d31P);
+
+       /* if(nameOfMonth.equals("August")) {
+            d29P.setVisibility(View.INVISIBLE);
+            d30P.setVisibility(View.INVISIBLE);
+            d31P.setVisibility(View.INVISIBLE);
+        } */
+
     }
 
     @Override
@@ -63,37 +85,39 @@ public class Progress extends BaseActivity {
     }
 
 
+
+
     public void redrawDays() {
 
         //This section models input from the database with a random number instead
-        days.put("mon1P",randomNum());
-        days.put("mon2P",randomNum());
-        days.put("mon3P",randomNum());
-        days.put("mon4P",randomNum());
-        days.put("tue1P",randomNum());
-        days.put("tue2P",randomNum());
-        days.put("tue3P",randomNum());
-        days.put("tue4P",randomNum());
-        days.put("wed1P",randomNum());
-        days.put("wed2P",randomNum());
-        days.put("wed3P",randomNum());
-        days.put("wed4P",randomNum());
-        days.put("thu1P",randomNum());
-        days.put("thu2P",randomNum());
-        days.put("thu3P",randomNum());
-        days.put("thu4P",randomNum());
-        days.put("fri1P",randomNum());
-        days.put("fri2P",randomNum());
-        days.put("fri3P",randomNum());
-        days.put("fri4P",randomNum());
-        days.put("sat1P",randomNum());
-        days.put("sat2P",randomNum());
-        days.put("sat3P",randomNum());
-        days.put("sat4P",randomNum());
-        days.put("sun1P",randomNum());
-        days.put("sun2P",randomNum());
-        days.put("sun3P",randomNum());
-        days.put("sun4P",randomNum());
+        days.put("d1P",randomNum());
+        days.put("d2P",randomNum());
+        days.put("d3P",randomNum());
+        days.put("d4P",randomNum());
+        days.put("d5P",randomNum());
+        days.put("d6P",randomNum());
+        days.put("d7P",randomNum());
+        days.put("d8P",randomNum());
+        days.put("d9P",randomNum());
+        days.put("d10P",randomNum());
+        days.put("d11P",randomNum());
+        days.put("d12P",randomNum());
+        days.put("d13P",randomNum());
+        days.put("d14P",randomNum());
+        days.put("d15P",randomNum());
+        days.put("d16P",randomNum());
+        days.put("d17P",randomNum());
+        days.put("d18P",randomNum());
+        days.put("d19P",randomNum());
+        days.put("d20P",randomNum());
+        days.put("d21P",randomNum());
+        days.put("d22P",randomNum());
+        days.put("d23P",randomNum());
+        days.put("d24P",randomNum());
+        days.put("d25P",randomNum());
+        days.put("d26P",randomNum());
+        days.put("d27P",randomNum());
+        days.put("d28P",randomNum());
 
 
         for(Map.Entry<String, Integer> entry : days.entrySet())
