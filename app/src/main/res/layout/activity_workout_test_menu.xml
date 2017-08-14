@@ -46,8 +46,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
-            android:onClick="oTestMenu"
-            android:text="Tests" />
+            android:onClick="shuttleRun"
+            android:text="Shuttle Run" />
 
         <Button
             android:id="@+id/btnProgressH"
@@ -57,6 +57,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
+            android:onClick="stepUps"
+            android:text="Step Ups"
             app:layout_constraintTop_toBottomOf="@+id/TestBtn" />
 
         <Button
@@ -66,9 +68,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignStart="@+id/TestBtn"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/standard_button_pink"
-            android:onClick="standardWorkout"
-            android:text="Standard" />
+            android:background="@drawable/standard_button_green"
+            android:onClick="sitToStands"
+            android:text="Sit to Stands" />
 
         <Button
             android:id="@+id/btnPreferencesH"
