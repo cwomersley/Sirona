@@ -23,7 +23,16 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"/>
+        tools:layout_constraintTop_creator="1">
+
+        <NumberPicker
+            android:id="@+id/ratingScale"
+            android:layout_width="90dp"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="72dp" />
+    </RelativeLayout>
 
     <include
         android:id="@+id/include2"

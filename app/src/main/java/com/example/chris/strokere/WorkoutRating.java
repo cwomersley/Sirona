@@ -2,8 +2,11 @@ package com.example.chris.strokere;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.NumberPicker;
 
 public class WorkoutRating extends BaseActivity {
+
+    private NumberPicker ratingScale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,6 +16,12 @@ public class WorkoutRating extends BaseActivity {
         //for nav bar
         setupNavbar();
 
+        ratingScale = (NumberPicker) findViewById(R.id.ratingScale);
+
+
+        ratingScale.setMaxValue(20);
+        ratingScale.setMinValue(6);
+        ratingScale.setWrapSelectorWheel(false);
 
 
     }
