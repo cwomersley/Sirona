@@ -31,6 +31,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SettingsWorkoutReminder" />
         <activity android:name=".Graph" />
+        <activity android:name=".WorkoutRating" />
         <activity android:name=".ForgottenPassword" />
         <activity android:name=".WorkoutMenu" />
         <activity android:name=".WorkoutTest" />

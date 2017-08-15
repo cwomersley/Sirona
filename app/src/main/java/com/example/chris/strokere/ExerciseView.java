@@ -1,5 +1,6 @@
 package com.example.chris.strokere;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class ExerciseView extends AppCompatActivity {
+public class ExerciseView extends BaseActivity {
 
     private ArrayList<String> nameList = new ArrayList<>();
     private DatabaseReference mDatabase;
@@ -56,6 +57,8 @@ public class ExerciseView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_view);
 
+        setupNavbar();
+
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
@@ -71,6 +74,9 @@ public class ExerciseView extends AppCompatActivity {
                 likeBtn.setAlpha(1f);
                 dissLikeBtn.setAlpha(0.5f);
                 likeHash.put(nameList.get(0), likeVideo);
+                Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
+                startActivity(intent);
+
 
             }
         });
@@ -151,6 +157,7 @@ public class ExerciseView extends AppCompatActivity {
         if(nameList.size()>0) {
             String path = nameList.get(0);
             String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
+
             return stringPath;
         }else {
             return null;
@@ -246,11 +253,12 @@ public class ExerciseView extends AppCompatActivity {
 
                     setAndPlayVideo(setStringPath());
                     i = 0;
-                    timer(10000);
+                    timer(100);
 
                 }else if (nameList.size() == 1) {
 
                     videoView.stopPlayback();
+
 
 
                 }
@@ -269,6 +277,7 @@ public class ExerciseView extends AppCompatActivity {
   public void resumeTimer(){
       timer(timeLeft);
       pause.setAlpha(0.0f);
+
   }
 
   public String getcurrentExervise(){
@@ -276,7 +285,10 @@ public class ExerciseView extends AppCompatActivity {
   }
 
 
-
+    @Override
+    public int getLayout() {
+        return R.layout.activity_home;
+    }
 
 }
 
