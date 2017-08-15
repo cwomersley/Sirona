@@ -77,6 +77,7 @@ public class ExerciseList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
                 niceName = adapter.getItemAtPosition(p).toString();
                 name = niceName.replace(" ", "_").toLowerCase();
+                path = "android.resource://" + getPackageName() + "//raw/" + name;
                 startActivity(new Intent(ExerciseList.this, exerciseListVplayer.class));
             }
 
