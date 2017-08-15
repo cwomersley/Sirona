@@ -71,7 +71,7 @@ public class ExerciseList extends AppCompatActivity {
             }
         });
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
                 String niceName = adapter.getItemAtPosition(p).toString();
