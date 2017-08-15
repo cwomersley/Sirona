@@ -28,8 +28,8 @@ public class WorkoutMenu extends AppCompatActivity {
         startActivity(new Intent(WorkoutMenu.this, ExerciseView.class));
     }
 
-    public void testWorkout(View view) {
-        //startActivity(new Intent(WorkoutMenu.this, .class));
+    public void oTestMenu(View view) {
+        startActivity(new Intent(WorkoutMenu.this, WorkoutTestMenu.class));
     }
 
 }

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Stroke.re2.iml" filepath="$PROJECT_DIR$/Stroke.re2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Stroke.re222.iml" filepath="$PROJECT_DIR$/Stroke.re222.iml" />
       <module fileurl="file://$PROJECT_DIR$/Stroke.re2Test.iml" filepath="$PROJECT_DIR$/Stroke.re2Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/Stroke.re9.iml" filepath="$PROJECT_DIR$/Stroke.re9.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

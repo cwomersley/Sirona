@@ -32,7 +32,10 @@
         <activity android:name=".SettingsWorkoutReminder" />
         <activity android:name=".Graph" />
         <activity android:name=".ForgottenPassword" />
-        <activity android:name=".WorkoutMenu"></activity>
+        <activity android:name=".WorkoutMenu" />
+        <activity android:name=".WorkoutTest" />
+        <activity android:name=".WorkoutTestMenu"></activity>
+        <activity android:name=".exerciseListVplayer"></activity>
     </application>
 
 </manifest>
