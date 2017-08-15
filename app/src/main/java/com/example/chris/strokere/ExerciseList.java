@@ -29,6 +29,7 @@ public class ExerciseList extends AppCompatActivity {
     HashMap<String, List<String>> map;
     ExpandableListView expListView;
     public static String path;
+    public static String name;
     public static String niceName;
 
     @Override
@@ -63,7 +64,7 @@ public class ExerciseList extends AppCompatActivity {
                 getApplicationContext();
                 niceName = map.get(list.get(groupPosition)).get(childPosition);
                 //cant use contain gonna have to use.equals(), change this at end
-                String name = niceName.replace(" ", "_");
+                name = niceName.replace(" ", "_");
                 name = name.toLowerCase();
                 path = "android.resource://" + getPackageName() + "//raw/" + name;
                 startActivity(new Intent(ExerciseList.this, exerciseListVplayer.class));
@@ -74,8 +75,8 @@ public class ExerciseList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
-                String niceName = adapter.getItemAtPosition(p).toString();
-                String name = niceName.replace(" ", "_").toLowerCase();
+                niceName = adapter.getItemAtPosition(p).toString();
+                name = niceName.replace(" ", "_").toLowerCase();
                 startActivity(new Intent(ExerciseList.this, exerciseListVplayer.class));
             }
 
