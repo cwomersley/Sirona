@@ -16,7 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import android.widget.EditText;
 import android.text.Editable;
-import android.widget.VideoView;
 import android.widget.ExpandableListView.OnChildClickListener;
 
 public class ExerciseList extends AppCompatActivity {
@@ -71,23 +70,18 @@ public class ExerciseList extends AppCompatActivity {
                 return false;
             }
         });
-/*
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
-                String name = adapter.getItemAtPosition(p).toString();
-                name = name.replace(" ", "_");
-                name = name.toLowerCase();
-                String path = "android.resource://" + getPackageName() + "//raw/" + name;
-                VideoView v = (VideoView) findViewById(R.id.videoView2);
-                v.setVideoPath(path);
-                v.start();
-                //onCompletion(v);
+                String niceName = adapter.getItemAtPosition(p).toString();
+                String name = niceName.replace(" ", "_").toLowerCase();
+                startActivity(new Intent(ExerciseList.this, exerciseListVplayer.class));
             }
 
         } );
 
-*/
+
         //below makes the search functionality
         inputSearch = (EditText) findViewById(R.id.exerciseSearch);
         inputSearch.addTextChangedListener(new TextWatcher() {
