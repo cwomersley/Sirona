@@ -7,18 +7,28 @@ import android.view.View;
 
 public class WorkoutTestMenu extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test_menu);
+
     }
 
     public void sitToStands(View view) {
-        startActivity(new Intent(WorkoutTestMenu.this, WorkoutTest.class));
+
+        Intent intent = new Intent(getApplicationContext(), WorkoutTest.class);
+        intent.putExtra("button", "sitToStands");
+        startActivity(intent);
     }
 
     public void shuttleRun(View view) {
-        //startActivity(new Intent(WorkoutMenu.this, .class));
+        Intent intent = new Intent(getApplicationContext(), WorkoutTest.class);
+
+        intent.putExtra("button", "shuttleRun");
+        startActivity(intent);
+
     }
 
     public void stepUps(View view) {

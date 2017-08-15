@@ -1,5 +1,6 @@
 package com.example.chris.strokere;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
@@ -46,14 +47,34 @@ public class WorkoutTest extends AppCompatActivity {
     private long timeLeft;
     private String stringPath;
 
+    String pressedButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test);
+        //Intent in = getIntent();
+        //Bundle b = in.getExtras();
+
+
+        //String s = b.getString("STS");
+        //String t = b.getString("SR");
+
+
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
-        stringPath= "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
+
+        pressedButton = getIntent().getExtras().getString("button");
+        switch(pressedButton){
+            case "sitToStands":
+                stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
+                break;
+            case "shuttleRun":
+                stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "trunk_rotations";
+                break;
+        }
+
 
         //
         mDatabase = FirebaseDatabase.getInstance().getReference();

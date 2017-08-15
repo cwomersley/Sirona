@@ -21,7 +21,11 @@ public class WorkoutMenu extends AppCompatActivity {
 
         TestBtn = (Button) findViewById(R.id.TestBtn);
         TestBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+
+
     }
+
 
 
     public void standardWorkout(View view) {
