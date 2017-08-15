@@ -30,7 +30,6 @@ public class LoginScreenx extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginx);
 
-
         emailL = (EditText) findViewById(R.id.emailL);
         passwordL = (EditText) findViewById(R.id.passwordL);
 

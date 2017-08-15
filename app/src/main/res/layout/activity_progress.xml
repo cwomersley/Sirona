@@ -291,6 +291,18 @@
 
         </TableLayout>
 
+        <TextView
+            android:id="@+id/currentMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/include4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textColor="@color/colorPrimary"
+            android:textColorLink="@color/colorPrimary"
+            android:textSize="24dp" />
+
         <include layout="@layout/toolbar_main"
             android:id="@+id/include4" />
 
@@ -313,17 +325,25 @@
             android:layout_marginEnd="14dp"
             android:text="graph" />
 
-        <TextView
-            android:id="@+id/currentMonth"
+        <Button
+            android:id="@+id/backMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/include4"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="24dp"
-            android:text="TextView"
-            android:textColor="@color/colorPrimary"
-            android:textColorLink="@color/colorPrimary"
-            android:textSize="24dp" />
+            android:text="Button"
+            android:layout_alignBaseline="@+id/currentMonth"
+            android:layout_alignBottom="@+id/currentMonth"
+            android:layout_toStartOf="@+id/currentMonth"
+            android:layout_marginEnd="16dp" />
+
+        <Button
+            android:id="@+id/forwardMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_alignBaseline="@+id/currentMonth"
+            android:layout_alignBottom="@+id/currentMonth"
+            android:layout_toEndOf="@+id/currentMonth"
+            android:layout_marginStart="13dp" />
 
     </RelativeLayout>
 

@@ -15,6 +15,11 @@ import java.util.HashMap;
 
 public class Progress extends BaseActivity {
 
+    String monthName;
+    String previousMonth;
+    String nextMonth;
+    Calendar calendar;
+
     public HashMap<String,Integer> days = new HashMap<String,Integer>();
 
     @Override
@@ -49,27 +54,69 @@ public class Progress extends BaseActivity {
         });
 
         //Gets the current month
-        Calendar calendar = Calendar.getInstance();
+        this.calendar = Calendar.getInstance();
         SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
-        String nameOfMonth = dateOfMonth.format(calendar.getTime());
-
+        this.monthName = dateOfMonth.format(calendar.getTime());
 
         TextView currentMonth = (TextView) findViewById(R.id.currentMonth);
-        currentMonth.setText(nameOfMonth);
+        currentMonth.setText(this.monthName);
         currentMonth.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        checkMonth(this.monthName);
+
+
+        Button goForward = (Button) findViewById(R.id.forwardMonth);
+        goForward.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                calendar.add(Calendar.MONTH, +1);
+                SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
+                nextMonth = dateOfMonth.format(calendar.getTime());
+                checkMonth(nextMonth);
+            }
+        });
+
+        Button goBack = (Button) findViewById(R.id.backMonth);
+        goBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                calendar.add(Calendar.MONTH, -1);
+                SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
+                previousMonth = dateOfMonth.format(calendar.getTime());
+                checkMonth(previousMonth);
+            }
+        });
+
+
+
+    }
+
+
+    private void checkMonth (String month) {
+
+        TextView currentMonth = (TextView) findViewById(R.id.currentMonth);
+        currentMonth.setText(month);
+
+        this.monthName = month;
 
         TextView d29P = (TextView) findViewById(R.id.d29P);
         TextView d30P = (TextView) findViewById(R.id.d30P);
         TextView d31P = (TextView) findViewById(R.id.d31P);
 
-        if(nameOfMonth.matches("September|April|June|November")) {
+        if(monthName.matches("September|April|June|November")) {
+            d29P.setVisibility(View.VISIBLE);
+            d30P.setVisibility(View.VISIBLE);
             d31P.setVisibility(View.INVISIBLE);
         }
 
-        if(nameOfMonth.matches("Februrary")) {
+        if(monthName.matches("February")) {
             d29P.setVisibility(View.INVISIBLE);
             d30P.setVisibility(View.INVISIBLE);
             d31P.setVisibility(View.INVISIBLE);
+        }
+
+        if(monthName.matches("January|March|May|July|August|October|December")) {
+            d29P.setVisibility(View.VISIBLE);
+            d30P.setVisibility(View.VISIBLE);
+            d31P.setVisibility(View.VISIBLE);
         }
 
     }
