@@ -122,6 +122,9 @@ public class WorkoutTest extends AppCompatActivity {
                     }
                 }
             });
+            Toast.makeText(this, "Well done!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(WorkoutTest.this, WorkoutTestMenu.class));
+            finish();
         }
         else {
             Toast.makeText(this, "Please enter the number of reps you have done.", Toast.LENGTH_SHORT).show();
