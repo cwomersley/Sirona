@@ -78,7 +78,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignStart="@+id/relativeLayout"
                 android:layout_marginBottom="31dp"
-                android:onClick="howMany"
+                android:onClick="howManyConfirm"
                 android:text="Confirm"
                 android:visibility="invisible" />
 
@@ -95,27 +95,6 @@
                 android:textSize="24sp"
                 android:visibility="invisible" />
 
-            <EditText
-                android:id="@+id/howManyNo"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_below="@+id/howMany"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="88dp"
-                android:background="@color/colorPrimaryDark"
-                android:ems="10"
-                android:hint="ENTER NUMBER"
-                android:inputType="textEmailAddress"
-                android:paddingLeft="20dp"
-                android:textAlignment="center"
-                android:textColor="@color/greenAccent"
-                android:textColorHint="@color/greenAccent"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:visibility="invisible" />
-
             <ImageButton
                 android:id="@+id/pauseResume"
                 android:layout_width="match_parent"
@@ -128,6 +107,20 @@
                 android:visibility="visible"
                 app:srcCompat="@drawable/ic_pause_circle_outline_black_24dp"
                 tools:background="@android:color/transparent" />
+
+            <EditText
+                android:id="@+id/howManyNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:ems="10"
+                android:hint="ENTER NUMBER"
+                android:inputType="number"
+                android:textColor="@color/greenAccent"
+                android:textColorHint="@color/greenAccent"
+                android:textSize="24sp"
+                android:visibility="invisible" />
 
         </RelativeLayout>
 

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +51,7 @@ public class WorkoutTest extends AppCompatActivity {
     private EditText howManyNo;
     private TextView howMany;
     private Button howManyBtn;
+
 
 
 
@@ -99,9 +101,15 @@ public class WorkoutTest extends AppCompatActivity {
 
 
     //method for button to add user statistics to firebase
-    public void howMany() {
-
+    public void howManyConfirm(View view) {
+        if (!howManyNo.getText().toString().equals("")) {
+            int noOfReps=Integer.parseInt(howManyNo.getText().toString());
+        }
+        else {
+            Toast.makeText(this, "Please enter the number of reps you have done.", Toast.LENGTH_SHORT).show();
+        }
     }
+
 
     public void setAndPlayVideo(String vidPath) {
         videoTest.setVideoPath(vidPath);
