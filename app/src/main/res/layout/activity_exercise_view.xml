@@ -28,10 +28,22 @@
         tools:layout_constraintTop_creator="1"
         android:weightSum="1">
 
-        <include
-            layout="@layout/toolbar_main"
+
+
+        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toolbarP"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/greenAccent"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                android:id="@+id/exerciseNameText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textSize="30sp" /></android.support.v7.widget.Toolbar>
 
 
         <RelativeLayout

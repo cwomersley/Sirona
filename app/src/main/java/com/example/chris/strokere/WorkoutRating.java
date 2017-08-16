@@ -40,6 +40,7 @@ public class WorkoutRating extends BaseActivity {
         //for nav bar
         setupNavbar();
 
+
         ratingScale = (NumberPicker) findViewById(R.id.numberPicker6);
         Button finish = (Button) findViewById(R.id.finishBtn);
 

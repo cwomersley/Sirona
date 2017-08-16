@@ -51,6 +51,7 @@ public class ExerciseView extends BaseActivity {
     private TextView timerText;
     private int time = 10;
     private Boolean isVidBreak = false;
+    TextView exerciseNameText;
 
 
 
@@ -61,7 +62,7 @@ public class ExerciseView extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_view);
 
-        setupNavbar();
+        //setupNavbar();
 
 
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
@@ -69,6 +70,7 @@ public class ExerciseView extends BaseActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
         timerText = (TextView) findViewById(R.id.timerText) ;
+         exerciseNameText = (TextView) findViewById(R.id.exerciseNameText);
 
 
         likeBtn.setAlpha(0.5f);
@@ -240,6 +242,7 @@ public class ExerciseView extends BaseActivity {
 
 //Handles the play of exercises videos
     public void timer(long timeLeftMilli) {
+        exerciseNameText.setText(nameList.get(0));
         cdt = new CountDownTimer(timeLeftMilli, 100) {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
@@ -263,6 +266,7 @@ public class ExerciseView extends BaseActivity {
                         cdt.cancel();
                         isVidBreak = true;
                         pause.setClickable(false);
+
 
 
 
