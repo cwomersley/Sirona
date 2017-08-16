@@ -33,7 +33,7 @@ public class exerciseListVplayer extends AppCompatActivity {
             }
         });
 
-        VideoView video = (VideoView) findViewById(R.id.videoViewNew);
+        VideoView video = (VideoView) findViewById(R.id.videoView3);
         video.setVideoPath(exerciselist.path);
         video.start();
 

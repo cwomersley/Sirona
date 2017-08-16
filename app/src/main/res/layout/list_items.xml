@@ -4,10 +4,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
     <TextView
         android:id="@+id/textView"
-        android:background="@color/greenAccent"
         android:clickable="false"
         android:focusable="false"
         android:layout_width="fill_parent"
@@ -15,10 +13,11 @@
         android:layout_marginBottom="1dp"
         android:layout_marginTop="1dp"
         android:gravity="center_vertical"
-        android:textColor="@color/colorPrimaryWhite"
+        android:textColor="@color/greenAccent"
         android:textAlignment="center"
-        android:textSize="30sp">
+        android:textSize="30sp"
+        android:padding="10dp"
+        >
 
     </TextView>
-
 </LinearLayout>

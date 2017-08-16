@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#dadada</color>
     <color name="colorAccent">#ff4081</color>
     <color name="bg">#efefef</color>
+    <color name="bg2">#efefee</color>
     <color name="greenAccent">#4baa71</color>
     <color name="colorPrimaryWhite">#ffffff</color>
 </resources>
