@@ -31,11 +31,7 @@ import java.util.HashMap;
 
 public class WorkoutTest extends AppCompatActivity {
 
-    private ArrayList<String> nameList = new ArrayList<>();
     private DatabaseReference mDatabase;
-    private ArrayList<String> exercisesList;
-    private ImageButton likeBtn;
-    private ImageButton dissLikeBtn;
     private ProgressBar progressBar;
     private int progressStatus = 0;
     private Handler handler = new Handler();
@@ -45,7 +41,10 @@ public class WorkoutTest extends AppCompatActivity {
     private CountDownTimer cdt;
     private int i = 0;
     private long timeLeft;
-    private String stringPath;
+    private String vidPath;
+    private int clickCount;
+    private Button countClicksBtn;
+    private long testLength;
 
     String pressedButton;
 
@@ -54,52 +53,56 @@ public class WorkoutTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test);
-        //Intent in = getIntent();
-        //Bundle b = in.getExtras();
 
-
-        //String s = b.getString("STS");
-        //String t = b.getString("SR");
-
-
+        clickCount=0;
+        countClicksBtn = (Button) findViewById(R.id.countClicksBtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
 
+        //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
         pressedButton = getIntent().getExtras().getString("button");
         switch(pressedButton){
             case "sitToStands":
-                stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
+                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
+                testLength=60000;
+                countClicksBtn.setVisibility(View.VISIBLE);
                 break;
             case "shuttleRun":
-                stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "trunk_rotations";
+                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "trunk_rotations";
+                testLength=60000;
+                break;
+            case "stepUps":
+                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
+                testLength=60000;
                 break;
         }
 
-
-        //
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        setAndPlayVideo(stringPath);
-        //timer(10000);
-        //progressBar.setProgress(i);
+        setAndPlayVideo(vidPath);
+        timer(testLength);
+        progressBar.setProgress(i);
 
     }
-    //method for playing video depening on path
+
+    public void countClicks() {
+        clickCount++;
+    }
+
     public void setAndPlayVideo(String vidPath) {
 
         videoView = (VideoView) findViewById(R.id.videoViewE);
         videoView.setVideoPath(vidPath);
         videoView.start();
-       /** pause.setOnClickListener(new View.OnClickListener() {
+        pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(videoView.isPlaying()){
                     videoView.pause();
-                    //pauseTimer();
+                    pauseTimer();
 
                 }else {
                     videoView.start();
-                    //resumeTimer();
+                    resumeTimer();
                 }
 
             }
@@ -115,70 +118,29 @@ public class WorkoutTest extends AppCompatActivity {
 
             }
         });
-        **/
 
     }
-    //set the path of the video from the arrayList
-    //public String setStringPath(){
-
-
-    //    return stringPath;
-    //}
-
-    /**
-
 
     // Menu icons are inflated as they were with actionbar
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-    //public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-      //  getMenuInflater().inflate(R.menu.menu_main, menu);
-        //return true;
-    //}
-
-
-    // use an outer loop to enable the videos to have their own times?
-
-
-    //timer use to change length an exercise is run for and when the next one should play
-    //use new timer for each video ? ? to be able to set the time
-
-
-
-    public void timer(long timeLeftMilli) {
-        cdt = new CountDownTimer(timeLeftMilli, 100) {
+    public void timer(long testLength) {
+        cdt = new CountDownTimer(testLength, 600) {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 i++;
-                Log.d("fubar", Integer.toString(i));
                 progressBar.setProgress(i);
-
             }
-
             public void onFinish() {
-
-                //load the next video and set the time for it ?
-                //if (nameList.size()> 1) {
-
-                  //  nameList.remove(0);
-
-                    //setAndPlayVideo(setStringPath());
-                    //i = 0;
-                    //timer(10000);
-
-                //}else if (nameList.size() == 1) {
-
-                  //  videoView.stopPlayback();
-
-
-                //}
-
-
-            //}
+                  videoView.stopPlayback();
+            }
         };
         cdt.start();
     }
-
 
     public void pauseTimer(){
         cdt.cancel();
@@ -189,14 +151,6 @@ public class WorkoutTest extends AppCompatActivity {
         timer(timeLeft);
         pause.setAlpha(0.0f);
     }
-
-     **/
-
-
-
-
-
-
 
 }
 

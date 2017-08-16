@@ -80,6 +80,18 @@
 
             </RelativeLayout>
 
+            <Button
+                android:id="@+id/countClicksBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/relativeLayout"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/relativeLayout"
+                android:layout_marginBottom="31dp"
+                android:onClick="countClicks"
+                android:text="Press me!"
+                android:visibility="invisible" />
+
         </RelativeLayout>
 
 
