@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,13 +23,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 
@@ -51,6 +56,7 @@ public class WorkoutTest extends AppCompatActivity {
     private EditText howManyNo;
     private TextView howMany;
     private Button howManyBtn;
+    private String workoutTestName;
 
 
 
@@ -71,6 +77,7 @@ public class WorkoutTest extends AppCompatActivity {
         pressedButton = getIntent().getExtras().getString("button");
         switch(pressedButton){
             case "sitToStands":
+                workoutTestName="SitToStands";
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
                 testLength=600;
                 countDownInterval=6;
@@ -79,6 +86,7 @@ public class WorkoutTest extends AppCompatActivity {
                 progressBar.setProgress(i);
                 break;
             case "shuttleRun":
+                workoutTestName="ShuttleRun";
                 videoTest.setVisibility(View.INVISIBLE);
                 testLength=180000;
                 countDownInterval=1800;
@@ -86,6 +94,7 @@ public class WorkoutTest extends AppCompatActivity {
                 progressBar.setProgress(i);
                 break;
             case "stepUps":
+                workoutTestName="StepUps";
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
                 testLength=60000;
                 countDownInterval=600;
@@ -103,13 +112,34 @@ public class WorkoutTest extends AppCompatActivity {
     //method for button to add user statistics to firebase
     public void howManyConfirm(View view) {
         if (!howManyNo.getText().toString().equals("")) {
-            int noOfReps=Integer.parseInt(howManyNo.getText().toString());
+            final int noOfReps=Integer.parseInt(howManyNo.getText().toString());
+            FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    if (user != null) {
+                        mDatabase.child("WorkoutTestStats").child(user.getUid()).child(workoutTestName).child(getTime()).setValue(noOfReps);
+                    }
+                }
+            });
         }
         else {
             Toast.makeText(this, "Please enter the number of reps you have done.", Toast.LENGTH_SHORT).show();
         }
     }
 
+
+
+public String getTime() {
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat time = new SimpleDateFormat("dd_MM_YY");
+        String timeString = time.format(calendar.getTime());
+        Log.d("Time: ", timeString);
+        return timeString;
+
+
+        }
 
     public void setAndPlayVideo(String vidPath) {
         videoTest.setVideoPath(vidPath);
