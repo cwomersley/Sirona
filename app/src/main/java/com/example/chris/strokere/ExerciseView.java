@@ -63,6 +63,7 @@ public class ExerciseView extends BaseActivity {
 
         setupNavbar();
 
+
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
@@ -209,7 +210,7 @@ public class ExerciseView extends BaseActivity {
             String name = exercisesList.get(i);
 
 
-            mDatabase.child("exercises").push().setValue(name);
+            mDatabase.child("Exercises").child("Name").child(Integer.toString(i)).setValue(name);
 
 
         }

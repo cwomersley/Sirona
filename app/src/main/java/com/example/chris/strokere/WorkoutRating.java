@@ -12,8 +12,10 @@ import android.widget.NumberPicker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +27,8 @@ public class WorkoutRating extends BaseActivity {
     private int borgRating;
     private String score;
     private String userID;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class WorkoutRating extends BaseActivity {
 
                 borgRating = ratingScale.getValue();
                mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
+
 
 
             }
@@ -91,6 +96,11 @@ public class WorkoutRating extends BaseActivity {
     public int getLayout () {
         return R.layout.activity_home;
     }
+
+
+
+
+
 
 }
 
