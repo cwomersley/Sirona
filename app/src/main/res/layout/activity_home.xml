@@ -89,6 +89,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/include2"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="30dp" />
 
         <ImageView
@@ -98,6 +99,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/include2"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="30dp"
             app:srcCompat="@drawable/ic_add_alert_white_24dp" />
 
