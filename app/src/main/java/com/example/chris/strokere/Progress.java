@@ -28,14 +28,14 @@ public class Progress extends BaseActivity {
         setContentView(R.layout.activity_progress);
         setupNavbar();
 
-        TextView mon = (TextView) findViewById(R.id.d1P);
+        /*TextView mon = (TextView) findViewById(R.id.d1P);
         mon.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         TextView tue = (TextView) findViewById(R.id.d2P);
         tue.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         TextView wed = (TextView) findViewById(R.id.d3P);
-        wed.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        wed.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));*/
 
         Button shuffle = (Button) findViewById(R.id.shuffle);
 
@@ -85,8 +85,6 @@ public class Progress extends BaseActivity {
             }
         });
 
-
-
     }
 
 
@@ -134,8 +132,6 @@ public class Progress extends BaseActivity {
             return 1;
         }
     }
-
-
 
 
     public void redrawDays() {

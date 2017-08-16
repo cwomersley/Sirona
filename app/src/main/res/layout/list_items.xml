@@ -10,13 +10,14 @@
         android:focusable="false"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginBottom="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
         android:gravity="center_vertical"
         android:textColor="@color/greenAccent"
         android:textAlignment="center"
-        android:textSize="30sp"
-        android:padding="10dp"
+        android:textSize="28sp"
+        android:padding="5dp"
+        android:background="@drawable/exercise_type"
         >
 
     </TextView>

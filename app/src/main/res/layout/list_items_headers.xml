@@ -10,9 +10,9 @@
         android:clickable="false"
         android:focusable="false"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="1dp"
         android:gravity="center_vertical"
         android:textColor="@color/colorPrimaryWhite"
         android:textAlignment="center">
