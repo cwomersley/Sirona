@@ -37,7 +37,6 @@ public class WorkoutTest extends AppCompatActivity {
     private Handler handler = new Handler();
     private MediaPlayer mp;
     private ImageButton pause;
-    private  VideoView videoView;
     private CountDownTimer cdt;
     private int i = 0;
     private long timeLeft;
@@ -45,6 +44,8 @@ public class WorkoutTest extends AppCompatActivity {
     private int clickCount;
     private Button countClicksBtn;
     private long testLength;
+    private long countDownInterval;
+    private VideoView videoTest;
 
     String pressedButton;
 
@@ -58,6 +59,7 @@ public class WorkoutTest extends AppCompatActivity {
         countClicksBtn = (Button) findViewById(R.id.countClicksBtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
+        videoTest = (VideoView) findViewById(R.id.videoTest);
 
         //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
         pressedButton = getIntent().getExtras().getString("button");
@@ -65,22 +67,25 @@ public class WorkoutTest extends AppCompatActivity {
             case "sitToStands":
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
                 testLength=60000;
-                countClicksBtn.setVisibility(View.VISIBLE);
+                countDownInterval=600;
+                setAndPlayVideo(vidPath);
+                timer(testLength);
+                progressBar.setProgress(i);
                 break;
             case "shuttleRun":
-                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "trunk_rotations";
-                testLength=60000;
+                videoTest.setVisibility(View.INVISIBLE);
                 break;
             case "stepUps":
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
                 testLength=60000;
+                countDownInterval=600;
+                setAndPlayVideo(vidPath);
+                timer(testLength);
+                progressBar.setProgress(i);
                 break;
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        setAndPlayVideo(vidPath);
-        timer(testLength);
-        progressBar.setProgress(i);
 
     }
 
@@ -89,19 +94,17 @@ public class WorkoutTest extends AppCompatActivity {
     }
 
     public void setAndPlayVideo(String vidPath) {
-
-        videoView = (VideoView) findViewById(R.id.videoViewE);
-        videoView.setVideoPath(vidPath);
-        videoView.start();
+        videoTest.setVideoPath(vidPath);
+        videoTest.start();
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(videoView.isPlaying()){
-                    videoView.pause();
+                if(videoTest.isPlaying()){
+                    videoTest.pause();
                     pauseTimer();
 
                 }else {
-                    videoView.start();
+                    videoTest.start();
                     resumeTimer();
                 }
 
@@ -109,7 +112,7 @@ public class WorkoutTest extends AppCompatActivity {
         });
 
         //loops video playing in video view
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        videoTest.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
 
@@ -129,14 +132,14 @@ public class WorkoutTest extends AppCompatActivity {
     }
 
     public void timer(long testLength) {
-        cdt = new CountDownTimer(testLength, 600) {
+        cdt = new CountDownTimer(testLength, countDownInterval) {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 i++;
                 progressBar.setProgress(i);
             }
             public void onFinish() {
-                  videoView.stopPlayback();
+                  videoTest.stopPlayback();
             }
         };
         cdt.start();
