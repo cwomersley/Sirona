@@ -74,6 +74,10 @@ public class WorkoutTest extends AppCompatActivity {
                 break;
             case "shuttleRun":
                 videoTest.setVisibility(View.INVISIBLE);
+                testLength=180000;
+                countDownInterval=1800;
+                timer(testLength);
+                progressBar.setProgress(i);
                 break;
             case "stepUps":
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
@@ -139,7 +143,9 @@ public class WorkoutTest extends AppCompatActivity {
                 progressBar.setProgress(i);
             }
             public void onFinish() {
-                  videoTest.stopPlayback();
+                videoTest.stopPlayback();
+                progressBar.setVisibility(View.INVISIBLE);
+                videoTest.setVisibility(View.INVISIBLE);
             }
         };
         cdt.start();

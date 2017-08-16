@@ -74,8 +74,7 @@ public class ExerciseView extends BaseActivity {
                 likeBtn.setAlpha(1f);
                 dissLikeBtn.setAlpha(0.5f);
                 likeHash.put(nameList.get(0), likeVideo);
-                Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
-                startActivity(intent);
+
 
 
             }
@@ -258,7 +257,8 @@ public class ExerciseView extends BaseActivity {
                 }else if (nameList.size() == 1) {
 
                     videoView.stopPlayback();
-
+                    Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
+                    startActivity(intent);
 
 
                 }
@@ -269,7 +269,29 @@ public class ExerciseView extends BaseActivity {
         cdt.start();
     }
 
-  public void pauseTimer(){
+
+//10 second timer
+    public void vidBreak(){
+        new CountDownTimer(10000,1000){
+        public void onTick(long millisUntilFinished){
+
+        }
+
+        public void onFinish(){
+
+        }
+        };
+
+        }
+
+
+    //Checks if number is less than 9 and adds a leading 0
+    public String toTime(int number) {
+        return number <= 9 ? "0" + number : String.valueOf(number);
+    }
+
+
+    public void pauseTimer(){
       cdt.cancel();
       pause.setAlpha(1.0f);
   }
