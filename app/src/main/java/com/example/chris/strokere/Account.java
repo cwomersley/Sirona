@@ -312,7 +312,7 @@ public class Account extends AppCompatActivity {
 
 
     //https://stackoverflow.com/questions/25670051/how-to-create-yes-no-alert-dialog-in-fragment-in-android
-    //show dialog box assking if user wants to delete account
+    //show dialog box asking if user wants to delete account
     public void delAccount(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Are you sure you want to delete your account?");

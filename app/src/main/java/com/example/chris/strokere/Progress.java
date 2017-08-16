@@ -2,12 +2,24 @@ package com.example.chris.strokere;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.lang.ref.Reference;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.HashMap;
@@ -19,6 +31,9 @@ public class Progress extends BaseActivity {
     String previousMonth;
     String nextMonth;
     Calendar calendar;
+    FirebaseDatabase myFirebaseDatabase;
+    DatabaseReference myReference;
+    String userID;
 
     public HashMap<String,Integer> days = new HashMap<String,Integer>();
 
@@ -28,14 +43,9 @@ public class Progress extends BaseActivity {
         setContentView(R.layout.activity_progress);
         setupNavbar();
 
-        /*TextView mon = (TextView) findViewById(R.id.d1P);
-        mon.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        myFirebaseDatabase = FirebaseDatabase.getInstance();
+        myReference = myFirebaseDatabase.getReference();
 
-        TextView tue = (TextView) findViewById(R.id.d2P);
-        tue.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        TextView wed = (TextView) findViewById(R.id.d3P);
-        wed.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));*/
 
         Button shuffle = (Button) findViewById(R.id.shuffle);
 
@@ -82,6 +92,28 @@ public class Progress extends BaseActivity {
                 SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
                 previousMonth = dateOfMonth.format(calendar.getTime());
                 checkMonth(previousMonth);
+            }
+        });
+
+        myReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                findRatingsData(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null) {
+                    userID = user.getUid();
+                }
             }
         });
 
@@ -134,6 +166,23 @@ public class Progress extends BaseActivity {
     }
 
 
+    private void findRatingsData(DataSnapshot dataSnapshot) {
+
+        for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
+            if(snapshot.getKey().equals("BorgRatings")) {
+                String user = snapshot.child(userID).getKey();
+                Log.d("Data", user);
+
+                Object object = snapshot.child(userID).getValue();
+                String output = object.toString();
+                Log.d("Data2", output);
+
+            }
+
+        }
+
+    }
+
     public void redrawDays() {
 
         //This section models input from the database with a random number instead
@@ -185,6 +234,7 @@ public class Progress extends BaseActivity {
 
 
 
+
         /*if(days.get("Mon")==true) {
             TextView mon = (TextView) findViewById(R.id.monP);
             mon.setBackgroundColor(Color.BLUE);
@@ -199,7 +249,3 @@ public class Progress extends BaseActivity {
 
 }
 
-
-       // if(days.containsKey(true)) {
-        //        mon.setBackgroundColor(Color.RED);
-        //        }

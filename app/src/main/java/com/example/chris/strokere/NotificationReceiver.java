@@ -1,6 +1,9 @@
 package com.example.chris.strokere;
 
+import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -41,10 +44,12 @@ public class NotificationReceiver extends BroadcastReceiver {
                 .setContentTitle("This is a workout Reminder")
                 .setContentText("Time to workout...");
 
+
                 notificationBuilder.setLights(0xFFb71c1c, 1000, 2000);
 
                 Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                 notificationBuilder.setSound(uri);
+
 
 
         // Set an ID for the notification
