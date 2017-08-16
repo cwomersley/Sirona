@@ -15,8 +15,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -41,13 +43,14 @@ public class WorkoutTest extends AppCompatActivity {
     private int i = 0;
     private long timeLeft;
     private String vidPath;
-    private int clickCount;
-    private Button countClicksBtn;
     private long testLength;
     private long countDownInterval;
     private VideoView videoTest;
+    private String pressedButton;
+    private EditText howManyNo;
+    private TextView howMany;
+    private Button howManyBtn;
 
-    String pressedButton;
 
 
     @Override
@@ -55,19 +58,20 @@ public class WorkoutTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test);
 
-        clickCount=0;
-        countClicksBtn = (Button) findViewById(R.id.countClicksBtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
         videoTest = (VideoView) findViewById(R.id.videoTest);
+        howManyNo = (EditText) findViewById(R.id.howManyNo);
+        howMany = (TextView) findViewById(R.id.howMany);
+        howManyBtn = (Button) findViewById(R.id.howManyBtn);
 
         //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
         pressedButton = getIntent().getExtras().getString("button");
         switch(pressedButton){
             case "sitToStands":
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
-                testLength=60000;
-                countDownInterval=600;
+                testLength=600;
+                countDownInterval=6;
                 setAndPlayVideo(vidPath);
                 timer(testLength);
                 progressBar.setProgress(i);
@@ -93,8 +97,10 @@ public class WorkoutTest extends AppCompatActivity {
 
     }
 
-    public void countClicks() {
-        clickCount++;
+
+    //method for button to add user statistics to firebase
+    public void howMany() {
+
     }
 
     public void setAndPlayVideo(String vidPath) {
@@ -146,6 +152,9 @@ public class WorkoutTest extends AppCompatActivity {
                 videoTest.stopPlayback();
                 progressBar.setVisibility(View.INVISIBLE);
                 videoTest.setVisibility(View.INVISIBLE);
+                howMany.setVisibility(View.VISIBLE);
+                howManyBtn.setVisibility(View.VISIBLE);
+                howManyNo.setVisibility(View.VISIBLE);
             }
         };
         cdt.start();
