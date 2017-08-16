@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.text.Editable;
 import android.widget.ExpandableListView.OnChildClickListener;
 
-public class ExerciseList extends AppCompatActivity {
+public class ExerciseList extends BaseActivity {
 
     ListView listView;
     ArrayAdapter listViewAdapter;
@@ -44,6 +44,7 @@ public class ExerciseList extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
+        setupNavbar();
 
 //below is making the listview
         expListView = (ExpandableListView) findViewById(R.id.list);
@@ -175,6 +176,11 @@ public class ExerciseList extends AppCompatActivity {
             } catch (IllegalArgumentException e) {
             }
 
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_home;
     }
 
     public String getPath() {
