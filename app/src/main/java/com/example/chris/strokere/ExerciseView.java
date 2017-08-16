@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +48,9 @@ public class ExerciseView extends BaseActivity {
     private long timeLeft;
     private Integer likeVideo;
     private HashMap<String, Integer> likeHash = new HashMap<>();
+    private TextView timerText;
+    private int time = 10;
+    private Boolean isVidBreak = false;
 
 
 
@@ -63,6 +67,9 @@ public class ExerciseView extends BaseActivity {
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
+        timerText = (TextView) findViewById(R.id.timerText) ;
+
+
         likeBtn.setAlpha(0.5f);
         dissLikeBtn.setAlpha(0.5f);
 
@@ -123,20 +130,18 @@ public class ExerciseView extends BaseActivity {
         videoView = (VideoView) findViewById(R.id.videoViewE);
         videoView.setVideoPath(vidPath);
         videoView.start();
+
+        //Method with listener for pause click
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(videoView.isPlaying()){
-                    videoView.pause();
-                    pauseTimer();
-
-                }else {
-                    videoView.start();
-                    resumeTimer();
-                }
+                pausevid();
 
             }
         });
+
+        //make a method
+
 
         //loops video playing in video view
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -232,13 +237,13 @@ public class ExerciseView extends BaseActivity {
     //use new timer for each video ? ? to be able to set the time
 
 
-
+//Handles the play of exercises videos
     public void timer(long timeLeftMilli) {
         cdt = new CountDownTimer(timeLeftMilli, 100) {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 i++;
-                Log.d("fubar", Integer.toString(i));
+                Log.d("fubar", Long.toString(timeLeft));
                 progressBar.setProgress(i);
 
             }
@@ -248,11 +253,18 @@ public class ExerciseView extends BaseActivity {
                 //load the next video and set the time for it ?
                 if (nameList.size()> 1) {
 
-                    nameList.remove(0);
 
-                    setAndPlayVideo(setStringPath());
-                    i = 0;
-                    timer(100);
+
+                    //test code fbr
+
+                        vidBreak();
+                        videoView.setVisibility(View.INVISIBLE);
+                        cdt.cancel();
+                        isVidBreak = true;
+                        pause.setClickable(false);
+
+
+
 
                 }else if (nameList.size() == 1) {
 
@@ -272,15 +284,33 @@ public class ExerciseView extends BaseActivity {
 
 //10 second timer
     public void vidBreak(){
-        new CountDownTimer(10000,1000){
+
+    timerText.setVisibility(View.VISIBLE);
+
+        new CountDownTimer(10000, 900){
+
         public void onTick(long millisUntilFinished){
+            timerText.setText(toTime(time));
+            time--;
 
         }
 
         public void onFinish(){
 
+            isVidBreak = false;
+            nameList.remove(0);
+            setAndPlayVideo(setStringPath());
+            i = 0;
+            timer(10000);
+            videoView.setVisibility(View.VISIBLE);
+            timerText.setVisibility(View.INVISIBLE);
+            time = 10;
+            pause.setClickable(true);
+
+
+
         }
-        };
+        }.start();
 
         }
 
@@ -304,6 +334,21 @@ public class ExerciseView extends BaseActivity {
 
   public String getcurrentExervise(){
       return nameList.get(0);
+  }
+
+
+
+//Pauses & resumes video and timer + progress bar
+  public void pausevid() {
+      if (videoView.isPlaying()) {
+          videoView.pause();
+          pauseTimer();
+          Log.d("fubarLeft", Long.toString(timeLeft));
+
+      } else {
+          videoView.start();
+          resumeTimer();
+      }
   }
 
 
