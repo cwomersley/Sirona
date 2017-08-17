@@ -106,7 +106,7 @@
                 android:longClickable="false"
                 android:onClick="disslikeExercise"
                 android:scaleType="fitStart"
-                app:srcCompat="@drawable/thumbsdown" />
+                app:srcCompat="@drawable/ic_thumb_down_black_48dp" />
 
             <ImageButton
                 android:id="@+id/thumbsUpBtn"
@@ -121,7 +121,7 @@
                 android:longClickable="false"
                 android:onClick="likeExercise"
                 android:scaleType="fitStart"
-                app:srcCompat="@drawable/thumbsup" />
+                app:srcCompat="@drawable/ic_thumb_up_black_48dp" />
 
             <TextView
                 android:id="@+id/timerText"
