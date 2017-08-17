@@ -83,6 +83,7 @@ public class WorkoutTest extends AppCompatActivity {
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
                 testLength=60000;
                 time=60;
+                videoTest.setVideoPath(vidPath);
                 break;
             case "shuttleRun":
                 workoutTestName="ShuttleRun";
@@ -149,7 +150,7 @@ public String getTime() {
         }
 
     public void setAndPlayVideo(String vidPath) {
-        videoTest.setVideoPath(vidPath);
+        //videoTest.setVideoPath(vidPath);
         videoTest.start();
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
