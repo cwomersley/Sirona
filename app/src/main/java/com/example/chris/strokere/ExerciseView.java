@@ -53,7 +53,7 @@ public class ExerciseView extends BaseActivity {
     private Boolean isVidBreak = false;
     TextView exerciseNameText;
     private CountDownTimer vidBreaktmr;
-
+    private Long vidBreakTimeLeft ;
 
 
 
@@ -262,7 +262,7 @@ public class ExerciseView extends BaseActivity {
 
                     //test code fbr
 
-                        vidBreak();
+                        vidBreak(10000l);
                         videoView.setVisibility(View.INVISIBLE);
                         cdt.cancel();
                         isVidBreak = true;
@@ -289,13 +289,14 @@ public class ExerciseView extends BaseActivity {
 
 
 //10 second timer
-    public void vidBreak(){
+    public void vidBreak(Long breaktimeLeft){
 
     timerText.setVisibility(View.VISIBLE);
 
-        vidBreaktmr = new CountDownTimer(10000, 900){
+        vidBreaktmr = new CountDownTimer(breaktimeLeft, 990){
 
         public void onTick(long millisUntilFinished){
+            vidBreakTimeLeft = millisUntilFinished;
             timerText.setText(toTime(time));
             time--;
 
@@ -324,6 +325,9 @@ public class ExerciseView extends BaseActivity {
 
     //Checks if number is less than 9 and adds a leading 0
     public String toTime(int number) {
+        if(number < 0){
+            number = 0;
+        }
         return number <= 9 ? "0" + number : String.valueOf(number);
     }
 
@@ -368,15 +372,22 @@ public class ExerciseView extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        pausevid();
+        if(!isVidBreak) {
+            pausevid();
+        }
+        if(isVidBreak){
+            vidBreaktmr.cancel();
 
+        }
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        if (isVidBreak){
+            vidBreak(vidBreakTimeLeft);
+        }
 
     }
 }
