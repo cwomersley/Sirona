@@ -138,7 +138,9 @@ public class Account extends AppCompatActivity {
     }
 
     private void showData(DataSnapshot dataSnapshot) {
-
+        if(!signedIn()) {
+            return;
+        }
         //method to pull account details of patient from firebase database
         for(DataSnapshot ds: dataSnapshot.getChildren()) {
             if(ds.getKey().equals("Patients")) {
@@ -256,7 +258,9 @@ public class Account extends AppCompatActivity {
 
     //method for a user to change their password
     public void changePassword(View view) throws FirebaseAuthRecentLoginRequiredException {
-        if (signedIn()) {
+        if (!signedIn()) {
+            return;
+        }
             String changePass=password.getText().toString();
             Log.d(TAG, changePass);
             if (!validate()) {
@@ -285,11 +289,6 @@ public class Account extends AppCompatActivity {
                 hiddenPassword.setVisibility(View.VISIBLE);
                 Toast.makeText(Account.this, "Please enter your original password and username", Toast.LENGTH_SHORT).show();
             }
-        }
-        else {
-            Toast.makeText(Account.this, "You are not signed in", Toast.LENGTH_SHORT).show();
-        }
-
     }
 
     //method to delete a user account

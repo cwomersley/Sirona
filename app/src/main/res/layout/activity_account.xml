@@ -21,36 +21,41 @@
         android:ems="10"
         android:hint="EMAIL"
         android:inputType="textWebEmailAddress"
+        android:paddingLeft="20dp"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
         android:textSize="24sp" />
-
 
 
     <Button
         android:id="@+id/pEmailBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toStartOf="@+id/pHiddenPassword"
         android:background="@color/colorAccent"
         android:onClick="changeEmail"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="Change Email" />
 
     <Button
         android:id="@+id/pPasswordBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/delAccBtn"
+        android:layout_alignBottom="@+id/delAccBtn"
+        android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/colorAccent"
         android:onClick="changePassword"
-        android:text="Change Password"
-        android:layout_alignBaseline="@+id/delAccBtn"
-        android:layout_alignBottom="@+id/delAccBtn"
-        android:layout_alignParentStart="true" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Change Password" />
 
     <EditText
         android:id="@+id/pPassword"
@@ -65,6 +70,7 @@
         android:ems="10"
         android:hint="PASSWORD"
         android:inputType="textPassword"
+        android:paddingLeft="20dp"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
         android:textSize="24sp" />
@@ -82,6 +88,7 @@
         android:ems="10"
         android:hint="CONFIRM PASSWORD"
         android:inputType="textPassword"
+        android:paddingLeft="20dp"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
         android:textSize="24sp" />
@@ -130,13 +137,16 @@
         android:id="@+id/delAccBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/pHiddenEmail"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="19dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:background="@color/colorPrimary"
         android:onClick="delAccount"
-        android:text="Delete Account"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/pHiddenEmail"
-        android:layout_marginBottom="19dp" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Delete Account" />
 
     <ListView
         android:id="@+id/listview"
@@ -151,12 +161,14 @@
         android:id="@+id/logoutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/pEmail"
+
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
         android:background="@color/colorAccent"
         android:onClick="logout"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="Logout" />
 
 </android.widget.RelativeLayout>
