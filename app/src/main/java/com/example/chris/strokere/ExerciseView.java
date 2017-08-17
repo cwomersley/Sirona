@@ -88,6 +88,9 @@ public class ExerciseView extends BaseActivity {
 
 
 
+
+
+
             }
         });
 
@@ -243,7 +246,10 @@ public class ExerciseView extends BaseActivity {
 
 //Handles the play of exercises videos
     public void timer(long timeLeftMilli) {
-        exerciseNameText.setText(nameList.get(0));
+
+
+        exerciseNameText.setText(nameClean(nameList.get(0)));
+
         cdt = new CountDownTimer(timeLeftMilli, 100) {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
@@ -267,7 +273,7 @@ public class ExerciseView extends BaseActivity {
                         cdt.cancel();
                         isVidBreak = true;
                         pause.setClickable(false);
-
+                    exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
 
 
 
@@ -277,6 +283,7 @@ public class ExerciseView extends BaseActivity {
                     videoView.stopPlayback();
                     Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
                     startActivity(intent);
+                    finish();
 
 
                 }
@@ -354,6 +361,7 @@ public class ExerciseView extends BaseActivity {
       if (videoView.isPlaying()) {
           videoView.pause();
           pauseTimer();
+
           Log.d("fubarLeft", Long.toString(timeLeft));
 
       } else {
@@ -389,6 +397,19 @@ public class ExerciseView extends BaseActivity {
             vidBreak(vidBreakTimeLeft);
         }
 
+    }
+
+
+    public String nameClean(String exName){
+
+
+;
+        if(exName.contains("_")){
+            exName =exName.replace("_"," ");
+        }
+        exName = exName.substring(0, 1).toUpperCase() + exName.substring(1);
+        return exName;
+        //Log.d("ftest", exName);
     }
 }
 
