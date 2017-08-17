@@ -57,17 +57,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="48dp">
 
-                <VideoView
-                    android:id="@+id/videoTest"
-                    android:layout_width="fill_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:keepScreenOn="true"
-                    android:visibility="visible" />
-
             </RelativeLayout>
 
             <Button
@@ -99,6 +88,8 @@
                 android:id="@+id/pauseResume"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/relativeLayout"
+                android:layout_alignEnd="@+id/progressBar3"
                 android:layout_alignStart="@+id/relativeLayout"
                 android:layout_below="@+id/progressBar3"
                 android:alpha="0"
@@ -107,6 +98,18 @@
                 android:visibility="visible"
                 app:srcCompat="@drawable/ic_pause_circle_outline_black_24dp"
                 tools:background="@android:color/transparent" />
+
+            <TextView
+                android:id="@+id/testTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_below="@+id/videoTest"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="180sp"
+                android:visibility="invisible" />
 
             <EditText
                 android:id="@+id/howManyNo"
@@ -121,6 +124,15 @@
                 android:textColorHint="@color/greenAccent"
                 android:textSize="24sp"
                 android:visibility="invisible" />
+
+            <VideoView
+                android:id="@+id/videoTest"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_below="@+id/progressBar3"
+                android:layout_centerHorizontal="true"
+                android:keepScreenOn="true"
+                android:visibility="visible" />
 
         </RelativeLayout>
 

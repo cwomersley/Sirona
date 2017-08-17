@@ -40,13 +40,9 @@ import java.util.HashMap;
 public class WorkoutTest extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
-    private ProgressBar progressBar;
-    private int progressStatus = 0;
-    private Handler handler = new Handler();
     private MediaPlayer mp;
     private ImageButton pause;
     private CountDownTimer cdt;
-    private int i = 0;
     private long timeLeft;
     private String vidPath;
     private long testLength;
@@ -57,6 +53,8 @@ public class WorkoutTest extends AppCompatActivity {
     private TextView howMany;
     private Button howManyBtn;
     private String workoutTestName;
+    private TextView testTimer;
+    private int time;
 
 
 
@@ -66,12 +64,13 @@ public class WorkoutTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar3);
+
         pause = (ImageButton) findViewById(R.id.pauseResume);
         videoTest = (VideoView) findViewById(R.id.videoTest);
         howManyNo = (EditText) findViewById(R.id.howManyNo);
         howMany = (TextView) findViewById(R.id.howMany);
         howManyBtn = (Button) findViewById(R.id.howManyBtn);
+        testTimer = (TextView) findViewById(R.id.testTimer);
 
         //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
         pressedButton = getIntent().getExtras().getString("button");
@@ -79,28 +78,25 @@ public class WorkoutTest extends AppCompatActivity {
             case "sitToStands":
                 workoutTestName="SitToStands";
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
-                testLength=600;
-                countDownInterval=6;
+                testLength=60000;
+                time=60;
                 setAndPlayVideo(vidPath);
-                timer(testLength);
-                progressBar.setProgress(i);
+                runTimer(testLength);
                 break;
             case "shuttleRun":
                 workoutTestName="ShuttleRun";
                 videoTest.setVisibility(View.INVISIBLE);
                 testLength=180000;
-                countDownInterval=1800;
-                timer(testLength);
-                progressBar.setProgress(i);
+                time=180;
+                runTimer(testLength);
                 break;
             case "stepUps":
                 workoutTestName="StepUps";
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
                 testLength=60000;
-                countDownInterval=600;
+                time=60;
                 setAndPlayVideo(vidPath);
-                timer(testLength);
-                progressBar.setProgress(i);
+                runTimer(testLength);
                 break;
         }
 
@@ -166,9 +162,7 @@ public String getTime() {
         videoTest.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-
                 mp.setLooping(true);
-
 
             }
         });
@@ -182,35 +176,46 @@ public String getTime() {
         return true;
     }
 
-    public void timer(long testLength) {
-        cdt = new CountDownTimer(testLength, countDownInterval) {
-            public void onTick(long millisUntilFinished) {
-                timeLeft = millisUntilFinished;
-                i++;
-                progressBar.setProgress(i);
-            }
-            public void onFinish() {
-                videoTest.stopPlayback();
-                progressBar.setVisibility(View.INVISIBLE);
-                videoTest.setVisibility(View.INVISIBLE);
-                howMany.setVisibility(View.VISIBLE);
-                howManyBtn.setVisibility(View.VISIBLE);
-                howManyNo.setVisibility(View.VISIBLE);
-            }
-        };
-        cdt.start();
-    }
-
     public void pauseTimer(){
         cdt.cancel();
         pause.setAlpha(1.0f);
     }
 
     public void resumeTimer(){
-        timer(timeLeft);
+        runTimer(timeLeft);
         pause.setAlpha(0.0f);
     }
 
+
+    public String toTime(int number) {
+        return number <= 9 ? "0" + number : String.valueOf(number);
+    }
+
+
+
+    public void runTimer(long testLength){
+        testTimer.setVisibility(View.VISIBLE);
+        cdt = new CountDownTimer(testLength, testLength/100){
+            public void onTick(long millisUntilFinished){
+                timeLeft = millisUntilFinished;
+                time=(int)timeLeft/1000;
+                testTimer.setText(toTime(time));
+                time--;
+
+            }
+            public void onFinish(){
+                videoTest.stopPlayback();
+                videoTest.setVisibility(View.INVISIBLE);
+                howMany.setVisibility(View.VISIBLE);
+                howManyBtn.setVisibility(View.VISIBLE);
+                howManyNo.setVisibility(View.VISIBLE);
+                testTimer.setVisibility(View.INVISIBLE);
+                cdt.cancel();
+
+            }
+        };
+        cdt.start();
+    }
 }
 
 
