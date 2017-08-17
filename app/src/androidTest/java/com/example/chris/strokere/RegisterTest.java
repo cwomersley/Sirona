@@ -37,6 +37,7 @@ public class RegisterTest {
 
 
     @Test
+    //registers a random user on the app (email address is randomwised)
     //user must be logged out to run this test
     public void registerTest() {
 
@@ -104,9 +105,6 @@ public class RegisterTest {
                 e.printStackTrace();
             }
 
-            //ViewInteraction appCompatButton3 = onView(
-             //       allOf(withId(R.id.btnLogout), withText("Logout"), isDisplayed()));
-            //appCompatButton3.perform(click());
 
         }
 

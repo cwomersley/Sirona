@@ -98,7 +98,7 @@
             android:background="@color/bg"
             android:clickable="true"
             android:gravity="center"
-            android:onClick="forgotText"
+            android:onClick="forgotPassword"
             android:text="Forgotten Password?"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
