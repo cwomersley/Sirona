@@ -52,6 +52,7 @@ public class ExerciseView extends BaseActivity {
     private int time = 10;
     private Boolean isVidBreak = false;
     TextView exerciseNameText;
+    private CountDownTimer vidBreaktmr;
 
 
 
@@ -292,7 +293,7 @@ public class ExerciseView extends BaseActivity {
 
     timerText.setVisibility(View.VISIBLE);
 
-        new CountDownTimer(10000, 900){
+        vidBreaktmr = new CountDownTimer(10000, 900){
 
         public void onTick(long millisUntilFinished){
             timerText.setText(toTime(time));
@@ -363,5 +364,20 @@ public class ExerciseView extends BaseActivity {
         return R.layout.activity_home;
     }
 
+    //Handles pausing videos/timer on incoming calls and switching apps
+    @Override
+    protected void onPause() {
+        super.onPause();
+        pausevid();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+    }
 }
 
