@@ -55,6 +55,8 @@ public class WorkoutTest extends AppCompatActivity {
     private String workoutTestName;
     private TextView testTimer;
     private int time;
+    private TextView testText;
+    private Button proceedBtn;
 
 
 
@@ -64,12 +66,12 @@ public class WorkoutTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test);
 
-
+        testText= (TextView) findViewById(R.id.testText);
         pause = (ImageButton) findViewById(R.id.pauseResume);
         videoTest = (VideoView) findViewById(R.id.videoTest);
         howManyNo = (EditText) findViewById(R.id.howManyNo);
         howMany = (TextView) findViewById(R.id.howMany);
-        howManyBtn = (Button) findViewById(R.id.howManyBtn);
+        proceedBtn = (Button) findViewById(R.id.proceedBtn);
         testTimer = (TextView) findViewById(R.id.testTimer);
 
         //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
@@ -77,30 +79,36 @@ public class WorkoutTest extends AppCompatActivity {
         switch(pressedButton){
             case "sitToStands":
                 workoutTestName="SitToStands";
+                testText.setText("See how many sit to stands you can do in a minute!");
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
                 testLength=60000;
                 time=60;
-                setAndPlayVideo(vidPath);
-                runTimer(testLength);
                 break;
             case "shuttleRun":
                 workoutTestName="ShuttleRun";
+                testText.setText("See how many shuttle runs you can do in 3 minutes!");
                 videoTest.setVisibility(View.INVISIBLE);
                 testLength=180000;
                 time=180;
-                runTimer(testLength);
                 break;
             case "stepUps":
                 workoutTestName="StepUps";
+                testText.setText("See how many step ups you can do in a minute!");
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
                 testLength=60000;
                 time=60;
-                setAndPlayVideo(vidPath);
-                runTimer(testLength);
                 break;
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+    }
+
+    public void testProceed (View view) {
+        testText.setVisibility(View.INVISIBLE);
+        proceedBtn.setVisibility(View.INVISIBLE);
+        setAndPlayVideo(vidPath);
+        runTimer(testLength);
 
     }
 
