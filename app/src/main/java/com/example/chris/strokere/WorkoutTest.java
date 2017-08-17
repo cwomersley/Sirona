@@ -72,6 +72,7 @@ public class WorkoutTest extends AppCompatActivity {
         howManyNo = (EditText) findViewById(R.id.howManyNo);
         howMany = (TextView) findViewById(R.id.howMany);
         proceedBtn = (Button) findViewById(R.id.proceedBtn);
+        howManyBtn = (Button) findViewById(R.id.howManyBtn);
         testTimer = (TextView) findViewById(R.id.testTimer);
 
         //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
@@ -84,6 +85,8 @@ public class WorkoutTest extends AppCompatActivity {
                 testLength=60000;
                 time=60;
                 videoTest.setVideoPath(vidPath);
+                videoTest.start();
+                videoTest.stopPlayback();
                 break;
             case "shuttleRun":
                 workoutTestName="ShuttleRun";
@@ -98,6 +101,9 @@ public class WorkoutTest extends AppCompatActivity {
                 vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
                 testLength=60000;
                 time=60;
+                videoTest.setVideoPath(vidPath);
+                videoTest.start();
+                videoTest.stopPlayback();
                 break;
         }
 
@@ -115,7 +121,7 @@ public class WorkoutTest extends AppCompatActivity {
 
 
     //method for button to add user statistics to firebase
-    public void howManyConfirm(View view) {
+    public void testConfirm(View view) {
         if (!howManyNo.getText().toString().equals("")) {
             final int noOfReps=Integer.parseInt(howManyNo.getText().toString());
             FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
@@ -150,7 +156,7 @@ public String getTime() {
         }
 
     public void setAndPlayVideo(String vidPath) {
-        //videoTest.setVideoPath(vidPath);
+        videoTest.setVideoPath(vidPath);
         videoTest.start();
         pause.setOnClickListener(new View.OnClickListener() {
             @Override

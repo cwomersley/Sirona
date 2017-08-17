@@ -60,7 +60,7 @@
             </RelativeLayout>
 
             <Button
-                android:id="@+id/proceedBtn"
+                android:id="@+id/howManyBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignEnd="@+id/relativeLayout"
@@ -68,11 +68,26 @@
                 android:layout_alignStart="@+id/relativeLayout"
                 android:layout_marginBottom="31dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:onClick="testConfirm"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Confirm"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/proceedBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="31dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/standard_button_pink"
                 android:onClick="testProceed"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:text="Proceed!" />
+                android:text="Start!"
+                android:layout_alignStart="@+id/howManyBtn"
+                android:layout_alignEnd="@+id/testText" />
 
             <TextView
                 android:id="@+id/howMany"
@@ -140,14 +155,14 @@
             <TextView
                 android:id="@+id/testText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_alignBottom="@+id/relativeLayout"
                 android:layout_alignEnd="@+id/videoTest"
                 android:layout_alignStart="@+id/videoTest"
                 android:layout_below="@+id/videoTest"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/greenAccent"
-                android:textSize="20sp" />
+                android:textSize="24sp" />
 
         </RelativeLayout>
 
