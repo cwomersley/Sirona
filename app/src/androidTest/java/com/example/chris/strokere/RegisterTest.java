@@ -104,9 +104,9 @@ public class RegisterTest {
                 e.printStackTrace();
             }
 
-            ViewInteraction appCompatButton3 = onView(
-                    allOf(withId(R.id.btnLogout), withText("Logout"), isDisplayed()));
-            appCompatButton3.perform(click());
+            //ViewInteraction appCompatButton3 = onView(
+             //       allOf(withId(R.id.btnLogout), withText("Logout"), isDisplayed()));
+            //appCompatButton3.perform(click());
 
         }
 

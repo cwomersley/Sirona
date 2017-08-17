@@ -141,9 +141,9 @@ public class ChangePasswordTest {
             e.printStackTrace();
         }
 
-        ViewInteraction appCompatButton5 = onView(
-                allOf(withId(R.id.btnLogout), withText("Logout"), isDisplayed()));
-        appCompatButton5.perform(click());
+       // ViewInteraction appCompatButton5 = onView(
+                //allOf(withId(R.id.btnLogout), withText("Logout"), isDisplayed()));
+        //appCompatButton5.perform(click());
 
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:

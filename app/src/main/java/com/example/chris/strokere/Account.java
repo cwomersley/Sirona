@@ -102,8 +102,6 @@ public class Account extends AppCompatActivity {
         userID=dUser.getUid();
 
         mListView= (ListView) findViewById(R.id.listview);
-
-
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
@@ -132,9 +130,6 @@ public class Account extends AppCompatActivity {
 
             }
         });
-        //pPasswordBtn.setOnClickListener(this);
-
-
     }
 
     private void showData(DataSnapshot dataSnapshot) {
@@ -162,9 +157,6 @@ public class Account extends AppCompatActivity {
             }
 
         }
-
-
-
     }
 
     //returns true/false depending on whether a user is signed in
@@ -175,7 +167,6 @@ public class Account extends AppCompatActivity {
             return false;
         }
     }
-
     //reauthorise a user's credentials
     public void aReauth() {
 

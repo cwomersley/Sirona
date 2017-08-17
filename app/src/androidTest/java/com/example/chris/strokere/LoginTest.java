@@ -12,10 +12,9 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
@@ -27,23 +26,13 @@ public class LoginTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    //test loggin into app with admin username:test@test.com and password: password
-    public void accountActivityTest() {
-
-
+    public void loginTest() {
+        //logs into the app with the default username and password and then logs out
         try {
-            Thread.sleep(5000);
+            Thread.sleep(6000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.emailL), isDisplayed()));
-        appCompatEditText3.perform(replaceText("test@test.com"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.passwordL), isDisplayed()));
-        appCompatEditText4.perform(replaceText("password"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.loginBtnM), withText("Log in"), isDisplayed()));
@@ -74,6 +63,22 @@ public class LoginTest {
         ViewInteraction appCompatButton3 = onView(
                 allOf(withId(R.id.btnAccountS), withText("My Account"), isDisplayed()));
         appCompatButton3.perform(click());
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction appCompatButton4 = onView(
+                allOf(withId(R.id.logoutBtn), withText("Logout"),
+                        withParent(allOf(withId(R.id.hiddenEmail),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        appCompatButton4.perform(click());
 
     }
 
