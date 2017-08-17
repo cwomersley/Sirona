@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,20 +41,23 @@ public class Progress extends BaseActivity {
     String dataMonth;
     FirebaseUser user;
     DataSnapshot currentSnapshot;
+    Integer timesWorkedOut = 0;
 
-    public HashMap<String,Integer> days = new HashMap<String,Integer>();
+    private HashMap<String,Integer> days = new HashMap<String,Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
         setupNavbar();
+        animateText();
 
         myFirebaseDatabase = FirebaseDatabase.getInstance();
         myReference = myFirebaseDatabase.getReference();
 
 
         Button shuffle = (Button) findViewById(R.id.shuffle);
+
 
         Button goGraph = (Button) findViewById(R.id.goGraph);
         goGraph.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +84,9 @@ public class Progress extends BaseActivity {
 
         checkMonth(this.monthName);
 
+        findRatingsData(currentSnapshot);
+        animateText();
+
 
         Button goForward = (Button) findViewById(R.id.forwardMonth);
         goForward.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +98,7 @@ public class Progress extends BaseActivity {
                 days.clear();
                 emptyDays();
                 findRatingsData(currentSnapshot);
+                animateText();
             }
         });
 
@@ -102,6 +112,7 @@ public class Progress extends BaseActivity {
                 days.clear();
                 emptyDays();
                 findRatingsData(currentSnapshot);
+                animateText();
             }
         });
 
@@ -168,7 +179,7 @@ public class Progress extends BaseActivity {
         return R.layout.activity_progress;
     }
 
-    public int randomNum(){
+    private int randomNum(){
         if(Math.random() < 0.5==true) {
             return 2;
         }
@@ -180,17 +191,17 @@ public class Progress extends BaseActivity {
 
     private void findRatingsData(DataSnapshot dataSnapshot) {
 
+        //Ensures this method only runs if a user is logged in
         if(user != null) {
+
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
                 if (snapshot.getKey().equals("BorgRatings")) {
-                    String user = snapshot.child(userID).getKey();
-                    Log.d("User: ", user);
 
                     Object object = snapshot.child(userID).getValue();
                     String output = object.toString();
-                    Log.d("Initial data: ", output);
 
-                    //Removes the initial '{' so that the data
+                    //Removes the initial '{' so that the data is consistent
                     output = output.replace("{", "");
 
                     //Puts the data into an array
@@ -200,28 +211,64 @@ public class Progress extends BaseActivity {
                     for( int i = 0; i < splitData.length; i++)
                     {
                         String part = splitData[i];
-                            this.dataDay = part.substring(0, 2);
-                            this.dataMonth = part.substring(3, 5);
-                            Log.d("Split data: ", dataDay + dataMonth);
-                            if(dataMonth.equals(monthNumbers(monthName))) {
-                                days.put("d" + dataDay + "P", 2);
-                                Log.d("Data month: ", dataMonth);
-                            }
-                            redrawDays();
+
+                        this.dataDay = part.substring(0, 2);
+                        this.dataMonth = part.substring(3, 5);
+
+                        //Enters each day that corresponds to the active month into the days HashMap so it can be colored appropriately
+                        if(dataMonth.equals(monthNumbers(monthName))) {
+                            days.put("d" + dataDay + "P", 2);
                         }
+
+                        redrawDays();
 
                     }
 
                 }
 
+            }
+
         }
+
+    }
+
+    private void animateText() {
+
+        TextView youWorked = (TextView) findViewById(R.id.youWorked);
+        youWorked.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        String workedOut = Integer.toString(timesWorkedOut);
+
+        if(user != null) {
+
+            youWorked.setText("You worked out " + workedOut + " times this month!");
+
+        }
+
+        if(user == null) {
+
+            youWorked.setText("You need to be logged in to use the calendar");
+
+        }
+
+        Animation textAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animated_text);
+
+        //youWorked.setAnimation(textAnimation);
+
+        ImageView runningMan = (ImageView) findViewById(R.id.runningMan);
+
+        //Animation runningAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.running_man);
+
+        //runningMan.setAnimation(runningAnimation);
+        runningMan.setVisibility(View.INVISIBLE);
 
     }
 
 
     private String monthNumbers(String month) {
 
-        Map<String, String> months = new HashMap<String, String>();
+        Map<String, String> months = new HashMap<>();
+
         months.put("January", "01");
         months.put("February", "02");
         months.put("March", "03");
@@ -235,10 +282,7 @@ public class Progress extends BaseActivity {
         months.put("November", "11");
         months.put("December", "12");
 
-        String value = months.get("key");
         String monthNo = months.get(month);
-
-        Log.d("Month no: ", monthNo + monthName);
 
         return monthNo;
 
@@ -259,55 +303,25 @@ public class Progress extends BaseActivity {
 
     }
 
-    public void redrawDays() {
+    private void redrawDays() {
 
-
-        /*days.put("d01P",randomNum());
-        days.put("d02P",randomNum());
-        days.put("d03P",randomNum());
-        days.put("d04P",randomNum());
-        days.put("d05P",randomNum());
-        days.put("d06P",randomNum());
-        days.put("d07P",randomNum());
-        days.put("d08P",randomNum());
-        days.put("d09P",randomNum());
-        days.put("d10P",randomNum());
-        days.put("d11P",randomNum());
-        days.put("d12P",randomNum());
-        days.put("d13P",randomNum());
-        days.put("d14P",randomNum());
-        days.put("d15P",randomNum());
-        days.put("d16P",randomNum());
-        days.put("d17P",randomNum());
-        days.put("d18P",randomNum());
-        days.put("d19P",randomNum());
-        days.put("d20P",randomNum());
-        days.put("d21P",randomNum());
-        days.put("d22P",randomNum());
-        days.put("d23P",1);
-        days.put("d24P",1);
-        days.put("d25P",1);
-        days.put("d26P",1);
-        days.put("d27P",1);
-        days.put("d28P",1);
-        days.put("d29P",1);
-        days.put("d30P",1);
-        days.put("d31P",1); */
-
+        timesWorkedOut = 0;
 
         for(Map.Entry<String, Integer> entry : days.entrySet())
         {
             int id = getResources().getIdentifier(entry.getKey(), "id", getPackageName());
             TextView textView = (TextView) findViewById(id);
+
             if(entry.getValue()==2) {
                 textView.setBackground(getResources().getDrawable(R.drawable.calendar_day_done));
-
+                timesWorkedOut++;
             }
+
             if(entry.getValue()==1) {
                 textView.setBackground(getResources().getDrawable(R.drawable.calendar_day));
             }
-        }
 
+        }
 
     }
 

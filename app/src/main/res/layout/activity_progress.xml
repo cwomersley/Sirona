@@ -32,7 +32,7 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="130dp"
                 android:layout_height="match_parent"
                 android:gravity="left">
 
@@ -293,7 +293,8 @@
 
         <TextView
             android:id="@+id/currentMonth"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_below="@+id/include4"
             android:layout_centerHorizontal="true"
@@ -329,21 +330,50 @@
             android:id="@+id/backMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             android:layout_alignBaseline="@+id/currentMonth"
             android:layout_alignBottom="@+id/currentMonth"
+            android:layout_marginEnd="16dp"
             android:layout_toStartOf="@+id/currentMonth"
-            android:layout_marginEnd="16dp" />
+            android:background="@drawable/ic_keyboard_arrow_left_white_24dp" />
 
         <Button
             android:id="@+id/forwardMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
             android:layout_alignBaseline="@+id/currentMonth"
             android:layout_alignBottom="@+id/currentMonth"
+            android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/currentMonth"
-            android:layout_marginStart="13dp" />
+            android:background="@drawable/ic_keyboard_arrow_right_white_24dp" />
+
+        <TextView
+            android:id="@+id/workedBackground"
+            android:layout_width="360dp"
+            android:layout_height="55dp"
+            android:background="@color/bg"
+            android:layout_alignBottom="@+id/shuffle"
+            android:layout_marginBottom="70dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/youWorked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="20dp"
+            android:textColor="@color/greenAccent"
+            android:layout_alignBottom="@+id/shuffle"
+            android:layout_marginBottom="120dp"
+            android:layout_centerHorizontal="true" />
+
+
+        <ImageView
+            android:id="@+id/runningMan"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/ic_directions_walk_white_24dp"
+            android:layout_above="@+id/youWorked"
+            android:layout_alignStart="@+id/youWorked" />
 
     </RelativeLayout>
 
