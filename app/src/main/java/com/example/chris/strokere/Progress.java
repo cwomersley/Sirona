@@ -36,6 +36,8 @@ public class Progress extends BaseActivity {
     String userID;
     String dataDay;
     String dataMonth;
+    FirebaseUser user;
+    DataSnapshot currentSnapshot;
 
     public HashMap<String,Integer> days = new HashMap<String,Integer>();
 
@@ -84,6 +86,9 @@ public class Progress extends BaseActivity {
                 SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
                 nextMonth = dateOfMonth.format(calendar.getTime());
                 checkMonth(nextMonth);
+                days.clear();
+                emptyDays();
+                findRatingsData(currentSnapshot);
             }
         });
 
@@ -94,12 +99,16 @@ public class Progress extends BaseActivity {
                 SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
                 previousMonth = dateOfMonth.format(calendar.getTime());
                 checkMonth(previousMonth);
+                days.clear();
+                emptyDays();
+                findRatingsData(currentSnapshot);
             }
         });
 
         myReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                currentSnapshot = dataSnapshot;
                 findRatingsData(dataSnapshot);
             }
 
@@ -112,7 +121,7 @@ public class Progress extends BaseActivity {
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                user = firebaseAuth.getCurrentUser();
                 if(user != null) {
                     userID = user.getUid();
                 }
@@ -120,6 +129,7 @@ public class Progress extends BaseActivity {
         });
 
     }
+
 
 
     private void checkMonth (String month) {
@@ -170,50 +180,97 @@ public class Progress extends BaseActivity {
 
     private void findRatingsData(DataSnapshot dataSnapshot) {
 
-        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-            if (snapshot.getKey().equals("BorgRatings")) {
-                String user = snapshot.child(userID).getKey();
-                Log.d("Data", user);
+        if(user != null) {
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                if (snapshot.getKey().equals("BorgRatings")) {
+                    String user = snapshot.child(userID).getKey();
+                    Log.d("User: ", user);
 
-                Object object = snapshot.child(userID).getValue();
-                String output = object.toString();
-                Log.d("Data2", output);
+                    Object object = snapshot.child(userID).getValue();
+                    String output = object.toString();
+                    Log.d("Initial data: ", output);
 
-                output = output.replace("{", "");
-                String[] split = output.split(", ");
+                    //Removes the initial '{' so that the data
+                    output = output.replace("{", "");
 
+                    //Puts the data into an array
+                    String[] splitData = output.split(", ");
 
-                for( int i = 0; i < split.length; i++)
-                {
-                    String part = split[i];
-                boolean aBoolean = true;
-                    while (aBoolean == true) {
-                        this.dataDay = part.substring(0, 2);
-                        this.dataMonth = part.substring(3, 5);
-                        Log.d("Data3", dataDay + dataMonth);
-                        aBoolean = false;
+                    //Splits the data into day and month pairs
+                    for( int i = 0; i < splitData.length; i++)
+                    {
+                        String part = splitData[i];
+                            this.dataDay = part.substring(0, 2);
+                            this.dataMonth = part.substring(3, 5);
+                            Log.d("Split data: ", dataDay + dataMonth);
+                            if(dataMonth.equals(monthNumbers(monthName))) {
+                                days.put("d" + dataDay + "P", 2);
+                                Log.d("Data month: ", dataMonth);
+                            }
+                            redrawDays();
+                        }
+
                     }
 
                 }
 
-            }
+        }
 
+    }
+
+
+    private String monthNumbers(String month) {
+
+        Map<String, String> months = new HashMap<String, String>();
+        months.put("January", "01");
+        months.put("February", "02");
+        months.put("March", "03");
+        months.put("April", "04");
+        months.put("May", "05");
+        months.put("June", "06");
+        months.put("July", "07");
+        months.put("August", "08");
+        months.put("September", "09");
+        months.put("October", "10");
+        months.put("November", "11");
+        months.put("December", "12");
+
+        String value = months.get("key");
+        String monthNo = months.get(month);
+
+        Log.d("Month no: ", monthNo + monthName);
+
+        return monthNo;
+
+    }
+
+
+    private void emptyDays() {
+
+        for(int i = 1; i < 10; i++) {
+            String index = Integer.toString(i);
+            days.put("d" + "0" + index + "P", 1);
+        }
+
+        for(int i = 10; i < 32; i++) {
+            String index = Integer.toString(i);
+            days.put("d" + index + "P", 1);
         }
 
     }
 
     public void redrawDays() {
 
-        //This section models input from the database with a random number instead
-        days.put("d1P",randomNum());
-        days.put("d2P",randomNum());
-        days.put("d3P",randomNum());
-        days.put("d4P",randomNum());
-        days.put("d5P",randomNum());
-        days.put("d6P",randomNum());
-        days.put("d7P",randomNum());
-        days.put("d8P",randomNum());
-        days.put("d9P",randomNum());
+
+        /*days.put("d01P",randomNum());
+        days.put("d02P",randomNum());
+        days.put("d03P",randomNum());
+        days.put("d04P",randomNum());
+        days.put("d05P",randomNum());
+        days.put("d06P",randomNum());
+        days.put("d07P",randomNum());
+        days.put("d08P",randomNum());
+        days.put("d09P",randomNum());
         days.put("d10P",randomNum());
         days.put("d11P",randomNum());
         days.put("d12P",randomNum());
@@ -227,41 +284,29 @@ public class Progress extends BaseActivity {
         days.put("d20P",randomNum());
         days.put("d21P",randomNum());
         days.put("d22P",randomNum());
-        days.put("d23P",randomNum());
-        days.put("d24P",randomNum());
-        days.put("d25P",randomNum());
-        days.put("d26P",randomNum());
-        days.put("d27P",randomNum());
-        days.put("d28P",randomNum());
+        days.put("d23P",1);
+        days.put("d24P",1);
+        days.put("d25P",1);
+        days.put("d26P",1);
+        days.put("d27P",1);
+        days.put("d28P",1);
+        days.put("d29P",1);
+        days.put("d30P",1);
+        days.put("d31P",1); */
 
 
         for(Map.Entry<String, Integer> entry : days.entrySet())
         {
             int id = getResources().getIdentifier(entry.getKey(), "id", getPackageName());
             TextView textView = (TextView) findViewById(id);
-            //Log.d("Logthis   ","Key = " + entry.getKey() + ", Value = " + entry.getValue() + id);
             if(entry.getValue()==2) {
                 textView.setBackground(getResources().getDrawable(R.drawable.calendar_day_done));
-                //textView.setBackgroundColor(Color.parseColor("#4BAA71"));
 
             }
             if(entry.getValue()==1) {
                 textView.setBackground(getResources().getDrawable(R.drawable.calendar_day));
-                //textView.setBackgroundColor(Color.parseColor("#BABABA"));
             }
         }
-
-
-
-
-        /*if(days.get("Mon")==true) {
-            TextView mon = (TextView) findViewById(R.id.monP);
-            mon.setBackgroundColor(Color.BLUE);
-        }
-        else {
-            TextView mon = (TextView) findViewById(R.id.monP);
-            mon.setBackgroundColor(Color.parseColor("#FF4081"));
-        }*/
 
 
     }
