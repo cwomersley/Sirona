@@ -34,6 +34,8 @@ public class Progress extends BaseActivity {
     FirebaseDatabase myFirebaseDatabase;
     DatabaseReference myReference;
     String userID;
+    String dataDay;
+    String dataMonth;
 
     public HashMap<String,Integer> days = new HashMap<String,Integer>();
 
@@ -168,14 +170,31 @@ public class Progress extends BaseActivity {
 
     private void findRatingsData(DataSnapshot dataSnapshot) {
 
-        for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
-            if(snapshot.getKey().equals("BorgRatings")) {
+        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+            if (snapshot.getKey().equals("BorgRatings")) {
                 String user = snapshot.child(userID).getKey();
                 Log.d("Data", user);
 
                 Object object = snapshot.child(userID).getValue();
                 String output = object.toString();
                 Log.d("Data2", output);
+
+                output = output.replace("{", "");
+                String[] split = output.split(", ");
+
+
+                for( int i = 0; i < split.length; i++)
+                {
+                    String part = split[i];
+                boolean aBoolean = true;
+                    while (aBoolean == true) {
+                        this.dataDay = part.substring(0, 2);
+                        this.dataMonth = part.substring(3, 5);
+                        Log.d("Data3", dataDay + dataMonth);
+                        aBoolean = false;
+                    }
+
+                }
 
             }
 
@@ -220,7 +239,7 @@ public class Progress extends BaseActivity {
         {
             int id = getResources().getIdentifier(entry.getKey(), "id", getPackageName());
             TextView textView = (TextView) findViewById(id);
-            Log.d("Logthis   ","Key = " + entry.getKey() + ", Value = " + entry.getValue() + id);
+            //Log.d("Logthis   ","Key = " + entry.getKey() + ", Value = " + entry.getValue() + id);
             if(entry.getValue()==2) {
                 textView.setBackground(getResources().getDrawable(R.drawable.calendar_day_done));
                 //textView.setBackgroundColor(Color.parseColor("#4BAA71"));
