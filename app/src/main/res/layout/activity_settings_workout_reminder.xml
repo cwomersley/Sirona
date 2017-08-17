@@ -72,28 +72,32 @@
                 style="@style/calendar_day"
                 android:background="@drawable/toggle_button"
                 android:textOff="Mon"
-                android:textOn="Mon"/>
+                android:textOn="Mon"
+                android:textSize="16sp" />
 
             <ToggleButton
                 android:id="@+id/tueWR"
                 style="@style/calendar_day"
                 android:background="@drawable/toggle_button"
                 android:textOff="Tue"
-                android:textOn="Tue" />
+                android:textOn="Tue"
+                android:textSize="16sp" />
 
             <ToggleButton
                 android:id="@+id/wedWR"
                 style="@style/calendar_day"
                 android:background="@drawable/toggle_button"
                 android:textOff="Wed"
-                android:textOn="Wed" />
+                android:textOn="Wed"
+                android:textSize="16sp" />
 
             <ToggleButton
                 android:id="@+id/thuWR"
                 style="@style/calendar_day"
                 android:background="@drawable/toggle_button"
                 android:textOff="Thu"
-                android:textOn="Thu" />
+                android:textOn="Thu"
+                android:textSize="16sp" />
         </TableRow>
 
         <TableRow
@@ -108,21 +112,24 @@
                 style="@style/calendar_day"
                 android:background="@drawable/toggle_button"
                 android:textOff="Fri"
-                android:textOn="Fri" />
+                android:textOn="Fri"
+                android:textSize="16sp" />
 
             <ToggleButton
                 android:id="@+id/satWR"
                 style="@style/calendar_day"
                 android:background="@drawable/toggle_button"
                 android:textOff="Sat"
-                android:textOn="Sat" />
+                android:textOn="Sat"
+                android:textSize="16sp" />
 
             <ToggleButton
                 android:id="@+id/sunWR"
                 style="@style/calendar_day"
                 android:background="@drawable/toggle_button"
                 android:textOff="Sun"
-                android:textOn="Sun" />
+                android:textOn="Sun"
+                android:textSize="16sp" />
         </TableRow>
 
         <Button

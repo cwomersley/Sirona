@@ -309,6 +309,7 @@ public class ExerciseView extends BaseActivity {
             timer(10000);
             videoView.setVisibility(View.VISIBLE);
             timerText.setVisibility(View.INVISIBLE);
+
             time = 10;
             pause.setClickable(true);
 
