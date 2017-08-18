@@ -37,5 +37,14 @@
             android:id="@+id/include2"
             layout="@layout/toolbar_main" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/graph"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="103dp"
+            android:text="Button" />
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
