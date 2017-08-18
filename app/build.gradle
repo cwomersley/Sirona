@@ -79,4 +79,5 @@ dependencies {
 dependencies {
     compile 'com.android.support.constraint:constraint-layout:+'
 
+    compile 'org.hamcrest:hamcrest-core:1.3'
 }
