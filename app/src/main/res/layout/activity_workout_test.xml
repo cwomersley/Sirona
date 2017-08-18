@@ -89,6 +89,22 @@
                 android:layout_alignStart="@+id/howManyBtn"
                 android:layout_alignEnd="@+id/testText" />
 
+            <Button
+                android:id="@+id/shuttleStartBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/testText"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/howManyBtn"
+                android:layout_marginBottom="31dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/standard_button_pink"
+                android:onClick="shuttleStart"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Start!"
+                android:visibility="invisible" />
+
             <TextView
                 android:id="@+id/howMany"
                 android:layout_width="wrap_content"
