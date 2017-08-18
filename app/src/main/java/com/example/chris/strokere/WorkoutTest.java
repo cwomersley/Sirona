@@ -57,6 +57,7 @@ public class WorkoutTest extends AppCompatActivity {
     private int time;
     private TextView testText;
     private Button proceedBtn;
+    private Button shuttleStartBtn;
 
 
 
@@ -66,6 +67,7 @@ public class WorkoutTest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test);
 
+        shuttleStartBtn= (Button) findViewById(R.id.shuttleStartBtn);
         testText= (TextView) findViewById(R.id.testText);
         pause = (ImageButton) findViewById(R.id.pauseResume);
         videoTest = (VideoView) findViewById(R.id.videoTest);
@@ -91,6 +93,8 @@ public class WorkoutTest extends AppCompatActivity {
             case "shuttleRun":
                 workoutTestName="ShuttleRun";
                 testText.setText("See how many shuttle runs you can do in 3 minutes!");
+                proceedBtn.setVisibility(View.INVISIBLE);
+                shuttleStartBtn.setVisibility(View.VISIBLE);
                 videoTest.setVisibility(View.INVISIBLE);
                 testLength=180000;
                 time=180;
@@ -111,12 +115,17 @@ public class WorkoutTest extends AppCompatActivity {
 
     }
 
+    public void shuttleStart (View view) {
+        testText.setVisibility(View.INVISIBLE);
+        shuttleStartBtn.setVisibility(View.INVISIBLE);
+        runTimer(testLength);
+    }
+
     public void testProceed (View view) {
         testText.setVisibility(View.INVISIBLE);
         proceedBtn.setVisibility(View.INVISIBLE);
         setAndPlayVideo(vidPath);
         runTimer(testLength);
-
     }
 
 
