@@ -95,11 +95,14 @@ public class Account extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-        mAuth=FirebaseAuth.getInstance();
+        //mAuth=FirebaseAuth.getInstance();
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         myRef=mFirebaseDatabase.getReference();
-        FirebaseUser dUser = mAuth.getCurrentUser();
-        userID=dUser.getUid();
+        //FirebaseUser dUser = mAuth.getCurrentUser();
+
+        if (user!=null) {
+            userID = user.getUid();
+        }
 
         mListView= (ListView) findViewById(R.id.listview);
         mAuthListener = new FirebaseAuth.AuthStateListener() {
