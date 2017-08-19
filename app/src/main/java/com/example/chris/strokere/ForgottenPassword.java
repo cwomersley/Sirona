@@ -28,6 +28,9 @@ public class ForgottenPassword extends AppCompatActivity {
         setContentView(R.layout.activity_forgotten_password);
         resetPasswordBtn = (Button) findViewById(R.id.resetPasswordBtn);
         emailPassword = (EditText) findViewById(R.id.emailPassword);
+        resetPasswordBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        emailPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
     }
 
     public boolean emailValidator(String email)

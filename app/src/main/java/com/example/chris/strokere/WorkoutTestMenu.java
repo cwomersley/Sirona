@@ -4,8 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class WorkoutTestMenu extends AppCompatActivity {
+
+    private Button sitToStandsBtn;
+    private Button shuttleRunBtn;
+    private Button stepUpsBtn;
+
 
 
 
@@ -13,6 +19,14 @@ public class WorkoutTestMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test_menu);
+
+        sitToStandsBtn = (Button) findViewById(R.id.sitToStandsBtn);
+        shuttleRunBtn = (Button) findViewById(R.id.shuttleRunBtn);
+        stepUpsBtn = (Button) findViewById(R.id.stepUpsBtn);
+        sitToStandsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        shuttleRunBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        stepUpsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
 
     }
 

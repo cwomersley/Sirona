@@ -77,6 +77,16 @@ public class WorkoutTest extends AppCompatActivity {
         howManyBtn = (Button) findViewById(R.id.howManyBtn);
         testTimer = (TextView) findViewById(R.id.testTimer);
 
+        shuttleStartBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        testText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        howManyNo.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        howMany.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        proceedBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        howManyBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+
+
+
         //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
         pressedButton = getIntent().getExtras().getString("button");
         switch(pressedButton){
