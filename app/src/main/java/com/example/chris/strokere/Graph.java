@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +44,7 @@ public class Graph extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         setupNavbar();
+        setupTestName("Sit To Stands");
 
         myFirebaseDatabase = FirebaseDatabase.getInstance();
         myReference = myFirebaseDatabase.getReference();
@@ -58,6 +60,7 @@ public class Graph extends BaseActivity {
             public void onClick(View v) {
                 Arrays.fill(sco, 0);
                 findScoresData(currentSnapshot, "SitToStands");
+                setupTestName("Sit To Stands");
             }
         });
         Button stepUpsBtn = (Button) findViewById(R.id.stepUpsBtn);
@@ -66,6 +69,7 @@ public class Graph extends BaseActivity {
             public void onClick(View v) {
                 Arrays.fill(sco, 0);
                 findScoresData(currentSnapshot, "StepUps");
+                setupTestName("Step Ups");
             }
         });
 
@@ -75,6 +79,7 @@ public class Graph extends BaseActivity {
             public void onClick(View v) {
                 Arrays.fill(sco, 0);
                 findScoresData(currentSnapshot, "ShuttleRun");
+                setupTestName("Shuttle Run");
             }
         });
 
@@ -104,7 +109,7 @@ public class Graph extends BaseActivity {
         });
 
         findScoresData(currentSnapshot, "SitToStands");
-        //setupGraph();
+        setupGraph();
     }
 
     @Override
@@ -166,8 +171,16 @@ public class Graph extends BaseActivity {
 
     }
 
+    private void setupTestName(String name) {
 
-    public void setupGraph() {
+        TextView testName = (TextView) findViewById(R.id.testName);
+        testName.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        testName.setText(name);
+
+    }
+
+
+    private void setupGraph() {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
 
