@@ -150,7 +150,6 @@ public class ExerciseList extends BaseActivity {
                 if (!name.toLowerCase().equals("$change") && !name.toLowerCase().equals("serialVersionuid")) {
                     map.get("All Exercises").add(name);
                     allExercises.add(name);
-
                     switch (c[0]) {
                         case 'a':
                             map.get("Arms").add(name);

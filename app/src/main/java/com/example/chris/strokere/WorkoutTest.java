@@ -93,7 +93,7 @@ public class WorkoutTest extends AppCompatActivity {
             case "sitToStands":
                 workoutTestName="SitToStands";
                 testText.setText("See how many sit to stands you can do in a minute!");
-                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
+                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "esit_to_stand";
                 testLength=60000;
                 time=60;
                 videoTest.setVideoPath(vidPath);
@@ -112,7 +112,7 @@ public class WorkoutTest extends AppCompatActivity {
             case "stepUps":
                 workoutTestName="StepUps";
                 testText.setText("See how many step ups you can do in a minute!");
-                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
+                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "estep_ups";
                 testLength=60000;
                 time=60;
                 videoTest.setVideoPath(vidPath);
