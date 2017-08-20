@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 public class SettingsWorkoutReminder extends BaseActivity {
+
+    TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +26,32 @@ public class SettingsWorkoutReminder extends BaseActivity {
         notifierBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 notifier();
+                findDayAndTime();
             }
         });
 
         ToggleButton monWR = (ToggleButton) findViewById(R.id.monWR);
 
+        TimePicker timePicker = (TimePicker) findViewById(R.id.timePicker);
 
-           /* public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
+        int min = timePicker.getCurrentHour();
+        int hour = timePicker.getCurrentMinute();
 
-                } else {
 
-                } */
+
+    }
+
+    public void findDayAndTime() {
+
+        TextView youSelected = (TextView) findViewById(R.id.youSelected);
+
+        int min = timePicker.getCurrentHour();
+        int hour = timePicker.getCurrentMinute();
+
+        youSelected.setText("You will be reminded at" + hour + ":" + min);
+
+
+
 
     }
 
@@ -48,18 +66,7 @@ public class SettingsWorkoutReminder extends BaseActivity {
         Intent intent = new Intent(this, NotificationReceiver.class);
         notificationReceiver.onReceive(this, intent);
 
-      /*  NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.logo)
-                .setContentTitle("WorkoutMenu Reminder")
-                .setContentText("Time to workout...");
 
-// Sets an ID for the notification
-        int mNotificationId = 001;
-// Gets an instance of the NotificationManager service
-        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-// Builds the notification and issues it.
-        mNotifyMgr.notify(mNotificationId, mBuilder.build());
-    } */
 
     }
 }

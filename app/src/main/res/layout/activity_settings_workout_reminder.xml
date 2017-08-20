@@ -32,28 +32,39 @@
             android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="66dp"
             android:text="ToggleButton"
             android:layout_below="@+id/include"
-            android:layout_centerHorizontal="true" />
+            android:layout_toStartOf="@+id/notifierBtn"
+            android:layout_marginEnd="37dp" />
 
         <TimePicker
             android:id="@+id/timePicker"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="140dp"
             android:layout_below="@+id/toggleButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="47dp"
+            android:layout_marginTop="10dp"
             android:amPmBackgroundColor="@color/colorAccent"
             android:amPmTextColor="@color/colorAccent"
             android:background="@color/colorPrimary"
             android:timePickerMode="spinner" />
 
+        <TextView
+            android:id="@+id/youSelected"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="You will currently be notified on"
+            android:textColor="@color/greenAccent"
+            android:layout_below="@+id/include"
+            android:layout_alignStart="@+id/whichDaysTextWR" />
+
 
         <TextView
             android:id="@+id/whichDaysTextWR"
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="50dp"
             android:layout_below="@+id/timePicker"
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
@@ -136,10 +147,12 @@
             android:id="@+id/notifierBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/toggleButton"
-            android:layout_below="@+id/toggleButton"
             android:onClick="notifier"
-            android:text="notify!" />
+            android:text="notify!"
+            android:layout_alignBaseline="@+id/toggleButton"
+            android:layout_alignBottom="@+id/toggleButton"
+            android:layout_alignEnd="@+id/timePicker"
+            android:layout_marginEnd="25dp" />
 
 
     </RelativeLayout>

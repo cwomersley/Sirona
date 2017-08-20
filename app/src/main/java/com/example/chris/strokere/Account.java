@@ -34,7 +34,7 @@ import java.util.regex.Pattern;
 
 import static com.example.chris.strokere.R.id.pPasswordBtn;
 
-public class Account extends AppCompatActivity {
+public class Account extends BaseActivity {
 
     private FirebaseUser user;
     public static final String TAG = "Password";
@@ -65,6 +65,7 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+        setupNavbar();
 
         pEmailBtn = (Button) findViewById(R.id.pEmailBtn);
         pEmailBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -331,6 +332,11 @@ public class Account extends AppCompatActivity {
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(Account.this, MainActivity.class));
+    }
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_account;
     }
 
 }
