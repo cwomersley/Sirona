@@ -35,8 +35,6 @@ public class NotificationReceiver extends BroadcastReceiver {
         String formattedDate = date.format(calendar.getTime());
         Toast.makeText(context, formattedDate, Toast.LENGTH_SHORT).show();
 
-
-
         notificationBuilder.setContentInfo("Time to exercise")
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.logo)

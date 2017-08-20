@@ -179,7 +179,7 @@ public class ExerciseList extends BaseActivity {
 
     @Override
     public int getLayout() {
-        return R.layout.activity_home;
+        return R.layout.activity_exercise_list;
     }
 
     public String getPath() {

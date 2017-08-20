@@ -8,6 +8,11 @@
     android:background="@color/bg"
     tools:context="com.example.chris.strokere.Account">
 
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar_main" />
+
+
     <EditText
         android:id="@+id/pEmail"
         android:layout_width="match_parent"
@@ -162,9 +167,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/pEmail"
-
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
         android:background="@color/colorAccent"
         android:onClick="logout"
         android:paddingLeft="10dp"
