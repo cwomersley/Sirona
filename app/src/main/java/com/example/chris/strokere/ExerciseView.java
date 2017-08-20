@@ -132,12 +132,15 @@ public class ExerciseView extends BaseActivity {
 
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
+        makeCustomWorkout();
+
+
 
         setAndPlayVideo(setStringPath());
         timer(10000);
         progressBar.setProgress(i);
-        makeCustomWorkout();
-        printarray();
+
+
     }
 
     //method for playing video depening on path
@@ -176,6 +179,7 @@ public class ExerciseView extends BaseActivity {
     public String setStringPath() {
 
         if (nameList.size() > 0) {
+
             String path = nameList.get(0);
             String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
 
@@ -449,7 +453,7 @@ public class ExerciseView extends BaseActivity {
                         if (object != null) {
                             output= object.toString();
 
-
+                        printarray();
 
                         }
                     }
@@ -494,6 +498,12 @@ public void printarray() {
             }
         }
     }
+
+    nameList.clear();
+    for(String s : customWorkout){
+        nameList.add(s);
+    }
+
     Log.d("kindle", customWorkout.toString());
 
 }
