@@ -49,9 +49,8 @@
 
     <Button
         android:id="@+id/pPasswordBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/delAccBtn"
         android:layout_alignBottom="@+id/delAccBtn"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
@@ -88,7 +87,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="62dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="5dp"
         android:background="@color/colorPrimaryDark"
         android:ems="10"
         android:hint="CONFIRM PASSWORD"
@@ -140,12 +139,12 @@
 
     <Button
         android:id="@+id/delAccBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/pHiddenEmail"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="19dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="20dp"
         android:background="@color/colorPrimary"
         android:onClick="delAccount"
