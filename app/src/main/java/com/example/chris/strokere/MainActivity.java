@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity  {
     private ProgressDialog progressDialog;
     private Button logInBtn,registerBtn;
     public static final String TAG = "Login";
+    private TextView forgotText;
 
 
 
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity  {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
+
             //method that checks whether a user is already signed in and advanced to home activity if so
             onStart();
 
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity  {
                     startActivity(new Intent(MainActivity.this, Home.class));
                 }
             });
+
+            forgotText= (TextView) findViewById(R.id.forgotText);
+            forgotText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
             emailL = (EditText) findViewById(R.id.emailL);
             passwordL = (EditText) findViewById(R.id.passwordL);

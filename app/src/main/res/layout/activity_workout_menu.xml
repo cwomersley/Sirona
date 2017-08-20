@@ -39,9 +39,9 @@
 
 
         <Button
-            android:id="@+id/TestBtn"
+            android:id="@+id/shuttleRunBtn"
             style="@style/standard_button"
-            android:layout_above="@+id/btnProgressH"
+            android:layout_above="@+id/stepUpsBtn"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
@@ -50,21 +50,21 @@
             android:text="Self Tests" />
 
         <Button
-            android:id="@+id/btnProgressH"
+            android:id="@+id/stepUpsBtn"
             style="@style/standard_button"
             android:layout_above="@+id/btnPreferencesH"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
-            app:layout_constraintTop_toBottomOf="@+id/TestBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/shuttleRunBtn" />
 
         <Button
             android:id="@+id/StandardBtn"
             style="@style/standard_button"
-            android:layout_above="@+id/TestBtn"
+            android:layout_above="@+id/shuttleRunBtn"
             android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/TestBtn"
+            android:layout_alignStart="@+id/shuttleRunBtn"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_pink"
             android:onClick="standardWorkout"
@@ -79,7 +79,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
             android:onClick="oSettings"
-            app:layout_constraintTop_toBottomOf="@+id/btnProgressH" />
+            app:layout_constraintTop_toBottomOf="@+id/stepUpsBtn" />
 
         <TextView
             android:id="@+id/tipIconBackground"

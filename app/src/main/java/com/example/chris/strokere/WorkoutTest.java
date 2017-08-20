@@ -77,13 +77,23 @@ public class WorkoutTest extends AppCompatActivity {
         howManyBtn = (Button) findViewById(R.id.howManyBtn);
         testTimer = (TextView) findViewById(R.id.testTimer);
 
+        shuttleStartBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        testText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        howManyNo.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        howMany.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        proceedBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        howManyBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+
+
+
         //shows different video depending what was clicked on previous activity (WorkoutTestMenu)
         pressedButton = getIntent().getExtras().getString("button");
         switch(pressedButton){
             case "sitToStands":
                 workoutTestName="SitToStands";
                 testText.setText("See how many sit to stands you can do in a minute!");
-                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "sit_to_stand";
+                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "esit_to_stand";
                 testLength=60000;
                 time=60;
                 videoTest.setVideoPath(vidPath);
@@ -102,7 +112,7 @@ public class WorkoutTest extends AppCompatActivity {
             case "stepUps":
                 workoutTestName="StepUps";
                 testText.setText("See how many step ups you can do in a minute!");
-                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "step_ups";
+                vidPath = "android.resource://" + getPackageName() + "/" + "/raw/" + "estep_ups";
                 testLength=60000;
                 time=60;
                 videoTest.setVideoPath(vidPath);

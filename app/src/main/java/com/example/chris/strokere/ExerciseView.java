@@ -63,7 +63,6 @@ public class ExerciseView extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_view);
-
         //setupNavbar();
         videoStats = new VideoStats();
 

@@ -11,6 +11,7 @@ public class Home extends BaseActivity {
     Tip tip;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -24,7 +25,7 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnExercise = (Button) findViewById(R.id.TestBtn);
+        Button btnExercise = (Button) findViewById(R.id.shuttleRunBtn);
         btnExercise.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnExercise.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -32,7 +33,7 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnProgress = (Button) findViewById(R.id.btnProgressH);
+        Button btnProgress = (Button) findViewById(R.id.stepUpsBtn);
         btnProgress.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnProgress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
