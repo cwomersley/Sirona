@@ -15,7 +15,7 @@
 
     <EditText
         android:id="@+id/pEmail"
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="70dp"
         android:layout_above="@+id/pEmailBtn"
         android:layout_marginBottom="15dp"
@@ -52,10 +52,14 @@
         android:id="@+id/pPasswordBtn"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/delAccBtn"
+
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+
         android:layout_alignParentStart="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="40dp"
         android:background="@color/colorAccent"
         android:onClick="changePassword"
         android:paddingLeft="10dp"
@@ -64,11 +68,10 @@
 
     <EditText
         android:id="@+id/pPassword"
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="70dp"
         android:layout_above="@+id/pConfirmPassword"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="13dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/colorPrimaryDark"
@@ -82,13 +85,13 @@
 
     <EditText
         android:id="@+id/pConfirmPassword"
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="70dp"
         android:layout_alignBottom="@+id/pPasswordBtn"
 
         android:layout_marginBottom="62dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="20dp"
         android:background="@color/colorPrimaryDark"
         android:ems="10"
         android:hint="CONFIRM PASSWORD"
@@ -96,8 +99,7 @@
         android:paddingLeft="20dp"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
-        android:textSize="24sp"
-        android:layout_alignEnd="@+id/delAccBtn" />
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/pHiddenPassword"
@@ -143,11 +145,10 @@
         android:id="@+id/delAccBtn"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/pHiddenEmail"
+        android:layout_alignEnd="@+id/pConfirmPassword"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="20dp"
         android:background="@color/colorPrimary"
         android:onClick="delAccount"
         android:paddingLeft="10dp"
