@@ -47,21 +47,19 @@ import java.util.Map;
 public class VideoStats {
 
 
-    private HashMap<String, Integer> videoLikes2;
+    private static HashMap<String, Integer> videoLikes2 = new HashMap<String, Integer>();
     private DatabaseReference mDatabase;
     private FirebaseUser user;
     private String userID;
-    String output;
-    String output2;
-    private ArrayList stringList;
+    private String output;
     private ExerciseView exerciseView;
 
 
     VideoStats() {
         exerciseView = new ExerciseView();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        videoLikes2 = new HashMap<String, Integer>();
-        upDateLike();
+
+        //upDateLike();
 
 
 
@@ -74,6 +72,8 @@ public class VideoStats {
                 }
             }
         });
+
+
 
     }
 
@@ -88,9 +88,9 @@ public class VideoStats {
 
                     if (snapshot.getKey().equals("ExerciseLikes")) {
                         Object object = snapshot.child(userID).getValue();
-
-                         output = snapshot.child(userID).getValue().toString();
-
+                        if (object != null) {
+                            output = snapshot.child(userID).getValue().toString();
+                        }
                     }
 
                 }
@@ -112,7 +112,7 @@ public class VideoStats {
 
         upDateLike();
         splitString();
-        updateDb();
+
         String poo ="goober";
         return poo;
 
@@ -120,7 +120,7 @@ public class VideoStats {
 
     //splits the string from the database into name and value and stores in a map
     public void splitString(){
-        upDateLike();
+
         if(output != null) {
             String[] split = output.split(",");
 
@@ -136,24 +136,30 @@ public class VideoStats {
                 videoLikes2.put(name, score);
 
 
+
             }
 
         }
-    }
 
-    public void updateDb(){
+        for(String key : videoLikes2.keySet() ){
+            Log.d("carabo", key + " " + videoLikes2.get(key));
+        }
+
 
         HashMap<String,Integer> currentLikes = exerciseView.getLikeMap();
         String oo = Integer.toString(currentLikes.size());
         Log.d("eee", oo);
         for (String key: currentLikes.keySet()){
 
-                Log.d("goot",key + " " + currentLikes.get(key));
+
+            Log.d("edd1",key + " " + videoLikes2.get(key));
 
 
-            if (videoLikes2.containsKey(key)){
-                Log.d("goot2",key );
 
+
+                if (videoLikes2.containsKey(key) && videoLikes2.get(key) != null) {
+                    Log.d("goot2", key);
+                    Log.d("gooter", key + " " + videoLikes2.get(key));
                     if (currentLikes.get(key) == 1) {
                         int addLike = videoLikes2.get(key) + 1;
                         mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(addLike);
@@ -162,17 +168,30 @@ public class VideoStats {
                         mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(minusLike);
                     }
 
-                //update firbease entry
+                    //update firbease entry
 
 
-            }else{
-                //add to firebase as new entry
+                } else {
+                    //add to firebase as new entry
 
 
-                mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(currentLikes.get(key));
-            }
+                    mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(currentLikes.get(key));
+                }
+
 
         }
+
+
+
+
+
+
+
+    }
+
+    public void updateDb(){
+
+        //
 
     }
 
