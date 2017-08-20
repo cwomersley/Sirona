@@ -438,7 +438,7 @@ public class ExerciseView extends BaseActivity {
 
 
 
-        String fbaseString;
+
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -448,25 +448,8 @@ public class ExerciseView extends BaseActivity {
                         Object object = snapshot.child(userID).getValue();
                         if (object != null) {
                             output= object.toString();
-                            String [] exercises = output.split(",");
-                            for(String e : exercises){
-                                Log.d("chrisw", e);
-                                Log.d("nsize", Integer.toString(exercises.length));
-
-                                for (int z = 0; z<nameList.size(); z++){
-
-                                    String noSpace = nameList.get(z).replace("_"," ");
-                                    String noFirstLetter = noSpace.substring(1);
-                                    Log.d("listReplace", noFirstLetter);
-                                    Log.e("fromweb", e);
-                                    if(e.contains(noFirstLetter)){
-                                        Log.d("qqqq", "tester2");
-                                        customWorkout.add(nameList.get(z));
 
 
-                                    }
-                                }
-                            }
 
                         }
                     }
@@ -492,6 +475,25 @@ public class ExerciseView extends BaseActivity {
 
     }
 public void printarray() {
+    String [] exercises = output.split(",");
+    for(String e : exercises){
+        Log.d("chrisw", e);
+        Log.d("nsize", Integer.toString(exercises.length));
+
+        for (int z = 0; z<nameList.size(); z++){
+
+            String noSpace = nameList.get(z).replace("_"," ");
+            String noFirstLetter = noSpace.substring(1);
+            Log.d("listReplace", noFirstLetter);
+            Log.e("fromweb", e);
+            if(e.contains(noFirstLetter)){
+                Log.d("qqqq", "tester2");
+                customWorkout.add(nameList.get(z));
+
+
+            }
+        }
+    }
     Log.d("kindle", customWorkout.toString());
 
 }
