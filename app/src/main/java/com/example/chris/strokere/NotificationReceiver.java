@@ -33,7 +33,6 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = date.format(calendar.getTime());
-        // formattedDate have current date/time
         Toast.makeText(context, formattedDate, Toast.LENGTH_SHORT).show();
 
 
@@ -52,11 +51,8 @@ public class NotificationReceiver extends BroadcastReceiver {
 
 
 
-        // Set an ID for the notification
         int id = 001;
-        // Gets an instance of the NotificationManager service
         NotificationManager notifyManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        // Builds the notification and issues it.
         notifyManager.notify(id, notificationBuilder.build());
 
 

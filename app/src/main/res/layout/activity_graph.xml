@@ -71,12 +71,20 @@
             android:text="Shuttle Run" />
 
         <TextView
+            android:id="@+id/highestScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView4"
+            android:layout_below="@+id/textView4"
+            android:textColor="@color/greenAccent" />
+
+        <TextView
             android:id="@+id/testName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/include2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="16dp"
             android:text="Sit To Stands"
             android:textColor="@color/greenAccent" />
 
