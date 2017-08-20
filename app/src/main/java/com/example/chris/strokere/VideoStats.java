@@ -148,11 +148,21 @@ public class VideoStats {
         Log.d("eee", oo);
         for (String key: currentLikes.keySet()){
 
+                Log.d("goot",key + " " + currentLikes.get(key));
+
 
             if (videoLikes2.containsKey(key)){
+                if(currentLikes.get(key) == 1){
+                    int addLike = videoLikes2.get(key) +1;
+                    mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(addLike);
+                }
+                else if(currentLikes.get(key) == -1){
+                    int minusLike = videoLikes2.get(key) -1;
+                    mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(minusLike);
+                }
                 //update firbease entry
 
-               // mDatabase.child("ExerciseLikes").child(userID).child(getTime()).setValue(borgRating);
+
             }else{
                 //add to firebase as new entry
 

@@ -47,7 +47,7 @@ public class ExerciseView extends BaseActivity {
     private int i = 0;
     private long timeLeft;
     private Integer likeVideo;
-    private HashMap<String, Integer> likeHash = new HashMap<>();
+    private static HashMap<String, Integer> likeHash = new HashMap<>();
     private TextView timerText;
     private int time = 10;
     private Boolean isVidBreak = false;
@@ -106,7 +106,9 @@ public class ExerciseView extends BaseActivity {
                 likeVideo = -1;
                 dissLikeBtn.setAlpha(1f);
                 likeBtn.setAlpha(0.5f);
+                likeHash.put(nameList.get(0), likeVideo);
                 videoStats.getSpanshot();
+
                 Log.d("fubget", videoStats.getSpanshot());
 
 
