@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -20,8 +21,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.Serializable;
@@ -42,7 +48,7 @@ public class ExerciseView extends BaseActivity {
     private Handler handler = new Handler();
     private MediaPlayer mp;
     private ImageButton pause;
-    private  VideoView videoView;
+    private VideoView videoView;
     private CountDownTimer cdt;
     private int i = 0;
     private long timeLeft;
@@ -53,10 +59,12 @@ public class ExerciseView extends BaseActivity {
     private Boolean isVidBreak = false;
     private TextView exerciseNameText;
     private CountDownTimer vidBreaktmr;
-    private Long vidBreakTimeLeft ;
+    private Long vidBreakTimeLeft;
     private VideoStats videoStats;
-
-
+    private FirebaseUser user;
+    private String userID;
+    String output;
+    private  ArrayList<String> customWorkout = new ArrayList<>();
 
 
     @Override
@@ -70,8 +78,8 @@ public class ExerciseView extends BaseActivity {
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
         pause = (ImageButton) findViewById(R.id.pauseResume);
-        timerText = (TextView) findViewById(R.id.timerText) ;
-         exerciseNameText = (TextView) findViewById(R.id.exerciseNameText);
+        timerText = (TextView) findViewById(R.id.timerText);
+        exerciseNameText = (TextView) findViewById(R.id.exerciseNameText);
 
 
         likeBtn.setAlpha(0.5f);
@@ -87,14 +95,8 @@ public class ExerciseView extends BaseActivity {
                 likeHash.put(nameList.get(0), likeVideo);
 
                 for (String key : likeHash.keySet()) {
-                    Log.d("flike",key + " " + likeHash.get(key));
+                    Log.d("flike", key + " " + likeHash.get(key));
                 }
-
-
-
-
-
-
 
 
             }
@@ -120,7 +122,6 @@ public class ExerciseView extends BaseActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-
         addFiles();
 
         //remove later - used to add to db
@@ -135,13 +136,11 @@ public class ExerciseView extends BaseActivity {
         setAndPlayVideo(setStringPath());
         timer(10000);
         progressBar.setProgress(i);
-
-
-
-
-
+        makeCustomWorkout();
+        printarray();
     }
-   //method for playing video depening on path
+
+    //method for playing video depening on path
     public void setAndPlayVideo(String vidPath) {
 
         videoView = (VideoView) findViewById(R.id.videoViewE);
@@ -165,22 +164,23 @@ public class ExerciseView extends BaseActivity {
             @Override
             public void onPrepared(MediaPlayer mp) {
 
-                    mp.setLooping(true);
+                mp.setLooping(true);
 
 
             }
         });
 
     }
-    //set the path of the video from the arrayList
-    public String setStringPath(){
 
-        if(nameList.size()>0) {
+    //set the path of the video from the arrayList
+    public String setStringPath() {
+
+        if (nameList.size() > 0) {
             String path = nameList.get(0);
             String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
 
             return stringPath;
-        }else {
+        } else {
             return null;
         }
 
@@ -188,25 +188,24 @@ public class ExerciseView extends BaseActivity {
     }
 
 
-
     //adds all files in raw to an array and adds file names to an array(currently using to populate database automaticcaly
     // relating to to file names)
-    public void  addFiles(){
+    public void addFiles() {
 
         Field[] fields = R.raw.class.getFields();
 
         for (int i = 0; i < fields.length - 1; i++) {
 
-                String name = fields[i].getName();
-            if(name != "$change"  && name != "serialVersionUID") {
+            String name = fields[i].getName();
+            if (name != "$change" && name != "serialVersionUID") {
                 nameList.add(name);
             }
 
-      }
+        }
     }
 
     //populate the database from the list of files (to be used to auto populate db )
-    public void populateDB(){
+    public void populateDB() {
 
         Field[] fields = R.raw.class.getFields();
         exercisesList = new ArrayList<>();
@@ -233,9 +232,8 @@ public class ExerciseView extends BaseActivity {
 
 
 
+
     }
-
-
 
 
     // Menu icons are inflated as they were with actionbar
@@ -254,7 +252,7 @@ public class ExerciseView extends BaseActivity {
     //use new timer for each video ? ? to be able to set the time
 
 
-//Handles the play of exercises videos
+    //Handles the play of exercises videos
     public void timer(long timeLeftMilli) {
 
 
@@ -272,22 +270,19 @@ public class ExerciseView extends BaseActivity {
             public void onFinish() {
 
                 //load the next video and set the time for it ?
-                if (nameList.size()> 1) {
-
+                if (nameList.size() > 1) {
 
 
                     //test code fbr
-                        videoView.setVisibility(View.INVISIBLE);
-                        vidBreak(10000l);
-                        cdt.cancel();
-                        isVidBreak = true;
-                        pause.setClickable(false);
-                        exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
+                    videoView.setVisibility(View.INVISIBLE);
+                    vidBreak(10000l);
+                    cdt.cancel();
+                    isVidBreak = true;
+                    pause.setClickable(false);
+                    exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
 
 
-
-
-                }else if (nameList.size() == 1) {
+                } else if (nameList.size() == 1) {
 
                     videoView.stopPlayback();
                     Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
@@ -304,83 +299,81 @@ public class ExerciseView extends BaseActivity {
     }
 
 
-//10 second timer
-    public void vidBreak(Long breaktimeLeft){
+    //10 second timer
+    public void vidBreak(Long breaktimeLeft) {
 
-    timerText.setVisibility(View.VISIBLE);
+        timerText.setVisibility(View.VISIBLE);
 
-        vidBreaktmr = new CountDownTimer(breaktimeLeft, 990){
+        vidBreaktmr = new CountDownTimer(breaktimeLeft, 990) {
 
-        public void onTick(long millisUntilFinished){
-            vidBreakTimeLeft = millisUntilFinished;
-            timerText.setText(toTime(time));
-            time--;
+            public void onTick(long millisUntilFinished) {
+                vidBreakTimeLeft = millisUntilFinished;
+                timerText.setText(toTime(time));
+                time--;
 
-        }
+            }
 
-        public void onFinish(){
+            public void onFinish() {
 
-            isVidBreak = false;
-            nameList.remove(0);
+                isVidBreak = false;
+                nameList.remove(0);
 
-            setAndPlayVideo(setStringPath());
-            i = 0;
+                setAndPlayVideo(setStringPath());
+                i = 0;
 
-            timer(10000);
-            videoView.setVisibility(View.VISIBLE);
+                timer(10000);
+                videoView.setVisibility(View.VISIBLE);
 
-            timerText.setVisibility(View.INVISIBLE);
+                timerText.setVisibility(View.INVISIBLE);
 
-            time = 10;
-            pause.setClickable(true);
+                time = 10;
+                pause.setClickable(true);
 
 
-
-        }
+            }
         }.start();
 
-        }
+    }
 
 
     //Checks if number is less than 9 and adds a leading 0
     public String toTime(int number) {
-        if(number < 0){
+        if (number < 0) {
             number = 0;
         }
         return number <= 9 ? "0" + number : String.valueOf(number);
     }
 
 
-    public void pauseTimer(){
-      cdt.cancel();
-      pause.setAlpha(1.0f);
-  }
+    public void pauseTimer() {
+        cdt.cancel();
+        pause.setAlpha(1.0f);
+    }
 
-  public void resumeTimer(){
-      timer(timeLeft);
-      pause.setAlpha(0.0f);
+    public void resumeTimer() {
+        timer(timeLeft);
+        pause.setAlpha(0.0f);
 
-  }
+    }
 
-  public String getcurrentExervise(){
-      return nameList.get(0);
-  }
+    public String getcurrentExervise() {
+        return nameList.get(0);
+    }
 
 
+    //Pauses & resumes video and timer + progress bar
+    public void pausevid() {
+        if (videoView.isPlaying()) {
+            videoView.pause();
+            pauseTimer();
 
-//Pauses & resumes video and timer + progress bar
-  public void pausevid() {
-      if (videoView.isPlaying()) {
-          videoView.pause();
-          pauseTimer();
+            Log.d("fubarLeft", Long.toString(timeLeft));
 
-          Log.d("fubarLeft", Long.toString(timeLeft));
-
-      } else {
-          videoView.start();
-          resumeTimer();
-      }
-  }
+        } else {
+            videoView.start();
+            resumeTimer();
+        }
+    }
 
 
     @Override
@@ -392,10 +385,10 @@ public class ExerciseView extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(!isVidBreak) {
+        if (!isVidBreak) {
             pausevid();
         }
-        if(isVidBreak){
+        if (isVidBreak) {
             vidBreaktmr.cancel();
 
         }
@@ -405,19 +398,19 @@ public class ExerciseView extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (isVidBreak){
+        if (isVidBreak) {
             vidBreak(vidBreakTimeLeft);
         }
 
     }
 
 
-    public String nameClean(String exName){
+    public String nameClean(String exName) {
 
 
-;
-        if(exName.contains("_")){
-            exName =exName.replace("_"," ");
+        ;
+        if (exName.contains("_")) {
+            exName = exName.replace("_", " ");
         }
         exName = exName.substring(0, 1).toUpperCase() + exName.substring(1);
         return exName;
@@ -425,9 +418,83 @@ public class ExerciseView extends BaseActivity {
     }
 
     //getter for hashmap
-    public HashMap<String, Integer> getLikeMap(){
+    public HashMap<String, Integer> getLikeMap() {
         return likeHash;
     }
+
+
+    public void makeCustomWorkout() {
+
+
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    userID = user.getUid();
+                }
+            }
+        });
+
+
+
+        String fbaseString;
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                    if (snapshot.getKey().equals("Testing")) {
+                        Object object = snapshot.child(userID).getValue();
+                        if (object != null) {
+                            output= object.toString();
+                            String [] exercises = output.split(",");
+                            for(String e : exercises){
+                                Log.d("chrisw", e);
+                                Log.d("nsize", Integer.toString(exercises.length));
+
+                                for (int z = 0; z<nameList.size(); z++){
+
+                                    String noSpace = nameList.get(z).replace("_"," ");
+                                    String noFirstLetter = noSpace.substring(1);
+                                    Log.d("listReplace", noFirstLetter);
+                                    Log.e("fromweb", e);
+                                    if(e.contains(noFirstLetter)){
+                                        Log.d("qqqq", "tester2");
+                                        customWorkout.add(nameList.get(z));
+
+
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+       /* if(nameList.contains(fbaseString)){
+
+            customWorkout.add(fbaseString);
+        }
+
+        return customWorkout;*/
+
+
+    }
+public void printarray() {
+    Log.d("kindle", customWorkout.toString());
+
+}
 
 
 }

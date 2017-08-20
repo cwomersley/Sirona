@@ -132,8 +132,8 @@ public class VideoStats {
                 String scoreString = nameValues[1].replace("}", "");
                 int score = Integer.parseInt(scoreString);
                 String name = nameValues[0].replace("{","");
-
-                videoLikes2.put(name, score);
+                String nameNoSpace = name.trim();
+                videoLikes2.put(nameNoSpace, score);
 
 
 
@@ -141,25 +141,20 @@ public class VideoStats {
 
         }
 
-        for(String key : videoLikes2.keySet() ){
-            Log.d("carabo", key + " " + videoLikes2.get(key));
-        }
+
 
 
         HashMap<String,Integer> currentLikes = exerciseView.getLikeMap();
         String oo = Integer.toString(currentLikes.size());
-        Log.d("eee", oo);
+
         for (String key: currentLikes.keySet()){
 
-
-            Log.d("edd1",key + " " + videoLikes2.get(key));
 
 
 
 
                 if (videoLikes2.containsKey(key) && videoLikes2.get(key) != null) {
-                    Log.d("goot2", key);
-                    Log.d("gooter", key + " " + videoLikes2.get(key));
+
                     if (currentLikes.get(key) == 1) {
                         int addLike = videoLikes2.get(key) + 1;
                         mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(addLike);
@@ -200,3 +195,4 @@ public class VideoStats {
 
 
 }
+
