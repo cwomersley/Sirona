@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.BoringLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class WorkoutRating extends BaseActivity {
     private int borgRating;
     private String score;
     private String userID;
-
+    private FirebaseUser user;
 
 
     @Override
@@ -53,9 +54,12 @@ public class WorkoutRating extends BaseActivity {
             public void onClick(View v) {
 
                 borgRating = ratingScale.getValue();
-               mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
-
-
+                if(user != null) {
+                    mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
+                }
+                Intent intent = new Intent(WorkoutRating.this, Home.class);
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -67,7 +71,7 @@ public class WorkoutRating extends BaseActivity {
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                 user = firebaseAuth.getCurrentUser();
                 if(user != null) {
                     userID = user.getUid();
                 }

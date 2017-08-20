@@ -47,7 +47,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
             android:onClick="oTestMenu"
-            android:text="Tests" />
+            android:text="Self Tests" />
 
         <Button
             android:id="@+id/btnProgressH"

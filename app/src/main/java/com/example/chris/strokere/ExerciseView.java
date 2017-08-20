@@ -51,9 +51,10 @@ public class ExerciseView extends BaseActivity {
     private TextView timerText;
     private int time = 10;
     private Boolean isVidBreak = false;
-    TextView exerciseNameText;
+    private TextView exerciseNameText;
     private CountDownTimer vidBreaktmr;
     private Long vidBreakTimeLeft ;
+    private VideoStats videoStats;
 
 
 
@@ -64,7 +65,7 @@ public class ExerciseView extends BaseActivity {
         setContentView(R.layout.activity_exercise_view);
 
         //setupNavbar();
-
+        videoStats = new VideoStats();
 
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
@@ -86,6 +87,12 @@ public class ExerciseView extends BaseActivity {
                 dissLikeBtn.setAlpha(0.5f);
                 likeHash.put(nameList.get(0), likeVideo);
 
+                for (String key : likeHash.keySet()) {
+                    Log.d("flike",key + " " + likeHash.get(key));
+                }
+
+
+
 
 
 
@@ -100,7 +107,9 @@ public class ExerciseView extends BaseActivity {
                 likeVideo = -1;
                 dissLikeBtn.setAlpha(1f);
                 likeBtn.setAlpha(0.5f);
-                likeHash.put(nameList.get(0), likeVideo);
+                videoStats.getSpanshot();
+                Log.d("fubget", videoStats.getSpanshot());
+
 
             }
         });
@@ -267,13 +276,12 @@ public class ExerciseView extends BaseActivity {
 
 
                     //test code fbr
-
-                        vidBreak(10000l);
                         videoView.setVisibility(View.INVISIBLE);
+                        vidBreak(10000l);
                         cdt.cancel();
                         isVidBreak = true;
                         pause.setClickable(false);
-                    exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
+                        exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
 
 
 
@@ -313,10 +321,13 @@ public class ExerciseView extends BaseActivity {
 
             isVidBreak = false;
             nameList.remove(0);
+
             setAndPlayVideo(setStringPath());
             i = 0;
+
             timer(10000);
             videoView.setVisibility(View.VISIBLE);
+
             timerText.setVisibility(View.INVISIBLE);
 
             time = 10;
@@ -411,5 +422,12 @@ public class ExerciseView extends BaseActivity {
         return exName;
         //Log.d("ftest", exName);
     }
+
+    //getter for hashmap
+    public HashMap<String, Integer> getLikeMap(){
+        return likeHash;
+    }
+
+
 }
 
