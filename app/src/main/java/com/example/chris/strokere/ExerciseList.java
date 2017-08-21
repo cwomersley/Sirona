@@ -8,11 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import android.widget.EditText;
 import android.text.Editable;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -23,14 +18,9 @@ public class ExerciseList extends BaseActivity {
     ArrayAdapter listViewAdapter;
     ExpandableListAdapter expListAdapter;
     EditText inputSearch;
-    List<String> list;
-    List<String> allExercises;
-    List<String> formalAllExercises;
-    HashMap<String, List<String>> map;
     ExpandableListView expListView;
     public static String path;
     public static String name;
-    public static String formalName;
     public static String niceName;
 
     @Override
@@ -42,11 +32,11 @@ public class ExerciseList extends BaseActivity {
 
 //below is making the listview
         expListView = (ExpandableListView) findViewById(R.id.list);
-        initData();
-        expListAdapter = new ExpandableListAdapter(this, list, map);
+        setDataExList.setData();
+        expListAdapter = new ExpandableListAdapter(this, setDataExList.list, setDataExList.map);
         expListView.setClickable(true);
         expListView.setAdapter(expListAdapter);
-        listViewAdapter = new ArrayAdapter<>(this, R.layout.list_items, R.id.textView, allExercises);
+        listViewAdapter = new ArrayAdapter<>(this, R.layout.list_items, R.id.textView, setDataExList.allExercises);
         listView = (ListView) findViewById(R.id.listview);
         listView.setClickable(true);
         listView.setAdapter(listViewAdapter);
@@ -56,9 +46,9 @@ public class ExerciseList extends BaseActivity {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
                 getApplicationContext();
-                niceName = map.get(list.get(groupPosition)).get(childPosition);
+                niceName = setDataExList.map.get(setDataExList.list.get(groupPosition)).get(childPosition);
                 name = niceName.replace(" ", "_").toLowerCase();
-                path = "android.resource://" + getPackageName() + "//raw/" + changeName(name);
+                path = "android.resource://" + getPackageName() + "//raw/" + VideoNameChange.changeName(name);
                 startActivity(new Intent(ExerciseList.this, ExerciseListVplayer.class));
                 return false;
             }
@@ -69,7 +59,7 @@ public class ExerciseList extends BaseActivity {
             public void onItemClick(AdapterView<?> adapter, View view, int p, long l) {
                 niceName = adapter.getItemAtPosition(p).toString();
                 name = niceName.replace(" ", "_").toLowerCase();
-                path = "android.resource://" + getPackageName() + "//raw/" + changeName(name);
+                path = "android.resource://" + getPackageName() + "//raw/" + VideoNameChange.changeName(name);
                 startActivity(new Intent(ExerciseList.this, ExerciseListVplayer.class));
             }
         } );
@@ -102,65 +92,6 @@ public class ExerciseList extends BaseActivity {
 
     }
 
-    private void initData() {
-        //below instantiates the headers, and then makes a map of headers to arraylists
-        list = new ArrayList<>();
-        allExercises = new ArrayList<>();
-        map = new HashMap<>();
-        list.add("All Exercises");
-        list.add("Arms");
-        list.add("Back");
-        list.add("Chest");
-        list.add("Core");
-        list.add("Legs");
-        list.add("Shoulders");
-        map.put("All Exercises", new ArrayList<String>());
-        map.put("Arms", new ArrayList<String>());
-        map.put("Back", new ArrayList<String>());
-        map.put("Chest", new ArrayList<String>());
-        map.put("Core", new ArrayList<String>());
-        map.put("Legs", new ArrayList<String>());
-        map.put("Shoulders", new ArrayList<String>());
-
-        //below then uses a for loop to go through each exercise video and maps them accordingly.
-        Field[] f = R.raw.class.getFields();
-        for (Field fields : f)
-            try {
-                String name = fields.getName();
-                char[] c = name.toCharArray();
-                char[] d = Arrays.copyOfRange(c, 1, name.length());
-                d[0] = Character.toUpperCase(d[0]);
-                name = new String(d); //this is what you changed
-                name = name.replace("_", " ");
-                if (!name.toLowerCase().equals("change") && !name.toLowerCase().equals("erialVersionuid")) {
-                    map.get("All Exercises").add(name);
-                    allExercises.add(name);
-                    switch (c[0]) {
-                        case 'a':
-                            map.get("Arms").add(name);
-                            break;
-                        case 'b':
-                            map.get("Back").add(name);
-                            break;
-                        case 'c':
-                            map.get("Chest").add(name);
-                            break;
-                        case 'd':
-                            map.get("Core").add(name);
-                            break;
-                        case 'e':
-                            map.get("Legs").add(name);
-                            break;
-                        case 'f':
-                            map.get("Shoulders").add(name);
-                            break;
-                    }
-                }
-
-            } catch (IllegalArgumentException e) {
-            }
-    }
-
     @Override
     public int getLayout() {
         return R.layout.activity_exercise_list;
@@ -171,16 +102,6 @@ public class ExerciseList extends BaseActivity {
         return path;
     }
 
-    public String changeName(String name){
-        String a = "";
-        Field[] f = R.raw.class.getFields();
-        for (Field fields : f){
-             String s = fields.getName();
-            if (s.contains(name)){
-                 a = s;
-            }
-        }
-        return a;
+
     }
 
-}

@@ -14,7 +14,7 @@ import android.widget.VideoView;
 public class ExerciseListVplayer extends AppCompatActivity {
 
     ExerciseList exerciselist;
-    Context context;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,6 @@ public class ExerciseListVplayer extends AppCompatActivity {
         video.setVideoPath(exerciselist.path);
         video.start();
 
-//Chris's code, call it from his class when all working
         video.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
