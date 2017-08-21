@@ -32,6 +32,10 @@ public class LoginTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
 
+    /**
+     * Logs a user into the app (using default email and password)
+     * Then logs the user out
+     */
     @Test
     public void loginTest() {
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -69,7 +73,7 @@ public class LoginTest {
                             isDisplayed()));
             appCompatButton4.perform(click());
         }
-        //logs into the app with the default username and password and then logs out
+
         try {
             Thread.sleep(6000);
         } catch (InterruptedException e) {
