@@ -139,9 +139,9 @@ public class ExerciseView extends BaseActivity {
 
         if(pressedButton.equals("customWorkout")) {
             makeCustomWorkout();
-            if(output != null) {
-                printarray();
-            }
+
+
+
             Log.d("iphone", "itWorked");
         }
 
@@ -468,7 +468,7 @@ public class ExerciseView extends BaseActivity {
                             output= object.toString();
 
                             Log.d("isNull", output);
-
+                            printarray();
                         }
                     }
 
@@ -493,6 +493,7 @@ public class ExerciseView extends BaseActivity {
     }
 public void printarray() {
     exercises = output.split(",");
+
     for(String e : exercises){
         Log.d("chrisw", e);
         Log.d("nsize", Integer.toString(exercises.length));
@@ -504,7 +505,7 @@ public void printarray() {
             Log.d("listReplace", noFirstLetter);
             Log.e("fromweb", e);
             if(e.contains(noFirstLetter)){
-                Log.d("qqqq", "tester2");
+                Log.d("qqqq", "tester");
                 customWorkout.add(nameList.get(z));
 
 
@@ -514,7 +515,9 @@ public void printarray() {
 
     nameList.clear();
     for(String s : customWorkout){
+        Log.d("nero",s);
         nameList.add(s);
+
     }
 
     Log.d("kindle", customWorkout.toString());
