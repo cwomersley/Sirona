@@ -35,7 +35,7 @@
 
         <include
             android:id="@+id/include2"
-            layout="@layout/toolbar_main" />
+            layout="@layout/navbar" />
 
         <Button
             android:id="@+id/sitToStandsBtn"

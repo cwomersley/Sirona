@@ -29,7 +29,7 @@
         android:weightSum="1">
 
         <include
-            layout="@layout/toolbar_main"
+            layout="@layout/navbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

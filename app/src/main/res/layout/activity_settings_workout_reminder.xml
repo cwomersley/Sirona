@@ -25,7 +25,7 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <include layout="@layout/toolbar_main"
+        <include layout="@layout/navbar"
             android:id="@+id/include" />
 
         <ToggleButton
