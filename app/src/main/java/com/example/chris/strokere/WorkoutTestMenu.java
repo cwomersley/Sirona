@@ -39,7 +39,7 @@ public class WorkoutTestMenu extends AppCompatActivity {
 
     public void shuttleRun(View view) {
         Intent intent = new Intent(getApplicationContext(), WorkoutTest.class);
-        intent.putExtra("button", "shuttleRun");
+        intent.putExtra("button", "shuttlerun");
         startActivity(intent);
 
     }

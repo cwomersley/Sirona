@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +59,7 @@ public class WorkoutTest extends AppCompatActivity {
     private TextView testText;
     private Button proceedBtn;
     private Button shuttleStartBtn;
+    private ImageView shuttleImage;
 
 
 
@@ -76,6 +78,7 @@ public class WorkoutTest extends AppCompatActivity {
         proceedBtn = (Button) findViewById(R.id.proceedBtn);
         howManyBtn = (Button) findViewById(R.id.howManyBtn);
         testTimer = (TextView) findViewById(R.id.testTimer);
+        shuttleImage= (ImageView) findViewById(R.id.shuttleImage);
 
         shuttleStartBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         testText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -100,9 +103,10 @@ public class WorkoutTest extends AppCompatActivity {
                 videoTest.start();
                 videoTest.stopPlayback();
                 break;
-            case "shuttleRun":
+            case "shuttlerun":
                 workoutTestName="ShuttleRun";
                 testText.setText("See how many shuttle runs you can do in 3 minutes!");
+                shuttleImage.setVisibility(View.VISIBLE);
                 proceedBtn.setVisibility(View.INVISIBLE);
                 shuttleStartBtn.setVisibility(View.VISIBLE);
                 videoTest.setVisibility(View.INVISIBLE);
