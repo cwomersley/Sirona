@@ -103,7 +103,6 @@ public class Account extends BaseActivity {
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         myRef=mFirebaseDatabase.getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
         //Sets the unique id for the user from Firebase
 
@@ -245,8 +244,8 @@ public class Account extends BaseActivity {
     }
 
     /**
-     * Validates a email address to be of a particular type (e.g like an email would be)
-     * @param email
+     * alidates a email address to be of a particular type (e.g like an email would be)
+     * @param email the email the a patient enters in
      * @return
      */
     public boolean emailValidator(String email)

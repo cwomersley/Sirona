@@ -79,7 +79,6 @@ public class DeleteAccountTest {
                                     withParent(withId(android.R.id.content)))),
                             isDisplayed()));
             appCompatButton4.perform(click());
-
         }
         char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
         StringBuilder sb1 = new StringBuilder();
@@ -187,7 +186,9 @@ public class DeleteAccountTest {
          */
     }
 
-    public boolean signedIn() {
+
+    public boolean signedIn()
+    {
         if (user != null) {
             return true;
         } else {
