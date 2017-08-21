@@ -21,7 +21,6 @@ public class WorkoutRating extends BaseActivity {
     private NumberPicker ratingScale;
     private DatabaseReference mDatabase;
     private int borgRating;
-    private String score;
     private String userID;
     private FirebaseUser user;
     private VideoStats videoStats;
