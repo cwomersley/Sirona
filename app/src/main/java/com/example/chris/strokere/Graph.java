@@ -128,44 +128,44 @@ public class Graph extends BaseActivity {
                 if (snapshot.getKey().equals("WorkoutTestStats")) {
 
                     Object object = snapshot.child(userID).child(testType).getValue();
+                    if(object != null) {
+                        String output = object.toString();
 
-                    String output = object.toString();
-
-                    Log.d("Data0: ", output);
+                        Log.d("Data0: ", output);
 
 
-                    //Removes the curly brackets so that the data is consistent
-                    output = output.replace("{", ",");
-                    output = output.replace("}", ",");
+                        //Removes the curly brackets so that the data is consistent
+                        output = output.replace("{", ",");
+                        output = output.replace("}", ",");
 
-                    //Puts the data into an array
-                    String[] splitData = output.split(" ");
+                        //Puts the data into an array
+                        String[] splitData = output.split(" ");
 
-                    //Splits the data into day and month pairs
-                    for (int i = 0; i < splitData.length; i++) {
-                        String part = splitData[i];
+                        //Splits the data into day and month pairs
+                        for (int i = 0; i < splitData.length; i++) {
+                            String part = splitData[i];
 
-                        Pattern pattern = Pattern.compile("\\=(.*?)\\,");
-                        Matcher matcher = pattern.matcher(part);
-                        while (matcher.find()) {
-                            dataDay = matcher.group(1);
-                            Log.d("Data3: ", part + "changed to: " + dataDay);
+                            Pattern pattern = Pattern.compile("\\=(.*?)\\,");
+                            Matcher matcher = pattern.matcher(part);
+                            while (matcher.find()) {
+                                dataDay = matcher.group(1);
+                                Log.d("Data3: ", part + "changed to: " + dataDay);
+
+                            }
+
+                            int dataInt = Integer.parseInt(dataDay);
+                            sco[i] = dataInt;
+
 
                         }
 
-                        int dataInt = Integer.parseInt(dataDay);
-                        sco[i] = dataInt;
-
+                        setupGraph();
 
                     }
-
-                    setupGraph();
 
                 }
 
             }
-
-            Log.d("Data2: ", dataDay);
 
         }
 

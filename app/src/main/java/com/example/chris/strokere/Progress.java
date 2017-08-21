@@ -199,6 +199,7 @@ public class Progress extends BaseActivity {
                 if (snapshot.getKey().equals("BorgRatings")) {
 
                     Object object = snapshot.child(userID).getValue();
+                    if(object != null) {
                     String output = object.toString();
 
                     //Removes the initial '{' so that the data is consistent
@@ -208,19 +209,19 @@ public class Progress extends BaseActivity {
                     String[] splitData = output.split(", ");
 
                     //Splits the data into day and month pairs
-                    for( int i = 0; i < splitData.length; i++)
-                    {
+                    for( int i = 0; i < splitData.length; i++) {
                         String part = splitData[i];
 
                         this.dataDay = part.substring(0, 2);
                         this.dataMonth = part.substring(3, 5);
 
                         //Enters each day that corresponds to the active month into the days HashMap so it can be colored appropriately
-                        if(dataMonth.equals(monthNumbers(monthName))) {
+                        if (dataMonth.equals(monthNumbers(monthName))) {
                             days.put("d" + dataDay + "P", 2);
                         }
 
                         redrawDays();
+                    }
 
                     }
 
