@@ -302,6 +302,7 @@ public class ExerciseView extends BaseActivity {
                 //load the next video and set the time for it ?
                 if (nameList.size() > 1) {
 
+                    resetLikebt();
 
                     //test code fbr
                     videoView.setVisibility(View.INVISIBLE);
@@ -310,6 +311,7 @@ public class ExerciseView extends BaseActivity {
                     isVidBreak = true;
                     pause.setClickable(false);
                     exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
+                    setEnabledBtn();
                     Log.d("kindle", nameList.toString());
 
 
@@ -359,6 +361,7 @@ public class ExerciseView extends BaseActivity {
 
                 time = 10;
                 pause.setClickable(true);
+                setEnabledBtn();
 
 
             }
@@ -439,10 +442,11 @@ public class ExerciseView extends BaseActivity {
     public String nameClean(String exName) {
 
 
-        ;
+
         if (exName.contains("_")) {
             exName = exName.replace("_", " ");
         }
+        exName = exName.substring(1);
         exName = exName.substring(0, 1).toUpperCase() + exName.substring(1);
         return exName;
         //Log.d("ftest", exName);
@@ -500,6 +504,26 @@ public void printarray() {
 
 }
 
+public void resetLikebt(){
+    likeBtn.setAlpha(0.5f);
+    dissLikeBtn.setAlpha(0.5f);
+}
+
+public void setEnabledBtn(){
+
+
+
+    if(likeBtn.isEnabled()) {
+        likeBtn.setEnabled(false);
+        dissLikeBtn.setEnabled(false);
+        Log.d("neando","likedisabled");
+    }
+    else if(!likeBtn.isEnabled()){
+        Log.d("neando","likeenlabled");
+        likeBtn.setEnabled(true);
+        dissLikeBtn.setEnabled(true);
+    }
+}
 
 }
 

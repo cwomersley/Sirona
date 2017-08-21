@@ -35,9 +35,10 @@ public class WorkoutMenu extends BaseActivity {
         StandardBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         customBtn = (Button) findViewById(R.id.customBtn);
-        customBtn
-                .setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        customBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
+        customBtn.setAlpha(0.5f);
+        customBtn.setEnabled(false);
         TestBtn = (Button) findViewById(R.id.selfTestBtn);
         TestBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
@@ -95,7 +96,8 @@ public class WorkoutMenu extends BaseActivity {
                         if (object != null) {
 
                             output = object.toString();
-
+                            customBtn.setAlpha(1);
+                            customBtn.setEnabled(true);
                             Log.d("isNull", output);
 
                         }
