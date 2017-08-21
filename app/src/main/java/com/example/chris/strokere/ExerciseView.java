@@ -242,14 +242,9 @@ public class ExerciseView extends BaseActivity {
 
             mDatabase.child("Exercises").child("Name").child(Integer.toString(i)).setValue(name);
 
-
         }
 
-
-
-
     }
-
 
     // Menu icons are inflated as they were with actionbar
     @Override
@@ -507,6 +502,7 @@ public void printarray() {
             if(e.contains(noFirstLetter)){
                 Log.d("qqqq", "tester");
                 customWorkout.add(nameList.get(z));
+                Log.d("qqqq", customWorkout.toString());
 
 
             }

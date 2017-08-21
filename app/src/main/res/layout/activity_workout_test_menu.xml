@@ -27,7 +27,7 @@
 
         <include
             android:id="@+id/include2"
-            layout="@layout/toolbar_main" />
+            layout="@layout/navbar" />
 
         <include
             android:id="@+id/include3"

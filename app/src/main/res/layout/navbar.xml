@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:id="@+id/toolbarP"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:background="@color/greenAccent"
+android:minHeight="?attr/actionBarSize">
+
+
+    <TableRow
+        android:id="@+id/row"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+
+        <ImageButton
+            android:id="@+id/homeNavBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="0dp"
+            android:layout_toStartOf="@+id/exerciseListNavBtn"
+            android:background="@drawable/ic_home_white_24dp" />
+
+        <ImageButton
+            android:id="@+id/myExerciseNavBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignLeft="@+id/homeNavBtn"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/ic_directions_walk_white_24dp" />
+
+
+        <ImageButton
+            android:id="@+id/exerciseListNavBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignLeft="@+id/myExerciseNavBtn"
+            android:layout_marginLeft="32dp"
+            android:background="@drawable/ic_video_library_white_24dp" />
+
+        <ImageButton
+            android:id="@+id/progressNavBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignLeft="@+id/exerciseListNavBtn"
+            android:layout_marginLeft="32dp"
+            android:background="@drawable/ic_today_white_24dp" />
+
+        <ImageButton
+            android:id="@+id/preferencesNavBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignLeft="@+id/exerciseListNavBtn"
+            android:layout_marginLeft="32dp"
+            android:background="@drawable/ic_settings_white_24dp" />
+
+    </TableRow>
+
+</android.support.v7.widget.Toolbar>

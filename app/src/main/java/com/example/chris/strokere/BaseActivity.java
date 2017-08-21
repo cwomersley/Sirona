@@ -41,8 +41,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageButton myExerciseNavBtn = (ImageButton) findViewById(R.id.myExerciseNavBtn);
         myExerciseNavBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (getLayout() != R.layout.activity_exercise_view) {
-                    startActivity(new Intent(BaseActivity.this, ExerciseView.class));
+                if (getLayout() != R.layout.activity_workout_menu) {
+                    startActivity(new Intent(BaseActivity.this, WorkoutMenu.class));
                 }
             }
         });

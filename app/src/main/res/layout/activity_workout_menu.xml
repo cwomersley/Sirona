@@ -27,7 +27,7 @@
 
         <include
             android:id="@+id/include2"
-            layout="@layout/toolbar_main" />
+            layout="@layout/navbar" />
 
         <include
             android:id="@+id/include3"
@@ -36,7 +36,6 @@
             android:layout_height="60dp"
             android:layout_alignTop="@+id/tipIcon"
             android:layout_toEndOf="@+id/tipIcon" />
-
 
         <Button
             android:id="@+id/customBtn"

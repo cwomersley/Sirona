@@ -304,7 +304,7 @@
             android:textColorLink="@color/colorPrimary"
             android:textSize="24dp" />
 
-        <include layout="@layout/toolbar_main"
+        <include layout="@layout/navbar"
             android:id="@+id/include4" />
 
         <Button
