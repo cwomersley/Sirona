@@ -125,7 +125,7 @@ public class VideoStats {
         for (String key: currentLikes.keySet()){
 
             for (String key4 : currentLikes.keySet()) {
-                Log.d("tedwo",key4 + " " + currentLikes.get(key4));
+                Log.d("tewo",key4 + " " + currentLikes.get(key4));
             }
 
 
