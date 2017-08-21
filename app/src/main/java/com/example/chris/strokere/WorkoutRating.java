@@ -2,9 +2,7 @@ package com.example.chris.strokere;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.BoringLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +10,8 @@ import android.widget.NumberPicker;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserInfo;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,13 +24,14 @@ public class WorkoutRating extends BaseActivity {
     private String score;
     private String userID;
     private FirebaseUser user;
+    private VideoStats videoStats;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_rating);
-
+        videoStats = new VideoStats();
          mDatabase = FirebaseDatabase.getInstance().getReference();
 
         //for nav bar
@@ -56,6 +52,7 @@ public class WorkoutRating extends BaseActivity {
                 borgRating = ratingScale.getValue();
                 if(user != null) {
                     mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
+                    videoStats.updateDbLikes();
                 }
                 Intent intent = new Intent(WorkoutRating.this, Home.class);
                 startActivity(intent);

@@ -2,35 +2,21 @@ package com.example.chris.strokere;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.io.File;
-import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -151,9 +137,9 @@ public class ExerciseView extends BaseActivity {
                 dissLikeBtn.setAlpha(1f);
                 likeBtn.setAlpha(0.5f);
                 likeHash.put(nameList.get(0), likeVideo);
-                videoStats.getSpanshot();
 
-                Log.d("fubget", videoStats.getSpanshot());
+
+                Log.d("fubget", videoStats.updateDbLikes());
 
 
             }

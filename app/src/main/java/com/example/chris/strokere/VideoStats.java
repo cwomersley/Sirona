@@ -107,7 +107,7 @@ public class VideoStats {
 
     }
 
-    public String getSpanshot(){
+    public String updateDbLikes(){
 
 
         upDateLike();
