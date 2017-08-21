@@ -128,6 +128,10 @@ public class LoginTest {
 
     }
 
+    /**
+     * determines whether a patient is signed into the app
+     * @return
+     */
     public boolean signedIn()
     {
         if (user != null) {
