@@ -116,20 +116,6 @@
         android:textColorHint="@color/greenAccent"
         android:visibility="invisible" />
 
-    <EditText
-        android:id="@+id/pHiddenEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/pHiddenPassword"
-        android:layout_below="@+id/pEmailBtn"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="enter old email"
-        android:inputType="textWebEmailAddress"
-        android:textColor="@color/greenAccent"
-        android:textColorHint="@color/greenAccent"
-        android:visibility="invisible" />
-
     <Button
         android:id="@+id/aConfirmBtn"
         android:layout_width="wrap_content"

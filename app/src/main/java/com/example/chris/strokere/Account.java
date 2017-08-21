@@ -43,7 +43,6 @@ public class Account extends BaseActivity {
     private EditText confirmPassword;
     private EditText email;
     private EditText hiddenPassword;
-    private EditText hiddenEmail;
     private Button pPasswordBtn;
     private Button pConfirmBtn;
     private DatabaseReference mDatabase;
@@ -68,26 +67,29 @@ public class Account extends BaseActivity {
         setupNavbar();
 
         pEmailBtn = (Button) findViewById(R.id.pEmailBtn);
-        pEmailBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         delAccBtn = (Button) findViewById(R.id.delAccBtn);
-        delAccBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        logoutBtn = (Button) findViewById(R.id.logoutBtn);
-        logoutBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         email = (EditText) findViewById(R.id.pEmail);
-        email.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         password = (EditText) findViewById(R.id.pPassword);
-        password.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
-        confirmPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        logoutBtn = (Button) findViewById(R.id.logoutBtn);
         hiddenPassword = (EditText) findViewById(R.id.pHiddenPassword);
-        hiddenEmail = (EditText) findViewById(R.id.pHiddenEmail);
-        user = FirebaseAuth.getInstance().getCurrentUser();
         pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
+        mListView= (ListView) findViewById(R.id.listview);
+
+        //Sets standardised font for each item on activity_account
         pPasswordBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        pEmailBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        delAccBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        email.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        password.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        logoutBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        confirmPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         myRef=mFirebaseDatabase.getReference();
-        mListView= (ListView) findViewById(R.id.listview);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         //Sets the unique id for the user from Firebase
         if (user!=null) {
@@ -171,14 +173,12 @@ public class Account extends BaseActivity {
     /**
      * Reauthorise a user's credentials via Firebase
      */
-    public void aReauth()
+    public void aReauth(View view)
     {
 
         String reauthPassword= hiddenPassword.getText().toString();
         String reauthEmail=user.getEmail();
-        //String reauthEmail= hiddenEmail.getText().toString();
         AuthCredential credential = EmailAuthProvider.getCredential(reauthPassword, reauthEmail);
-        // Prompt the user to re-provide their sign-in credentials
         user.reauthenticate(credential)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -249,13 +249,13 @@ public class Account extends BaseActivity {
             Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
             valid = false;
         }
+        //if the password is smaller than the size that Firebase allows (currently has to be 6 characters or more
         if(TextUtils.getTrimmedLength(changePass)<passwordLength) {
-            //password is smaller than the size that Firebase allows
             Toast.makeText(this, "Your password must be 6 characters or longer", Toast.LENGTH_LONG).show();
             valid=false;
         }
+        //if password and confirmation password do not match
         if(!changePass.equals(conPass)){
-            //password and confirmation password do not match
             Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_LONG).show();
             valid=false;
         }
@@ -360,6 +360,10 @@ public class Account extends BaseActivity {
         startActivity(new Intent(Account.this, MainActivity.class));
     }
 
+
+    /**
+     * Is used to setup the navbar at the top of the activity
+     */
     @Override
     public int getLayout() {
         return R.layout.activity_account;
