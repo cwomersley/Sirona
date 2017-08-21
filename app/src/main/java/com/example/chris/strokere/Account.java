@@ -43,7 +43,6 @@ public class Account extends BaseActivity {
     private EditText confirmPassword;
     private EditText email;
     private EditText hiddenPassword;
-    private EditText hiddenEmail;
     private Button pPasswordBtn;
     private Button pConfirmBtn;
     private DatabaseReference mDatabase;
@@ -68,45 +67,38 @@ public class Account extends BaseActivity {
         setupNavbar();
 
         pEmailBtn = (Button) findViewById(R.id.pEmailBtn);
-        pEmailBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
         delAccBtn = (Button) findViewById(R.id.delAccBtn);
-        delAccBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        logoutBtn = (Button) findViewById(R.id.logoutBtn);
-        logoutBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
         email = (EditText) findViewById(R.id.pEmail);
-        email.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
         password = (EditText) findViewById(R.id.pPassword);
-        password.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
         confirmPassword = (EditText) findViewById(R.id.pConfirmPassword);
+        logoutBtn = (Button) findViewById(R.id.logoutBtn);
+        hiddenPassword = (EditText) findViewById(R.id.pHiddenPassword);
+        pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
+        mListView= (ListView) findViewById(R.id.listview);
+
+        //Sets standardised font for each item on activity_account
+        pPasswordBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        pEmailBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        delAccBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        email.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        password.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        logoutBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         confirmPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        hiddenPassword = (EditText) findViewById(R.id.pHiddenPassword);
-        hiddenEmail = (EditText) findViewById(R.id.pHiddenEmail);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-
-        pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
-        pPasswordBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-        //pConfirmBtn = (Button) findViewById(R.id.pPasswordBtn);
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
-        //mAuth=FirebaseAuth.getInstance();
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         myRef=mFirebaseDatabase.getReference();
-        //FirebaseUser dUser = mAuth.getCurrentUser();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
+        //Sets the unique id for the user from Firebase
         if (user!=null) {
             userID = user.getUid();
         }
 
-        mListView= (ListView) findViewById(R.id.listview);
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+
+        mAuthListener = new FirebaseAuth.AuthStateListener()
+        {
             @Override
             public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -117,12 +109,12 @@ public class Account extends BaseActivity {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
             }
         };
 
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener()
+        {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 showData(dataSnapshot);
@@ -136,11 +128,16 @@ public class Account extends BaseActivity {
         });
     }
 
-    private void showData(DataSnapshot dataSnapshot) {
+    /**
+     * Retrieves account details of patient from Firebase database
+     * and puts them into a ListView
+     * @param dataSnapshot
+     */
+    private void showData(DataSnapshot dataSnapshot)
+    {
         if(!signedIn()) {
             return;
         }
-        //method to pull account details of patient from firebase database
         for(DataSnapshot ds: dataSnapshot.getChildren()) {
             if(ds.getKey().equals("Patients")) {
                 User uInfo = new User();
@@ -150,35 +147,38 @@ public class Account extends BaseActivity {
                 Log.d(dTAG, "showData: name: " + uInfo.getName());
                 Log.d(dTAG, "showData: surname: " + uInfo.getSurname());
                 Log.d(dTAG, "showData: phone_num: " + uInfo.getEmail());
-
                 ArrayList<String> array = new ArrayList<>();
                 array.add("Name: " + uInfo.getName() +" " + uInfo.getSurname());
-                //array.add("Surname: " + uInfo.getSurname());
                 array.add("Email: " + uInfo.getEmail());
                 ArrayAdapter adapter = new ArrayAdapter(this, R.layout.list_black_text, R.id.list_content, array);
-                ;
                 mListView.setAdapter(adapter);
             }
-
         }
     }
 
-    //returns true/false depending on whether a user is signed in
-    public boolean signedIn() {
+
+    /**
+     * Determines whether a user is signed in.
+     * @return
+     */
+    public boolean signedIn()
+    {
         if (user != null) {
             return true;
         } else {
             return false;
         }
     }
-    //reauthorise a user's credentials
-    public void aReauth() {
+
+    /**
+     * Reauthorise a user's credentials via Firebase
+     */
+    public void aReauth(View view)
+    {
 
         String reauthPassword= hiddenPassword.getText().toString();
         String reauthEmail=user.getEmail();
-        //String reauthEmail= hiddenEmail.getText().toString();
         AuthCredential credential = EmailAuthProvider.getCredential(reauthPassword, reauthEmail);
-        // Prompt the user to re-provide their sign-in credentials
         user.reauthenticate(credential)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -190,8 +190,12 @@ public class Account extends BaseActivity {
     }
 
 
-    //method for a user to change their email
-    public void changeEmail(View view) {
+    /**
+     * Changes a patient's email address
+     * @param view
+     */
+    public void changeEmail(View view)
+    {
         if (!signedIn()) {
             return;
         }
@@ -216,8 +220,12 @@ public class Account extends BaseActivity {
                 });
     }
 
+    /**
+     * Validates a email address to be of a particular type (e.g like an email would be)
+     * @param email
+     * @return
+     */
     public boolean emailValidator(String email)
-
     {
         Pattern pattern;
         Matcher matcher;
@@ -227,7 +235,10 @@ public class Account extends BaseActivity {
         return matcher.matches();
     }
 
-    //validates fields on activity
+    /**
+     * Validates TextViews relating to a user entering in password
+     * @return
+     */
     public boolean validate() {
         boolean valid = true;
         int passwordLength=6;
@@ -238,21 +249,28 @@ public class Account extends BaseActivity {
             Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
             valid = false;
         }
+        //if the password is smaller than the size that Firebase allows (currently has to be 6 characters or more
         if(TextUtils.getTrimmedLength(changePass)<passwordLength) {
-            //password is smaller than the size that Firebase allows
             Toast.makeText(this, "Your password must be 6 characters or longer", Toast.LENGTH_LONG).show();
             valid=false;
         }
+        //if password and confirmation password do not match
         if(!changePass.equals(conPass)){
-            //password and confirmation password do not match
             Toast.makeText(this, "Your passwords do no match, please re-enter", Toast.LENGTH_LONG).show();
             valid=false;
         }
         return valid;
     }
 
-    //method for a user to change their password
-    public void changePassword(View view) throws FirebaseAuthRecentLoginRequiredException {
+    /**
+     * Changes a patient's password
+     * An exception is thrown if the user has been logged in for a certain amount of time
+     * As Firebase requires them to reauthenticate for account sensitive activity such as changing password.
+     * @param view
+     * @throws FirebaseAuthRecentLoginRequiredException
+     */
+    public void changePassword(View view) throws FirebaseAuthRecentLoginRequiredException
+    {
         if (!signedIn()) {
             return;
         }
@@ -286,8 +304,11 @@ public class Account extends BaseActivity {
             }
     }
 
-    //method to delete a user account
-    public void confirmDelete() {
+    /**
+     * Delete a patient's account
+     */
+    public void confirmDelete()
+    {
             try {
                 user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -305,8 +326,10 @@ public class Account extends BaseActivity {
      }
 
 
-    //https://stackoverflow.com/questions/25670051/how-to-create-yes-no-alert-dialog-in-fragment-in-android
-    //show dialog box asking if user wants to delete account
+    /**
+     * Dialogue box to confirm if a patient wants to delete their account
+     * @param view
+     */
     public void delAccount(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Are you sure you want to delete your account?");
@@ -328,12 +351,19 @@ public class Account extends BaseActivity {
         dialog.show();
     }
 
-    //method to log user out
+    /**
+     * Logs out a patient.
+     * @param view
+     */
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(Account.this, MainActivity.class));
     }
 
+
+    /**
+     * Is used to setup the navbar at the top of the activity
+     */
     @Override
     public int getLayout() {
         return R.layout.activity_account;

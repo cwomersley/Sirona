@@ -48,12 +48,9 @@ public class NotificationReceiver extends BroadcastReceiver {
                 notificationBuilder.setSound(uri);
 
 
-
         int id = 001;
         NotificationManager notifyManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notifyManager.notify(id, notificationBuilder.build());
-
-
 
     }
 }

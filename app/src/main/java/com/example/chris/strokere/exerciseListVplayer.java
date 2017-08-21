@@ -1,7 +1,9 @@
 package com.example.chris.strokere;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,7 @@ import android.widget.VideoView;
 public class exerciseListVplayer extends AppCompatActivity {
 
     ExerciseList exerciselist;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
