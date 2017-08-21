@@ -81,6 +81,7 @@ public class WorkoutTest extends AppCompatActivity {
         shuttleImage= (ImageView) findViewById(R.id.shuttleImage);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        //Sets standardised font for each item on activity_workout
         shuttleStartBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         testText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         howManyNo.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -105,7 +106,7 @@ public class WorkoutTest extends AppCompatActivity {
                 videoTest.start();
                 videoTest.stopPlayback();
                 break;
-            case "shuttlerun":
+            case "shuttleRun":
                 workoutTestName="ShuttleRun";
                 testText.setText("See how many shuttle runs you can do in 3 minutes!");
                 shuttleImage.setVisibility(View.VISIBLE);
