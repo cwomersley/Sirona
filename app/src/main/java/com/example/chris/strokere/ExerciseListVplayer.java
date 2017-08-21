@@ -1,21 +1,17 @@
 package com.example.chris.strokere;
 
-
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 
-
-public class exerciseListVplayer extends AppCompatActivity {
+public class ExerciseListVplayer extends AppCompatActivity {
 
     ExerciseList exerciselist;
     Context context;
@@ -32,7 +28,7 @@ public class exerciseListVplayer extends AppCompatActivity {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(exerciseListVplayer.this, ExerciseList.class));
+                startActivity(new Intent(ExerciseListVplayer.this, ExerciseList.class));
             }
         });
 

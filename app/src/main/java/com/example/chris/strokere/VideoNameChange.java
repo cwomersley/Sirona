@@ -1,6 +1,5 @@
 package com.example.chris.strokere;
 
-
 import java.util.Arrays;
 
 public class VideoNameChange {
