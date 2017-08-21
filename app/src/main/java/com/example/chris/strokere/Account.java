@@ -1,5 +1,6 @@
 package com.example.chris.strokere;
 
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,18 +21,25 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
+
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+import static com.example.chris.strokere.R.id.pEmail;
 import static com.example.chris.strokere.R.id.pPasswordBtn;
 
 public class Account extends BaseActivity {
@@ -39,6 +47,7 @@ public class Account extends BaseActivity {
     private FirebaseUser user;
     public static final String TAG = "Password";
     public static final String dTAG = "Database";
+    public static final String eTAG = "Exception";
     private EditText password;
     private EditText confirmPassword;
     private EditText email;
@@ -49,6 +58,7 @@ public class Account extends BaseActivity {
     private Button pEmailBtn;
     private Button logoutBtn;
     private Button delAccBtn;
+    private Button aConfirmBtn;
 
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseAuth mAuth;
@@ -75,6 +85,8 @@ public class Account extends BaseActivity {
         hiddenPassword = (EditText) findViewById(R.id.pHiddenPassword);
         pPasswordBtn = (Button) findViewById(R.id.pPasswordBtn);
         mListView= (ListView) findViewById(R.id.listview);
+        aConfirmBtn = (Button) findViewById(R.id.aConfirmBtn);
+
 
         //Sets standardised font for each item on activity_account
         pPasswordBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -84,6 +96,8 @@ public class Account extends BaseActivity {
         password.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         logoutBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         confirmPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        aConfirmBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        hiddenPassword.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
         mFirebaseDatabase=FirebaseDatabase.getInstance();
@@ -92,6 +106,7 @@ public class Account extends BaseActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
 
         //Sets the unique id for the user from Firebase
+
         if (user!=null) {
             userID = user.getUid();
         }
@@ -186,7 +201,16 @@ public class Account extends BaseActivity {
                         Log.d(TAG, "User re-authenticated.");
                     }
                 });
-        pPasswordBtn.performClick();
+
+        Toast.makeText(Account.this, "Please enter in your new password again", Toast.LENGTH_SHORT).show();
+        aConfirmBtn.setVisibility(View.INVISIBLE);
+        hiddenPassword.setVisibility(View.INVISIBLE);
+        email.setVisibility(View.VISIBLE);
+        pEmailBtn.setVisibility(View.VISIBLE);
+        password.setVisibility(View.VISIBLE);
+        confirmPassword.setVisibility(View.VISIBLE);
+        pPasswordBtn.setVisibility(View.VISIBLE);
+        delAccBtn.setVisibility(View.VISIBLE);
     }
 
 
@@ -269,7 +293,7 @@ public class Account extends BaseActivity {
      * @param view
      * @throws FirebaseAuthRecentLoginRequiredException
      */
-    public void changePassword(View view) throws FirebaseAuthRecentLoginRequiredException
+    public void changePassword(View view)
     {
         if (!signedIn()) {
             return;
@@ -279,29 +303,66 @@ public class Account extends BaseActivity {
             if (!validate()) {
                 return;
             }
-            try {
                 user.updatePassword(changePass)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(Task<Void> task) {
-                                if (task.isSuccessful()) {
+                                if (!task.isSuccessful()) {
+                                    try {
+                                        throw task.getException();
+                                    } catch (FirebaseAuthRecentLoginRequiredException e) {
+                                        Toast.makeText(Account.this, "You need to reuthenticate", Toast.LENGTH_SHORT).show();
+                                        exceptionHandler();
+                                    } catch (Exception e) {
+                                        Log.e(eTAG, e.getMessage());
+                                        Toast.makeText(Account.this, "You need to reuthenticate", Toast.LENGTH_SHORT).show();
+                                        exceptionHandler();
+                                    }
+                                } else {
                                     Toast.makeText(Account.this, "Your password has been updated", Toast.LENGTH_SHORT).show();
                                 }
-                                else {
-                                    Toast.makeText(Account.this, "Please try again later", Toast.LENGTH_SHORT).show();
-                                    Log.d(TAG, "task not successful");
-                                }
                             }
-                        });
-            }
-            catch (Exception e) {
-                // Get auth credentials from the user for re-authentication.
-                Log.d(TAG, "Exception thrown");
-                //makeVisible();
-                pConfirmBtn.setVisibility(View.VISIBLE);
-                hiddenPassword.setVisibility(View.VISIBLE);
-                Toast.makeText(Account.this, "Please enter your original password and username", Toast.LENGTH_SHORT).show();
-            }
+                            });
+
+    }
+
+    public void onTokenRefresh() {
+        // Get updated InstanceID token.
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d(eTAG, "Refreshed token: " + refreshedToken);
+        sendRegistrationToServer(refreshedToken);
+    }
+
+    /**
+     * Persist token to third-party servers.
+     *
+     * Modify this method to associate the user's FCM InstanceID token with any server-side account
+     * maintained by your application.
+     *
+     * @param token The new token.
+     */
+    private void sendRegistrationToServer(String token) {
+        FirebaseDatabase.getInstance()
+                .getReference()
+                .setValue(token);
+        //pPasswordBtn.performClick();
+    }
+
+
+
+    public void exceptionHandler() {
+        // Get auth credentials from the user for re-authentication.
+        Log.d(TAG, "Exception thrown");
+        //makeVisible();
+        aConfirmBtn.setVisibility(View.VISIBLE);
+        hiddenPassword.setVisibility(View.VISIBLE);
+        email.setVisibility(View.INVISIBLE);
+        pEmailBtn.setVisibility(View.INVISIBLE);
+        password.setVisibility(View.INVISIBLE);
+        confirmPassword.setVisibility(View.INVISIBLE);
+        pPasswordBtn.setVisibility(View.INVISIBLE);
+        delAccBtn.setVisibility(View.INVISIBLE);
+        Toast.makeText(Account.this, "Please enter your original password and username", Toast.LENGTH_SHORT).show();
     }
 
     /**
