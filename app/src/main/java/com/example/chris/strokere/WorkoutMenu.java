@@ -25,11 +25,13 @@ public class WorkoutMenu extends BaseActivity {
     private static String output;
     private DatabaseReference mDatabase;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_menu);
         setupNavbar();
+
 
         StandardBtn = (Button) findViewById(R.id.StandardBtn);
         StandardBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
