@@ -28,24 +28,26 @@
         android:paddingLeft="20dp"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:visibility="visible" />
 
 
     <Button
         android:id="@+id/pEmailBtn"
-        android:layout_marginBottom="15dp"
-        android:layout_above="@+id/pPassword"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/pPassword"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@color/greenAccent"
         android:onClick="changeEmail"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Change Email" />
+        android:text="Change Email"
+        android:visibility="visible" />
 
     <Button
         android:id="@+id/pPasswordBtn"
@@ -54,16 +56,17 @@
 
 
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-
         android:layout_alignParentStart="true"
+
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="40dp"
         android:background="@color/greenAccent"
         android:onClick="changePassword"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Change Password" />
+        android:text="Change Password"
+        android:visibility="visible" />
 
     <EditText
         android:id="@+id/pPassword"
@@ -80,7 +83,8 @@
         android:paddingLeft="20dp"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:visibility="visible" />
 
     <EditText
         android:id="@+id/pConfirmPassword"
@@ -98,7 +102,8 @@
         android:paddingLeft="20dp"
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:visibility="visible" />
 
     <EditText
         android:id="@+id/pHiddenPassword"
@@ -138,7 +143,8 @@
         android:onClick="delAccount"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="Delete Account" />
+        android:text="Delete Account"
+        android:visibility="visible" />
 
     <ListView
         android:id="@+id/listview"

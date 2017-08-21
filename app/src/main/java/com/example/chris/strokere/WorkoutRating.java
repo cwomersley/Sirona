@@ -21,7 +21,6 @@ public class WorkoutRating extends BaseActivity {
     private NumberPicker ratingScale;
     private DatabaseReference mDatabase;
     private int borgRating;
-    private String score;
     private String userID;
     private FirebaseUser user;
     private VideoStats videoStats;
@@ -51,8 +50,10 @@ public class WorkoutRating extends BaseActivity {
 
                 borgRating = ratingScale.getValue();
                 if(user != null) {
-                    mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
                     videoStats.updateDbLikes();
+                    mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
+
+
                 }
                 Intent intent = new Intent(WorkoutRating.this, Home.class);
                 startActivity(intent);
