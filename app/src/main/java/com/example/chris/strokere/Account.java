@@ -103,6 +103,7 @@ public class Account extends BaseActivity {
         mFirebaseDatabase=FirebaseDatabase.getInstance();
         myRef=mFirebaseDatabase.getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        user=FirebaseAuth.getInstance().getCurrentUser();
 
         //Sets the unique id for the user from Firebase
 
@@ -317,7 +318,8 @@ public class Account extends BaseActivity {
                                         Toast.makeText(Account.this, "You need to reuthenticate", Toast.LENGTH_SHORT).show();
                                         exceptionHandler();
                                     }
-                                } else {
+                                }
+                                else {
                                     Toast.makeText(Account.this, "Your password has been updated", Toast.LENGTH_SHORT).show();
                                 }
                             }
