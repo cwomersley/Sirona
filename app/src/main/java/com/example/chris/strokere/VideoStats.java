@@ -1,6 +1,7 @@
 package com.example.chris.strokere;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +36,7 @@ public class VideoStats {
         exerciseView = new ExerciseView();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        //getDbLike();
+        getDbLike();
 
 
 
@@ -123,15 +124,18 @@ public class VideoStats {
 
         for (String key: currentLikes.keySet()){
 
-
+            for (String key4 : currentLikes.keySet()) {
+                Log.d("tewo",key4 + " " + currentLikes.get(key4));
+            }
 
 
 
                 if (videoLikes2.containsKey(key) && videoLikes2.get(key) != null) {
-
+                    Log.d("edwatd", key);
                     if (currentLikes.get(key) == 1) {
                         int addLike = videoLikes2.get(key) + 1;
                         mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(addLike);
+                        Log.d("edsphone", "likeUpdated");
                     } else if (currentLikes.get(key) == -1) {
                         int minusLike = videoLikes2.get(key) - 1;
                         mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(minusLike);

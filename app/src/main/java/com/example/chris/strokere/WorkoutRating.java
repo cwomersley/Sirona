@@ -50,7 +50,7 @@ public class WorkoutRating extends BaseActivity {
 
                 borgRating = ratingScale.getValue();
                 if(user != null) {
-                    videoStats.updateDbLikes();
+                    videoStats.splitString();
                     mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
 
 
