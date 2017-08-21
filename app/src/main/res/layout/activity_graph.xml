@@ -47,25 +47,25 @@
             android:layout_marginTop="12dp"
             android:onClick=""
             android:text="Sit To Stands"
-            android:layout_alignStart="@+id/shuttleRunBtn" />
+            android:layout_alignStart="@+id/customBtn" />
 
         <Button
-            android:id="@+id/stepUpsBtn"
+            android:id="@+id/selfTestBtn"
             android:layout_width="130dp"
             android:background="@drawable/standard_button_green"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sitToStandsBtn"
-            android:layout_alignStart="@+id/shuttleRunBtn"
+            android:layout_alignStart="@+id/customBtn"
             android:layout_marginBottom="7dp"
             android:onClick=""
             android:text="Step Ups" />
 
         <Button
-            android:id="@+id/shuttleRunBtn"
+            android:id="@+id/customBtn"
             android:layout_width="130dp"
             android:background="@drawable/standard_button_green"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/stepUpsBtn"
+            android:layout_below="@+id/selfTestBtn"
             android:layout_centerHorizontal="true"
             android:onClick="        int[] sco = new int[10];"
             android:text="Shuttle Run" />

@@ -39,32 +39,34 @@
 
 
         <Button
-            android:id="@+id/shuttleRunBtn"
+            android:id="@+id/customBtn"
             style="@style/standard_button"
-            android:layout_above="@+id/stepUpsBtn"
+            android:layout_above="@+id/selfTestBtn"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
-            android:onClick="oTestMenu"
-            android:text="Self Tests" />
+            android:onClick="customWorkout"
+            android:text="Custom" />
 
         <Button
-            android:id="@+id/stepUpsBtn"
+            android:id="@+id/selfTestBtn"
             style="@style/standard_button"
             android:layout_above="@+id/btnPreferencesH"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
-            app:layout_constraintTop_toBottomOf="@+id/shuttleRunBtn" />
+            android:onClick="oTestMenu"
+            android:text="SELF TESTS"
+            app:layout_constraintTop_toBottomOf="@+id/customBtn" />
 
         <Button
             android:id="@+id/StandardBtn"
             style="@style/standard_button"
-            android:layout_above="@+id/shuttleRunBtn"
+            android:layout_above="@+id/customBtn"
             android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/shuttleRunBtn"
+            android:layout_alignStart="@+id/customBtn"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_pink"
             android:onClick="standardWorkout"
@@ -79,7 +81,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
             android:onClick="oSettings"
-            app:layout_constraintTop_toBottomOf="@+id/stepUpsBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/selfTestBtn" />
 
         <TextView
             android:id="@+id/tipIconBackground"

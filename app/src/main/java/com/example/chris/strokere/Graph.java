@@ -1,8 +1,6 @@
 package com.example.chris.strokere;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +20,6 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,7 +60,7 @@ public class Graph extends BaseActivity {
                 setupTestName("Sit To Stands");
             }
         });
-        Button stepUpsBtn = (Button) findViewById(R.id.stepUpsBtn);
+        Button stepUpsBtn = (Button) findViewById(R.id.selfTestBtn);
         stepUpsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         stepUpsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -73,7 +70,7 @@ public class Graph extends BaseActivity {
             }
         });
 
-        Button shuttleRun = (Button) findViewById(R.id.shuttleRunBtn);
+        Button shuttleRun = (Button) findViewById(R.id.customBtn);
         shuttleRun.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         shuttleRun.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

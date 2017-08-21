@@ -63,8 +63,10 @@ public class ExerciseView extends BaseActivity {
     private VideoStats videoStats;
     private FirebaseUser user;
     private String userID;
-    String output;
+    private String output;
     private  ArrayList<String> customWorkout = new ArrayList<>();
+    private String pressedButton;
+    private  String [] exercises;
 
 
     @Override
@@ -80,6 +82,7 @@ public class ExerciseView extends BaseActivity {
         pause = (ImageButton) findViewById(R.id.pauseResume);
         timerText = (TextView) findViewById(R.id.timerText);
         exerciseNameText = (TextView) findViewById(R.id.exerciseNameText);
+        pressedButton = getIntent().getExtras().getString("workChoice");
 
 
         likeBtn.setAlpha(0.5f);
@@ -132,7 +135,15 @@ public class ExerciseView extends BaseActivity {
 
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         setSupportActionBar(toolbar);
-        makeCustomWorkout();
+
+
+        if(pressedButton.equals("customWorkout")) {
+            makeCustomWorkout();
+            if(output != null) {
+                printarray();
+            }
+            Log.d("iphone", "itWorked");
+        }
 
 
 
@@ -284,6 +295,7 @@ public class ExerciseView extends BaseActivity {
                     isVidBreak = true;
                     pause.setClickable(false);
                     exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
+                    Log.d("kindle", nameList.toString());
 
 
                 } else if (nameList.size() == 1) {
@@ -449,11 +461,13 @@ public class ExerciseView extends BaseActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     if (snapshot.getKey().equals("Testing")) {
+                        Log.d("isNull", "Np");
                         Object object = snapshot.child(userID).getValue();
                         if (object != null) {
+
                             output= object.toString();
 
-                        printarray();
+
 
                         }
                     }
@@ -461,7 +475,6 @@ public class ExerciseView extends BaseActivity {
                 }
 
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -479,7 +492,7 @@ public class ExerciseView extends BaseActivity {
 
     }
 public void printarray() {
-    String [] exercises = output.split(",");
+    exercises = output.split(",");
     for(String e : exercises){
         Log.d("chrisw", e);
         Log.d("nsize", Integer.toString(exercises.length));

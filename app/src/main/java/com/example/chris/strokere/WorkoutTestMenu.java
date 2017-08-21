@@ -21,8 +21,8 @@ public class WorkoutTestMenu extends AppCompatActivity {
         setContentView(R.layout.activity_workout_test_menu);
 
         sitToStandsBtn = (Button) findViewById(R.id.sitToStandsBtn);
-        shuttleRunBtn = (Button) findViewById(R.id.shuttleRunBtn);
-        stepUpsBtn = (Button) findViewById(R.id.stepUpsBtn);
+        shuttleRunBtn = (Button) findViewById(R.id.customBtn);
+        stepUpsBtn = (Button) findViewById(R.id.selfTestBtn);
         sitToStandsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         shuttleRunBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         stepUpsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));

@@ -9,6 +9,7 @@ public class WorkoutMenu extends BaseActivity {
 
     private Button StandardBtn;
     private Button TestBtn;
+    private Button customBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +20,13 @@ public class WorkoutMenu extends BaseActivity {
         StandardBtn = (Button) findViewById(R.id.StandardBtn);
         StandardBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        TestBtn = (Button) findViewById(R.id.shuttleRunBtn);
+        customBtn = (Button) findViewById(R.id.customBtn);
+        customBtn
+                .setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+        TestBtn = (Button) findViewById(R.id.selfTestBtn);
         TestBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
 
 
 
@@ -29,11 +35,19 @@ public class WorkoutMenu extends BaseActivity {
 
 
     public void standardWorkout(View view) {
-        startActivity(new Intent(WorkoutMenu.this, ExerciseView.class));
+        Intent intent = new Intent(WorkoutMenu.this, ExerciseView.class);
+        intent.putExtra("workChoice", "standard");
+        startActivity(intent);
     }
 
     public void oTestMenu(View view) {
         startActivity(new Intent(WorkoutMenu.this, WorkoutTestMenu.class));
+    }
+
+    public void customWorkout(View view){
+        Intent intent = new Intent(WorkoutMenu.this, ExerciseView.class);
+        intent.putExtra("workChoice", "customWorkout");
+        startActivity(intent);
     }
 
     @Override
