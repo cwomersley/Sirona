@@ -21,6 +21,7 @@ import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 import static org.hamcrest.Matchers.allOf;
@@ -29,7 +30,7 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class RegisterTest {
 
-    private FirebaseAuth user;
+    private FirebaseUser user;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
@@ -37,9 +38,41 @@ public class RegisterTest {
 
 
     @Test
-    //registers a random user on the app (email address is randomwised)
+    //registers a random user on the app (email address is randomised)
     //user must be logged out to run this test
     public void registerTest() {
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if(signedIn()) {
+            ViewInteraction appCompatButton2 = onView(
+                    allOf(withId(R.id.btnPreferencesH), withText("Settings"), isDisplayed()));
+            appCompatButton2.perform(click());
+            try {
+                Thread.sleep(6000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            ViewInteraction appCompatButton3 = onView(
+                    allOf(withId(R.id.btnAccountS), withText("My Account"), isDisplayed()));
+            appCompatButton3.perform(click());
+
+            // Added a sleep statement to match the app's execution delay.
+            // The recommended way to handle such scenarios is to use Espresso idling resources:
+            // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+            try {
+                Thread.sleep(6000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            ViewInteraction appCompatButton4 = onView(
+                    allOf(withId(R.id.logoutBtn), withText("Logout"),
+                            withParent(allOf(withId(R.id.hiddenEmail),
+                                    withParent(withId(android.R.id.content)))),
+                            isDisplayed()));
+            appCompatButton4.perform(click());
+        }
 
         char[] chars1 = "ABCDEF012GHIJKL345MNOPQR678STUVWXYZ9".toCharArray();
             StringBuilder sb1 = new StringBuilder();
@@ -106,6 +139,19 @@ public class RegisterTest {
             }
 
 
+        }
+
+    /**
+     * determines whether a patient is signed into the app
+     * @return
+     */
+    public boolean signedIn()
+        {
+            if (user != null) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
 }
