@@ -103,11 +103,10 @@
     <EditText
         android:id="@+id/pHiddenPassword"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/pEmail"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="22dp"
-        android:layout_toEndOf="@+id/pPasswordBtn"
+        android:layout_height="70dp"
+        android:layout_alignEnd="@+id/pEmail"
+        android:layout_alignStart="@+id/pEmailBtn"
+        android:layout_centerVertical="true"
         android:ems="10"
         android:hint="Enter old password"
         android:inputType="textPassword"
@@ -117,11 +116,12 @@
 
     <Button
         android:id="@+id/aConfirmBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/pHiddenEmail"
-        android:layout_marginEnd="12dp"
-        android:layout_toStartOf="@+id/pHiddenPassword"
+        android:layout_above="@+id/pHiddenPassword"
+        android:layout_alignBottom="@+id/pPassword"
+        android:layout_alignEnd="@+id/pEmailBtn"
+        android:layout_alignStart="@+id/pPassword"
         android:onClick="aReauth"
         android:text="Confirm"
         android:visibility="invisible" />

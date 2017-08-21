@@ -36,10 +36,10 @@ public class RegisterTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
 
-
+    /**
+     * Resgisters a user on the app (Using a randomised email address)
+     */
     @Test
-    //registers a random user on the app (email address is randomised)
-    //user must be logged out to run this test
     public void registerTest() {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
