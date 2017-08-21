@@ -75,7 +75,7 @@ public class ExerciseView extends BaseActivity {
         setContentView(R.layout.activity_exercise_view);
         //setupNavbar();
         videoStats = new VideoStats();
-
+        customWorkout.clear();
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
@@ -467,7 +467,7 @@ public class ExerciseView extends BaseActivity {
 
                             output= object.toString();
 
-
+                            Log.d("isNull", output);
 
                         }
                     }
