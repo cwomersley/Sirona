@@ -27,7 +27,6 @@ public class exerciseListVplayer extends AppCompatActivity {
 
         TextView tv = (TextView)findViewById(R.id.textView5);
         tv.setText(exerciselist.niceName);
-        tv.setTypeface(Typeface.createFromAsset(context.getAssets(), "Lato-Regular.ttf"));
 
         ImageView img = (ImageView) findViewById(R.id.imageView3);
         img.setOnClickListener(new View.OnClickListener() {
