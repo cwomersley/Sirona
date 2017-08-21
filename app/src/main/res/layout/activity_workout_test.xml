@@ -171,7 +171,7 @@
             <ImageView
                 android:id="@+id/shuttleImage"
                 android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_height="200dp"
                 android:layout_below="@+id/progressBar3"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/shuttlerun"
