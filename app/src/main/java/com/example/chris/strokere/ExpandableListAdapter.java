@@ -83,6 +83,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         }
         TextView txtListChild = (TextView)view.findViewById(R.id.textView);
+        txtListChild.setText(childText);
         txtListChild.setTypeface(Typeface.createFromAsset(context.getAssets(), "Lato-Regular.ttf"));
         return view;
     }
