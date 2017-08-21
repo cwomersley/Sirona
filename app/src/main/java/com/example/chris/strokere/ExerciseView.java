@@ -122,9 +122,7 @@ public class ExerciseView extends BaseActivity {
                 dissLikeBtn.setAlpha(0.5f);
                 likeHash.put(nameList.get(0), likeVideo);
 
-                for (String key : likeHash.keySet()) {
-                    Log.d("flike", key + " " + likeHash.get(key));
-                }
+
 
 
             }
@@ -139,7 +137,7 @@ public class ExerciseView extends BaseActivity {
                 likeHash.put(nameList.get(0), likeVideo);
 
 
-                Log.d("fubget", videoStats.updateDbLikes());
+
 
 
             }

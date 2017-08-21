@@ -51,8 +51,10 @@ public class WorkoutRating extends BaseActivity {
 
                 borgRating = ratingScale.getValue();
                 if(user != null) {
-                    mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
                     videoStats.updateDbLikes();
+                    mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
+
+
                 }
                 Intent intent = new Intent(WorkoutRating.this, Home.class);
                 startActivity(intent);
