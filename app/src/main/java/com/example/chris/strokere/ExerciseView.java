@@ -61,12 +61,11 @@ public class ExerciseView extends BaseActivity {
     private CountDownTimer vidBreaktmr;
     private Long vidBreakTimeLeft;
     private VideoStats videoStats;
-    private FirebaseUser user;
-    private String userID;
-    private String output;
+    private WorkoutMenu workoutMenu;
     private  ArrayList<String> customWorkout = new ArrayList<>();
     private String pressedButton;
     private  String [] exercises;
+    private String output;
 
 
     @Override
@@ -83,10 +82,50 @@ public class ExerciseView extends BaseActivity {
         timerText = (TextView) findViewById(R.id.timerText);
         exerciseNameText = (TextView) findViewById(R.id.exerciseNameText);
         pressedButton = getIntent().getExtras().getString("workChoice");
-
-
+        workoutMenu = new WorkoutMenu();
+        output = workoutMenu.getOutput();
         likeBtn.setAlpha(0.5f);
         dissLikeBtn.setAlpha(0.5f);
+
+
+
+
+
+        //
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
+
+
+        //remove later - used to add to db
+        //populateDB();
+
+        // Find the toolbar view inside the activity layout
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        setSupportActionBar(toolbar);
+
+
+        if(pressedButton.equals("customWorkout")) {
+
+            addFiles();
+
+            printarray();
+            setAndPlayVideo(setStringPath());
+            timer(10000);
+            progressBar.setProgress(i);
+
+
+
+            Log.d("iphone", "itWorked");
+        }else if
+                (pressedButton.equals("standard")){
+                addFiles();
+                setAndPlayVideo(setStringPath());
+                timer(10000);
+                progressBar.setProgress(i);
+            }
 
 
         likeBtn.setOnClickListener(new View.OnClickListener() {
@@ -121,38 +160,14 @@ public class ExerciseView extends BaseActivity {
         });
 
 
-        //
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
-        addFiles();
-
-        //remove later - used to add to db
-        //populateDB();
-
-        // Find the toolbar view inside the activity layout
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        // Sets the Toolbar to act as the ActionBar for this Activity window.
-        setSupportActionBar(toolbar);
-
-
-        if(pressedButton.equals("customWorkout")) {
-            makeCustomWorkout();
-
-
-
-            Log.d("iphone", "itWorked");
         }
 
 
 
-        setAndPlayVideo(setStringPath());
-        timer(10000);
-        progressBar.setProgress(i);
 
 
-    }
+
+
 
     //method for playing video depening on path
     public void setAndPlayVideo(String vidPath) {
@@ -439,47 +454,7 @@ public class ExerciseView extends BaseActivity {
     }
 
 
-    public void makeCustomWorkout() {
 
-
-        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    userID = user.getUid();
-                }
-            }
-        });
-
-
-
-
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
-                    if (snapshot.getKey().equals("Testing")) {
-                        Log.d("isNull", "Np");
-                        Object object = snapshot.child(userID).getValue();
-                        if (object != null) {
-
-                            output= object.toString();
-
-                            Log.d("isNull", output);
-                            printarray();
-                        }
-                    }
-
-                }
-
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
 
        /* if(nameList.contains(fbaseString)){
@@ -490,7 +465,7 @@ public class ExerciseView extends BaseActivity {
         return customWorkout;*/
 
 
-    }
+
 public void printarray() {
     exercises = output.split(",");
 
@@ -514,8 +489,9 @@ public void printarray() {
     }
 
     nameList.clear();
+
     for(String s : customWorkout){
-        Log.d("nero",s);
+
         nameList.add(s);
 
     }
