@@ -39,19 +39,19 @@
 
 
         <Button
-            android:id="@+id/Calendar"
+            android:id="@+id/StepUpsBtn"
             style="@style/standard_button"
             android:layout_height="120dp"
-            android:layout_above="@+id/Graph"
+            android:layout_above="@+id/Settings"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
             android:text="Workout Calendar"
-            app:layout_constraintTop_toBottomOf="@+id/customBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/ShuttleRunBtn" />
 
         <Button
-            android:id="@+id/Graph"
+            android:id="@+id/Settings"
             style="@style/standard_button"
             android:layout_height="120dp"
             android:layout_alignParentBottom="true"
@@ -61,7 +61,7 @@
             android:background="@drawable/standard_button_green"
             android:onClick="oSettings"
             android:text="Test Scores"
-            app:layout_constraintTop_toBottomOf="@+id/Calendar" />
+            app:layout_constraintTop_toBottomOf="@+id/StepUpsBtn" />
 
         <TextView
             android:id="@+id/tipIconBackground"

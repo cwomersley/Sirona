@@ -11,7 +11,6 @@ public class Home extends BaseActivity {
     Tip tip;
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -25,7 +24,7 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnExercise = (Button) findViewById(R.id.customBtn);
+        Button btnExercise = (Button) findViewById(R.id.ShuttleRunBtn);
         btnExercise.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnExercise.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -33,7 +32,7 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnProgress = (Button) findViewById(R.id.Calendar);
+        Button btnProgress = (Button) findViewById(R.id.StepUpsBtn);
         btnProgress.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnProgress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -41,8 +40,13 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnPreferences = (Button) findViewById(R.id.Graph);
+        Button btnPreferences = (Button) findViewById(R.id.Settings);
         btnPreferences.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        btnPreferences.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(Home.this, Settings.class));
+            }
+        });
 
         //Button btnLogout = (Button) findViewById(R.id.btnLogout);
         //btnLogout.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -83,15 +87,6 @@ public class Home extends BaseActivity {
     public int getLayout() {
         return R.layout.activity_home;
     }
-
-
-
-
-    //method to open settings activity
-    public void oSettings(View view) {
-        startActivity(new Intent(Home.this, Settings.class));
-    }
-
 
 
 }

@@ -28,18 +28,27 @@ public class TipManager {
 
     }
 
+    /**
+     * Creates the tips that are displayed on the Home activity and adds them to an array
+     */
     private void setupTips() {
 
-        Tip tip1 = new Tip("You can set notifications to remind you when to workout", "Yes", "com.example.chris.strokere.SettingsWorkoutReminder");
-        Tip tip2 = new Tip("You can enable and disable voice prompts in Settings", "Yes", "com.example.chris.strokere.Settings");
-        Tip tip3 = new Tip("You can see your  or tap the lightbulb", "Yes", "com.example.chris.strokere.Settings");
+        Tip tip1 = new Tip("Watch videos of all the exercises by tapping on them in the Exercise List", "Yes", "com.example.chris.strokere.ExerciseList");
+        Tip tip2 = new Tip("Logout and change your email and password in Account, under Settings", "Yes", "com.example.chris.strokere.Account");
+        Tip tip3 = new Tip("See your progress by tapping on Test Scores in the Progress menu", "Yes", "com.example.chris.strokere.ProgressGraph");
 
         tipsList.add(tip1);
         tipsList.add(tip2);
+        tipsList.add(tip3);
 
 
     }
 
+
+    /**
+     * Returns a tip selected at random from an array
+     * @return a randomly selected tip
+     */
     public Tip getATip()   {
 
         setupTips();

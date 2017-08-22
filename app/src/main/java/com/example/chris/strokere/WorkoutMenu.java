@@ -36,12 +36,12 @@ public class WorkoutMenu extends BaseActivity {
         StandardBtn = (Button) findViewById(R.id.StandardBtn);
         StandardBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
-        customBtn = (Button) findViewById(R.id.customBtn);
+        customBtn = (Button) findViewById(R.id.ShuttleRunBtn);
         customBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         customBtn.setAlpha(0.5f);
         customBtn.setEnabled(false);
-        TestBtn = (Button) findViewById(R.id.Calendar);
+        TestBtn = (Button) findViewById(R.id.StepUpsBtn);
         TestBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 

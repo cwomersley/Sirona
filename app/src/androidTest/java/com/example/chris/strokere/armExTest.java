@@ -57,7 +57,7 @@ public class armExTest {
         }
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.customBtn), withText("Exercise list"), isDisplayed()));
+                allOf(withId(R.id.ShuttleRunBtn), withText("Exercise list"), isDisplayed()));
         appCompatButton2.perform(click());
 
         // Added a sleep statement to match the app's execution delay.

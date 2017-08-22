@@ -89,7 +89,7 @@ public class ChangePasswordTest {
         }
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
+                allOf(withId(R.id.Settings), withText("Settings"), isDisplayed()));
         appCompatButton2.perform(click());
 
         // Added a sleep statement to match the app's execution delay.
@@ -192,7 +192,7 @@ public class ChangePasswordTest {
         }
 
         ViewInteraction appCompatButton7 = onView(
-                allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
+                allOf(withId(R.id.Settings), withText("Settings"), isDisplayed()));
         appCompatButton7.perform(click());
 
         // Added a sleep statement to match the app's execution delay.

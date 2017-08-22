@@ -48,9 +48,6 @@ public class ProgressGraph extends BaseActivity {
 
         this.sco = new int[10];
 
-        //Used documentation in http://www.android-graphview.org/simple-graph/ to construct this
-
-
         Button sitToStandsBtn = (Button) findViewById(R.id.sitToStandsBtn);
         sitToStandsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         sitToStandsBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +57,7 @@ public class ProgressGraph extends BaseActivity {
                 setupTestName("Sit To Stands");
             }
         });
-        Button stepUpsBtn = (Button) findViewById(R.id.Calendar);
+        Button stepUpsBtn = (Button) findViewById(R.id.StepUpsBtn);
         stepUpsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         stepUpsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -70,7 +67,7 @@ public class ProgressGraph extends BaseActivity {
             }
         });
 
-        Button shuttleRun = (Button) findViewById(R.id.customBtn);
+        Button shuttleRun = (Button) findViewById(R.id.ShuttleRunBtn);
         shuttleRun.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         shuttleRun.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -191,23 +188,30 @@ public class ProgressGraph extends BaseActivity {
             scores[i] = p;
         }
 
+        //Referred to documentation in http://www.android-graphview.org/simple-graph/ to construct
+        // the LineGraphSeries and GridLabelRenderer and set their attributes
+
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(scores);
-
         graph.addSeries(series);
-
         series.setColor(parseColor("#4BAA71"));
         series.setThickness(6);
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(8);
-        series.setTitle("Weekly ProgressCalendar");
+        series.setTitle("Weekly Progress Calendar");
+
+
+
 
         GridLabelRenderer gridRenderer = graph.getGridLabelRenderer();
-
         gridRenderer.setHorizontalLabelsColor(parseColor("#4BAA71"));
         gridRenderer.setVerticalLabelsColor(parseColor("#4BAA71"));
         gridRenderer.setHorizontalAxisTitleColor(parseColor("#4BAA71"));
         gridRenderer.setVerticalAxisTitleColor(parseColor("#4BAA71"));
         gridRenderer.setGridColor(parseColor("#4BAA71"));
+        gridRenderer.setVerticalAxisTitle("Test Score");
+        gridRenderer.setVerticalAxisTitleColor(parseColor("#4BAA71"));
+        gridRenderer.setHorizontalAxisTitle("Workout No.");
+        gridRenderer.setHorizontalAxisTitleColor(parseColor("#4BAA71"));
 
 
     }

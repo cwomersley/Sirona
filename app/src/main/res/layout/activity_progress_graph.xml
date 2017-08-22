@@ -47,35 +47,32 @@
             android:layout_marginTop="12dp"
             android:onClick=""
             android:text="Sit To Stands"
-            android:layout_alignStart="@+id/customBtn" />
+            android:layout_alignStart="@+id/ShuttleRunBtn" />
 
         <Button
-            android:id="@+id/Calendar"
+            android:id="@+id/StepUpsBtn"
             android:layout_width="130dp"
             android:background="@drawable/standard_button_green"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sitToStandsBtn"
-            android:layout_alignStart="@+id/customBtn"
+            android:layout_alignStart="@+id/ShuttleRunBtn"
             android:layout_marginBottom="7dp"
             android:onClick=""
             android:text="Step Ups" />
 
         <Button
-            android:id="@+id/customBtn"
+            android:id="@+id/ShuttleRunBtn"
             android:layout_width="130dp"
             android:background="@drawable/standard_button_green"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Calendar"
+            android:layout_below="@+id/StepUpsBtn"
             android:layout_centerHorizontal="true"
-            android:onClick="        int[] sco = new int[10];"
             android:text="Shuttle Run" />
 
         <TextView
             android:id="@+id/highestScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView4"
-            android:layout_below="@+id/textView4"
             android:textColor="@color/greenAccent" />
 
         <TextView
@@ -85,7 +82,8 @@
             android:layout_below="@+id/include2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:text="Sit To Stands"
+            android:textSize="30dp"
+            android:text=""
             android:textColor="@color/greenAccent" />
 
     </RelativeLayout>

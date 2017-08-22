@@ -45,7 +45,7 @@ public class RegisterTest {
         user = FirebaseAuth.getInstance().getCurrentUser();
         if(signedIn()) {
             ViewInteraction appCompatButton2 = onView(
-                    allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
+                    allOf(withId(R.id.Settings), withText("Settings"), isDisplayed()));
             appCompatButton2.perform(click());
             try {
                 Thread.sleep(6000);

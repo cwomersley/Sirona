@@ -25,16 +25,17 @@ public class ProgressCalendar extends BaseActivity {
 
     private String monthName;
     private String previousMonth;
-    String nextMonth;
-    Calendar calendar;
-    FirebaseDatabase myFirebaseDatabase;
-    DatabaseReference myReference;
-    String userID;
-    String dataDay;
-    String dataMonth;
-    FirebaseUser user;
-    DataSnapshot currentSnapshot;
-    Integer timesWorkedOut = 0;
+    private String nextMonth;
+    private String thisMonth;
+    private Calendar calendar;
+    private FirebaseDatabase myFirebaseDatabase;
+    private DatabaseReference myReference;
+    private String userID;
+    private String dataDay;
+    private String dataMonth;
+    private FirebaseUser user;
+    private DataSnapshot currentSnapshot;
+    private Integer timesWorkedOut = 0;
 
     private HashMap<String,Integer> days = new HashMap<String,Integer>();
 
@@ -155,19 +156,24 @@ public class ProgressCalendar extends BaseActivity {
         }
     }
 
+    /**
+     * Sets up the view appropriately to the current month at the time the user opens the page
+     */
     private void thisMonth() {
         calendar.add(Calendar.MONTH, +1 -1);
         SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
-        nextMonth = dateOfMonth.format(calendar.getTime());
+        thisMonth = dateOfMonth.format(calendar.getTime());
         //Makes the activity show the correct no of days for the month
-        monthNoOfDays(nextMonth);
+        monthNoOfDays(thisMonth);
         days.clear();
         emptyDays();
         findRatingsData(currentSnapshot);
         setupProgressText();
     }
 
-
+    /**
+     * Goes forward to the next month sequentially
+     */
     private void forwardMonth() {
         calendar.add(Calendar.MONTH, +1);
         SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
@@ -180,6 +186,9 @@ public class ProgressCalendar extends BaseActivity {
         setupProgressText();
     }
 
+    /**
+     * Goes back to the previous month
+     */
     private void backMonth() {
         calendar.add(Calendar.MONTH, -1);
         SimpleDateFormat dateOfMonth = new SimpleDateFormat("MMMM");
@@ -198,6 +207,11 @@ public class ProgressCalendar extends BaseActivity {
         return R.layout.activity_progress_calendar;
     }
 
+
+    /**
+     * Simulates data input from the database. Is not called and is for debug purposes only.
+     * @return returns 1 or 2 randomly
+     */
     private int randomNum(){
         if(Math.random() < 0.5==true) {
             return 2;
