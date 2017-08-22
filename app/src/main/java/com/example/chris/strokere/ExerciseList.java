@@ -34,7 +34,7 @@ public class ExerciseList extends BaseActivity {
 
 
         /* Constructs an Expandable ListView (default screen, headers for muscle groups, exercises
-        as their children. Adapter is instantiated by the HashMap 'map' in SetDataExList. */
+        as their children. Adapter is instantiated by the HashMap 'map' in setDataExList. */
 
         expListView = (ExpandableListView) findViewById(R.id.list);
         expListAdapter = new ExpandableListAdapter(this, setDataExList.list, setDataExList.map);

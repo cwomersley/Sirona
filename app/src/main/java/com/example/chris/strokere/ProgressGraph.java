@@ -106,6 +106,14 @@ public class ProgressGraph extends BaseActivity {
         setupGraph();
     }
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        findScoresData(currentSnapshot, "SitToStands");
+    }
+
     @Override
     public int getLayout() {
         return R.layout.activity_progress_graph;
@@ -116,25 +124,17 @@ public class ProgressGraph extends BaseActivity {
 
         //Ensures this method only runs if a user is logged in
         if (user != null) {
-
             for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-
                 if (snapshot.getKey().equals("WorkoutTestStats")) {
-
                     Object object = snapshot.child(userID).child(testType).getValue();
                     if(object != null) {
                         String output = object.toString();
-
                         Log.d("Data0: ", output);
-
-
                         //Removes the curly brackets so that the data is consistent
                         output = output.replace("{", ",");
                         output = output.replace("}", ",");
-
                         //Puts the data into an array
                         String[] splitData = output.split(" ");
-
                         //Splits the data into day and month pairs
                         for (int i = 0; i < splitData.length; i++) {
                             String part = splitData[i];
@@ -146,23 +146,14 @@ public class ProgressGraph extends BaseActivity {
                                 Log.d("Data3: ", part + "changed to: " + dataDay);
 
                             }
-
                             int dataInt = Integer.parseInt(dataDay);
                             sco[i] = dataInt;
-
-
                         }
-
                         setupGraph();
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     private void setupTestName(String name) {
@@ -170,18 +161,15 @@ public class ProgressGraph extends BaseActivity {
         TextView testName = (TextView) findViewById(R.id.testName);
         testName.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         testName.setText(name);
-
     }
 
 
     private void setupGraph() {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
-
         graph.removeAllSeries();
-
-
         DataPoint[] scores = new DataPoint[10];
+
         for (int i = 0; i < 10; i++) {
             int ni = sco[i];
             DataPoint p = new DataPoint(i, ni);
@@ -198,9 +186,6 @@ public class ProgressGraph extends BaseActivity {
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(8);
         series.setTitle("Weekly Progress Calendar");
-
-
-
 
         GridLabelRenderer gridRenderer = graph.getGridLabelRenderer();
         gridRenderer.setHorizontalLabelsColor(parseColor("#4BAA71"));

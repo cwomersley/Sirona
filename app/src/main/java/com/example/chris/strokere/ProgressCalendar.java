@@ -124,6 +124,25 @@ public class ProgressCalendar extends BaseActivity {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        myReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                currentSnapshot = dataSnapshot;
+                findRatingsData(dataSnapshot);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
+        findRatingsData(currentSnapshot);
+        setupProgressText();
+    }
+
     /**
      * Checks which month is currently active and shows and hides the days of the month
      * depending on the total number of days in each
