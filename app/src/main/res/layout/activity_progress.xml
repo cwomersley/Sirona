@@ -299,7 +299,7 @@
             android:layout_below="@+id/include4"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
-            android:text="TextView"
+            android:text=""
             android:textColor="@color/colorPrimary"
             android:textColorLink="@color/colorPrimary"
             android:textSize="24dp" />
@@ -359,7 +359,7 @@
             android:id="@+id/youWorked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text=""
             android:textSize="20dp"
             android:textColor="@color/greenAccent"
             android:layout_alignBottom="@+id/shuffle"
@@ -373,7 +373,8 @@
             android:layout_height="24dp"
             app:srcCompat="@drawable/ic_directions_walk_white_24dp"
             android:layout_above="@+id/youWorked"
-            android:layout_alignStart="@+id/youWorked" />
+            android:layout_alignStart="@+id/youWorked"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 
