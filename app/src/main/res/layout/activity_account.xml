@@ -148,14 +148,15 @@
 
     <ListView
         android:id="@+id/listview"
-        android:layout_below="@+id/include2"
-        android:layout_above="@+id/pEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_above="@+id/pEmail"
+        android:layout_alignStart="@+id/pEmail"
+        android:layout_below="@+id/include2"
         android:layout_marginBottom="50dp"
-        android:layout_alignStart="@+id/pEmail" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:visibility="visible" />
 
     <Button
         android:id="@+id/logoutBtn"
