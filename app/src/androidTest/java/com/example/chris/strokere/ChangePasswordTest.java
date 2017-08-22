@@ -6,7 +6,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.junit.Rule;
@@ -90,7 +89,7 @@ public class ChangePasswordTest {
         }
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btnPreferencesH), withText("Settings"), isDisplayed()));
+                allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
         appCompatButton2.perform(click());
 
         // Added a sleep statement to match the app's execution delay.
@@ -193,7 +192,7 @@ public class ChangePasswordTest {
         }
 
         ViewInteraction appCompatButton7 = onView(
-                allOf(withId(R.id.btnPreferencesH), withText("Settings"), isDisplayed()));
+                allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
         appCompatButton7.perform(click());
 
         // Added a sleep statement to match the app's execution delay.

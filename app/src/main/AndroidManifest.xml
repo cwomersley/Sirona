@@ -11,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,19 +23,20 @@
         <activity android:name=".ExerciseList" />
         <activity android:name=".Home" />
         <activity android:name=".Navigator" />
-        <activity android:name=".Progress" />
+        <activity android:name=".ProgressCalendar" />
         <activity android:name=".Settings" />
         <activity
             android:name=".Account"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SettingsWorkoutReminder" />
-        <activity android:name=".Graph" />
+        <activity android:name=".ProgressGraph" />
         <activity android:name=".WorkoutRating" />
         <activity android:name=".ForgottenPassword" />
         <activity android:name=".WorkoutMenu" />
         <activity android:name=".WorkoutTest" />
         <activity android:name=".WorkoutTestMenu" />
         <activity android:name=".ExerciseListVplayer" />
+        <activity android:name=".ProgressMenu"></activity>
     </application>
 
 </manifest>

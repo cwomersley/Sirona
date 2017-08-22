@@ -41,7 +41,7 @@ public class WorkoutMenu extends BaseActivity {
 
         customBtn.setAlpha(0.5f);
         customBtn.setEnabled(false);
-        TestBtn = (Button) findViewById(R.id.selfTestBtn);
+        TestBtn = (Button) findViewById(R.id.Calendar);
         TestBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 

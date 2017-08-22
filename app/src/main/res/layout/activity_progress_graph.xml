@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chris.strokere.Graph">
+    tools:context="com.example.chris.strokere.ProgressGraph">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -50,7 +50,7 @@
             android:layout_alignStart="@+id/customBtn" />
 
         <Button
-            android:id="@+id/selfTestBtn"
+            android:id="@+id/Calendar"
             android:layout_width="130dp"
             android:background="@drawable/standard_button_green"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:layout_width="130dp"
             android:background="@drawable/standard_button_green"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/selfTestBtn"
+            android:layout_below="@+id/Calendar"
             android:layout_centerHorizontal="true"
             android:onClick="        int[] sco = new int[10];"
             android:text="Shuttle Run" />

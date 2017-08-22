@@ -3,12 +3,8 @@ package com.example.chris.strokere;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +21,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 
-public class Progress extends BaseActivity {
+public class ProgressCalendar extends BaseActivity {
 
     private String monthName;
     private String previousMonth;
@@ -45,7 +41,7 @@ public class Progress extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress);
+        setContentView(R.layout.activity_progress_calendar);
         //Links the navbar buttons to their activities
         setupNavbar();
 
@@ -77,7 +73,7 @@ public class Progress extends BaseActivity {
         Button goGraph = (Button) findViewById(R.id.goGraph);
         goGraph.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Progress.this, Graph.class));
+                startActivity(new Intent(ProgressCalendar.this, ProgressGraph.class));
             }
         });
 
@@ -199,7 +195,7 @@ public class Progress extends BaseActivity {
 
     @Override
     public int getLayout() {
-        return R.layout.activity_progress;
+        return R.layout.activity_progress_calendar;
     }
 
     private int randomNum(){

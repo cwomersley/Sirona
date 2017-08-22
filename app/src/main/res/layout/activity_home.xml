@@ -44,17 +44,17 @@
             android:id="@+id/customBtn"
             style="@style/standard_button"
             android:background="@drawable/standard_button_green"
-            android:layout_above="@+id/selfTestBtn"
+            android:layout_above="@+id/Calendar"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:text="Exercise list" />
 
         <Button
-            android:id="@+id/selfTestBtn"
+            android:id="@+id/Calendar"
             style="@style/standard_button"
             android:background="@drawable/standard_button_green"
-            android:layout_above="@+id/btnPreferencesH"
+            android:layout_above="@+id/Graph"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
@@ -72,7 +72,7 @@
             android:text="My workout" />
 
         <Button
-            android:id="@+id/btnPreferencesH"
+            android:id="@+id/Graph"
             style="@style/standard_button"
             android:background="@drawable/standard_button_green"
             android:layout_alignParentBottom="true"
@@ -81,7 +81,7 @@
             android:layout_marginBottom="5dp"
             android:onClick="oSettings"
             android:text="Settings"
-            app:layout_constraintTop_toBottomOf="@+id/selfTestBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/Calendar" />
 
         <TextView
             android:id="@+id/tipIconBackground"

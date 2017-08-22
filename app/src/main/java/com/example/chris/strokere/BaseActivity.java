@@ -59,8 +59,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageButton progressNavBtn = (ImageButton) findViewById(R.id.progressNavBtn);
         progressNavBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (getLayout() != R.layout.activity_progress) {
-                    startActivity(new Intent(BaseActivity.this, Progress.class));
+                if (getLayout() != R.layout.activity_progress_calendar) {
+                    startActivity(new Intent(BaseActivity.this, ProgressCalendar.class));
                 }
             }
         });

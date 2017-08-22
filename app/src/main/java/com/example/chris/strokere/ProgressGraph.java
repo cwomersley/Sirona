@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 
 import static android.graphics.Color.parseColor;
 
-public class Graph extends BaseActivity {
+public class ProgressGraph extends BaseActivity {
 
     private FirebaseDatabase myFirebaseDatabase;
     private DatabaseReference myReference;
@@ -39,7 +39,7 @@ public class Graph extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph);
+        setContentView(R.layout.activity_progress_graph);
         setupNavbar();
         setupTestName("Sit To Stands");
 
@@ -60,7 +60,7 @@ public class Graph extends BaseActivity {
                 setupTestName("Sit To Stands");
             }
         });
-        Button stepUpsBtn = (Button) findViewById(R.id.selfTestBtn);
+        Button stepUpsBtn = (Button) findViewById(R.id.Calendar);
         stepUpsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         stepUpsBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -111,7 +111,7 @@ public class Graph extends BaseActivity {
 
     @Override
     public int getLayout() {
-        return R.layout.activity_graph;
+        return R.layout.activity_progress_graph;
     }
 
 
@@ -199,7 +199,7 @@ public class Graph extends BaseActivity {
         series.setThickness(6);
         series.setDrawDataPoints(true);
         series.setDataPointsRadius(8);
-        series.setTitle("Weekly Progress");
+        series.setTitle("Weekly ProgressCalendar");
 
         GridLabelRenderer gridRenderer = graph.getGridLabelRenderer();
 

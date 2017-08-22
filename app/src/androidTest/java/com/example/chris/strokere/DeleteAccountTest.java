@@ -16,7 +16,6 @@ import org.junit.runner.RunWith;
 import java.util.Random;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
@@ -48,7 +47,7 @@ public class DeleteAccountTest {
         user = FirebaseAuth.getInstance().getCurrentUser();
         if (signedIn()) {
             ViewInteraction appCompatButton2 = onView(
-                    allOf(withId(R.id.btnPreferencesH), withText("Settings"), isDisplayed()));
+                    allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
             appCompatButton2.perform(click());
 
             // Added a sleep statement to match the app's execution delay.
@@ -144,7 +143,7 @@ public class DeleteAccountTest {
         }
 
         ViewInteraction appCompatButton4 = onView(
-                allOf(withId(R.id.btnPreferencesH), withText("Settings"), isDisplayed()));
+                allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
         appCompatButton4.perform(click());
 
         // Added a sleep statement to match the app's execution delay.

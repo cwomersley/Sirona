@@ -33,15 +33,15 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnProgress = (Button) findViewById(R.id.selfTestBtn);
+        Button btnProgress = (Button) findViewById(R.id.Calendar);
         btnProgress.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnProgress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Home.this, Progress.class));
+                startActivity(new Intent(Home.this, ProgressMenu.class));
             }
         });
 
-        Button btnPreferences = (Button) findViewById(R.id.btnPreferencesH);
+        Button btnPreferences = (Button) findViewById(R.id.Graph);
         btnPreferences.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
         //Button btnLogout = (Button) findViewById(R.id.btnLogout);

@@ -1,12 +1,10 @@
 package com.example.chris.strokere;
 
 
-import android.content.Intent;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
-import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,7 +39,7 @@ public class LoginTest {
         user = FirebaseAuth.getInstance().getCurrentUser();
         if(signedIn()) {
             ViewInteraction appCompatButton2 = onView(
-                    allOf(withId(R.id.btnPreferencesH), withText("Settings"), isDisplayed()));
+                    allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
             appCompatButton2.perform(click());
 
             // Added a sleep statement to match the app's execution delay.
@@ -94,7 +92,7 @@ public class LoginTest {
         }
 
         ViewInteraction appCompatButton2 = onView(
-                allOf(withId(R.id.btnPreferencesH), withText("Settings"), isDisplayed()));
+                allOf(withId(R.id.Graph), withText("Settings"), isDisplayed()));
         appCompatButton2.perform(click());
 
         // Added a sleep statement to match the app's execution delay.

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chris.strokere.Home">
+    tools:context="com.example.chris.strokere.ProgressMenu">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -15,11 +15,11 @@
         android:layout_marginTop="0dp"
         android:background="@color/bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -39,59 +39,40 @@
 
 
         <Button
-            android:id="@+id/customBtn"
-            style="@style/standard_button"
-            android:layout_above="@+id/Calendar"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/standard_button_green"
-            android:onClick="shuttleRun"
-            android:text="Shuttle Run" />
-
-        <Button
             android:id="@+id/Calendar"
             style="@style/standard_button"
+            android:layout_height="120dp"
             android:layout_above="@+id/Graph"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
-            android:onClick="stepUps"
-            android:text="Step Ups"
+            android:text="Workout Calendar"
             app:layout_constraintTop_toBottomOf="@+id/customBtn" />
-
-        <Button
-            android:id="@+id/sitToStandsBtn"
-            style="@style/standard_button"
-            android:layout_above="@+id/customBtn"
-            android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/customBtn"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/standard_button_green"
-            android:onClick="sitToStands"
-            android:text="Sit to Stands" />
 
         <Button
             android:id="@+id/Graph"
             style="@style/standard_button"
+            android:layout_height="120dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
             android:onClick="oSettings"
+            android:text="Test Scores"
             app:layout_constraintTop_toBottomOf="@+id/Calendar" />
 
         <TextView
             android:id="@+id/tipIconBackground"
-            android:background="@drawable/tip_background"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/include2"
+            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="30dp"
+            android:background="@drawable/tip_background" />
 
         <ImageView
             android:id="@+id/tipIcon"
@@ -99,6 +80,7 @@
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/include2"
+            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             app:srcCompat="@drawable/ic_add_alert_white_24dp" />

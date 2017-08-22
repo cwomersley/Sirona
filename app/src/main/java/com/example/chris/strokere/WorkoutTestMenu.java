@@ -22,7 +22,7 @@ public class WorkoutTestMenu extends AppCompatActivity {
 
         sitToStandsBtn = (Button) findViewById(R.id.sitToStandsBtn);
         shuttleRunBtn = (Button) findViewById(R.id.customBtn);
-        stepUpsBtn = (Button) findViewById(R.id.selfTestBtn);
+        stepUpsBtn = (Button) findViewById(R.id.Calendar);
         sitToStandsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         shuttleRunBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         stepUpsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
