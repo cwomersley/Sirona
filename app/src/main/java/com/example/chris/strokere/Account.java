@@ -104,19 +104,19 @@ public class Account extends BaseActivity {
         myRef=mFirebaseDatabase.getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         user=FirebaseAuth.getInstance().getCurrentUser();
-
-        //Sets the unique id for the user from Firebase
+        mAuth = FirebaseAuth.getInstance();
 
         if (user!=null) {
             userID = user.getUid();
         }
+
+        //Sets the unique id for the user from Firebase
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener()
         {
             @Override
             public void onAuthStateChanged(FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
@@ -127,9 +127,9 @@ public class Account extends BaseActivity {
             }
         };
 
-
         myRef.addValueEventListener(new ValueEventListener()
         {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 showData(dataSnapshot);
@@ -143,6 +143,8 @@ public class Account extends BaseActivity {
         });
     }
 
+
+
     /**
      * Retrieves account details of patient from Firebase database
      * and puts them into a ListView
@@ -150,9 +152,10 @@ public class Account extends BaseActivity {
      */
     private void showData(DataSnapshot dataSnapshot)
     {
-        //if(!signedIn()) {
-        //    return;
-        //}
+
+        if(!signedIn()) {
+           return;
+        }
         for(DataSnapshot ds: dataSnapshot.getChildren()) {
             if(ds.getKey().equals("Patients")) {
                 User uInfo = new User();
@@ -429,6 +432,18 @@ public class Account extends BaseActivity {
     @Override
     public int getLayout() {
         return R.layout.activity_account;
+    }
+
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener!=null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 
 }
