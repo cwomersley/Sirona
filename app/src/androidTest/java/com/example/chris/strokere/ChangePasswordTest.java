@@ -6,6 +6,9 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,11 +29,13 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class ChangePasswordTest {
 
+    private FirebaseUser user;
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
     public void changePasswordTest() {
+
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -41,12 +46,35 @@ public class ChangePasswordTest {
         }
 
         ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.emailL), isDisplayed()));
-        appCompatEditText.perform(replaceText("test1@test1.com"), closeSoftKeyboard());
+                allOf(withId(R.id.emailL), withText("test@test.com"), isDisplayed()));
+        appCompatEditText.perform(click());
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.passwordL), isDisplayed()));
-        appCompatEditText2.perform(replaceText("password"), closeSoftKeyboard());
+                allOf(withId(R.id.emailL), withText("test@test.com"), isDisplayed()));
+        appCompatEditText2.perform(replaceText("@test.com"), closeSoftKeyboard());
+
+        // Added a sleep statement to match the app's execution delay.
+        // The recommended way to handle such scenarios is to use Espresso idling resources:
+        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.emailL), withText("@test.com"), isDisplayed()));
+        appCompatEditText3.perform(replaceText("del@test.com"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText4 = onView(
+                allOf(withId(R.id.emailL), withText("del@test.com"), isDisplayed()));
+        appCompatEditText4.perform(click());
+
+        ViewInteraction appCompatEditText5 = onView(
+                allOf(withId(R.id.emailL), withText("del@test.com"), isDisplayed()));
+        appCompatEditText5.perform(replaceText("del@test3.com"), closeSoftKeyboard());
+
+        pressBack();
 
         ViewInteraction appCompatButton = onView(
                 allOf(withId(R.id.loginBtnM), withText("Log in"), isDisplayed()));
@@ -87,28 +115,28 @@ public class ChangePasswordTest {
             e.printStackTrace();
         }
 
-        ViewInteraction appCompatEditText3 = onView(
+        ViewInteraction appCompatEditText6 = onView(
                 allOf(withId(R.id.pPassword),
                         withParent(allOf(withId(R.id.hiddenEmail),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("newpass"), closeSoftKeyboard());
+        appCompatEditText6.perform(replaceText("newpass"), closeSoftKeyboard());
 
         pressBack();
 
-        ViewInteraction appCompatEditText4 = onView(
+        ViewInteraction appCompatEditText7 = onView(
                 allOf(withId(R.id.pConfirmPassword),
                         withParent(allOf(withId(R.id.hiddenEmail),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("newpass"), closeSoftKeyboard());
+        appCompatEditText7.perform(replaceText("newpass"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText5 = onView(
+        ViewInteraction appCompatEditText8 = onView(
                 allOf(withId(R.id.pConfirmPassword), withText("newpass"),
                         withParent(allOf(withId(R.id.hiddenEmail),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        appCompatEditText5.perform(pressImeActionButton());
+        appCompatEditText8.perform(pressImeActionButton());
 
         ViewInteraction appCompatButton4 = onView(
                 allOf(withId(R.id.pPasswordBtn), withText("Change Password"),
@@ -119,7 +147,12 @@ public class ChangePasswordTest {
 
         pressBack();
 
-        pressBack();
+        ViewInteraction appCompatButton5 = onView(
+                allOf(withId(R.id.logoutBtn), withText("Logout"),
+                        withParent(allOf(withId(R.id.hiddenEmail),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        appCompatButton5.perform(click());
 
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
@@ -130,37 +163,21 @@ public class ChangePasswordTest {
             e.printStackTrace();
         }
 
-        pressBack();
+        ViewInteraction appCompatEditText9 = onView(
+                allOf(withId(R.id.emailL), withText("test@test.com"), isDisplayed()));
+        appCompatEditText9.perform(replaceText("del@test.com"), closeSoftKeyboard());
 
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        ViewInteraction appCompatEditText10 = onView(
+                allOf(withId(R.id.emailL), withText("del@test.com"), isDisplayed()));
+        appCompatEditText10.perform(click());
 
-       // ViewInteraction appCompatButton5 = onView(
-                //allOf(withId(R.id.btnLogout), withText("Logout"), isDisplayed()));
-        //appCompatButton5.perform(click());
+        ViewInteraction appCompatEditText11 = onView(
+                allOf(withId(R.id.emailL), withText("del@test.com"), isDisplayed()));
+        appCompatEditText11.perform(replaceText("del@test3.com"), closeSoftKeyboard());
 
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.emailL), isDisplayed()));
-        appCompatEditText6.perform(replaceText("test1@test1.com"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.passwordL), isDisplayed()));
-        appCompatEditText7.perform(replaceText("newpass"), closeSoftKeyboard());
+        ViewInteraction appCompatEditText12 = onView(
+                allOf(withId(R.id.passwordL), withText("password"), isDisplayed()));
+        appCompatEditText12.perform(replaceText("newpass"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton6 = onView(
                 allOf(withId(R.id.loginBtnM), withText("Log in"), isDisplayed()));
@@ -201,33 +218,19 @@ public class ChangePasswordTest {
             e.printStackTrace();
         }
 
-        ViewInteraction appCompatEditText8 = onView(
+        ViewInteraction appCompatEditText13 = onView(
                 allOf(withId(R.id.pPassword),
                         withParent(allOf(withId(R.id.hiddenEmail),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        appCompatEditText8.perform(replaceText("password"), closeSoftKeyboard());
+        appCompatEditText13.perform(replaceText("password"), closeSoftKeyboard());
 
-        ViewInteraction appCompatEditText9 = onView(
-                allOf(withId(R.id.pPassword), withText("password"),
-                        withParent(allOf(withId(R.id.hiddenEmail),
-                                withParent(withId(android.R.id.content)))),
-                        isDisplayed()));
-        appCompatEditText9.perform(pressImeActionButton());
-
-        ViewInteraction appCompatEditText10 = onView(
+        ViewInteraction appCompatEditText14 = onView(
                 allOf(withId(R.id.pConfirmPassword),
                         withParent(allOf(withId(R.id.hiddenEmail),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        appCompatEditText10.perform(replaceText("password"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText11 = onView(
-                allOf(withId(R.id.pConfirmPassword), withText("password"),
-                        withParent(allOf(withId(R.id.hiddenEmail),
-                                withParent(withId(android.R.id.content)))),
-                        isDisplayed()));
-        appCompatEditText11.perform(pressImeActionButton());
+        appCompatEditText14.perform(replaceText("password"), closeSoftKeyboard());
 
         ViewInteraction appCompatButton9 = onView(
                 allOf(withId(R.id.pPasswordBtn), withText("Change Password"),
@@ -236,6 +239,22 @@ public class ChangePasswordTest {
                         isDisplayed()));
         appCompatButton9.perform(click());
 
+        ViewInteraction appCompatButton10 = onView(
+                allOf(withId(R.id.logoutBtn), withText("Logout"),
+                        withParent(allOf(withId(R.id.hiddenEmail),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        appCompatButton10.perform(click());
+
+    }
+
+    public boolean signedIn()
+    {
+        if (user != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

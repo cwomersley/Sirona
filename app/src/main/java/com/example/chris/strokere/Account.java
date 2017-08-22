@@ -150,9 +150,9 @@ public class Account extends BaseActivity {
      */
     private void showData(DataSnapshot dataSnapshot)
     {
-        if(!signedIn()) {
-            return;
-        }
+        //if(!signedIn()) {
+        //    return;
+        //}
         for(DataSnapshot ds: dataSnapshot.getChildren()) {
             if(ds.getKey().equals("Patients")) {
                 User uInfo = new User();
