@@ -17,6 +17,7 @@ public class EmailValidation {
 
 
 
+    //email validation used in account/registering pages
     public boolean emailValidator(String email)
     {
         Pattern pattern;
@@ -26,9 +27,10 @@ public class EmailValidation {
         matcher = pattern.matcher(email);
         return matcher.matches();
     }
-        @Test
-        public void emailValidator_CorrectEmailSimple_ReturnsTrue() {
-            assertTrue(emailValidator("name@email.com"));
-        }
+
+    @Test
+    public void emailValidator_CorrectEmailSimple_ReturnsTrue() {
+        assertTrue(emailValidator("name@email.com"));
+    }
 
 }
