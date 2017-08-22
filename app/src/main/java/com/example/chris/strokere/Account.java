@@ -248,8 +248,9 @@ public class Account extends BaseActivity {
     }
 
     /**
-     * alidates a email address to be of a particular type (e.g like an email would be)
-     * @param email the email the a patient enters in
+     * validates a email address to be of a particular type (e.g like an email would be)
+     * https://stackoverflow.com/questions/12947620/email-address-validation-in-android-on-edittext/15808057
+     * @param email the email the patient enters in
      * @return
      */
     public boolean emailValidator(String email)

@@ -126,8 +126,13 @@ public class MainActivity extends AppCompatActivity  {
     }
 
 
-    //https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/EmailPasswordActivity.java
-    //method to validate login credentials
+
+
+    /**
+     * method to validate login credentials
+     * implemented from https://github.com/firebase/quickstart-android/blob/master/auth/app/src/main/java/com/google/firebase/quickstart/auth/EmailPasswordActivity.java
+     * @return
+     */
     private boolean validateForm() {
         boolean valid = true;
 
@@ -154,6 +159,12 @@ public class MainActivity extends AppCompatActivity  {
         return valid;
     }
 
+    /**
+     * validates a email address to be of a particular type (e.g like an email would be)
+     * method from https://stackoverflow.com/questions/12947620/email-address-validation-in-android-on-edittext/15808057
+     * @param email the email the patient enters in
+     * @return
+     */
     public boolean emailValidator(String email)
 
     {
@@ -166,34 +177,9 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     //sends a password reset email to user
-    public void forgotPassword(View view){
+    public void forgotPassword(View view)
+    {
         startActivity(new Intent(MainActivity.this, ForgottenPassword.class));
-        /**
-        String email = emailL.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Please enter your email address to proceed", Toast.LENGTH_LONG).show();
-            return;
-        }
-        else if (!emailValidator(email)) {
-            emailL.setError("Please enter a valid email address");
-            return;
-        }
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String emailAddress = email;
-
-        auth.sendPasswordResetEmail(emailAddress)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d(TAG, "Email sent.");
-                            Toast.makeText(MainActivity.this, "Reset password email sent",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-         **/
-
     }
 
 }
