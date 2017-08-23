@@ -9,7 +9,11 @@ import android.graphics.Typeface;
 
 public class FontHelper {
 
-
+    /**
+     * Sets up
+     * @param context the application context
+     * @return
+     */
     public static Typeface getLatoRegular(Context context){
         return Typeface.createFromAsset(context.getAssets(), "Lato-Regular.ttf");
     }
