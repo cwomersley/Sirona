@@ -54,8 +54,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
      * @return the specified child
      */
     @Override
-    public Object getChild(int i, int i1) {
-        return listHashMap.get(listDataHeader.get(i)).get(i1);
+    public Object getChild(int i, int j) {
+        return listHashMap.get(listDataHeader.get(i)).get(j);
     }
 
     /**
@@ -68,11 +68,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * @param i the parent group of the child
+     * @param j the child
      * @return the specified child's location
      */
     @Override
-    public long getChildId(int i, int i1) {
-        return i1;
+    public long getChildId(int i, int j) {
+        return j;
     }
 
     /**
@@ -115,16 +116,16 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     /**
      *
      * @param i group/parent position
-     * @param i1 child position
+     * @param j child position
      * @param b checks if there are more children after current one
      * @param view the old view
      * @param viewGroup collection of views, to make the new view
      * @return the new view
      */
     @Override
-    public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
+    public View getChildView(int i, int j, boolean b, View view, ViewGroup viewGroup) {
         //the name of the exercise
-        final String childText = (String) getChild(i, i1);
+        final String childText = (String) getChild(i, j);
         //if the view of the child is empty
         if (view == null) {
             //same as previous
