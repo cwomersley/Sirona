@@ -1,7 +1,7 @@
 package com.example.chris.strokere;
 
 /**
- * Created by edward on 04/07/17.
+ * Created by Edward on 04/07/17.
  */
 
 

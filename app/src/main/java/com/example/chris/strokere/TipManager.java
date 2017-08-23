@@ -44,7 +44,6 @@ public class TipManager {
 
     }
 
-
     /**
      * Returns a tip selected at random from an array
      * @return a randomly selected tip

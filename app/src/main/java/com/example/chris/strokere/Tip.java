@@ -18,22 +18,36 @@ public class Tip {
 
         }
 
-        public String getTipText(){
+    /**
+     * Gets the text associated with each tip
+     * @return
+     */
+
+    public String getTipText(){
 
             return this.text;
 
         }
 
-        public String getTipIntent(){
+    /**
+     * Gets the activity the tip is meant to direct to
+     * @return
+     */
+
+    public String getTipIntent(){
 
             return this.intent;
 
         }
 
-        public String getTipIcon(){
+    /**
+     * Currently unused method that can get a unique icon associated with each tip
+     * @return
+     */
+    public String getTipIcon(){
 
-            return this.icon;
-
-        }
+        return this.icon;
 
     }
+
+}
