@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 /**
  * Class that deals with main activity of app.
  * From here patients can advance to login or register activities.
- * Or forgotten password activity
+ * Or forgotten password activity.
  */
 
 public class MainActivity extends AppCompatActivity  {

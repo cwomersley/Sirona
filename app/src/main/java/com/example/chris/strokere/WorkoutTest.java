@@ -38,8 +38,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 /**
- * Class to display workout tests and write workout tests stats to FIrebase database
- * Information corresponding to the particular test is passed through from WorkoutTest class
+ * Class to display workout tests and write workout tests stats to Firebase database
+ * Information corresponding to the particular test is passed through from WorkoutTest class using extras
  */
 public class WorkoutTest extends AppCompatActivity {
 
