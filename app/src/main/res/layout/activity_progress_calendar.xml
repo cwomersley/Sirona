@@ -309,22 +309,14 @@
 
         <Button
             android:id="@+id/shuffle"
+            android:background="@drawable/standard_button_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="19dp"
-            android:text="Shuffle" />
+            android:text="Refresh" />
 
-        <Button
-            android:id="@+id/goGraph"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/shuffle"
-            android:layout_alignBottom="@+id/shuffle"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="14dp"
-            android:text="graph" />
 
         <Button
             android:id="@+id/backMonth"
@@ -362,19 +354,10 @@
             android:text=""
             android:textSize="20dp"
             android:textColor="@color/greenAccent"
-            android:layout_alignBottom="@+id/shuffle"
-            android:layout_marginBottom="120dp"
+            android:layout_alignTop="@+id/shuffle"
+            android:layout_marginBottom="180dp"
             android:layout_centerHorizontal="true" />
 
-
-        <ImageView
-            android:id="@+id/runningMan"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:srcCompat="@drawable/ic_directions_walk_white_24dp"
-            android:layout_above="@+id/youWorked"
-            android:layout_alignStart="@+id/youWorked"
-            android:visibility="gone"/>
 
     </RelativeLayout>
 

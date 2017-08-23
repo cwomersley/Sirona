@@ -111,6 +111,17 @@ public class ProgressGraph extends BaseActivity {
     public void onResume() {
         super.onResume();
 
+        myReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                currentSnapshot = dataSnapshot;
+                findScoresData(currentSnapshot, "SitToStands");
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
         findScoresData(currentSnapshot, "SitToStands");
     }
 

@@ -35,7 +35,7 @@ public class ProgressCalendar extends BaseActivity {
     private String dataMonth;
     private FirebaseUser user;
     private DataSnapshot currentSnapshot;
-    private Integer timesWorkedOut = 0;
+    private Integer timesWorkedOut;
 
     private HashMap<String,Integer> days = new HashMap<String,Integer>();
 
@@ -48,6 +48,7 @@ public class ProgressCalendar extends BaseActivity {
 
         myFirebaseDatabase = FirebaseDatabase.getInstance();
         myReference = myFirebaseDatabase.getReference();
+        timesWorkedOut = 0;
 
         myReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -71,13 +72,6 @@ public class ProgressCalendar extends BaseActivity {
         });
 
         Button shuffle = (Button) findViewById(R.id.shuffle);
-        Button goGraph = (Button) findViewById(R.id.goGraph);
-        goGraph.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(ProgressCalendar.this, ProgressGraph.class));
-            }
-        });
-
         shuffle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,16 +103,6 @@ public class ProgressCalendar extends BaseActivity {
         });
 
         monthNoOfDays(this.monthName);
-
-
-
-        calendar.add(Calendar.MONTH, +1 -1);
-        SimpleDateFormat dateOfMonth2 = new SimpleDateFormat("MMMM");
-        nextMonth = dateOfMonth2.format(calendar.getTime());
-        //Makes the activity show the correct no of days for the month
-        monthNoOfDays(nextMonth);
-        days.clear();
-        emptyDays();
         findRatingsData(currentSnapshot);
         setupProgressText();
 
@@ -273,6 +257,10 @@ public class ProgressCalendar extends BaseActivity {
         }
     }
 
+
+    /**
+     * Displays the no of times the user has worked out that month
+     */
     private void setupProgressText() {
         TextView youWorked = (TextView) findViewById(R.id.youWorked);
         youWorked.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -280,23 +268,17 @@ public class ProgressCalendar extends BaseActivity {
         if(user != null) {
             youWorked.setText("You worked out " + workedOut + " times this month!");
         }
-
         if(user == null) {
-            youWorked.setText("You need to be logged in to use the calendar");
+            youWorked.setText("");
         }
-
-        /*
-        Animation textAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animated_text);
-        //youWorked.setAnimation(textAnimation);
-        ImageView runningMan = (ImageView) findViewById(R.id.runningMan);
-        //Animation runningAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.running_man);
-        //runningMan.setAnimation(runningAnimation);
-        runningMan.setVisibility(View.INVISIBLE);
-        */
 
     }
 
-
+    /**
+     * Converts the full name of a month into the its sequential number
+     * @param month the full name of the month
+     * @return
+     */
     private String monthNumbers(String month) {
         Map<String, String> months = new HashMap<>();
         months.put("January", "01");
@@ -311,7 +293,6 @@ public class ProgressCalendar extends BaseActivity {
         months.put("October", "10");
         months.put("November", "11");
         months.put("December", "12");
-
         String monthNo = months.get(month);
 
         return monthNo;
@@ -319,6 +300,10 @@ public class ProgressCalendar extends BaseActivity {
     }
 
 
+    /**
+     * Empties the days map so days worked out will not carry over from the previously selected
+     * month
+     */
     private void emptyDays() {
         for(int i = 1; i < 10; i++) {
             String index = Integer.toString(i);
@@ -331,6 +316,9 @@ public class ProgressCalendar extends BaseActivity {
         }
     }
 
+    /**
+     * Redraws the calendar according to which days the user has worked out
+     */
     private void redrawDays() {
         timesWorkedOut = 0;
 
