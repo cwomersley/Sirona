@@ -22,13 +22,6 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class Home extends BaseActivity {
 
-    /**
-     * Home
-     *
-     * <P>The main navigation menu
-     *
-     * @author Sam Ward
-     */
 
     Tip tip;
 
