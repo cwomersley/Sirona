@@ -34,7 +34,7 @@ public class NotificationReceiver extends BroadcastReceiver {
 
         notificationBuilder.setContentInfo("Time to exercise")
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.logo_old)
                 .setContentTitle("This is a workout Reminder")
                 .setContentText("Time to workout...");
 
