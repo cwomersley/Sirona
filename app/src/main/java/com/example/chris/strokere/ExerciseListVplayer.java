@@ -8,7 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
-
+/**
+ * Plays the video selected in the ExerciseList class
+ * @author Adam Jessop
+ */
 public class ExerciseListVplayer extends BaseActivity {
 
     ExerciseList exerciselist;

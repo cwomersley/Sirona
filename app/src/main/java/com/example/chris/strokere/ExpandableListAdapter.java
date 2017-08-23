@@ -10,6 +10,11 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * A stanadard ListView does not allow making parents/children (headers of muscle groups/each muscle groups exercises),
+ * this class makes an ExpandableListView to enable this.
+ * @author Adam
+ */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
