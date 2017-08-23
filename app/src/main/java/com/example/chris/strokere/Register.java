@@ -66,11 +66,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         registerBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             public static final String TAG = "Register";
 
 
+
             @Override
+            //Firebase checking if a user is signerd in and adding listener
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
@@ -90,7 +93,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
      * from stackoverflow
      * https://stackoverflow.com/questions/12947620/email-address-validation-in-android-on-edittext
      */
-
     public boolean emailValidator(String email)
 
     {
@@ -102,6 +104,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         return matcher.matches();
     }
 
+    /**
+     * Validates the EditTexts on Register Activity to conform to Firebase/Registering requirements
+     * Returns true if all fields are valid otherwise sets an error
+     * @return
+     */
     public boolean validate() {
         boolean valid = true;
         int passwordLength=6;
@@ -175,12 +182,25 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         progressDialog.setMessage("Registering user..");
         progressDialog.show();
 
+        //FIrebase listener to register a user
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                         //user registered succesful
+                            FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                                @Override
+                                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                                    if (user != null) {
+                                        // User is signed in
+                                        //call method and write details to Firebase database
+                                        writeNewUser(user.getUid(), surname, firstName, email);
+                                    }
+                                }
+                            });
+
                         Toast.makeText(Register.this, "Registed Successfully", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }else{
@@ -191,18 +211,16 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 });
 
         //get the Firebase user
-        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    writeNewUser(user.getUid(), surname, firstName, email);
-                }
-            }
-        });
+
     }
 
+    /**
+     * Writes patient'd details to Firebase database
+     * @param userId the unique id for the patiend
+     * @param surname the patient's surname
+     * @param name the patient's first name
+     * @param email the patient's email
+     */
     private void writeNewUser(String userId, String surname, String name, String email) {
         User user = new User(surname, name, email);
         mDatabase.child("Patients").child(userId).setValue(user);
