@@ -36,7 +36,6 @@ public class ProgressCalendar extends BaseActivity {
     private FirebaseUser user;
     private DataSnapshot currentSnapshot;
     private Integer timesWorkedOut;
-
     private HashMap<String,Integer> days = new HashMap<String,Integer>();
 
     @Override

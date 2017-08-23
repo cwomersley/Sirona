@@ -9,6 +9,15 @@ import android.widget.Toast;
 
 public class Settings extends BaseActivity {
 
+    /**
+     * Settings
+     *
+     * <P>Extends AppCompatActivity to include navbar methods. Every class that uses the navbar
+     * needs to extend this.
+     *
+     * @author Sam Ward
+     */
+
     Context context;
 
     @Override

@@ -19,6 +19,14 @@ import android.widget.ListView;
 
 import java.util.Locale;
 
+/**
+ * Navigator
+ *
+ * <P>Used by the
+ *
+ * @author Sam Ward
+ */
+
 public class Navigator extends AppCompatActivity {
 
     private ListView drawerList;

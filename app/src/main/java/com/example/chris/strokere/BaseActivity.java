@@ -8,7 +8,12 @@ import android.view.View;
 import android.widget.ImageButton;
 
 /**
- * Created by Sam on 31/07/2017.
+ * BaseActivity
+ *
+ * <P>Extends AppCompatActivity to include navbar methods. Every class that uses the navbar
+ * needs to extend this.
+ *
+ * @author Sam Ward
  */
 
 public abstract class BaseActivity extends AppCompatActivity {

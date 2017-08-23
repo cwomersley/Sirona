@@ -15,6 +15,16 @@ import android.widget.ToggleButton;
 
 import java.util.Calendar;
 
+/**
+ * SettingsWorkoutReminder
+ *
+ * <P>Semi complete feature. Sets a notification and plays an alarm on receipt. Currently contains
+ * functionality to set and receive notifications but is not enabled in the app because it does not
+ * wake up the phone yet or set to the appropriate day as well as time.
+ *
+ * @author Sam Ward
+ */
+
 public class SettingsWorkoutReminder extends BaseActivity {
 
     private TimePicker timePicker;
@@ -44,7 +54,7 @@ public class SettingsWorkoutReminder extends BaseActivity {
 
     }
 
-    public void findDayAndTime() {
+    private void findDayAndTime() {
 
         TextView youSelected = (TextView) findViewById(R.id.youSelected);
 
@@ -74,7 +84,7 @@ public class SettingsWorkoutReminder extends BaseActivity {
         return R.layout.activity_settings_workout_reminder;
     }
 
-    public void notifier() {
+    private void notifier() {
 
         NotificationReceiver notificationReceiver = new NotificationReceiver();
         Intent intent = new Intent(this, NotificationReceiver.class);

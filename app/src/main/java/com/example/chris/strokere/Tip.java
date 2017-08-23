@@ -1,7 +1,11 @@
 package com.example.chris.strokere;
 
 /**
- * Created by Sam on 10/08/2017.
+ * Tip
+ *
+ * <P>Stores the information associated with each tip
+ *
+ * @author Sam Ward
  */
 
 public class Tip {
@@ -22,7 +26,6 @@ public class Tip {
      * Gets the text associated with each tip
      * @return
      */
-
     public String getTipText(){
 
             return this.text;
@@ -33,7 +36,6 @@ public class Tip {
      * Gets the activity the tip is meant to direct to
      * @return
      */
-
     public String getTipIntent(){
 
             return this.intent;

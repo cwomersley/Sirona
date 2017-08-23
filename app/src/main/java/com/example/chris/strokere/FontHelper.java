@@ -4,7 +4,11 @@ import android.content.Context;
 import android.graphics.Typeface;
 
 /**
- * Created by Sam on 13/06/2017.
+ * FontHelper
+ *
+ * <P>Helper that assigns fonts to TextViews
+ *
+ * @author Sam Ward
  */
 
 public class FontHelper {

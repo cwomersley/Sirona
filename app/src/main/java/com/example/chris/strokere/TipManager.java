@@ -8,10 +8,12 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Sam on 10/08/2017.
+ * TipManager
+ *
+ * <P>Defines the tips that appear on the Home page and can display ones at random
+ *
+ * @author Sam Ward
  */
-
-
 
 public class TipManager {
 
