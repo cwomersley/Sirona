@@ -304,8 +304,6 @@ public class ExerciseView extends BaseActivity {
                 } else if (nameList.size() == 1) {
 
                     videoView.stopPlayback();
-                    nameList.clear();
-                    customWorkout.clear();
                     Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
                     startActivity(intent);
                     finish();
@@ -461,6 +459,7 @@ public class ExerciseView extends BaseActivity {
 
 
         exercises = output.split(",");
+        Log.d("indian",output.toString());
 
 
         for (String e : exercises) {
@@ -470,19 +469,20 @@ public class ExerciseView extends BaseActivity {
 
                 String noSpace = nameList.get(z).replace("_", " ");
                 String noFirstLetter = noSpace.substring(1);
-                Log.d("listReplace", noFirstLetter);
+                Log.d("thai", e);
 
                 if (e.contains(noFirstLetter)) {
 
-                        customWorkout.add(nameList.get(z));
+                   customWorkout.add(nameList.get(z));
 
-                    Log.d("qqqq", customWorkout.toString());
+
 
 
                 }
             }
         }
         Log.d("chrinese",customWorkout.toString());
+
 
         nameList.clear();
 
@@ -492,7 +492,7 @@ public class ExerciseView extends BaseActivity {
 
         }
 
-        Log.d("kindle", customWorkout.toString());
+        Log.d("kindle", nameList.toString());
 
     }
 
