@@ -15,16 +15,15 @@
         android:layout_marginTop="0dp"
         android:background="@color/bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
-
 
 
         <include
@@ -35,7 +34,7 @@
             android:id="@+id/include3"
             layout="@layout/tips"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_alignTop="@+id/tipIcon"
             android:layout_toEndOf="@+id/tipIcon" />
 
@@ -43,32 +42,32 @@
         <Button
             android:id="@+id/ShuttleRunBtn"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
             android:layout_above="@+id/StepUpsBtn"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/standard_button_green"
             android:text="Exercise list" />
 
         <Button
             android:id="@+id/StepUpsBtn"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
             android:layout_above="@+id/Settings"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/standard_button_green"
             android:text="Progress"
             app:layout_constraintTop_toBottomOf="@+id/ShuttleRunBtn" />
 
         <Button
             android:id="@+id/btnWorkoutH"
             style="@style/standard_button"
-            android:background="@drawable/standard_button_pink"
             android:layout_above="@+id/ShuttleRunBtn"
             android:layout_alignParentEnd="true"
             android:layout_alignStart="@+id/ShuttleRunBtn"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/standard_button_pink"
             android:text="My workout" />
 
         <Button
@@ -84,14 +83,14 @@
 
         <TextView
             android:id="@+id/tipIconBackground"
-            android:background="@drawable/tip_background"
             android:layout_width="50dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/include2"
-            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginTop="30dp" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/tip_background" />
 
         <ImageView
             android:id="@+id/tipIcon"
@@ -99,8 +98,8 @@
             android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/include2"
-            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="30dp"
             app:srcCompat="@drawable/ic_lightbulb_outline_white_24dp" />
 

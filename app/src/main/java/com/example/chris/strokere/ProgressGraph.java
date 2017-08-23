@@ -42,10 +42,8 @@ public class ProgressGraph extends BaseActivity {
         setContentView(R.layout.activity_progress_graph);
         setupNavbar();
         setupTestName("Sit To Stands");
-
         myFirebaseDatabase = FirebaseDatabase.getInstance();
         myReference = myFirebaseDatabase.getReference();
-
         this.sco = new int[20];
 
         Button sitToStandsBtn = (Button) findViewById(R.id.sitToStandsBtn);

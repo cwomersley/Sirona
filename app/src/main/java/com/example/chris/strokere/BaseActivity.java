@@ -27,6 +27,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected abstract int getLayout();
 
+    /**
+     * Sets up the navbar buttons and ensures that they do not refresh the activity if the user
+     * clicks on the one they are currently on
+     */
     public void setupNavbar() {
 
         ImageButton homeNavBtn = (ImageButton) findViewById(R.id.homeNavBtn);
@@ -59,8 +63,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageButton progressNavBtn = (ImageButton) findViewById(R.id.progressNavBtn);
         progressNavBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (getLayout() != R.layout.activity_progress_calendar) {
-                    startActivity(new Intent(BaseActivity.this, ProgressCalendar.class));
+                if (getLayout() != R.layout.activity_progress_menu) {
+                    startActivity(new Intent(BaseActivity.this, ProgressMenu.class));
                 }
             }
         });
