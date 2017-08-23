@@ -29,7 +29,7 @@
         android:textColor="@color/greenAccent"
         android:textColorHint="@color/greenAccent"
         android:textSize="24sp"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
 
     <Button
@@ -47,7 +47,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="Change Email"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/pPasswordBtn"
@@ -150,9 +150,9 @@
         android:id="@+id/listview"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/pEmail"
+        android:layout_above="@+id/pPassword"
         android:layout_alignStart="@+id/pEmail"
-        android:layout_below="@+id/include2"
+        android:layout_below="@+id/logoutBtn"
         android:layout_marginBottom="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
