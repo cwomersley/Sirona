@@ -3,14 +3,13 @@ package com.example.chris.strokere;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 
-public class ExerciseListVplayer extends AppCompatActivity {
+public class ExerciseListVplayer extends BaseActivity {
 
     ExerciseList exerciselist;
 
@@ -18,7 +17,8 @@ public class ExerciseListVplayer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.exerciselistvplayer);
+        setContentView(R.layout.activity_exercise_list_vplayer);
+        setupNavbar();
 
         //Exercise name at the top of the page
         TextView tv = (TextView)findViewById(R.id.textView5);
@@ -51,4 +51,10 @@ public class ExerciseListVplayer extends AppCompatActivity {
 
     }
 
+    @Override
+    public int getLayout() {
+        return R.layout.activity_exercise_list_vplayer;
+    }
+
 }
+
