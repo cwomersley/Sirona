@@ -24,6 +24,12 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class that deals with main activity of app.
+ * From here patients can advance to login or register activities.
+ * Or forgotten password activity.
+ */
+
 public class MainActivity extends AppCompatActivity  {
 
     private FirebaseAuth mAuth;
@@ -38,8 +44,6 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
             progressDialog = new ProgressDialog(this);
             mAuth = FirebaseAuth.getInstance();
@@ -79,11 +83,12 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    //checking if user is signed in
+    /**
+     * Method to check if the user is signed in
+     */
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null)
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser!=null) {
             startActivity(new Intent(MainActivity.this, Home.class));
@@ -92,14 +97,21 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-    //method to open Register activity
-    public void onRegister(View v) {
+    /**
+     * Method to open Register Activity
+     * @param view
+     */
+    public void onRegister(View view) {
 
         startActivity(new Intent(MainActivity.this, Register.class));
     }
 
-    //method to login and advance to Home activity
+    /**
+     * method to login with patient details and advance to Home activity
+     * @param v
+     */
     public void onLogin(View v) {
+        //method checking whether the patient information for logging in is valid
         if (!validateForm()) {
             return;
         }
@@ -176,7 +188,10 @@ public class MainActivity extends AppCompatActivity  {
         return matcher.matches();
     }
 
-    //sends a password reset email to user
+    /**
+     * Method to open Forgotten password activity
+     * @param view
+     */
     public void forgotPassword(View view)
     {
         startActivity(new Intent(MainActivity.this, ForgottenPassword.class));

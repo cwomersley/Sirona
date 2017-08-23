@@ -42,6 +42,12 @@ import java.util.regex.Pattern;
 import static com.example.chris.strokere.R.id.pEmail;
 import static com.example.chris.strokere.R.id.pPasswordBtn;
 
+
+/**
+ * Class that deals with account details for patient and related functionality
+ * Patient data is also retrieved from the Firebase database
+ */
+
 public class Account extends BaseActivity {
 
     private FirebaseUser user;

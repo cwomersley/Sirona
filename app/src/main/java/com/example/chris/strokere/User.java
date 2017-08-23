@@ -1,7 +1,7 @@
 package com.example.chris.strokere;
 
 /**
- * Created by Edward on 04/07/17.
+ * Class used for creating and retrieving account information related to the patient
  */
 
 

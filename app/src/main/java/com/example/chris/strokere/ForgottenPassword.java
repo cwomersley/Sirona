@@ -17,6 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class that allows a patient to request that a reset password email is sent to their email address.
+ */
 public class ForgottenPassword extends AppCompatActivity {
 
     private EditText emailPassword;
