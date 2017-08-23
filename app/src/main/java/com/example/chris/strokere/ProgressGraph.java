@@ -191,12 +191,19 @@ public class ProgressGraph extends BaseActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.removeAllSeries();
-        DataPoint[] scores = new DataPoint[10];
-        for (int i = 0; i < 10; i++) {
+        DataPoint[] scores = new DataPoint[sco.length];
+        for (int i = 0; i < sco.length; i++) {
+
             int ni = sco[i];
             DataPoint p = new DataPoint(i, ni);
+            if(i == 0) {
+                i = -1;
+
+            }
             scores[i] = p;
         }
+
+
 
         //Referred to documentation in http://www.android-graphview.org/simple-graph/ to construct
         // the LineGraphSeries and GridLabelRenderer and set their attributes

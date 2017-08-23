@@ -93,7 +93,7 @@ public class WorkoutMenu extends BaseActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
                     if (snapshot.getKey().equals("Testing")) {
-                        Log.d("isNull", "Np");
+
                         Object object = snapshot.child(userID).getValue();
                         if (object != null) {
 

@@ -63,7 +63,7 @@ public class VideoStats {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
 
-                    if (snapshot.getKey().equals("ExerciseLikes")) {
+                    if (snapshot.getKey().equals("ExerciseLikes") && userID != null ) {
                         Object object = snapshot.child(userID).getValue();
                         if (object != null) {
                             output = snapshot.child(userID).getValue().toString();
@@ -84,14 +84,6 @@ public class VideoStats {
 
     }
 
-    public void updateDbLikes(){
-
-
-        getDbLike();
-        splitString();
-;
-
-    }
 
     //splits the string from the database into name and value and stores in a map
     public void splitString(){

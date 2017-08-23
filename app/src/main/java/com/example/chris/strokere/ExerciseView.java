@@ -11,14 +11,17 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 
@@ -48,11 +51,11 @@ public class ExerciseView extends BaseActivity {
     private Long vidBreakTimeLeft;
     private VideoStats videoStats;
     private WorkoutMenu workoutMenu;
-    private  ArrayList<String> customWorkout = new ArrayList<>();
+    private ArrayList<String> customWorkout = new ArrayList<>();
     private String pressedButton;
-    private  String [] exercises;
+    private String[] exercises;
     private String output;
-
+    private ArrayList<String> warmUpList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,17 +73,13 @@ public class ExerciseView extends BaseActivity {
         pressedButton = getIntent().getExtras().getString("workChoice");
         workoutMenu = new WorkoutMenu();
         output = workoutMenu.getOutput();
+        setWarmUpList();
         likeBtn.setAlpha(0.5f);
         dissLikeBtn.setAlpha(0.5f);
 
 
-
-
-
         //
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
 
 
         //remove later - used to add to db
@@ -93,25 +92,25 @@ public class ExerciseView extends BaseActivity {
         setSupportActionBar(toolbar);
 
 
-        if(pressedButton.equals("customWorkout")) {
+        if (pressedButton.equals("customWorkout")) {
 
             addFiles();
-
+            ;
             printarray();
             setAndPlayVideo(setStringPath());
-            timer(10000);
+            timer(60000);
             progressBar.setProgress(i);
 
 
-
             Log.d("iphone", "itWorked");
-        }else if
-                (pressedButton.equals("standard")){
-                addFiles();
-                setAndPlayVideo(setStringPath());
-                timer(10000);
-                progressBar.setProgress(i);
-            }
+        } else if
+                (pressedButton.equals("standard")) {
+            addFiles();
+            Collections.shuffle(nameList);
+            setAndPlayVideo(setStringPath());
+            timer(60000);
+            progressBar.setProgress(i);
+        }
 
 
         likeBtn.setOnClickListener(new View.OnClickListener() {
@@ -121,8 +120,6 @@ public class ExerciseView extends BaseActivity {
                 likeBtn.setAlpha(1f);
                 dissLikeBtn.setAlpha(0.5f);
                 likeHash.put(nameList.get(0), likeVideo);
-
-
 
 
             }
@@ -137,29 +134,24 @@ public class ExerciseView extends BaseActivity {
                 likeHash.put(nameList.get(0), likeVideo);
 
 
-
-
-
             }
         });
 
 
-        }
+    }
 
 
-
-
-
-
-
-
-    //method for playing video depening on path
+    /*
+    *Sets the
+    *@param vidPath This is the path of the video to be played
+    *@return nothing
+    *
+    * */
     public void setAndPlayVideo(String vidPath) {
 
         videoView = (VideoView) findViewById(R.id.videoViewE);
         videoView.setVideoPath(vidPath);
         videoView.start();
-
         //Method with listener for pause click
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,23 +161,20 @@ public class ExerciseView extends BaseActivity {
             }
         });
 
-        //make a method
-
-
         //loops video playing in video view
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-
                 mp.setLooping(true);
-
-
             }
         });
 
     }
 
-    //set the path of the video from the arrayList
+
+    /*
+    * @return the complete video path that is useable by videoView
+     */
     public String setStringPath() {
 
         if (nameList.size() > 0) {
@@ -208,13 +197,22 @@ public class ExerciseView extends BaseActivity {
 
         Field[] fields = R.raw.class.getFields();
 
+
+
         for (int i = 0; i < fields.length - 1; i++) {
 
             String name = fields[i].getName();
             if (name != "$change" && name != "serialVersionUID") {
                 nameList.add(name);
             }
+            Collections.shuffle(nameList);
 
+
+
+
+        }
+        for(int z = 10;  z <21 ; z++){
+            nameList.remove(z);
         }
     }
 
@@ -267,7 +265,7 @@ public class ExerciseView extends BaseActivity {
 
         exerciseNameText.setText(nameClean(nameList.get(0)));
 
-        cdt = new CountDownTimer(timeLeftMilli, 100) {
+        cdt = new CountDownTimer(timeLeftMilli, 600) {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 i++;
@@ -333,7 +331,7 @@ public class ExerciseView extends BaseActivity {
                 setAndPlayVideo(setStringPath());
                 i = 0;
 
-                timer(10000);
+                timer(60000);
                 videoView.setVisibility(View.VISIBLE);
 
                 timerText.setVisibility(View.INVISIBLE);
@@ -421,7 +419,6 @@ public class ExerciseView extends BaseActivity {
     public String nameClean(String exName) {
 
 
-
         if (exName.contains("_")) {
             exName = exName.replace("_", " ");
         }
@@ -448,62 +445,69 @@ public class ExerciseView extends BaseActivity {
         return customWorkout;*/
 
 
+    public void printarray() {
+        exercises = output.split(",");
 
-public void printarray() {
-    exercises = output.split(",");
-
-    for(String e : exercises){
-        Log.d("chrisw", e);
-        Log.d("nsize", Integer.toString(exercises.length));
-
-        for (int z = 0; z<nameList.size(); z++){
-
-            String noSpace = nameList.get(z).replace("_"," ");
-            String noFirstLetter = noSpace.substring(1);
-            Log.d("listReplace", noFirstLetter);
-            Log.e("fromweb", e);
-            if(e.contains(noFirstLetter)){
-                Log.d("qqqq", "tester");
-                customWorkout.add(nameList.get(z));
-                Log.d("qqqq", customWorkout.toString());
+        for (String e : exercises) {
 
 
+            for (int z = 0; z < nameList.size(); z++) {
+
+                String noSpace = nameList.get(z).replace("_", " ");
+                String noFirstLetter = noSpace.substring(1);
+                Log.d("listReplace", noFirstLetter);
+                Log.e("fromweb", e);
+                if (e.contains(noFirstLetter)) {
+                    Log.d("qqqq", "tester");
+                    customWorkout.add(nameList.get(z));
+                    Log.d("qqqq", customWorkout.toString());
+
+
+                }
             }
+        }
+
+        nameList.clear();
+
+        for (String s : customWorkout) {
+
+            nameList.add(s);
+
+        }
+
+        Log.d("kindle", customWorkout.toString());
+
+    }
+
+    public void resetLikebt() {
+        likeBtn.setAlpha(0.5f);
+        dissLikeBtn.setAlpha(0.5f);
+    }
+
+    public void setEnabledBtn() {
+
+
+        if (likeBtn.isEnabled()) {
+            likeBtn.setEnabled(false);
+            dissLikeBtn.setEnabled(false);
+            Log.d("neando", "likedisabled");
+        } else if (!likeBtn.isEnabled()) {
+            Log.d("neando", "likeenlabled");
+            likeBtn.setEnabled(true);
+            dissLikeBtn.setEnabled(true);
         }
     }
 
-    nameList.clear();
-
-    for(String s : customWorkout){
-
-        nameList.add(s);
-
-    }
-
-    Log.d("kindle", customWorkout.toString());
-
-}
-
-public void resetLikebt(){
-    likeBtn.setAlpha(0.5f);
-    dissLikeBtn.setAlpha(0.5f);
-}
-
-public void setEnabledBtn(){
-
-
-
-    if(likeBtn.isEnabled()) {
-        likeBtn.setEnabled(false);
-        dissLikeBtn.setEnabled(false);
-        Log.d("neando","likedisabled");
-    }
-    else if(!likeBtn.isEnabled()){
-        Log.d("neando","likeenlabled");
-        likeBtn.setEnabled(true);
-        dissLikeBtn.setEnabled(true);
+    public void setWarmUpList(){
+        warmUpList.add("emarching");
+        warmUpList.add("ewide_marching");
+        warmUpList.add("emarching");
+        warmUpList.add("aheel_digs_with_curl");
+        warmUpList.add("emarching");
+        warmUpList.add("ehand_to_knee");
+        warmUpList.add("emarching");
     }
 }
 
-}
+
 
