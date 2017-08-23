@@ -46,7 +46,7 @@ public class ProgressGraph extends BaseActivity {
         myFirebaseDatabase = FirebaseDatabase.getInstance();
         myReference = myFirebaseDatabase.getReference();
 
-        this.sco = new int[10];
+        this.sco = new int[20];
 
         Button sitToStandsBtn = (Button) findViewById(R.id.sitToStandsBtn);
         sitToStandsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -191,8 +191,8 @@ public class ProgressGraph extends BaseActivity {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.removeAllSeries();
-        DataPoint[] scores = new DataPoint[10];
-        for (int i = 0; i < 10; i++) {
+        DataPoint[] scores = new DataPoint[20];
+        for (int i = 0; i < 20; i++) {
             int ni = sco[i];
             DataPoint p = new DataPoint(i, ni);
             scores[i] = p;

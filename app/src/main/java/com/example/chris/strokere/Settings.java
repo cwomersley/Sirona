@@ -1,17 +1,22 @@
 package com.example.chris.strokere;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Settings extends BaseActivity {
+
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         setupNavbar();
+        context = getApplicationContext();
 
 
         Button btnThisApp = (Button) findViewById(R.id.btnThisAppS);
@@ -22,6 +27,7 @@ public class Settings extends BaseActivity {
 
         Button btnWorkRem = (Button) findViewById(R.id.btnWorkRemS);
         btnWorkRem.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+        btnWorkRem.setAlpha(0.5f);
 
         Button btnAccount = (Button) findViewById(R.id.btnAccountS);
         btnAccount.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
@@ -45,7 +51,7 @@ public class Settings extends BaseActivity {
     }
 
     public void openWorkRem(View view) {
-        startActivity(new Intent(Settings.this, SettingsWorkoutReminder.class));
+        Toast.makeText(context, "Coming soon!", Toast.LENGTH_SHORT).show();
     }
 
     public void openAccount(View view) {
