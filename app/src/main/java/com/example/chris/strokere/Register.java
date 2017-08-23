@@ -181,6 +181,17 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                         //user registered succesful
+                            FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+                                @Override
+                                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                                    if (user != null) {
+                                        // User is signed in
+                                        writeNewUser(user.getUid(), surname, firstName, email);
+                                    }
+                                }
+                            });
+
                         Toast.makeText(Register.this, "Registed Successfully", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }else{
@@ -191,16 +202,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 });
 
         //get the Firebase user
-        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    writeNewUser(user.getUid(), surname, firstName, email);
-                }
-            }
-        });
+
     }
 
     private void writeNewUser(String userId, String surname, String name, String email) {
