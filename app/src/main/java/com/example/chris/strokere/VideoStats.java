@@ -1,7 +1,6 @@
 package com.example.chris.strokere;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 
 import com.google.firebase.auth.FirebaseUser;
@@ -14,16 +13,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 
-
 /**
  * Created by Chris on 12/07/2017.
+ *
+ * Handles the getting and setting of exercise likes from the database
  */
 
-
-
 public class VideoStats {
-
-
     private static HashMap<String, Integer> videoLikes2 = new HashMap<String, Integer>();
     private DatabaseReference mDatabase;
     private FirebaseUser user;
@@ -31,14 +27,11 @@ public class VideoStats {
     private String output;
     private ExerciseView exerciseView;
 
-
     VideoStats() {
         exerciseView = new ExerciseView();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         getDbLike();
-
-
 
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -50,14 +43,12 @@ public class VideoStats {
             }
         });
 
-
-
     }
 
-
-
+    /**
+     * Retrives the likes from the database depending on the current user
+     */
     public void getDbLike(){
-
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -69,9 +60,7 @@ public class VideoStats {
                             output = snapshot.child(userID).getValue().toString();
                         }
                     }
-
                 }
-
             }
 
             @Override
@@ -80,12 +69,13 @@ public class VideoStats {
             }
         });
 
-
-
     }
 
 
-    //splits the string from the database into name and value and stores in a map
+    /**
+     * Splits the string from the output recived from firebase
+     * Updates the data on the firebase data with current likes/dislkes
+     */
     public void splitString(){
 
         if(output != null) {
@@ -101,59 +91,32 @@ public class VideoStats {
                 String name = nameValues[0].replace("{","");
                 String nameNoSpace = name.trim();
                 videoLikes2.put(nameNoSpace, score);
-
-
-
             }
-
         }
 
-
-
-
         HashMap<String,Integer> currentLikes = exerciseView.getLikeMap();
-        String oo = Integer.toString(currentLikes.size());
 
         for (String key: currentLikes.keySet()){
 
-
-
-
                 if (videoLikes2.containsKey(key) && videoLikes2.get(key) != null) {
-                    Log.d("edwatd", key);
+                    //update firbease entry
                     if (currentLikes.get(key) == 1) {
                         int addLike = videoLikes2.get(key) + 1;
                         mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(addLike);
-                        Log.d("edsphone", "likeUpdated");
                     } else if (currentLikes.get(key) == -1) {
                         int minusLike = videoLikes2.get(key) - 1;
                         mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(minusLike);
                     }
 
-                    //update firbease entry
-
-
                 } else {
                     //add to firebase as new entry
-
 
                     mDatabase.child("ExerciseLikes").child(userID).child(key).setValue(currentLikes.get(key));
                 }
 
-
         }
 
-
-
-
-
-
-
     }
-
-
-
-
 
 
 }

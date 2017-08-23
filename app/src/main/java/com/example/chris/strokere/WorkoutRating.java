@@ -16,6 +16,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * @Author Christopher Womersley
+ * Class for taking borg rating and inputting them to the db
+ *
+ */
 public class WorkoutRating extends BaseActivity {
 
     private NumberPicker ratingScale;
@@ -40,7 +45,6 @@ public class WorkoutRating extends BaseActivity {
         ratingScale = (NumberPicker) findViewById(R.id.numberPicker6);
         Button finish = (Button) findViewById(R.id.finishBtn);
 
-
         ratingScale.setMaxValue(20);
         ratingScale.setMinValue(6);
         ratingScale.setWrapSelectorWheel(false);
@@ -52,19 +56,12 @@ public class WorkoutRating extends BaseActivity {
                 if(user != null) {
                     videoStats.splitString();
                     mDatabase.child("BorgRatings").child(userID).child(getTime()).setValue(borgRating);
-
-
                 }
                 Intent intent = new Intent(WorkoutRating.this, Home.class);
                 startActivity(intent);
                 finish();
-
             }
         });
-
-
-
-        //pushborg rating to firebase
 
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -76,33 +73,24 @@ public class WorkoutRating extends BaseActivity {
             }
         });
 
-
-
-
-
-
     }
 
+    /**
+     * Gets the current data from the android system
+     * @return the date as a string
+     */
     public String getTime() {
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat time = new SimpleDateFormat("dd_MM_YY");
         String timeString = time.format(calendar.getTime());
-
-        Log.d("Time: ", timeString);
         return timeString;
-
-
     }
 
     @Override
     public int getLayout () {
         return R.layout.activity_home;
     }
-
-
-
-
 
 
 }

@@ -15,6 +15,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
+/**
+ * @author Christopher Womersley
+ *
+ * Menu for workouts and tests
+ * Prelaods custom workout data if avaible
+ * Enables the custom workout button
+ */
 public class WorkoutMenu extends BaseActivity {
 
     private Button StandardBtn;
@@ -46,22 +54,32 @@ public class WorkoutMenu extends BaseActivity {
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        Log.d("pencil", mDatabase.toString());
         makeCustomWorkout();
 
     }
 
-
+    /**
+     * Starts standard activity on button press
+     * @param view
+     */
     public void standardWorkout(View view) {
         Intent intent = new Intent(WorkoutMenu.this, ExerciseView.class);
         intent.putExtra("workChoice", "standard");
         startActivity(intent);
     }
 
+    /**
+     * Starts test menu activity on button press
+     * @param view
+     */
     public void oTestMenu(View view) {
         startActivity(new Intent(WorkoutMenu.this, WorkoutTestMenu.class));
     }
 
+    /**
+     * Starts custom workout activity on button press
+     * @param view
+     */
     public void customWorkout(View view) {
         Intent intent = new Intent(WorkoutMenu.this, ExerciseView.class);
 
@@ -74,8 +92,12 @@ public class WorkoutMenu extends BaseActivity {
         return R.layout.activity_workout_menu;
     }
 
+    /**
+     * Retrieves the custom workout data for the signed in user
+     * Pre load and convert ot string to be used when user selects custom workout
+     * Sets the button to clickable when the data is loaded
+     */
     public void makeCustomWorkout() {
-
 
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -86,8 +108,6 @@ public class WorkoutMenu extends BaseActivity {
                 }
             }
         });
-
-
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -101,18 +121,13 @@ public class WorkoutMenu extends BaseActivity {
                             output = object.toString();
                             customBtn.setAlpha(1);
                             customBtn.setEnabled(true);
-                            Log.d("isNull", output);
-
                         }
                     }
-
                 }
-
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
 
