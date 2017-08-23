@@ -70,6 +70,7 @@ public class ExerciseView extends BaseActivity {
         pause = (ImageButton) findViewById(R.id.pauseResume);
         timerText = (TextView) findViewById(R.id.timerText);
         exerciseNameText = (TextView) findViewById(R.id.exerciseNameText);
+        exerciseNameText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         pressedButton = getIntent().getExtras().getString("workChoice");
         workoutMenu = new WorkoutMenu();
         output = workoutMenu.getOutput();

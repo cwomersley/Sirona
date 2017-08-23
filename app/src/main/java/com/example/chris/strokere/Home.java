@@ -38,7 +38,7 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnExercise = (Button) findViewById(R.id.ShuttleRunBtn);
+        Button btnExercise = (Button) findViewById(R.id.ExerciseListBtn);
         btnExercise.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnExercise.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -46,7 +46,7 @@ public class Home extends BaseActivity {
             }
         });
 
-        Button btnProgress = (Button) findViewById(R.id.StepUpsBtn);
+        Button btnProgress = (Button) findViewById(R.id.ProgressBtn);
         btnProgress.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnProgress.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -87,7 +87,6 @@ public class Home extends BaseActivity {
         tipsText.setText(tipText);
         tipsText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         //Log.d("Logthis   ",tip);
-
 
     }
 
