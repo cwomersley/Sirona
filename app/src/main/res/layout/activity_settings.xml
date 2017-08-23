@@ -30,6 +30,7 @@
         <Button
             android:id="@+id/btnWorkRemS"
             style="@style/standard_button"
+            android:layout_height="120dp"
             android:background="@drawable/standard_button_green"
             android:layout_above="@+id/btnAccountS"
             android:layout_alignParentEnd="true"
@@ -41,29 +42,11 @@
             android:textSize="30sp"
             app:layout_constraintTop_toBottomOf="@+id/btnWorkPrefS" />
 
-        <Button
-            android:id="@+id/btnWorkPrefS"
-            style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
-            android:layout_above="@+id/btnWorkRemS"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="5dp"
-            android:text="Workout Preferences" />
-
-        <Button
-            android:id="@+id/btnThisAppS"
-            style="@style/standard_button"
-            android:background="@drawable/standard_button_green"
-            android:layout_above="@+id/btnWorkPrefS"
-            android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/btnWorkPrefS"
-            android:layout_marginBottom="5dp"
-            android:text="This App" />
 
         <Button
             android:id="@+id/btnAccountS"
             style="@style/standard_button"
+            android:layout_height="120dp"
             android:background="@drawable/standard_button_green"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
