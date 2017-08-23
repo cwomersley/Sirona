@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
+/**
+ * Class that opens and passes information to particular workout tests for the patient
+ */
+
 public class WorkoutTestMenu extends AppCompatActivity {
 
     private Button sitToStandsBtn;
@@ -30,6 +35,10 @@ public class WorkoutTestMenu extends AppCompatActivity {
 
     }
 
+    /**
+     * Opens sit to stands to test
+     * @param view
+     */
     public void sitToStands(View view) {
 
         Intent intent = new Intent(getApplicationContext(), WorkoutTest.class);
@@ -37,6 +46,10 @@ public class WorkoutTestMenu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Opens shuttle run test
+     * @param view
+     */
     public void shuttleRun(View view) {
         Intent intent = new Intent(getApplicationContext(), WorkoutTest.class);
         intent.putExtra("button", "shuttleRun");
@@ -44,6 +57,11 @@ public class WorkoutTestMenu extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Opens step ups test
+     * @param view
+     */
     public void stepUps(View view) {
         Intent intent = new Intent(getApplicationContext(), WorkoutTest.class);
         intent.putExtra("button", "stepUps");
