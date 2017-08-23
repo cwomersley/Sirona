@@ -454,6 +454,9 @@ public class ExerciseView extends BaseActivity {
 
 
     public void printarray() {
+        if(customWorkout.size() > 0 ){
+            customWorkout.clear();
+        }
         exercises = output.split(",");
 
         for (String e : exercises) {
