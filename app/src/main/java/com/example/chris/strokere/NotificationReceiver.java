@@ -14,7 +14,11 @@ import android.support.v7.app.NotificationCompat;
 import android.widget.Toast;
 
 /**
- * Created by Sam on 01/08/2017.
+ * NotificationReceiver
+ *
+ * <P>Creates a notification with a set of specified features
+ *
+ * @author Sam Ward
  */
 
 public class NotificationReceiver extends BroadcastReceiver {

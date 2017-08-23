@@ -12,8 +12,7 @@ public class Settings extends BaseActivity {
     /**
      * Settings
      *
-     * <P>Extends AppCompatActivity to include navbar methods. Every class that uses the navbar
-     * needs to extend this.
+     * <P>Menu to select different settings for the app
      *
      * @author Sam Ward
      */

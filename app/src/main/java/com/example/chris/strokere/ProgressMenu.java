@@ -6,6 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * ProgressMenu
+ *
+ * <P>Menu to navigate between Progress items
+ *
+ * @author Sam Ward
+ */
+
 public class ProgressMenu extends BaseActivity {
 
     Tip tip;

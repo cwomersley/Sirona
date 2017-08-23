@@ -22,7 +22,7 @@ import java.util.Locale;
 /**
  * Navigator
  *
- * <P>Used by the
+ * <P>Used by the navbar to navigate between menus
  *
  * @author Sam Ward
  */
