@@ -29,7 +29,7 @@ android:minHeight="?attr/actionBarSize">
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignLeft="@+id/homeNavBtn"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="38dp"
             android:background="@drawable/ic_directions_walk_white_24dp" />
 
 
@@ -38,7 +38,7 @@ android:minHeight="?attr/actionBarSize">
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignLeft="@+id/myExerciseNavBtn"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="38dp"
             android:background="@drawable/ic_video_library_white_24dp" />
 
         <ImageButton
@@ -46,7 +46,7 @@ android:minHeight="?attr/actionBarSize">
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignLeft="@+id/exerciseListNavBtn"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="38dp"
             android:background="@drawable/ic_today_white_24dp" />
 
         <ImageButton
@@ -54,7 +54,7 @@ android:minHeight="?attr/actionBarSize">
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignLeft="@+id/exerciseListNavBtn"
-            android:layout_marginLeft="32dp"
+            android:layout_marginLeft="38dp"
             android:background="@drawable/ic_settings_white_24dp" />
 
     </TableRow>

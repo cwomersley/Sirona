@@ -27,6 +27,7 @@
         tools:layout_constraintTop_creator="1">
 
         <TableLayout
+            android:id="@+id/table1"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -189,7 +190,8 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center">
+            android:gravity="center"
+            android:id="@+id/table2">
 
             <TextView
                 android:id="@+id/d22P"
@@ -288,8 +290,53 @@
 
         </TableRow>
 
-
         </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="380dp">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/dWorkedOut"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day_done"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/dWorkedOutText"
+                android:textColor="@color/colorPrimary"
+                android:text="  Workout completed" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/dNotWorkedOut"
+                style="@style/calendar_day"
+                android:background="@drawable/calendar_day"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/dNotWorkedOutText"
+                android:textColor="@color/colorPrimary"
+                android:text="  Workout not completed" />
+
+        </TableRow>
+
+
+
+    </TableLayout>
 
         <TextView
             android:id="@+id/currentMonth"
@@ -314,7 +361,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="19dp"
+            android:layout_marginBottom="9dp"
             android:text="Refresh" />
 
 
@@ -337,15 +384,6 @@
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@+id/currentMonth"
             android:background="@drawable/ic_keyboard_arrow_right_white_24dp" />
-
-        <TextView
-            android:id="@+id/workedBackground"
-            android:layout_width="360dp"
-            android:layout_height="55dp"
-            android:background="@color/bg"
-            android:layout_alignBottom="@+id/shuffle"
-            android:layout_marginBottom="70dp"
-            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/youWorked"
