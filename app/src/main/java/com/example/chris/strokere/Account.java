@@ -175,6 +175,8 @@ public class Account extends BaseActivity {
     }
 
 
+
+
     /**
      * Determines whether a user is signed in.
      * @return
@@ -208,8 +210,8 @@ public class Account extends BaseActivity {
         Toast.makeText(Account.this, "Please enter in your new password again", Toast.LENGTH_SHORT).show();
         aConfirmBtn.setVisibility(View.INVISIBLE);
         hiddenPassword.setVisibility(View.INVISIBLE);
-        email.setVisibility(View.VISIBLE);
-        pEmailBtn.setVisibility(View.VISIBLE);
+        //email.setVisibility(View.VISIBLE);
+        //pEmailBtn.setVisibility(View.VISIBLE);
         password.setVisibility(View.VISIBLE);
         confirmPassword.setVisibility(View.VISIBLE);
         pPasswordBtn.setVisibility(View.VISIBLE);
@@ -219,6 +221,8 @@ public class Account extends BaseActivity {
 
     /**
      * Changes a patient's email address
+     * Not used currently as causes a new UID to be generated
+     * With all the user information left on the old UID
      * @param view
      */
     public void changeEmail(View view)
@@ -362,7 +366,7 @@ public class Account extends BaseActivity {
         aConfirmBtn.setVisibility(View.VISIBLE);
         hiddenPassword.setVisibility(View.VISIBLE);
         email.setVisibility(View.INVISIBLE);
-        pEmailBtn.setVisibility(View.INVISIBLE);
+        //pEmailBtn.setVisibility(View.INVISIBLE);
         password.setVisibility(View.INVISIBLE);
         confirmPassword.setVisibility(View.INVISIBLE);
         pPasswordBtn.setVisibility(View.INVISIBLE);
