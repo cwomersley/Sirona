@@ -8,6 +8,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Create the data used for the ExerciseList class
+ * @author Adam Jessop
+ */
 public class setDataExList {
 
     static HashMap<String, List<String>> map;

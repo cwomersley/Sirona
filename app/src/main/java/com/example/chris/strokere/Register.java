@@ -26,6 +26,12 @@ import java.util.regex.Pattern;
 
 import static com.example.chris.strokere.R.id.passConfirmR;
 
+/**
+ * Class that deals with registering an account for a patient
+ * Patient data is also written to the Firebase database
+ * @author Edward Boyles
+ */
+
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth mAuth;

@@ -12,6 +12,11 @@ import android.widget.EditText;
 import android.text.Editable;
 import android.widget.ExpandableListView.OnChildClickListener;
 
+/**
+ * The class for creating a list of exercises. It has headers for each muscle group
+ * and a search functionality to find specific exercises.
+ * @author Adam Jessop
+ */
 public class ExerciseList extends BaseActivity {
 
     ListView listView;

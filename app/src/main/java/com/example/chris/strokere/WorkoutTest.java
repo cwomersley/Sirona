@@ -37,7 +37,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
-
+/**
+ * Class to display workout tests and write workout tests stats to Firebase database
+ * Information corresponding to the particular test is passed through from WorkoutTest class using extras
+ * @author Edward Boyles
+ */
 public class WorkoutTest extends AppCompatActivity {
 
     private DatabaseReference mDatabase;

@@ -3,6 +3,11 @@ package com.example.chris.strokere;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
+/**
+ * Video names have different letters at the beginning to put them into their muscle group, this
+ * class makes the names formatted for the users
+ * @author Adam Jessop
+ */
 public class VideoNameChange {
     /**
      * @param name the videos actual name (with extra letter at beginning for hashmap)
