@@ -95,7 +95,7 @@ public class ExerciseView extends BaseActivity {
         if (pressedButton.equals("customWorkout")) {
 
             addFiles();
-            ;
+
             printarray();
             setAndPlayVideo(setStringPath());
             timer(60000);
@@ -106,7 +106,7 @@ public class ExerciseView extends BaseActivity {
         } else if
                 (pressedButton.equals("standard")) {
             addFiles();
-            Collections.shuffle(nameList);
+
             setAndPlayVideo(setStringPath());
             timer(60000);
             progressBar.setProgress(i);
@@ -212,6 +212,7 @@ public class ExerciseView extends BaseActivity {
 
         }
         setWarmUpList();
+
         for(String s: warmUpList) {
             int x = 0;
             nameList.add(x, s);
@@ -222,6 +223,7 @@ public class ExerciseView extends BaseActivity {
         for(int z = 10;  z <21 ; z++){
             nameList.remove(z);
         }
+        Log.d("edstring", nameList.toString());
     }
 
     //populate the database from the list of files (to be used to auto populate db )
