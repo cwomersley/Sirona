@@ -64,6 +64,7 @@ public class WorkoutMenu extends BaseActivity {
 
     public void customWorkout(View view) {
         Intent intent = new Intent(WorkoutMenu.this, ExerciseView.class);
+
         intent.putExtra("workChoice", "customWorkout");
         startActivity(intent);
     }

@@ -61,7 +61,8 @@ public class ExerciseView extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_view);
-        //setupNavbar();
+
+
         videoStats = new VideoStats();
 
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
@@ -94,8 +95,6 @@ public class ExerciseView extends BaseActivity {
 
 
         if (pressedButton.equals("customWorkout")) {
-            nameList.clear();
-            customWorkout.clear();
             addFiles();
             printarray();
             setAndPlayVideo(setStringPath());
@@ -177,7 +176,7 @@ public class ExerciseView extends BaseActivity {
      */
     public String setStringPath() {
 
-        if (nameList.size() > 0) {
+        if (!nameList.isEmpty()) {
 
             String path = nameList.get(0);
             String stringPath = "android.resource://" + getPackageName() + "/" + "/raw/" + path;
@@ -223,7 +222,7 @@ public class ExerciseView extends BaseActivity {
         for(int z = 10;  z <21 ; z++){
             nameList.remove(z);
         }
-        Log.d("edstring", nameList.toString());
+
     }
 
     //populate the database from the list of files (to be used to auto populate db )
@@ -279,7 +278,6 @@ public class ExerciseView extends BaseActivity {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished;
                 i++;
-                Log.d("fubar", Long.toString(timeLeft));
                 progressBar.setProgress(i);
 
             }
@@ -299,7 +297,7 @@ public class ExerciseView extends BaseActivity {
                     pause.setClickable(false);
                     exerciseNameText.setText("Next: " + nameClean(nameList.get(1)));
                     setEnabledBtn();
-                    Log.d("kindle", nameList.toString());
+
 
 
                 } else if (nameList.size() == 1) {
@@ -337,7 +335,6 @@ public class ExerciseView extends BaseActivity {
 
                 isVidBreak = false;
                 nameList.remove(0);
-                Log.d("ywhy", nameList.toString());
                 setAndPlayVideo(setStringPath());
                 i = 0;
 
@@ -388,7 +385,6 @@ public class ExerciseView extends BaseActivity {
             videoView.pause();
             pauseTimer();
 
-            Log.d("fubarLeft", Long.toString(timeLeft));
 
         } else {
             videoView.start();
@@ -435,7 +431,7 @@ public class ExerciseView extends BaseActivity {
         exName = exName.substring(1);
         exName = exName.substring(0, 1).toUpperCase() + exName.substring(1);
         return exName;
-        //Log.d("ftest", exName);
+
     }
 
     //getter for hashmap
@@ -460,19 +456,19 @@ public class ExerciseView extends BaseActivity {
 
 
         exercises = output.split(",");
-        Log.d("indian",output.toString());
+
 
 
         for (String e : exercises) {
-
 
             for (int z = 0; z < nameList.size(); z++) {
 
                 String noSpace = nameList.get(z).replace("_", " ");
                 String noFirstLetter = noSpace.substring(1);
-                Log.d("thai", e);
 
                 if (e.contains(noFirstLetter)) {
+
+
 
                    customWorkout.add(nameList.get(z));
 
@@ -482,7 +478,7 @@ public class ExerciseView extends BaseActivity {
                 }
             }
         }
-        Log.d("chrinese",customWorkout.toString());
+
 
 
         nameList.clear();
@@ -493,7 +489,7 @@ public class ExerciseView extends BaseActivity {
 
         }
 
-        Log.d("kindle", nameList.toString());
+
 
     }
 
@@ -508,9 +504,9 @@ public class ExerciseView extends BaseActivity {
         if (likeBtn.isEnabled()) {
             likeBtn.setEnabled(false);
             dissLikeBtn.setEnabled(false);
-            Log.d("neando", "likedisabled");
+
         } else if (!likeBtn.isEnabled()) {
-            Log.d("neando", "likeenlabled");
+
             likeBtn.setEnabled(true);
             dissLikeBtn.setEnabled(true);
         }
@@ -526,6 +522,8 @@ public class ExerciseView extends BaseActivity {
         warmUpList.add("ehand_to_knee");
         warmUpList.add("emarching");
     }
+
+
 }
 
 
