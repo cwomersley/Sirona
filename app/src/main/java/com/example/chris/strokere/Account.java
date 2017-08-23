@@ -140,6 +140,8 @@ public class Account extends BaseActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
+
         });
     }
 
@@ -147,7 +149,8 @@ public class Account extends BaseActivity {
 
     /**
      * Retrieves account details of patient from Firebase database
-     * and puts them into a ListView
+     * and puts them into a ListView/
+     * Implemented from https://www.youtube.com/watch?v=2duc77R4Hqw
      * @param dataSnapshot
      */
     private void showData(DataSnapshot dataSnapshot)
