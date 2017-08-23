@@ -63,7 +63,7 @@ public class ExerciseView extends BaseActivity {
         setContentView(R.layout.activity_exercise_view);
         //setupNavbar();
         videoStats = new VideoStats();
-        customWorkout.clear();
+
         likeBtn = (ImageButton) findViewById(R.id.thumbsUpBtn);
         dissLikeBtn = (ImageButton) findViewById(R.id.thumbsDownbtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar3);
@@ -94,7 +94,8 @@ public class ExerciseView extends BaseActivity {
 
 
         if (pressedButton.equals("customWorkout")) {
-
+            nameList.clear();
+            customWorkout.clear();
             addFiles();
             printarray();
             setAndPlayVideo(setStringPath());
@@ -102,7 +103,7 @@ public class ExerciseView extends BaseActivity {
             progressBar.setProgress(i);
 
 
-            Log.d("iphone", "itWorked");
+
         } else if
                 (pressedButton.equals("standard")) {
             addFiles();
@@ -304,6 +305,8 @@ public class ExerciseView extends BaseActivity {
                 } else if (nameList.size() == 1) {
 
                     videoView.stopPlayback();
+                    nameList.clear();
+                    customWorkout.clear();
                     Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
                     startActivity(intent);
                     finish();
@@ -336,7 +339,7 @@ public class ExerciseView extends BaseActivity {
 
                 isVidBreak = false;
                 nameList.remove(0);
-
+                Log.d("ywhy", nameList.toString());
                 setAndPlayVideo(setStringPath());
                 i = 0;
 
@@ -455,10 +458,11 @@ public class ExerciseView extends BaseActivity {
 
 
     public void printarray() {
-        if(customWorkout.size() > 0 ){
-            customWorkout.clear();
-        }
+
+
+
         exercises = output.split(",");
+
 
         for (String e : exercises) {
 
@@ -468,16 +472,18 @@ public class ExerciseView extends BaseActivity {
                 String noSpace = nameList.get(z).replace("_", " ");
                 String noFirstLetter = noSpace.substring(1);
                 Log.d("listReplace", noFirstLetter);
-                Log.e("fromweb", e);
+
                 if (e.contains(noFirstLetter)) {
-                    Log.d("qqqq", "tester");
-                    customWorkout.add(nameList.get(z));
+
+                        customWorkout.add(nameList.get(z));
+
                     Log.d("qqqq", customWorkout.toString());
 
 
                 }
             }
         }
+        Log.d("chrinese",customWorkout.toString());
 
         nameList.clear();
 
