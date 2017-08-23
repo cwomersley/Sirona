@@ -39,19 +39,18 @@
 
 
         <Button
-            android:id="@+id/StepUpsBtn"
+            android:id="@+id/CalendarBtn"
             style="@style/standard_button"
             android:layout_height="120dp"
-            android:layout_above="@+id/Settings"
+            android:layout_above="@+id/TestScores"
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="5dp"
             android:background="@drawable/standard_button_green"
-            android:text="Workout Calendar"
-            app:layout_constraintTop_toBottomOf="@+id/ShuttleRunBtn" />
+            android:text="Workout Calendar" />
 
         <Button
-            android:id="@+id/Settings"
+            android:id="@+id/TestScores"
             style="@style/standard_button"
             android:layout_height="120dp"
             android:layout_alignParentBottom="true"

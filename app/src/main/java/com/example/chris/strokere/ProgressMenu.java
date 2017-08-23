@@ -24,7 +24,7 @@ public class ProgressMenu extends BaseActivity {
         setContentView(R.layout.activity_progress_menu);
         setupNavbar();
 
-        Button btnCalendar = (Button) findViewById(R.id.StepUpsBtn);
+        Button btnCalendar = (Button) findViewById(R.id.CalendarBtn);
         btnCalendar.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -32,7 +32,7 @@ public class ProgressMenu extends BaseActivity {
             }
         });
 
-        Button btnGraph = (Button) findViewById(R.id.Settings);
+        Button btnGraph = (Button) findViewById(R.id.TestScores);
         btnGraph.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnGraph.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
