@@ -46,6 +46,7 @@ public class Navigator extends AppCompatActivity {
             }
         });
 
+        //
         String[] navArray;
         navArray = new String[6];
         navArray[0] = "Main Menu";

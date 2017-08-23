@@ -16,7 +16,6 @@ public class ProgressMenu extends BaseActivity {
         setContentView(R.layout.activity_progress_menu);
         setupNavbar();
 
-
         Button btnCalendar = (Button) findViewById(R.id.StepUpsBtn);
         btnCalendar.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnCalendar.setOnClickListener(new View.OnClickListener() {
@@ -35,20 +34,17 @@ public class ProgressMenu extends BaseActivity {
 
         TextView tipsText = (TextView) findViewById(R.id.tipsText);
         TipManager tipManager = new TipManager();
-
         //Uses the TipManager to get a random tip
         this.tip = tipManager.getATip();
         //Gets the text of the tip
         String tipText = this.tip.getTipText();
         //Gets the activity that the tip should go to
         String tipIntent = this.tip.getTipIntent();
-
         tipsText.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goToTip();
             }
         });
-
         tipsText.setText(tipText);
         tipsText.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
