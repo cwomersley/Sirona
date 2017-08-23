@@ -20,7 +20,14 @@ import java.util.Calendar;
 import java.util.Map;
 import java.util.HashMap;
 
-
+/**
+ * ProgressCalendar
+ *
+ * <P>Shows which days the user worked out on and allows them to cycle through each month to see
+ * their history
+ *
+ * @author Sam Ward
+ */
 public class ProgressCalendar extends BaseActivity {
 
     private String monthName;

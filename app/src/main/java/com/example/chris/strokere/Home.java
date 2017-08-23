@@ -12,6 +12,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Home
+ *
+ * <P>Main menu. Also displays tips that will take the user to the relevant page if they tap on
+ * them.
+ *
+ * @author Sam Ward
+ */
 public class Home extends BaseActivity {
 
     /**

@@ -24,7 +24,6 @@ import java.util.Calendar;
  *
  * @author Sam Ward
  */
-
 public class SettingsWorkoutReminder extends BaseActivity {
 
     private TimePicker timePicker;

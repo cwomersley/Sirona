@@ -25,6 +25,14 @@ import java.util.regex.Pattern;
 
 import static android.graphics.Color.parseColor;
 
+/**
+ * ProgressGraph
+ *
+ * <P>Displays the user's performance over time on each test
+ *
+ * @author Sam Ward
+ */
+
 public class ProgressGraph extends BaseActivity {
 
     private FirebaseDatabase myFirebaseDatabase;

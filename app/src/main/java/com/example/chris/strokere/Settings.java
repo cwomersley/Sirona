@@ -7,15 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+/**
+ * Settings
+ *
+ * <P>Menu to select different settings for the app
+ *
+ * @author Sam Ward
+ */
 public class Settings extends BaseActivity {
-
-    /**
-     * Settings
-     *
-     * <P>Menu to select different settings for the app
-     *
-     * @author Sam Ward
-     */
 
     Context context;
 
