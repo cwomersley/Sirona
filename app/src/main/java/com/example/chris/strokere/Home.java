@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
 public class Home extends BaseActivity {
 
     /**
@@ -58,6 +62,15 @@ public class Home extends BaseActivity {
             }
         });
 
+        findATip();
+
+    }
+
+    /**
+     * Chooses a tip at random and displays it
+     */
+    public void findATip() {
+
         TextView tipsText = (TextView) findViewById(R.id.tipsText);
         TipManager tipManager = new TipManager();
         //Uses the TipManager to get a random tip
@@ -76,6 +89,13 @@ public class Home extends BaseActivity {
         //Log.d("Logthis   ",tip);
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        findATip();
     }
 
     /**
