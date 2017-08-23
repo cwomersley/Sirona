@@ -193,7 +193,7 @@ public class ProgressGraph extends BaseActivity {
         graph.removeAllSeries();
         DataPoint[] scores = new DataPoint[10];
         for (int i = 0; i < 10; i++) {
-
+//
             int ni = sco[i];
             DataPoint p = new DataPoint(i, ni);
             scores[i] = p;
