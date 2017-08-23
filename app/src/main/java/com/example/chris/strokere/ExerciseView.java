@@ -95,7 +95,7 @@ public class ExerciseView extends BaseActivity {
         if (pressedButton.equals("customWorkout")) {
 
             addFiles();
-            ;
+
             printarray();
             setAndPlayVideo(setStringPath());
             timer(60000);
