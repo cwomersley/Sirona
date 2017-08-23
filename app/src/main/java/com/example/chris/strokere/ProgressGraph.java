@@ -77,7 +77,7 @@ public class ProgressGraph extends BaseActivity {
             }
         });
 
-
+        //Connects to the Firebase database
         myReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -90,7 +90,6 @@ public class ProgressGraph extends BaseActivity {
 
             }
         });
-
 
         FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
             @Override
@@ -105,7 +104,6 @@ public class ProgressGraph extends BaseActivity {
         findScoresData(currentSnapshot, "SitToStands");
         setupGraph();
     }
-
 
     @Override
     public void onResume() {
@@ -125,12 +123,20 @@ public class ProgressGraph extends BaseActivity {
         findScoresData(currentSnapshot, "SitToStands");
     }
 
+    /**
+     * Returns this activity (used by the navbar)
+     * @return the current activity
+     */
     @Override
     public int getLayout() {
         return R.layout.activity_progress_graph;
     }
 
-
+    /**
+     * Gets the appropriate data from Firebase
+     * @param dataSnapshot the data from Firebase
+     * @param testType which test to look for
+     */
     private void findScoresData(DataSnapshot dataSnapshot, String testType) {
 
         //Ensures this method only runs if a user is logged in
@@ -167,6 +173,10 @@ public class ProgressGraph extends BaseActivity {
         }
     }
 
+    /**
+     * Changes the title of the graph to display the relevant test name
+     * @param name the name of the test to be displayed
+     */
     private void setupTestName(String name) {
 
         TextView testName = (TextView) findViewById(R.id.testName);
@@ -174,13 +184,14 @@ public class ProgressGraph extends BaseActivity {
         testName.setText(name);
     }
 
-
+    /**
+     * Creates the graph view using data from Firebase
+     */
     private void setupGraph() {
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.removeAllSeries();
         DataPoint[] scores = new DataPoint[10];
-
         for (int i = 0; i < 10; i++) {
             int ni = sco[i];
             DataPoint p = new DataPoint(i, ni);
@@ -189,7 +200,6 @@ public class ProgressGraph extends BaseActivity {
 
         //Referred to documentation in http://www.android-graphview.org/simple-graph/ to construct
         // the LineGraphSeries and GridLabelRenderer and set their attributes
-
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(scores);
         graph.addSeries(series);
         series.setColor(parseColor("#4BAA71"));
@@ -208,7 +218,6 @@ public class ProgressGraph extends BaseActivity {
         gridRenderer.setVerticalAxisTitleColor(parseColor("#4BAA71"));
         gridRenderer.setHorizontalAxisTitle("Workout No.");
         gridRenderer.setHorizontalAxisTitleColor(parseColor("#4BAA71"));
-
 
     }
 

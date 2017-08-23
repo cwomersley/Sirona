@@ -203,8 +203,10 @@ public class ProgressCalendar extends BaseActivity {
         setupProgressText();
     }
 
-
-
+    /**
+     * Returns this activity (used by the navbar)
+     * @return the current activity
+     */
     @Override
     public int getLayout() {
         return R.layout.activity_progress_calendar;
@@ -271,7 +273,6 @@ public class ProgressCalendar extends BaseActivity {
         if(user == null) {
             youWorked.setText("");
         }
-
     }
 
     /**
