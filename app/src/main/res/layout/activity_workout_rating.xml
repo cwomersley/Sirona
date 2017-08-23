@@ -34,20 +34,21 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="30dp"
             android:background="@drawable/button_background"
-            android:scaleX="1.25"
-            android:scaleY="1.25"
+            android:backgroundTint="@color/greenAccent"
             android:descendantFocusability="blocksDescendants"
-            />
+            android:scaleX="1.25"
+            android:scaleY="1.25" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="200dp"
             android:layout_height="400dp"
-            android:background="@drawable/button_background"
-            app:srcCompat="@drawable/borgscale"
-            android:layout_marginBottom="31dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textView3" />
+            android:layout_alignStart="@+id/textView3"
+            android:layout_marginBottom="31dp"
+            android:background="@drawable/button_background"
+            android:backgroundTint="@color/greenAccent"
+            app:srcCompat="@drawable/borgscale" />
 
         <TextView
             android:id="@+id/textView3"
