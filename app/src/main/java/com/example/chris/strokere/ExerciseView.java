@@ -95,7 +95,6 @@ public class ExerciseView extends BaseActivity {
         if (pressedButton.equals("customWorkout")) {
 
             addFiles();
-
             printarray();
             setAndPlayVideo(setStringPath());
             timer(60000);
@@ -106,7 +105,6 @@ public class ExerciseView extends BaseActivity {
         } else if
                 (pressedButton.equals("standard")) {
             addFiles();
-
             setAndPlayVideo(setStringPath());
             timer(60000);
             progressBar.setProgress(i);
