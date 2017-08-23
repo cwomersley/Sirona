@@ -23,6 +23,12 @@ public class ExerciseListVplayer extends BaseActivity {
         //Exercise name at the top of the page
         TextView tv = (TextView)findViewById(R.id.textView5);
         tv.setText(exerciselist.niceName);
+        tv.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
+
+        TextView tv2 = (TextView)findViewById(R.id.textView7);
+        tv2.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
+
 
         //Image of an exit button
         ImageView img = (ImageView) findViewById(R.id.imageView3);
