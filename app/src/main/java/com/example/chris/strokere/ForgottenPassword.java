@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 
 /**
  * Class that allows a patient to request that a reset password email is sent to their email address.
+ * @author Edward Boyles
  */
 public class ForgottenPassword extends AppCompatActivity {
 

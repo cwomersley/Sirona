@@ -2,6 +2,7 @@ package com.example.chris.strokere;
 
 /**
  * Class used for creating and retrieving account information related to the patient
+ * @author Edward Boyles
  */
 
 

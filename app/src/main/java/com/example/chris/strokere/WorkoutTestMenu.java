@@ -9,6 +9,7 @@ import android.widget.Button;
 
 /**
  * Class that opens and passes information to particular workout tests for the patient
+ * @author Edward Boyles
  */
 
 public class WorkoutTestMenu extends AppCompatActivity {

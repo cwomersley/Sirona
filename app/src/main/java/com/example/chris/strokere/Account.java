@@ -46,6 +46,7 @@ import static com.example.chris.strokere.R.id.pPasswordBtn;
 /**
  * Class that deals with account details for patient and related functionality
  * Patient data is also retrieved from the Firebase database
+ * @author Edward Boyles
  */
 
 public class Account extends BaseActivity {
