@@ -93,6 +93,7 @@ public class ExerciseView extends BaseActivity {
 
 
         if (pressedButton.equals("customWorkout")) {
+            nameList.clear();
             customWorkout.clear();
             addFiles();
             printarray();
@@ -303,6 +304,8 @@ public class ExerciseView extends BaseActivity {
                 } else if (nameList.size() == 1) {
 
                     videoView.stopPlayback();
+                    nameList.clear();
+                    customWorkout.clear();
                     Intent intent = new Intent(ExerciseView.this, WorkoutRating.class);
                     startActivity(intent);
                     finish();
