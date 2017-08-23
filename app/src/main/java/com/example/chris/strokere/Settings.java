@@ -26,12 +26,6 @@ public class Settings extends BaseActivity {
         context = getApplicationContext();
 
 
-        Button btnThisApp = (Button) findViewById(R.id.btnThisAppS);
-        btnThisApp.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
-        Button btnWorkPref = (Button) findViewById(R.id.btnWorkPrefS);
-        btnWorkPref.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
-
         Button btnWorkRem = (Button) findViewById(R.id.btnWorkRemS);
         btnWorkRem.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
         btnWorkRem.setAlpha(0.5f);

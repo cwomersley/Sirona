@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Home extends BaseActivity {
 
 
-    Tip tip;
+    private Tip tip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class Home extends BaseActivity {
     /**
      * Chooses a tip at random and displays it
      */
-    public void findATip() {
+    private void findATip() {
 
         TextView tipsText = (TextView) findViewById(R.id.tipsText);
         TipManager tipManager = new TipManager();

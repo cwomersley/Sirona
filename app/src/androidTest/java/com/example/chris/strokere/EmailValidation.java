@@ -1,8 +1,5 @@
 package com.example.chris.strokere;
 
-/**
- * Created by edward on 22/08/17.
- */
 
 import junit.framework.Assert;
 
