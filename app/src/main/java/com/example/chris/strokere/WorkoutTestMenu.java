@@ -12,7 +12,7 @@ import android.widget.Button;
  * @author Edward Boyles
  */
 
-public class WorkoutTestMenu extends AppCompatActivity {
+public class WorkoutTestMenu extends BaseActivity {
 
     private Button sitToStandsBtn;
     private Button shuttleRunBtn;
@@ -25,6 +25,7 @@ public class WorkoutTestMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_test_menu);
+        setupNavbar();
 
         sitToStandsBtn = (Button) findViewById(R.id.sitToStandsBtn);
         shuttleRunBtn = (Button) findViewById(R.id.ShuttleRunBtn);
@@ -34,6 +35,15 @@ public class WorkoutTestMenu extends AppCompatActivity {
         stepUpsBtn.setTypeface(FontHelper.getLatoRegular(getApplicationContext()));
 
 
+    }
+
+    /**
+     * Gets the active activity
+     * @return this activity
+     */
+    @Override
+    public int getLayout() {
+        return R.layout.activity_workout_test_menu;
     }
 
     /**
