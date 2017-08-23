@@ -73,7 +73,7 @@ public class ExerciseView extends BaseActivity {
         pressedButton = getIntent().getExtras().getString("workChoice");
         workoutMenu = new WorkoutMenu();
         output = workoutMenu.getOutput();
-        setWarmUpList();
+
         likeBtn.setAlpha(0.5f);
         dissLikeBtn.setAlpha(0.5f);
 
@@ -211,6 +211,7 @@ public class ExerciseView extends BaseActivity {
 
 
         }
+        setWarmUpList();
         for(String s: warmUpList) {
             int x = 0;
             nameList.add(x, s);
