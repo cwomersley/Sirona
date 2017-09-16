@@ -11,8 +11,7 @@
         android:roundIcon="@drawable/logo_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Register" />
-        <activity android:name=".ExerciseView" />
+        <activity android:name=".ExerciseView" android:screenOrientation="portrait" />
         <activity android:name=".ExerciseList" />
         <activity android:name=".Home" />
         <activity android:name=".Navigator" />
@@ -31,7 +30,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SettingsWorkoutReminder" />
         <activity android:name=".ProgressGraph" />
-        <activity android:name=".WorkoutRating" />
+        <activity android:name=".WorkoutRating" android:screenOrientation="portrait" />
         <activity android:name=".ForgottenPassword" />
         <activity android:name=".WorkoutMenu" />
         <activity android:name=".WorkoutTest" />
